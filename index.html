@@ -304,23 +304,6 @@
                 </div>
 
                 
-                <!-- QR Code for Instant Mobile Download -->
-                <div class="max-w-md mx-auto bg-tactical-card border border-tactical-border/90 rounded-2xl p-4 mb-8 shadow-xl flex items-center gap-4 text-left">
-                    <div class="bg-tactical-bg p-1.5 rounded-xl border border-tactical-green/40 shrink-0">
-                        <img src="images/qr-download.png" alt="QR-код для скачивания APK" class="w-20 h-20 rounded-lg">
-                    </div>
-                    <div>
-                        <div class="text-xs font-mono font-bold text-tactical-green flex items-center gap-1.5 mb-1">
-                            <i data-lucide="qr-code" class="w-4 h-4"></i> НАВЕДИТЕ КАМЕРУ
-                        </div>
-                        <div class="text-xs font-bold text-white mb-1 leading-snug">
-                            Скачать APK прямо на телефон
-                        </div>
-                        <div class="text-[11px] text-tactical-muted leading-tight">
-                            Отсканируйте камерой смартфона для мгновенной загрузки приложения v2.5.
-                        </div>
-                    </div>
-                </div>
 
                 <!-- 4 Highlight Metrics -->
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-3xl mx-auto font-mono text-center">
@@ -662,5 +645,23 @@
             window.location.href = mailtoLink;
         }
     </script>
+    <!-- Floating Side QR Widget (Corner for Desktop / Tablet) -->
+    <div class="hidden xl:flex fixed bottom-6 right-6 z-50 bg-tactical-card/95 backdrop-blur-md border border-tactical-green/40 rounded-2xl p-3 shadow-2xl items-center gap-3 hover:border-tactical-green transition-all group max-w-[240px]">
+        <div class="bg-tactical-bg p-1 rounded-xl border border-tactical-green/30 shrink-0">
+            <img src="images/qr-download.png" alt="QR-код" class="w-14 h-14 rounded-lg">
+        </div>
+        <div>
+            <div class="text-[10px] font-mono font-bold text-tactical-green flex items-center gap-1 mb-0.5">
+                <i data-lucide="qr-code" class="w-3 h-3"></i> QR-СКАЧИВАНИЕ
+            </div>
+            <div class="text-[11px] font-bold text-white leading-tight">
+                Наведите камеру
+            </div>
+            <div class="text-[9px] text-gray-400 leading-tight mt-0.5">
+                Быстрая загрузка APK на телефон
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
