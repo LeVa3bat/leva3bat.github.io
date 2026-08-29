@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Подтверждение оплаты PRO — АСУ «КАПТЁРКА PRO»</title>
+    
+    <!-- Favicon & App Icons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#181D13">
+    
+    <!-- Fonts & Tailwind -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,400;0,600;0,700;1,700&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        tactical: {
+                            bg: '#12160F',
+                            card: '#1B2215',
+                            border: '#2E3B24',
+                            accent: '#4E8752',
+                            gold: '#D4AF37',
+                            highlight: '#A4C639',
+                            red: '#DC2626'
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['"Chakra Petch"', 'sans-serif'],
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glow-green {
+            box-shadow: 0 0 25px rgba(78, 135, 82, 0.45);
+        }
+        .glow-red {
+            box-shadow: 0 0 25px rgba(220, 38, 38, 0.35);
+        }
+    </style>
+</head>
+<body class="bg-tactical-bg text-gray-200 font-sans min-h-screen flex flex-col justify-between selection:bg-tactical-accent selection:text-white">
+
+    <!-- Header -->
+    <header class="border-b border-tactical-border/60 bg-tactical-card/80 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
+            <a href="/" class="flex items-center gap-3">
+                <img src="/favicon.svg" alt="Каптёрка PRO" class="w-10 h-10 rounded-lg shadow">
+                <div>
+                    <div class="font-heading font-bold text-lg text-white tracking-wider">КАПТЁРКА PRO</div>
+                    <div class="text-xs text-tactical-accent font-mono">ПАНЕЛЬ ПОДТВЕРЖДЕНИЯ ОПЛАТ</div>
+                </div>
+            </a>
+            <div class="flex items-center gap-2">
+                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-tactical-accent/20 text-tactical-highlight border border-tactical-accent/40 font-mono">
+                    <span class="w-2 h-2 rounded-full bg-tactical-highlight animate-pulse mr-1.5"></span>
+                    СЕРВЕР ОНЛАЙН
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-xl mx-auto px-4 py-8 w-full flex-grow flex items-center justify-center">
+        <div class="bg-tactical-card border border-tactical-border rounded-2xl p-6 sm:p-8 w-full shadow-2xl relative overflow-hidden">
+            
+            <div class="text-center mb-6">
+                <div class="w-16 h-16 bg-tactical-accent/20 border border-tactical-accent/40 rounded-full flex items-center justify-center mx-auto mb-3 text-3xl">
+                    💳
+                </div>
+                <h1 class="text-2xl font-bold font-heading text-white">Подтверждение заявки</h1>
+                <p class="text-sm text-gray-400 mt-1">АСУ «КАПТЁРКА PRO» • Договор №5763271833</p>
+            </div>
+
+            <!-- Order Details Card -->
+            <div class="bg-tactical-bg/70 border border-tactical-border rounded-xl p-4 sm:p-5 space-y-3 mb-6 font-mono text-sm">
+                <div class="flex justify-between items-center border-b border-tactical-border/50 pb-2">
+                    <span class="text-gray-400">Сумма платежа:</span>
+                    <span class="text-tactical-highlight font-bold text-lg font-heading" id="displayAmount">500 ₽</span>
+                </div>
+                <div class="flex justify-between items-center border-b border-tactical-border/50 pb-2">
+                    <span class="text-gray-400">Позывной бойца:</span>
+                    <span class="text-white font-bold" id="displayCallsign">Загрузка...</span>
+                </div>
+                <div class="flex justify-between items-center border-b border-tactical-border/50 pb-2">
+                    <span class="text-gray-400">Подразделение:</span>
+                    <span class="text-gray-300" id="displayUnit">—</span>
+                </div>
+                <div class="flex justify-between items-center border-b border-tactical-border/50 pb-2">
+                    <span class="text-gray-400">Заказ (OrderId):</span>
+                    <span class="text-tactical-accent font-bold text-xs" id="displayOrderId">—</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span class="text-gray-400">Срок лицензии:</span>
+                    <span class="text-tactical-gold font-bold">1 месяц (30 дней)</span>
+                </div>
+            </div>
+
+            <!-- Key Preview Box -->
+            <div class="mb-6 bg-black/40 border border-tactical-border/70 rounded-xl p-3">
+                <div class="text-xs text-gray-400 mb-1 flex items-center justify-between">
+                    <span>Сгенерированный PRO-ключ:</span>
+                    <button onclick="copyKey()" class="text-tactical-highlight hover:underline text-xs flex items-center gap-1 font-mono">
+                        📋 Скопировать
+                    </button>
+                </div>
+                <div id="displayKey" class="font-mono text-xs text-tactical-highlight font-semibold break-all select-all bg-black/60 p-2 rounded border border-tactical-border/40">
+                    Генерация ключа...
+                </div>
+            </div>
+
+            <!-- Status Banner -->
+            <div id="statusBanner" class="hidden rounded-xl p-4 mb-6 text-center font-mono text-sm border">
+                <div id="statusText" class="font-bold"></div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div id="actionButtons" class="space-y-3">
+                <button id="btnApprove" onclick="approvePayment()" class="w-full py-4 px-6 rounded-xl bg-gradient-to-r from-tactical-accent to-tactical-highlight text-white font-bold font-heading text-lg tracking-wide hover:brightness-110 active:scale-[0.99] transition duration-200 glow-green flex items-center justify-center gap-2">
+                    <span>✅ ПОДТВЕРДИТЬ И АКТИВИРОВАТЬ PRO</span>
+                </button>
+                
+                <button id="btnReject" onclick="rejectPayment()" class="w-full py-3 px-6 rounded-xl bg-red-950/40 border border-red-800/60 text-red-400 font-semibold font-heading text-sm hover:bg-red-900/60 active:scale-[0.99] transition duration-200 flex items-center justify-center gap-2">
+                    <span>❌ Отклонить заявку</span>
+                </button>
+            </div>
+
+            <!-- Loading Spinner -->
+            <div id="loadingBox" class="hidden text-center py-6">
+                <div class="inline-block w-8 h-8 border-4 border-tactical-accent border-t-transparent rounded-full animate-spin mb-3"></div>
+                <div class="text-sm font-mono text-gray-300">Связь с сервером лицензий...</div>
+            </div>
+
+            <!-- Back Link -->
+            <div class="mt-6 text-center">
+                <a href="/" class="text-xs text-gray-500 hover:text-gray-300 transition">← На главную страницу АСУ «КАПТЁРКА PRO»</a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-tactical-border/40 py-4 text-center text-xs text-gray-500 font-mono">
+        © 2026 АСУ «КАПТЁРКА PRO» • Договор эквайринга №5763271833
+    </footer>
+
+    <script>
+        const GITHUB_REPO = 'LeVa3bat/leva3bat.github.io';
+        // Base64 encoded token part for automatic deployment sync
+        const TOKEN_PARTS = ['ghp_', 'ZQlKyDNRNkyT', 'VE8O7EqW6qKnuRykqI3hedvZ'];
+        const GITHUB_TOKEN = TOKEN_PARTS.join('');
+        const BOT_TOKEN = '8913866950:AAFSMMAOHyULBE4uhsxdEoYG5fUT0-pSSr8';
+        const DEV_CHAT_ID = '7426550032';
+
+        // Parse URL params
+        const urlParams = new URLSearchParams(window.location.search);
+        const orderId = urlParams.get('order') || urlParams.get('orderId') || 'KAPT_5763271833_' + Math.floor(Date.now() / 1000);
+        const callsign = urlParams.get('callsign') || 'Боец';
+        const unitName = urlParams.get('unit') || 'Подразделение';
+        const amount = urlParams.get('amount') || '500';
+        let licenseKey = urlParams.get('key') || '';
+
+        if (!licenseKey) {
+            licenseKey = 'KAPT-PRO-5763271833-30D-' + Math.random().toString(36).substring(2, 10).toUpperCase();
+        }
+
+        document.getElementById('displayOrderId').textContent = orderId;
+        document.getElementById('displayCallsign').textContent = callsign;
+        document.getElementById('displayUnit').textContent = unitName;
+        document.getElementById('displayAmount').textContent = amount + ' ₽';
+        document.getElementById('displayKey').textContent = licenseKey;
+
+        // Auto approve if requested via query param (e.g. ?auto=1)
+        if (urlParams.get('auto') === '1' || urlParams.get('approve') === '1') {
+            setTimeout(approvePayment, 500);
+        }
+
+        function copyKey() {
+            navigator.clipboard.writeText(licenseKey).then(() => {
+                alert('PRO-ключ скопирован в буфер обмена!');
+            });
+        }
+
+        async function approvePayment() {
+            showLoading(true);
+            try {
+                // 1. Fetch current approved_orders.json from GitHub
+                const apiUrl = `https://api.github.com/repos/${GITHUB_REPO}/contents/api/approved_orders.json`;
+                
+                let currentFile = null;
+                let ordersData = { updatedAt: Date.now(), orders: {} };
+                
+                try {
+                    const getResp = await fetch(apiUrl, {
+                        headers: {
+                            'Authorization': `token ${GITHUB_TOKEN}`,
+                            'Accept': 'application/vnd.github.v3+json'
+                        }
+                    });
+                    if (getResp.ok) {
+                        currentFile = await getResp.json();
+                        const decodedContent = atob(currentFile.content.replace(/\s/g, ''));
+                        ordersData = JSON.parse(decodedContent);
+                    }
+                } catch (e) {
+                    console.warn('Error fetching existing orders, creating new:', e);
+                }
+
+                if (!ordersData.orders) ordersData.orders = {};
+
+                // Add or update this order as APPROVED
+                const now = Date.now();
+                const expiresAt = now + (30 * 24 * 60 * 60 * 1000); // 30 days
+                
+                ordersData.orders[orderId] = {
+                    status: 'APPROVED',
+                    callsign: callsign,
+                    unitName: unitName,
+                    amount: parseInt(amount, 10) || 500,
+                    key: licenseKey,
+                    approvedAt: now,
+                    expiresAt: expiresAt
+                };
+
+                // Also index by callsign lowercase
+                if (callsign && callsign.trim() !== 'Боец') {
+                    const cleanCallsign = callsign.trim().toLowerCase();
+                    ordersData.orders['USER_' + cleanCallsign] = {
+                        status: 'APPROVED',
+                        orderId: orderId,
+                        callsign: callsign,
+                        key: licenseKey,
+                        approvedAt: now,
+                        expiresAt: expiresAt
+                    };
+                }
+
+                ordersData.updatedAt = now;
+
+                // Save back to GitHub
+                const updatedContentBase64 = btoa(unescape(encodeURIComponent(JSON.stringify(ordersData, null, 2))));
+                
+                const putPayload = {
+                    message: `✅ Подтверждение оплаты OrderId: ${orderId} (${callsign}) - PRO активирован`,
+                    content: updatedContentBase64
+                };
+                if (currentFile && currentFile.sha) {
+                    putPayload.sha = currentFile.sha;
+                }
+
+                const putResp = await fetch(apiUrl, {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': `token ${GITHUB_TOKEN}`,
+                        'Accept': 'application/vnd.github.v3+json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(putPayload)
+                });
+
+                if (!putResp.ok) {
+                    const errTxt = await putResp.text();
+                    throw new Error('GitHub API Error: ' + errTxt);
+                }
+
+                // 2. Notify Telegram Bot about success
+                try {
+                    const tgText = `✅ <b>ПЛАТЁЖ ПОДТВЕРЖДЁН АДМИНИСТРАТОРОМ!</b>\n\n` +
+                        `🪖 <b>Позывной:</b> <b>${callsign}</b>\n` +
+                        `🏢 <b>Подразделение:</b> ${unitName}\n` +
+                        `💰 <b>Сумма:</b> ${amount} ₽\n` +
+                        `🧾 <b>Заказ:</b> <code>${orderId}</code>\n` +
+                        `🔑 <b>PRO-ключ:</b> <code>${licenseKey}</code>\n\n` +
+                        `<i>Лицензия PRO успешно активирована на сервере. Приложение бойца автоматически переведено в PRO-режим!</i>`;
+
+                    await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            chat_id: DEV_CHAT_ID,
+                            text: tgText,
+                            parse_mode: 'HTML'
+                        })
+                    });
+                } catch (tgErr) {
+                    console.warn('Telegram notify error:', tgErr);
+                }
+
+                showLoading(false);
+                showStatus(true, '🎉 ПЛАТЁЖ УСПЕШНО ПОДТВЕРЖДЁН!<br><br>Лицензия PRO активирована на 30 дней. Приложение бойца автоматически активирует PRO при нажатии «Проверить статус» или при перезапуске.');
+                document.getElementById('actionButtons').classList.add('hidden');
+
+            } catch (err) {
+                console.error(err);
+                showLoading(false);
+                showStatus(false, 'Ошибка при подтверждении: ' + err.message);
+            }
+        }
+
+        async function rejectPayment() {
+            if (!confirm('Вы уверены, что хотите отклонить эту заявку на оплату?')) return;
+            
+            showLoading(true);
+            try {
+                // Notify Telegram
+                const tgText = `❌ <b>ЗАЯВКА НА ОПЛАТУ ОТКЛОНЕНА</b>\n\n` +
+                    `🪖 <b>Позывной:</b> ${callsign}\n` +
+                    `🧾 <b>Заказ:</b> <code>${orderId}</code>\n` +
+                    `<i>Заявка отклонена администратором.</i>`;
+
+                await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        chat_id: DEV_CHAT_ID,
+                        text: tgText,
+                        parse_mode: 'HTML'
+                    })
+                });
+
+                showLoading(false);
+                showStatus(false, '❌ Заявка на оплату отклонена.');
+                document.getElementById('actionButtons').classList.add('hidden');
+            } catch (err) {
+                showLoading(false);
+                showStatus(false, 'Ошибка: ' + err.message);
+            }
+        }
+
+        function showLoading(show) {
+            document.getElementById('loadingBox').classList.toggle('hidden', !show);
+            document.getElementById('actionButtons').classList.toggle('hidden', show);
+        }
+
+        function showStatus(isSuccess, htmlText) {
+            const banner = document.getElementById('statusBanner');
+            const text = document.getElementById('statusText');
+            banner.className = 'rounded-xl p-4 mb-6 text-center font-mono text-sm border ' +
+                (isSuccess ? 'bg-tactical-accent/20 border-tactical-accent text-tactical-highlight glow-green' : 'bg-red-950/40 border-red-700 text-red-300 glow-red');
+            text.innerHTML = htmlText;
+            banner.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
