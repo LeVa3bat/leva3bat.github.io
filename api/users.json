@@ -1,19 +1,6 @@
 {
-  "updatedAt": 1788035715749,
+  "updatedAt": 1788035717695,
   "users": [
-    {
-      "id": "usr_mtes5hfq",
-      "callsign": "Лева",
-      "unit": "Минаметка",
-      "email": "alex.666.881@gmail.com",
-      "phone": "+79490534438",
-      "password": "00000000",
-      "isEmailVerified": true,
-      "isPhoneVerified": true,
-      "licenseStatus": "FREE",
-      "registeredAt": "29.08.2026, 22:35:09",
-      "adminNote": ""
-    },
     {
       "id": "usr_mtes5iua",
       "callsign": "Лева",
