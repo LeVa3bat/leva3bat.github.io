@@ -112,7 +112,7 @@
     <!-- TOP SYSTEM STATUS BAR -->
     <div class="bg-tactical-dark border-b border-tactical-border text-tactical-muted text-xs font-mono py-1.5 px-4 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
-            <div class="flex items-center space-x-2">
+            <div class="flex items-center space-x-2 cursor-pointer select-none" id="secret-admin-trigger" title="АСУ Каптёрка PRO">
                 <span class="inline-block w-2 h-2 rounded-full bg-tactical-green animate-pulse"></span>
                 <span class="text-tactical-green font-bold">СИСТЕМА:</span>
                 <span class="text-white font-mono">Личный кабинет & Сообщество</span>
@@ -124,9 +124,6 @@
                     <i data-lucide="arrow-left" class="w-3 h-3 text-tactical-green"></i> На главную
                 </a>
                 <a href="manual.html" class="hover:text-tactical-green text-gray-300 transition-colors font-medium">Инструкция</a>
-                <button onclick="openAdminModal()" class="text-tactical-gold hover:text-white font-mono font-bold flex items-center gap-1 transition-colors">
-                    <i data-lucide="lock" class="w-3 h-3"></i> Вход для Администратора
-                </button>
             </div>
         </div>
     </div>
@@ -169,11 +166,11 @@
             <div class="flex items-center space-x-2 sm:space-x-3">
                 <div id="nav-user-profile" class="hidden flex items-center space-x-2 bg-tactical-card border border-tactical-border px-3 py-1.5 rounded-xl text-xs font-mono">
                     <span class="w-2 h-2 rounded-full bg-tactical-green animate-pulse"></span>
-                    <span class="text-tactical-muted">Позывной:</span>
+                    <span class="text-tactical-muted hidden sm:inline">Позывной:</span>
                     <span id="nav-callsign-display" class="font-bold text-white"></span>
-                    <button onclick="logoutUser()" class="ml-2 bg-tactical-bg hover:bg-tactical-red/20 text-tactical-red hover:text-white border border-tactical-border px-2 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1" title="Выйти из кабинета">
+                    <button onclick="logoutUser()" class="ml-2 bg-tactical-bg hover:bg-tactical-red/20 text-tactical-red hover:text-white border border-tactical-border px-2.5 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5" title="Выйти из личного кабинета">
                         <i data-lucide="log-out" class="w-3.5 h-3.5"></i>
-                        <span class="hidden sm:inline">Выход</span>
+                        <span>Выход</span>
                     </button>
                 </div>
                 
@@ -230,14 +227,6 @@
                 <button id="tab-btn-login" onclick="switchMainTab('login')" class="tab-btn hidden px-4 py-2.5 rounded-xl border border-tactical-border text-xs sm:text-sm font-semibold flex items-center gap-2 transition-all">
                     <i data-lucide="log-in" class="w-4 h-4"></i>
                     <span>Вход</span>
-                </button>
-            </div>
-
-            <!-- Logged in Exit Action button -->
-            <div id="top-logout-container" class="hidden items-center gap-2">
-                <button onclick="logoutUser()" class="px-3.5 py-2 rounded-xl bg-tactical-card hover:bg-tactical-red/20 border border-tactical-border hover:border-tactical-red/50 text-tactical-red font-mono text-xs font-bold flex items-center gap-1.5 transition-all">
-                    <i data-lucide="log-out" class="w-3.5 h-3.5"></i>
-                    <span>Выйти из кабинета</span>
                 </button>
             </div>
         </div>
@@ -524,12 +513,9 @@
                         </div>
 
                         <div class="flex items-center gap-2">
-                            <a href="kapterka-app.apk" download class="bg-tactical-green hover:bg-tactical-accent text-black font-bold text-xs px-4 py-2 rounded-xl flex items-center gap-1.5 transition-all">
+                            <a href="kapterka-app.apk" download class="bg-tactical-green hover:bg-tactical-accent text-black font-bold text-xs px-4 py-2 rounded-xl flex items-center gap-1.5 transition-all shadow-md">
                                 <i data-lucide="download" class="w-3.5 h-3.5"></i> Скачать APK v2.5
                             </a>
-                            <button onclick="logoutUser()" class="bg-tactical-card hover:bg-tactical-border text-tactical-red border border-tactical-border font-bold text-xs px-3 py-2 rounded-xl transition-colors">
-                                Выход
-                            </button>
                         </div>
                     </div>
 
@@ -781,6 +767,22 @@
                 } else {
                     switchMainTab('register');
                 }
+            }
+
+            // Secret click trigger for Admin Panel (5 clicks on system label)
+            let secretClicks = 0;
+            let secretTimer = null;
+            const secretElem = document.getElementById('secret-admin-trigger');
+            if (secretElem) {
+                secretElem.addEventListener('click', () => {
+                    secretClicks++;
+                    clearTimeout(secretTimer);
+                    secretTimer = setTimeout(() => { secretClicks = 0; }, 2000);
+                    if (secretClicks >= 5) {
+                        secretClicks = 0;
+                        openAdminModal();
+                    }
+                });
             }
 
             // Secret key combination for Admin Panel (Ctrl + Shift + A)
