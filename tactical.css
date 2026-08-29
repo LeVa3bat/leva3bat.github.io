@@ -1,0 +1,86 @@
+/* Tactical Theme Stylesheet for Kapterka PRO */
+:root {
+  --tactical-bg: #080C09;
+  --tactical-dark: #050806;
+  --tactical-card: #121814;
+  --tactical-cardHover: #17221A;
+  --tactical-border: #233326;
+  --tactical-borderBright: #3A543E;
+  --tactical-green: #4CAF50;
+  --tactical-accent: #66BB6A;
+  --tactical-darkGreen: #18331A;
+  --tactical-gold: #E2C044;
+  --tactical-red: #E05342;
+  --tactical-blue: #42A5F5;
+  --tactical-text: #E0E6E1;
+  --tactical-muted: #8E9F90;
+  --tactical-dim: #556658;
+}
+
+body {
+  background-color: #080C09 !important;
+  color: #E0E6E1 !important;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(76, 175, 80, 0.12), transparent 50%),
+    radial-gradient(circle at 100% 100%, rgba(24, 51, 26, 0.2), transparent 45%) !important;
+}
+
+.tactical-grid {
+  background-size: 32px 32px !important;
+  background-image: 
+    linear-gradient(to right, rgba(35, 51, 38, 0.25) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(35, 51, 38, 0.25) 1px, transparent 1px) !important;
+}
+
+.glow-green {
+  box-shadow: 0 0 30px -5px rgba(76, 175, 80, 0.35) !important;
+}
+
+.glow-green-sm {
+  box-shadow: 0 0 15px -2px rgba(76, 175, 80, 0.25) !important;
+}
+
+/* Color utility classes */
+.bg-tactical-bg { background-color: #080C09 !important; }
+.bg-tactical-dark { background-color: #050806 !important; }
+.bg-tactical-card { background-color: #121814 !important; }
+.bg-tactical-cardHover { background-color: #17221A !important; }
+.hover\:bg-tactical-cardHover:hover { background-color: #17221A !important; }
+.bg-tactical-green { background-color: #4CAF50 !important; }
+.hover\:bg-tactical-accent:hover { background-color: #66BB6A !important; }
+.bg-tactical-accent { background-color: #66BB6A !important; }
+.bg-tactical-darkGreen { background-color: #18331A !important; }
+.hover\:bg-tactical-darkGreen:hover { background-color: #18331A !important; }
+.bg-tactical-border { background-color: #233326 !important; }
+.hover\:bg-tactical-border:hover { background-color: #233326 !important; }
+
+.border-tactical-border { border-color: #233326 !important; }
+.border-tactical-borderBright { border-color: #3A543E !important; }
+.border-tactical-green { border-color: #4CAF50 !important; }
+.border-tactical-green\/40 { border-color: rgba(76, 175, 80, 0.4) !important; }
+.border-tactical-green\/50 { border-color: rgba(76, 175, 80, 0.5) !important; }
+.border-tactical-green\/60 { border-color: rgba(76, 175, 80, 0.6) !important; }
+.border-tactical-gold\/40 { border-color: rgba(226, 192, 68, 0.4) !important; }
+
+.text-tactical-green { color: #4CAF50 !important; }
+.text-tactical-accent { color: #66BB6A !important; }
+.text-tactical-gold { color: #E2C044 !important; }
+.text-tactical-red { color: #E05342 !important; }
+.text-tactical-blue { color: #42A5F5 !important; }
+.text-tactical-text { color: #E0E6E1 !important; }
+.text-tactical-muted { color: #8E9F90 !important; }
+.text-tactical-dim { color: #556658 !important; }
+.hover\:text-tactical-green:hover { color: #4CAF50 !important; }
+
+.tab-btn.active {
+  background-color: #18331A !important;
+  color: #4CAF50 !important;
+  border-color: #4CAF50 !important;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #080C09; }
+::-webkit-scrollbar-thumb { background: #233326; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #4CAF50; }
