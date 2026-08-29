@@ -191,6 +191,21 @@
     <!-- MAIN CONTENT -->
     <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8 w-full">
         
+        <!-- GLOBAL SECURITY & OPSEC WARNING BANNER -->
+        <div class="mb-6 p-4 rounded-2xl bg-tactical-red/10 border-2 border-tactical-red/40 flex flex-col sm:flex-row items-start sm:items-center gap-3.5 shadow-lg">
+            <div class="w-10 h-10 rounded-xl bg-tactical-red/20 border border-tactical-red/50 text-tactical-red flex items-center justify-center shrink-0">
+                <i data-lucide="shield-alert" class="w-6 h-6 animate-pulse"></i>
+            </div>
+            <div class="flex-grow text-xs leading-relaxed">
+                <div class="font-mono font-bold text-tactical-red uppercase text-sm flex items-center gap-1.5 mb-0.5">
+                    <span>⚠️ ВНИМАНИЕ: СТРОГОЕ СОБЛЮДЕНИЕ РЕЖИМА СЕКРЕТНОСТИ (OPSEC)</span>
+                </div>
+                <p class="text-gray-200">
+                    <strong class="text-white">КАТЕГОРИЧЕСКИ ЗАПРЕЩЕНО</strong> указывать точные наименования закрытых воинских частей, реальные ФИО, населённые пункты дислокации, боевые направления («откуда/куда»), геолокации складов и оперативные данные! Используйте <span class="text-tactical-green font-mono font-bold">ТОЛЬКО ПОЗЫВНЫЕ</span> и условные обозначения подразделений (например: «Взвод связи», «Рота БПЛА»).
+                </p>
+            </div>
+        </div>
+
         <!-- TOP CONTROLS / TABS -->
         <div class="flex flex-wrap items-center justify-between gap-3 pb-6 border-b border-tactical-border">
             <div class="flex flex-wrap items-center gap-2">
@@ -307,11 +322,11 @@
                         <form id="chat-composer-form" onsubmit="handleSendChatMessage(event)" class="space-y-3">
                             <div class="flex flex-wrap sm:flex-nowrap gap-2 items-center">
                                 <div class="w-full sm:w-1/3">
-                                    <input type="text" id="chat-author-input" placeholder="Ваш позывной / Имя" required
+                                    <input type="text" id="chat-author-input" placeholder="Позывной (не ФИО)" required
                                         class="w-full bg-tactical-card border border-tactical-border rounded-xl px-3 py-2 text-xs font-mono text-white placeholder-tactical-muted focus:outline-none focus:border-tactical-green">
                                 </div>
                                 <div class="w-full sm:w-1/3">
-                                    <input type="text" id="chat-unit-input" placeholder="Подразделение (необяз.)"
+                                    <input type="text" id="chat-unit-input" placeholder="Условн. подразделение"
                                         class="w-full bg-tactical-card border border-tactical-border rounded-xl px-3 py-2 text-xs font-mono text-white placeholder-tactical-muted focus:outline-none focus:border-tactical-green">
                                 </div>
                                 <div class="w-full sm:w-1/3">
@@ -323,7 +338,7 @@
                                 </div>
                             </div>
                             <div class="flex gap-2">
-                                <textarea id="chat-message-input" rows="2" placeholder="Напишите сообщение в эфир или комментарий к программе..." required
+                                <textarea id="chat-message-input" rows="2" placeholder="Напишите сообщение в эфир (без координат, направлений и секретных данных)..." required
                                     class="flex-grow bg-tactical-card border border-tactical-border rounded-xl p-3 text-xs sm:text-sm text-white placeholder-tactical-muted focus:outline-none focus:border-tactical-green resize-none"></textarea>
                                 <button type="submit" class="bg-tactical-green hover:bg-tactical-accent text-black font-bold px-4 sm:px-6 rounded-xl text-xs sm:text-sm transition-all flex flex-col items-center justify-center gap-1 shadow-md glow-green-sm">
                                     <i data-lucide="send" class="w-4 h-4"></i>
@@ -349,23 +364,31 @@
                     <p class="text-xs sm:text-sm text-tactical-muted mt-1">Создайте учётную запись бойца / ответственного по складу с верификацией контактов</p>
                 </div>
 
+                <!-- OPSEC Warning Box -->
+                <div class="mb-5 p-3.5 rounded-xl bg-tactical-red/10 border border-tactical-red/30 text-xs text-tactical-red flex items-start gap-2.5">
+                    <i data-lucide="alert-triangle" class="w-4 h-4 shrink-0 mt-0.5"></i>
+                    <div>
+                        <span class="font-bold">ПРАВИЛО БЕЗОПАСНОСТИ:</span> Не указывайте реальные ФИО, номера закрытых в/ч, координаты и направления дислокации («откуда/куда»). Указывайте только позывной и условное подразделение.
+                    </div>
+                </div>
+
                 <form id="register-form" onsubmit="handleRegistrationSubmit(event)" class="space-y-4">
                     
                     <!-- Callsign & Unit -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-xs font-mono font-bold text-tactical-muted mb-1.5">ПОЗЫВНОЙ / ФИО <span class="text-tactical-green">*</span></label>
+                            <label class="block text-xs font-mono font-bold text-tactical-muted mb-1.5">ПОЗЫВНОЙ <span class="text-tactical-green">* (без реального ФИО)</span></label>
                             <div class="relative">
-                                <input type="text" id="reg-callsign" placeholder="Например: Снайпер или Иванов А." required
+                                <input type="text" id="reg-callsign" placeholder="Например: Снайпер, Сокол, Норд" required
                                     class="w-full bg-tactical-bg border border-tactical-border rounded-xl pl-9 pr-3 py-2.5 text-sm text-white focus:outline-none focus:border-tactical-green font-mono">
                                 <i data-lucide="shield" class="w-4 h-4 text-tactical-muted absolute left-3 top-3"></i>
                             </div>
                         </div>
 
                         <div>
-                            <label class="block text-xs font-mono font-bold text-tactical-muted mb-1.5">ПОДРАЗДЕЛЕНИЕ / В/Ч <span class="text-tactical-green">*</span></label>
+                            <label class="block text-xs font-mono font-bold text-tactical-muted mb-1.5">УСЛОВНОЕ ПОДРАЗДЕЛЕНИЕ <span class="text-tactical-green">*</span></label>
                             <div class="relative">
-                                <input type="text" id="reg-unit" placeholder="Например: 2-й взвод роты БПЛА" required
+                                <input type="text" id="reg-unit" placeholder="Например: Взвод БПЛА / РЭБ / Связь (без дислокации)" required
                                     class="w-full bg-tactical-bg border border-tactical-border rounded-xl pl-9 pr-3 py-2.5 text-sm text-white focus:outline-none focus:border-tactical-green font-mono">
                                 <i data-lucide="map-pin" class="w-4 h-4 text-tactical-muted absolute left-3 top-3"></i>
                             </div>
@@ -438,9 +461,10 @@
                         </div>
 
                         <div>
-                            <label class="block text-xs font-mono font-bold text-tactical-muted mb-1.5">ДОПОЛНИТЕЛЬНЫЙ КОММЕНТАРИЙ</label>
-                            <input type="text" id="reg-comment" placeholder="Должность, задачи или пожелания"
+                            <label class="block text-xs font-mono font-bold text-tactical-muted mb-1.5">ДОПОЛНИТЕЛЬНЫЙ КОММЕНТАРИЙ / ПОЖЕЛАНИЯ</label>
+                            <input type="text" id="reg-comment" placeholder="Должность или пожелания (без секретных данных)"
                                 class="w-full bg-tactical-bg border border-tactical-border rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-tactical-green">
+                            <span class="text-[10px] text-tactical-muted block mt-1">⚠️ Запрещено указывать пункты дислокации, направления действий и гео-координаты.</span>
                         </div>
                     </div>
 
@@ -501,6 +525,12 @@
                 <div class="bg-tactical-card border border-tactical-border rounded-3xl p-6 sm:p-8 relative overflow-hidden">
                     <div class="absolute -right-10 -bottom-10 opacity-10 text-tactical-green pointer-events-none">
                         <i data-lucide="shield" class="w-48 h-48"></i>
+                    </div>
+
+                    <!-- Security Alert inside profile -->
+                    <div class="mb-5 p-3 rounded-xl bg-tactical-gold/10 border border-tactical-gold/30 text-xs text-tactical-gold flex items-center gap-2">
+                        <i data-lucide="shield-check" class="w-4 h-4 shrink-0"></i>
+                        <span>Профиль защищён. Личные персональные данные и координаты не хранятся на сервере в открытом виде.</span>
                     </div>
 
                     <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
