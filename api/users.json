@@ -1,0 +1,42 @@
+{
+  "updatedAt": 1788031436311,
+  "users": [
+    {
+      "id": "usr_101",
+      "callsign": "Командир (Лев)",
+      "unit": "Управление роты",
+      "email": "alex.666.881@gmail.com",
+      "phone": "+7 (999) 000-00-01",
+      "isEmailVerified": true,
+      "isPhoneVerified": true,
+      "licenseStatus": "PRO",
+      "registeredAt": "26.08.2026, 21:53:55",
+      "adminNote": "Главный разработчик и администратор АСУ"
+    },
+    {
+      "id": "usr_102",
+      "callsign": "Старшина-1",
+      "unit": "1-й батальон • Каптёрка",
+      "email": "kapterka.depo@mail.ru",
+      "phone": "+7 (918) 456-78-90",
+      "isEmailVerified": true,
+      "isPhoneVerified": true,
+      "licenseStatus": "PRO",
+      "registeredAt": "29.08.2026, 09:53:55",
+      "adminNote": "Учёт оружия и БК роты"
+    },
+    {
+      "id": "usr_mterqj39",
+      "callsign": "Лева",
+      "unit": "Минаметка",
+      "email": "alex.666.881@gmail.com",
+      "phone": "+79490534438",
+      "password": "00000000",
+      "isEmailVerified": false,
+      "isPhoneVerified": false,
+      "licenseStatus": "FREE",
+      "registeredAt": "29.08.2026, 22:23:31",
+      "adminNote": ""
+    }
+  ]
+}
