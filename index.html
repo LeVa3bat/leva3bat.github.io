@@ -105,6 +105,29 @@
         .glow-green-sm {
             box-shadow: 0 0 15px -2px rgba(76, 175, 80, 0.25);
         }
+
+        .tab-btn-active {
+            background-color: #4CAF50 !important;
+            color: #000000 !important;
+            font-weight: 700 !important;
+            border-color: #4CAF50 !important;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #080C09;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #26382A;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4CAF50;
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col antialiased selection:bg-tactical-green selection:text-black">
@@ -119,11 +142,12 @@
                 <span class="hidden sm:inline text-tactical-dim">|</span>
                 <span class="hidden sm:inline text-gray-300">Автономная система складского учёта v2.5 PRO</span>
             </div>
-            <div class="flex items-center space-x-3 text-[11px]">
+            <div class="flex items-center space-x-4 text-[11px]">
                 <span class="text-tactical-gold font-bold flex items-center gap-1">
                     <i data-lucide="shield-check" class="w-3.5 h-3.5"></i> 100% ОФЛАЙН
                 </span>
-                <a href="#faq" class="hover:text-tactical-green text-gray-300 transition-colors">FAQ</a>
+                <a href="#showcase" class="hover:text-tactical-green text-gray-300 transition-colors font-medium">Скриншоты</a>
+                <a href="#faq" class="hover:text-tactical-green text-gray-300 transition-colors font-medium">Вопросы (FAQ)</a>
                 <a href="#download" class="text-tactical-green font-bold hover:underline">СКАЧАТЬ APK</a>
             </div>
         </div>
@@ -153,10 +177,10 @@
                 <a href="#features" class="hover:text-tactical-green transition-colors flex items-center gap-1">
                     <i data-lucide="layers" class="w-4 h-4 text-tactical-green"></i> Возможности
                 </a>
-                <a href="#showcase" class="hover:text-tactical-green transition-colors flex items-center gap-1">
-                    <i data-lucide="layout" class="w-4 h-4 text-tactical-green"></i> Экраны
+                <a href="#showcase" class="hover:text-tactical-green transition-colors flex items-center gap-1 text-white font-semibold">
+                    <i data-lucide="smartphone" class="w-4 h-4 text-tactical-green"></i> Экраны (7)
                 </a>
-                <a href="#faq" class="hover:text-tactical-green transition-colors flex items-center gap-1 text-white">
+                <a href="#faq" class="hover:text-tactical-green transition-colors flex items-center gap-1">
                     <i data-lucide="help-circle" class="w-4 h-4 text-tactical-green"></i> Вопросы (FAQ)
                 </a>
             </nav>
@@ -174,56 +198,56 @@
     <!-- MAIN CONTENT -->
     <main class="flex-grow">
         
-        <!-- SECTION 1: HERO (CENTERED & POLISHED) -->
-        <section class="relative pt-8 pb-14 sm:pt-12 sm:pb-20 overflow-hidden border-b border-tactical-border bg-gradient-to-b from-tactical-dark to-tactical-bg tactical-grid">
+        <!-- SECTION 1: HERO -->
+        <section class="relative pt-8 pb-12 sm:pt-12 sm:pb-16 overflow-hidden border-b border-tactical-border bg-gradient-to-b from-tactical-dark to-tactical-bg tactical-grid">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
                 
                 <!-- Badge -->
-                <div class="inline-flex items-center space-x-2 bg-tactical-card border border-tactical-border px-3.5 py-1.5 rounded-full text-xs font-mono text-tactical-green mb-6 shadow-sm">
+                <div class="inline-flex items-center space-x-2 bg-tactical-card border border-tactical-border px-3.5 py-1.5 rounded-full text-xs font-mono text-tactical-green mb-5 shadow-sm">
                     <span class="w-2 h-2 rounded-full bg-tactical-green animate-pulse"></span>
                     <span>ПОЛНОСТЬЮ АВТОНОМНЫЙ ОФЛАЙН-РЕЖИМ • БЕЗ СЕТИ</span>
                 </div>
 
                 <!-- Big Headline -->
-                <h1 class="text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-tight mb-4">
+                <h1 class="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight mb-3">
                     АСУ <span class="text-tactical-green">«КАПТЁРКА PRO»</span>
                 </h1>
                 
-                <p class="text-base sm:text-xl text-gray-300 max-w-2xl mx-auto mb-6 leading-relaxed">
+                <p class="text-sm sm:text-lg text-gray-300 max-w-2xl mx-auto mb-6 leading-relaxed">
                     Профессиональный мобильный учёт вооружения, боеприпасов, БПЛА, средств связи и материальных ценностей роты/взвода без интернета.
                 </p>
 
-                <!-- Primary Download Button -->
+                <!-- Primary Buttons -->
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
-                    <a href="#download" class="w-full sm:w-auto inline-flex items-center justify-center space-x-3 bg-tactical-green hover:bg-tactical-accent text-black font-black text-base sm:text-lg px-8 py-4 rounded-2xl transition-all shadow-xl glow-green transform hover:scale-[1.02]">
+                    <a href="#download" class="w-full sm:w-auto inline-flex items-center justify-center space-x-3 bg-tactical-green hover:bg-tactical-accent text-black font-black text-base sm:text-lg px-8 py-3.5 rounded-2xl transition-all shadow-xl glow-green transform hover:scale-[1.02]">
                         <i data-lucide="download" class="w-5 h-5"></i>
                         <span>СКАЧАТЬ APK v2.5 (34 МБ)</span>
                     </a>
-                    <a href="#showcase" class="w-full sm:w-auto inline-flex items-center justify-center space-x-2 bg-tactical-card hover:bg-tactical-border/70 text-white font-bold text-sm px-6 py-4 rounded-2xl border border-tactical-border transition-all">
+                    <a href="#showcase" class="w-full sm:w-auto inline-flex items-center justify-center space-x-2 bg-tactical-card hover:bg-tactical-border/70 text-white font-bold text-sm px-6 py-3.5 rounded-2xl border border-tactical-border transition-all">
                         <i data-lucide="smartphone" class="w-4 h-4 text-tactical-green"></i>
-                        <span>Смотреть экраны</span>
+                        <span>Смотреть все экраны</span>
                     </a>
                 </div>
 
                 <!-- АККУРАТНЫЙ И КОМПАКТНЫЙ БЛОК «ПОДЕЛИТЬСЯ С ПОДРАЗДЕЛЕНИЕМ» -->
-                <div class="max-w-xl mx-auto bg-tactical-card/90 border border-tactical-border rounded-2xl p-3.5 sm:p-4 mb-8 shadow-lg">
-                    <div class="text-xs font-bold text-gray-200 mb-2 flex items-center justify-center gap-1.5">
-                        <i data-lucide="share-2" class="w-4 h-4 text-tactical-green"></i>
-                        <span>Поделиться ссылкой с сослуживцами в мессенджерах:</span>
+                <div class="max-w-lg mx-auto bg-tactical-card/90 border border-tactical-border rounded-2xl p-3.5 mb-8 shadow-md">
+                    <div class="text-xs font-semibold text-gray-300 mb-2.5 flex items-center justify-center gap-1.5">
+                        <i data-lucide="share-2" class="w-3.5 h-3.5 text-tactical-green"></i>
+                        <span>Поделиться ссылкой с сослуживцами:</span>
                     </div>
                     <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
                         <!-- Telegram -->
                         <a href="https://t.me/share/url?url=https://kapterka-pro.ru/&text=%D0%90%D0%A1%D0%A3%20%C2%AB%D0%9A%D0%90%D0%9F%D0%A2%D0%81%D0%A0%D0%9A%D0%90%20PRO%C2%BB%20v2.5%20%E2%80%94%20%D0%BE%D1%84%D0%BB%D0%B0%D0%B9%D0%BD%20%D1%83%D1%87%D1%91%D1%82%20%D0%B2%D0%BE%D0%BE%D1%80%D1%83%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F%2C%20%D1%81%D0%B2%D1%8F%D0%B7%D0%B8%2C%20%D0%91%D0%9F%D0%9B%D0%90%20%D0%B8%20%D0%B8%D0%BC%D1%83%D1%89%D0%B5%D1%81%D1%82%D0%B2%D0%B0%20%D1%80%D0%BE%D1%82%D1%8B.%20%D0%A1%D0%BA%D0%B0%D1%87%D0%B0%D1%82%D1%8C%20APK%3A" 
                            target="_blank" rel="noopener noreferrer"
-                           class="flex items-center justify-center gap-1.5 py-2 px-2.5 rounded-xl bg-[#229ED9]/20 hover:bg-[#229ED9]/30 text-[#229ED9] border border-[#229ED9]/40 text-xs font-semibold transition-all">
+                           class="flex items-center justify-center gap-1.5 py-2 px-2.5 rounded-xl bg-[#229ED9]/15 hover:bg-[#229ED9]/30 text-[#45B2E8] border border-[#229ED9]/30 text-xs font-semibold transition-all">
                             <i data-lucide="send" class="w-3.5 h-3.5"></i>
                             Telegram
                         </a>
                         
                         <!-- WhatsApp -->
-                        <a href="https://api.whatsapp.com/send?text=%D0%90%D0%A1%D0%A3%20%C2%AB%D0%9A%D0%90%D0%9F%D0%A2%D0%81%D0%A0%D0%9A%D0%90%20PRO%C2%BB%20%E2%80%94%20%D1%83%D1%87%D1%91%D1%82%20%D0%B2%D0%BE%D0%BE%D1%80%D1%83%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F%2C%20%D1%81%D0%B2%D1%8F%D0%B7%D0%B8%2C%20%D0%91%D0%9F%D0%9B%D0%90%20%D0%B8%20%D0%B8%D0%BC%D1%83%D1%89%D0%B5%D1%81%D1%82%D0%B2%D0%B0%20%D0%B2%20%D1%80%D0%BE%D1%82%D0%B5.%20%D0%A1%D0%BA%D0%B0%D1%87%D0%B0%D1%82%D1%8C%20APK%3A%20https%3A%2F%2Fkapterka-pro.ru%2F" 
+                        <a href="https://api.whatsapp.com/send?text=%D0%90%D0%A1%D0%A3%20%C2%AB%D0%9A%D0%90%D0%9F%D0%A2%D0%81%D0%A0%D0%9A%D0%90%20PRO%C2%BB%20%E2%80%94%20%D1%83%D1%87%D1%91%D1%82%20%D0%B2%D0%BE%D0%BE%D1%80%D1%83%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F%2C%20%D1%81%D0%B2%D1%8F%D0%B7%D0%B8%2C%20%D0%91%D0%9F%D0%9B%D0%90%20%D0%B8%20%D0%B8%D0%BC%D1%83%D1%89%D0%B5%D1%81%D1%82%D0%B2%D0%B0%20%D0%B2%20%D1%80%D0%BE%D1%82%D1%8B.%20%D0%A1%D0%BA%D0%B0%D1%87%D0%B0%D1%82%D1%8C%20APK%3A%20https%3A%2F%2Fkapterka-pro.ru%2F" 
                            target="_blank" rel="noopener noreferrer"
-                           class="flex items-center justify-center gap-1.5 py-2 px-2.5 rounded-xl bg-[#25D366]/20 hover:bg-[#25D366]/30 text-[#25D366] border border-[#25D366]/40 text-xs font-semibold transition-all">
+                           class="flex items-center justify-center gap-1.5 py-2 px-2.5 rounded-xl bg-[#25D366]/15 hover:bg-[#25D366]/30 text-[#4ADE80] border border-[#25D366]/30 text-xs font-semibold transition-all">
                             <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
                             WhatsApp
                         </a>
@@ -231,16 +255,16 @@
                         <!-- VK -->
                         <a href="https://vk.com/share.php?url=https://kapterka-pro.ru/&title=%D0%90%D0%A1%D0%A3%20%C2%AB%D0%9A%D0%90%D0%9F%D0%A2%D0%81%D0%A0%D0%9A%D0%90%20PRO%C2%BB%20v2.5%20%E2%80%94%20%D0%A1%D0%BA%D0%BB%D0%B0%D0%B4%D1%81%D0%BA%D0%BE%D0%B9%20%D1%83%D1%87%D1%91%D1%82" 
                            target="_blank" rel="noopener noreferrer"
-                           class="flex items-center justify-center gap-1.5 py-2 px-2.5 rounded-xl bg-[#0077FF]/20 hover:bg-[#0077FF]/30 text-[#0077FF] border border-[#0077FF]/40 text-xs font-semibold transition-all">
+                           class="flex items-center justify-center gap-1.5 py-2 px-2.5 rounded-xl bg-[#0077FF]/15 hover:bg-[#0077FF]/30 text-[#5AA7FF] border border-[#0077FF]/30 text-xs font-semibold transition-all">
                             <span class="font-bold text-xs">VK</span>
                             ВКонтакте
                         </a>
                         
                         <!-- Copy -->
-                        <button onclick="navigator.clipboard.writeText('https://kapterka-pro.ru/'); alert('Ссылка скопирована: https://kapterka-pro.ru/');" 
+                        <button onclick="navigator.clipboard.writeText('https://kapterka-pro.ru/'); alert('Ссылка скопирована в буфер: https://kapterka-pro.ru/');" 
                                 class="flex items-center justify-center gap-1.5 py-2 px-2.5 rounded-xl bg-tactical-bg hover:bg-tactical-border text-gray-300 border border-tactical-border text-xs font-semibold transition-all">
                             <i data-lucide="copy" class="w-3.5 h-3.5 text-tactical-green"></i>
-                            Копировать
+                            Копия
                         </button>
                     </div>
                 </div>
@@ -268,10 +292,10 @@
         </section>
 
         <!-- SECTION 2: HOW IT WORKS -->
-        <section id="workflow" class="py-14 sm:py-20 bg-tactical-dark border-b border-tactical-border">
+        <section id="workflow" class="py-12 sm:py-16 bg-tactical-dark border-b border-tactical-border">
             <div class="max-w-5xl mx-auto px-4 sm:px-6">
-                <div class="text-center max-w-2xl mx-auto mb-10">
-                    <div class="inline-flex items-center space-x-2 bg-tactical-card border border-tactical-border px-3 py-1 rounded-full text-xs font-mono text-tactical-green mb-3">
+                <div class="text-center max-w-2xl mx-auto mb-8">
+                    <div class="inline-flex items-center space-x-2 bg-tactical-card border border-tactical-border px-3 py-1 rounded-full text-xs font-mono text-tactical-green mb-2">
                         <i data-lucide="workflow" class="w-3.5 h-3.5"></i>
                         <span>АЛГОРИТМ РАБОТЫ</span>
                     </div>
@@ -280,33 +304,33 @@
                     </h2>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="bg-tactical-card border border-tactical-border p-6 rounded-2xl shadow-md">
-                        <div class="w-12 h-12 rounded-xl bg-tactical-darkGreen border border-tactical-green/40 flex items-center justify-center text-tactical-green font-mono font-bold text-lg mb-4">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                    <div class="bg-tactical-card border border-tactical-border p-5 rounded-2xl shadow-sm">
+                        <div class="w-10 h-10 rounded-xl bg-tactical-darkGreen border border-tactical-green/40 flex items-center justify-center text-tactical-green font-mono font-bold text-base mb-3">
                             01
                         </div>
-                        <h3 class="text-lg font-bold text-white mb-2">Оприходование</h3>
-                        <p class="text-sm text-tactical-muted leading-relaxed">
+                        <h3 class="text-base font-bold text-white mb-1.5">Оприходование</h3>
+                        <p class="text-xs sm:text-sm text-tactical-muted leading-relaxed">
                             Ввод партии снаряжения, боеприпасов или радиостанций по накладной или выбор из 95+ готовых армейских шаблонов.
                         </p>
                     </div>
 
-                    <div class="bg-tactical-card border border-tactical-border p-6 rounded-2xl shadow-md">
-                        <div class="w-12 h-12 rounded-xl bg-tactical-darkGreen border border-tactical-green/40 flex items-center justify-center text-tactical-green font-mono font-bold text-lg mb-4">
+                    <div class="bg-tactical-card border border-tactical-border p-5 rounded-2xl shadow-sm">
+                        <div class="w-10 h-10 rounded-xl bg-tactical-darkGreen border border-tactical-green/40 flex items-center justify-center text-tactical-green font-mono font-bold text-base mb-3">
                             02
                         </div>
-                        <h3 class="text-lg font-bold text-white mb-2">Выдача и Перемещение</h3>
-                        <p class="text-sm text-tactical-muted leading-relaxed">
+                        <h3 class="text-base font-bold text-white mb-1.5">Выдача и Перемещение</h3>
+                        <p class="text-xs sm:text-sm text-tactical-muted leading-relaxed">
                             Быстрая выдача бойцам роты с фиксацией позывного/ФИО, формированием электронных ведомостей и сканированием QR-кодов.
                         </p>
                     </div>
 
-                    <div class="bg-tactical-card border border-tactical-border p-6 rounded-2xl shadow-md">
-                        <div class="w-12 h-12 rounded-xl bg-tactical-darkGreen border border-tactical-green/40 flex items-center justify-center text-tactical-green font-mono font-bold text-lg mb-4">
+                    <div class="bg-tactical-card border border-tactical-border p-5 rounded-2xl shadow-sm">
+                        <div class="w-10 h-10 rounded-xl bg-tactical-darkGreen border border-tactical-green/40 flex items-center justify-center text-tactical-green font-mono font-bold text-base mb-3">
                             03
                         </div>
-                        <h3 class="text-lg font-bold text-white mb-2">Переучёт и Отчёты</h3>
-                        <p class="text-sm text-tactical-muted leading-relaxed">
+                        <h3 class="text-base font-bold text-white mb-1.5">Переучёт и Отчёты</h3>
+                        <p class="text-xs sm:text-sm text-tactical-muted leading-relaxed">
                             Мгновенный отчёт об остатках на складе, списание израсходованных боеприпасов (отстрел) и экспорт зашифрованного бэкапа.
                         </p>
                     </div>
@@ -315,10 +339,10 @@
         </section>
 
         <!-- SECTION 3: KEY FEATURES -->
-        <section id="features" class="py-14 sm:py-20 bg-tactical-bg border-b border-tactical-border">
+        <section id="features" class="py-12 sm:py-16 bg-tactical-bg border-b border-tactical-border">
             <div class="max-w-5xl mx-auto px-4 sm:px-6">
-                <div class="text-center max-w-2xl mx-auto mb-10">
-                    <div class="inline-flex items-center space-x-2 bg-tactical-card border border-tactical-border px-3 py-1 rounded-full text-xs font-mono text-tactical-green mb-3">
+                <div class="text-center max-w-2xl mx-auto mb-8">
+                    <div class="inline-flex items-center space-x-2 bg-tactical-card border border-tactical-border px-3 py-1 rounded-full text-xs font-mono text-tactical-green mb-2">
                         <i data-lucide="layers" class="w-3.5 h-3.5"></i>
                         <span>СПЕЦИФИКАЦИЯ МОДУЛЕЙ</span>
                     </div>
@@ -327,50 +351,50 @@
                     </h2>
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                    <div class="bg-tactical-card border border-tactical-border p-5 rounded-2xl">
-                        <i data-lucide="shield-alert" class="w-6 h-6 text-tactical-green mb-3"></i>
-                        <h3 class="font-bold text-white text-base mb-1">Служба РАВ и БК</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="bg-tactical-card border border-tactical-border p-4.5 rounded-2xl">
+                        <i data-lucide="shield-alert" class="w-5 h-5 text-tactical-green mb-2"></i>
+                        <h3 class="font-bold text-white text-sm mb-1">Служба РАВ и БК</h3>
                         <p class="text-xs text-tactical-muted leading-relaxed">
                             Стрелковое оружие, гранаты, выстрелы РПГ, мины 82/120 мм, цинки с патронами и номерной учёт стволов.
                         </p>
                     </div>
 
-                    <div class="bg-tactical-card border border-tactical-border p-5 rounded-2xl">
-                        <i data-lucide="radio" class="w-6 h-6 text-tactical-green mb-3"></i>
-                        <h3 class="font-bold text-white text-base mb-1">Связь и РЭБ</h3>
+                    <div class="bg-tactical-card border border-tactical-border p-4.5 rounded-2xl">
+                        <i data-lucide="radio" class="w-5 h-5 text-tactical-green mb-2"></i>
+                        <h3 class="font-bold text-white text-sm mb-1">Связь и РЭБ</h3>
                         <p class="text-xs text-tactical-muted leading-relaxed">
                             Радиостанции Азарт, Комбат, Baofeng, ретрансляторы, мачты, антенны и станции подавления БПЛА.
                         </p>
                     </div>
 
-                    <div class="bg-tactical-card border border-tactical-border p-5 rounded-2xl">
-                        <i data-lucide="crosshair" class="w-6 h-6 text-tactical-green mb-3"></i>
-                        <h3 class="font-bold text-white text-base mb-1">БПЛА и Дроны</h3>
+                    <div class="bg-tactical-card border border-tactical-border p-4.5 rounded-2xl">
+                        <i data-lucide="crosshair" class="w-5 h-5 text-tactical-green mb-2"></i>
+                        <h3 class="font-bold text-white text-sm mb-1">БПЛА и Дроны</h3>
                         <p class="text-xs text-tactical-muted leading-relaxed">
                             FPV-камикадзе, Mavic 3 Pro, Matrice, пульты управления, очки, ретрансляторы и аккумуляторы.
                         </p>
                     </div>
 
-                    <div class="bg-tactical-card border border-tactical-border p-5 rounded-2xl">
-                        <i data-lucide="qr-code" class="w-6 h-6 text-tactical-green mb-3"></i>
-                        <h3 class="font-bold text-white text-base mb-1">QR и Штрих-кодирование</h3>
+                    <div class="bg-tactical-card border border-tactical-border p-4.5 rounded-2xl">
+                        <i data-lucide="qr-code" class="w-5 h-5 text-tactical-green mb-2"></i>
+                        <h3 class="font-bold text-white text-sm mb-1">QR и Штрих-кодирование</h3>
                         <p class="text-xs text-tactical-muted leading-relaxed">
                             Генерация QR-этикеток для ящиков и контейнеров. Мгновенная инвентаризация встроенным сканером.
                         </p>
                     </div>
 
-                    <div class="bg-tactical-card border border-tactical-border p-5 rounded-2xl">
-                        <i data-lucide="database" class="w-6 h-6 text-tactical-green mb-3"></i>
-                        <h3 class="font-bold text-white text-base mb-1">Резервные копии</h3>
+                    <div class="bg-tactical-card border border-tactical-border p-4.5 rounded-2xl">
+                        <i data-lucide="database" class="w-5 h-5 text-tactical-green mb-2"></i>
+                        <h3 class="font-bold text-white text-sm mb-1">Резервные копии</h3>
                         <p class="text-xs text-tactical-muted leading-relaxed">
                             Сохранение базы данных на карту памяти MicroSD и передача на другой телефон без интернета.
                         </p>
                     </div>
 
-                    <div class="bg-tactical-card border border-tactical-border p-5 rounded-2xl">
-                        <i data-lucide="file-check-2" class="w-6 h-6 text-tactical-green mb-3"></i>
-                        <h3 class="font-bold text-white text-base mb-1">Ведомости выдачи</h3>
+                    <div class="bg-tactical-card border border-tactical-border p-4.5 rounded-2xl">
+                        <i data-lucide="file-check-2" class="w-5 h-5 text-tactical-green mb-2"></i>
+                        <h3 class="font-bold text-white text-sm mb-1">Ведомости выдачи</h3>
                         <p class="text-xs text-tactical-muted leading-relaxed">
                             Электронные накладные с подписью получателя и история всех приходно-расходных операций.
                         </p>
@@ -379,79 +403,464 @@
             </div>
         </section>
 
-        <!-- SECTION 4: SHOWCASE (SCREENS) -->
-        <section id="showcase" class="py-14 sm:py-20 bg-tactical-dark border-b border-tactical-border">
-            <div class="max-w-5xl mx-auto px-4 sm:px-6">
-                <div class="text-center max-w-2xl mx-auto mb-10">
-                    <div class="inline-flex items-center space-x-2 bg-tactical-card border border-tactical-border px-3 py-1 rounded-full text-xs font-mono text-tactical-green mb-3">
-                        <i data-lucide="smartphone" class="w-3.5 h-3.5"></i>
-                        <span>ИНТЕРФЕЙС ПРИЛОЖЕНИЯ</span>
+        <!-- SECTION 4: FULL INTERACTIVE SHOWCASE (ALL 7 SCREENS & MOCKUPS) -->
+<section id="showcase" class="py-16 sm:py-24 bg-tactical-dark border-b border-tactical-border">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6">
+                
+                <!-- Section Header (Centered) -->
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <div class="inline-flex items-center space-x-2 bg-tactical-card border border-tactical-border px-4 py-1.5 rounded-full text-xs font-mono text-tactical-green mb-3 mx-auto">
+                        <i data-lucide="layout" class="w-3.5 h-3.5"></i>
+                        <span>ИНТЕРФЕЙС И ЭКРАНЫ</span>
                     </div>
-                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white">
-                        7 ключевых экранов системы
+                    <h2 class="text-2xl sm:text-4xl font-extrabold text-white mb-3">
+                        7 ключевых экранов АСУ «Каптёрка PRO»
                     </h2>
+                    <p class="text-tactical-muted text-sm sm:text-base">
+                        Нажмите на экран или листайте кнопками «Дальше», чтобы ознакомиться с функционалом.
+                    </p>
                 </div>
 
-                <!-- Showcase interactive tabs -->
-                <div class="flex flex-wrap justify-center gap-2 mb-8" id="screens-tab-container">
-                    <button onclick="switchTab(0)" class="tab-btn px-4 py-2 rounded-xl text-xs font-mono font-bold bg-tactical-green text-black transition-all">1. Главная</button>
-                    <button onclick="switchTab(1)" class="tab-btn px-4 py-2 rounded-xl text-xs font-mono font-bold bg-tactical-card text-tactical-muted hover:text-white border border-tactical-border transition-all">2. Имущество</button>
-                    <button onclick="switchTab(2)" class="tab-btn px-4 py-2 rounded-xl text-xs font-mono font-bold bg-tactical-card text-tactical-muted hover:text-white border border-tactical-border transition-all">3. Накладные</button>
-                    <button onclick="switchTab(3)" class="tab-btn px-4 py-2 rounded-xl text-xs font-mono font-bold bg-tactical-card text-tactical-muted hover:text-white border border-tactical-border transition-all">4. Личный состав</button>
-                    <button onclick="switchTab(4)" class="tab-btn px-4 py-2 rounded-xl text-xs font-mono font-bold bg-tactical-card text-tactical-muted hover:text-white border border-tactical-border transition-all">5. Инвентаризация</button>
-                    <button onclick="switchTab(5)" class="tab-btn px-4 py-2 rounded-xl text-xs font-mono font-bold bg-tactical-card text-tactical-muted hover:text-white border border-tactical-border transition-all">6. QR-сканер</button>
-                    <button onclick="switchTab(6)" class="tab-btn px-4 py-2 rounded-xl text-xs font-mono font-bold bg-tactical-card text-tactical-muted hover:text-white border border-tactical-border transition-all">7. Настройки</button>
+                <!-- Showcase Tabs (Centered Horizontal Scroll) -->
+                <div class="flex items-center justify-start sm:justify-center overflow-x-auto pb-4 mb-8 space-x-2 scrollbar-none">
+                    <button onclick="switchTab(0)" id="tab-btn-0" class="tab-button tab-btn-active px-4 py-2.5 rounded-xl text-xs font-mono whitespace-nowrap transition-all border border-tactical-border">
+                        1. Главный журнал
+                    </button>
+                    <button onclick="switchTab(1)" id="tab-btn-1" class="tab-button bg-tactical-card text-tactical-muted hover:text-white px-4 py-2.5 rounded-xl text-xs font-mono whitespace-nowrap transition-all border border-tactical-border">
+                        2. Окно «Подняли»
+                    </button>
+                    <button onclick="switchTab(2)" id="tab-btn-2" class="tab-button bg-tactical-card text-tactical-muted hover:text-white px-4 py-2.5 rounded-xl text-xs font-mono whitespace-nowrap transition-all border border-tactical-border">
+                        3. Окно «Привезли»
+                    </button>
+                    <button onclick="switchTab(3)" id="tab-btn-3" class="tab-button bg-tactical-card text-tactical-muted hover:text-white px-4 py-2.5 rounded-xl text-xs font-mono whitespace-nowrap transition-all border border-tactical-border">
+                        4. История проводок
+                    </button>
+                    <button onclick="switchTab(4)" id="tab-btn-4" class="tab-button bg-tactical-card text-tactical-muted hover:text-white px-4 py-2.5 rounded-xl text-xs font-mono whitespace-nowrap transition-all border border-tactical-border">
+                        5. Заявки ОП
+                    </button>
+                    <button onclick="switchTab(5)" id="tab-btn-5" class="tab-button bg-tactical-card text-tactical-muted hover:text-white px-4 py-2.5 rounded-xl text-xs font-mono whitespace-nowrap transition-all border border-tactical-border">
+                        6. Справочник (95+)
+                    </button>
+                    <button onclick="switchTab(6)" id="tab-btn-6" class="tab-button bg-tactical-card text-tactical-muted hover:text-white px-4 py-2.5 rounded-xl text-xs font-mono whitespace-nowrap transition-all border border-tactical-border">
+                        7. Сеть & Синхр.
+                    </button>
                 </div>
 
-                <!-- Screen Cards Display -->
-                <div class="max-w-xl mx-auto bg-tactical-card border-2 border-tactical-border rounded-3xl p-6 shadow-2xl text-center">
-                    <div id="tab-0" class="tab-pane block">
-                        <div class="text-tactical-green font-mono font-bold text-sm mb-2">ЭКРАН 1: ОПЕРАТИВНАЯ СВОДКА И БЫСТРЫЕ ДЕЙСТВИЯ</div>
-                        <p class="text-xs text-tactical-muted mb-4">Мгновенный доступ к операциям «Привезли», «Перемещение», «Подняли», «Отстрел» и сводная таблица критических остатков.</p>
-                        <div class="bg-[#101712] border border-tactical-border rounded-2xl p-4 text-left font-mono text-xs">
-                            <div class="text-tactical-green font-bold mb-2">🟢 Сводка ротного склада:</div>
-                            <div class="grid grid-cols-2 gap-2 text-[11px] text-gray-300">
-                                <div>• Всего позиций: <span class="text-white font-bold">142</span></div>
-                                <div>• Боеприпасов: <span class="text-white font-bold">18 450 шт</span></div>
-                                <div>• Средств связи: <span class="text-white font-bold">34 ед</span></div>
-                                <div>• БПЛА / Дронов: <span class="text-white font-bold">16 компл</span></div>
+                <!-- Showcase Content Box -->
+                <div class="bg-tactical-card border-2 border-tactical-borderBright rounded-3xl p-6 sm:p-10 shadow-2xl max-w-5xl mx-auto">
+                    
+                    <!-- TAB 0: Главный экран -->
+                    <div id="tab-content-0" class="tab-pane">
+                        <div class="grid lg:grid-cols-12 gap-8 items-center">
+                            <div class="lg:col-span-6 space-y-4">
+                                <span class="px-3 py-1 rounded bg-tactical-green/20 text-tactical-green text-xs font-mono font-bold border border-tactical-green/40">
+                                    ЭКРАН №1: ОПЕРАТИВНЫЙ УЧЁТ
+                                </span>
+                                <h3 class="text-xl sm:text-2xl font-bold text-white">Главный журнал подразделения</h3>
+                                <p class="text-sm text-tactical-muted leading-relaxed">
+                                    Центральный пункт управления каптёра. Отображает мгновенные остатки по выбранной точке (Базовый склад, Огневая позиция 1, Резерв), статус лицензии и быстрые кнопки 4 боевых операций.
+                                </p>
+                                <ul class="space-y-2 text-xs font-mono text-tactical-text">
+                                    <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-tactical-green"></i> Мгновенная фильтрация по 11 службам</li>
+                                    <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-tactical-green"></i> Цветовая индикация критического остатка</li>
+                                    <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-tactical-green"></i> Быстрый поиск по номенклатуре</li>
+                                </ul>
+                                <div class="pt-4 flex items-center gap-3">
+                                    <button onclick="switchTab(1)" class="inline-flex items-center space-x-2 bg-tactical-green text-black font-bold px-4 py-2 rounded-xl text-xs hover:bg-tactical-accent transition-colors">
+                                        <span>Дальше → Окно «Подняли» (Экран 2)</span>
+                                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="lg:col-span-6 bg-[#0E1410] border border-tactical-border rounded-2xl p-4 font-mono text-xs">
+                                <div class="flex justify-between items-center pb-3 border-b border-tactical-border mb-3">
+                                    <span class="text-tactical-green font-bold flex items-center gap-1.5"><i data-lucide="shield" class="w-4 h-4"></i> Базовый склад (Основной)</span>
+                                    <span class="text-[10px] text-tactical-muted">ПТ: 18:40</span>
+                                </div>
+                                <div class="space-y-2 font-sans">
+                                    <div class="bg-tactical-card p-2.5 rounded-lg border border-tactical-border flex justify-between items-center">
+                                        <div>
+                                            <div class="text-white font-semibold text-xs">Мина 120-мм ОФ-843Б</div>
+                                            <div class="text-[10px] text-tactical-muted">Служба РАВ • МинВзвод</div>
+                                        </div>
+                                        <span class="text-base font-mono font-bold text-tactical-green">5 шт.</span>
+                                    </div>
+                                    <div class="bg-tactical-card p-2.5 rounded-lg border border-tactical-border flex justify-between items-center">
+                                        <div>
+                                            <div class="text-white font-semibold text-xs">Выстрел ПГ-7ВЛ (РПГ-7)</div>
+                                            <div class="text-[10px] text-tactical-muted">Служба РАВ • Гранатометчики</div>
+                                        </div>
+                                        <span class="text-base font-mono font-bold text-tactical-green">18 шт.</span>
+                                    </div>
+                                    <div class="bg-tactical-card p-2.5 rounded-lg border border-tactical-border flex justify-between items-center">
+                                        <div>
+                                            <div class="text-white font-semibold text-xs">БПЛА FPV «Камикадзе 7»</div>
+                                            <div class="text-[10px] text-tactical-muted">Служба БПЛА • Взвод ударных БПЛА</div>
+                                        </div>
+                                        <span class="text-base font-mono font-bold text-tactical-green">12 компл.</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div id="tab-1" class="tab-pane hidden">
-                        <div class="text-tactical-green font-mono font-bold text-sm mb-2">ЭКРАН 2: КАТАЛОГ ИМУЩЕСТВА ПО 11 СЛУЖБАМ</div>
-                        <p class="text-xs text-tactical-muted mb-4">РАВ, Связь, БПЛА, СИБЗ, Вещевая, Медицинская, Инженерная, Продовольственная, ГСМ, Автобронетанковая и КЭЧ.</p>
+                    <!-- TAB 1: Окно «Подняли» -->
+                    <div id="tab-content-1" class="tab-pane hidden">
+                        <div class="grid lg:grid-cols-12 gap-8 items-center">
+                            <div class="lg:col-span-6 space-y-4">
+                                <span class="px-3 py-1 rounded bg-tactical-gold/20 text-tactical-gold text-xs font-mono font-bold border border-tactical-gold/40">
+                                    ЭКРАН №2: ОПЕРАЦИЯ «ПОДНЯЛИ»
+                                </span>
+                                <h3 class="text-xl sm:text-2xl font-bold text-white">Выдача на огневую позицию</h3>
+                                <p class="text-sm text-tactical-muted leading-relaxed">
+                                    Диалоговое окно выдачи материальных средств и боеприпасов с базового склада на огневые рубежи подразделений.
+                                </p>
+                                <ul class="space-y-2 text-xs font-mono text-tactical-text">
+                                    <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-tactical-gold"></i> Выбор огневой позиции (ОП-1 «Север», ОП-2 «Высота»)</li>
+                                    <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-tactical-gold"></i> Автоматический контроль максимального остатка</li>
+                                    <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-tactical-gold"></i> Запись ответственного бойца/позывного</li>
+                                </ul>
+                                <div class="pt-4 flex items-center gap-3">
+                                    <button onclick="switchTab(0)" class="inline-flex items-center space-x-1.5 bg-tactical-bg text-tactical-muted font-medium px-3 py-2 rounded-xl text-xs hover:text-white transition-colors border border-tactical-border">
+                                        <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+                                        <span>Назад</span>
+                                    </button>
+                                    <button onclick="switchTab(2)" class="inline-flex items-center space-x-2 bg-tactical-green text-black font-bold px-4 py-2 rounded-xl text-xs hover:bg-tactical-accent transition-colors">
+                                        <span>Дальше → Окно «Привезли» (Экран 3)</span>
+                                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="lg:col-span-6 bg-[#0E1410] border border-tactical-border rounded-2xl p-5 font-mono text-xs space-y-3">
+                                <div class="text-tactical-gold font-bold text-sm border-b border-tactical-border pb-2 flex items-center gap-2">
+                                    <i data-lucide="arrow-up-right" class="w-4 h-4"></i> Проводка: ПОДНЯЛИ НА ПОЗИЦИЮ
+                                </div>
+                                <div class="space-y-2">
+                                    <div class="text-[11px] text-tactical-muted">Точка назначения:</div>
+                                    <div class="bg-tactical-card p-2 rounded border border-tactical-border text-white">Огневая позиция №2 («Утёс»)</div>
+                                    <div class="text-[11px] text-tactical-muted">Выдаваемая позиция:</div>
+                                    <div class="bg-tactical-card p-2 rounded border border-tactical-border text-white flex justify-between">
+                                        <span>Мина 120-мм ОФ-843Б</span>
+                                        <span class="text-tactical-green">Доступно: 5 шт.</span>
+                                    </div>
+                                    <div class="text-[11px] text-tactical-muted">Количество к выдаче:</div>
+                                    <div class="bg-tactical-card p-2 rounded border border-tactical-green text-tactical-green font-bold">2 шт.</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div id="tab-2" class="tab-pane hidden">
-                        <div class="text-tactical-green font-mono font-bold text-sm mb-2">ЭКРАН 3: ЖУРНАЛ НАКЛАДНЫХ И АКТОВ</div>
-                        <p class="text-xs text-tactical-muted mb-4">Фиксация всех приходных ордеров, актов передачи на огневые позиции и списания израсходованных боеприпасов.</p>
+
+                    <!-- TAB 2: Окно «Привезли» -->
+                    <div id="tab-content-2" class="tab-pane hidden">
+                        <div class="grid lg:grid-cols-12 gap-8 items-center">
+                            <div class="lg:col-span-6 space-y-4">
+                                <span class="px-3 py-1 rounded bg-[#C4D7B2]/20 text-[#C4D7B2] text-xs font-mono font-bold border border-[#C4D7B2]/40">
+                                    ЭКРАН №3: ОПЕРАЦИЯ «ПРИВЕЗЛИ»
+                                </span>
+                                <h3 class="text-xl sm:text-2xl font-bold text-white">Оприходование поступлений</h3>
+                                <p class="text-sm text-tactical-muted leading-relaxed">
+                                    Быстрый приход материальных ценностей и БК со службы тыла, склада РАВ или волонтёрских поставок.
+                                </p>
+                                <ul class="space-y-2 text-xs font-mono text-tactical-text">
+                                    <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-tactical-green"></i> Пополнение любого склада подразделения</li>
+                                    <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-tactical-green"></i> Фиксация номера накладной/приходного ордера</li>
+                                    <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-tactical-green"></i> Мгновенный пересчёт итогового баланса</li>
+                                </ul>
+                                <div class="pt-4 flex items-center gap-3">
+                                    <button onclick="switchTab(1)" class="inline-flex items-center space-x-1.5 bg-tactical-bg text-tactical-muted font-medium px-3 py-2 rounded-xl text-xs hover:text-white transition-colors border border-tactical-border">
+                                        <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+                                        <span>Назад</span>
+                                    </button>
+                                    <button onclick="switchTab(3)" class="inline-flex items-center space-x-2 bg-tactical-green text-black font-bold px-4 py-2 rounded-xl text-xs hover:bg-tactical-accent transition-colors">
+                                        <span>Дальше → История проводок (Экран 4)</span>
+                                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="lg:col-span-6 bg-[#0E1410] border border-tactical-border rounded-2xl p-5 font-mono text-xs space-y-3">
+                                <div class="text-[#C4D7B2] font-bold text-sm border-b border-tactical-border pb-2 flex items-center gap-2">
+                                    <i data-lucide="truck" class="w-4 h-4"></i> Проводка: ПРИВЕЗЛИ (ПРИХОД)
+                                </div>
+                                <div class="space-y-2">
+                                    <div class="text-[11px] text-tactical-muted">Склад зачисления:</div>
+                                    <div class="bg-tactical-card p-2 rounded border border-tactical-border text-white">Базовый склад (Основной)</div>
+                                    <div class="text-[11px] text-tactical-muted">Поступившее имущество:</div>
+                                    <div class="bg-tactical-card p-2 rounded border border-tactical-border text-white">БПЛА FPV «Камикадзе 7»</div>
+                                    <div class="text-[11px] text-tactical-muted">Количество:</div>
+                                    <div class="bg-tactical-card p-2 rounded border border-tactical-green text-tactical-green font-bold">+10 компл.</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div id="tab-3" class="tab-pane hidden">
-                        <div class="text-tactical-green font-mono font-bold text-sm mb-2">ЭКРАН 4: ЛИЧНЫЙ СОСТАВ И ЗАКРЕПЛЕНИЕ</div>
-                        <p class="text-xs text-tactical-muted mb-4">Учёт имущества, закреплённого за каждым бойцом подразделения по позывным и воинским званиям.</p>
+
+                    <!-- TAB 3: История проводок -->
+                    <div id="tab-content-3" class="tab-pane hidden">
+                        <div class="grid lg:grid-cols-12 gap-8 items-center">
+                            <div class="lg:col-span-6 space-y-4">
+                                <span class="px-3 py-1 rounded bg-tactical-green/20 text-tactical-green text-xs font-mono font-bold border border-tactical-green/40">
+                                    ЭКРАН №4: ЖУРНАЛ ОПЕРАЦИЙ
+                                </span>
+                                <h3 class="text-xl sm:text-2xl font-bold text-white">История проводок и Форма 8</h3>
+                                <p class="text-sm text-tactical-muted leading-relaxed">
+                                    Хронологический защищенный аудит всех движений БК и снаряжения с возможностью отката ошибочных записей и экспорта.
+                                </p>
+                                <ul class="space-y-2 text-xs font-mono text-tactical-text">
+                                    <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-tactical-green"></i> Точное время с точностью до секунды</li>
+                                    <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-tactical-green"></i> Защита от несанкционированного удаления</li>
+                                    <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-tactical-green"></i> Выгрузка ведомости расхода в Excel</li>
+                                </ul>
+                                <div class="pt-4 flex items-center gap-3">
+                                    <button onclick="switchTab(2)" class="inline-flex items-center space-x-1.5 bg-tactical-bg text-tactical-muted font-medium px-3 py-2 rounded-xl text-xs hover:text-white transition-colors border border-tactical-border">
+                                        <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+                                        <span>Назад</span>
+                                    </button>
+                                    <button onclick="switchTab(4)" class="inline-flex items-center space-x-2 bg-tactical-green text-black font-bold px-4 py-2 rounded-xl text-xs hover:bg-tactical-accent transition-colors">
+                                        <span>Дальше → Экран «Заявка» (Экран 5)</span>
+                                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="lg:col-span-6 bg-[#0E1410] border border-tactical-border rounded-2xl p-4 font-mono text-xs space-y-2">
+                                <div class="text-tactical-green font-bold text-xs border-b border-tactical-border pb-2 flex justify-between">
+                                    <span>ЖУРНАЛ ДВИЖЕНИЯ ИМУЩЕСТВА</span>
+                                    <span class="text-tactical-muted">Всего: 142</span>
+                                </div>
+                                <div class="bg-tactical-card p-2 rounded border-l-2 border-tactical-gold">
+                                    <div class="flex justify-between text-white font-bold">
+                                        <span>Подняли: 2 шт.</span>
+                                        <span class="text-tactical-muted text-[10px]">14:20</span>
+                                    </div>
+                                    <div class="text-[10px] text-tactical-muted">Мина 120-мм ОФ-843Б → ОП №2</div>
+                                </div>
+                                <div class="bg-tactical-card p-2 rounded border-l-2 border-[#C4D7B2]">
+                                    <div class="flex justify-between text-white font-bold">
+                                        <span>Привезли: 10 компл.</span>
+                                        <span class="text-tactical-muted text-[10px]">11:15</span>
+                                    </div>
+                                    <div class="text-[10px] text-tactical-muted">БПЛА FPV «Камикадзе 7» → Склад Базовый</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div id="tab-4" class="tab-pane hidden">
-                        <div class="text-tactical-green font-mono font-bold text-sm mb-2">ЭКРАН 5: ПЕРЕУЧЁТ И СЛИЧИТЕЛЬНЫЕ ВЕДОМОСТИ</div>
-                        <p class="text-xs text-tactical-muted mb-4">Быстрая сверка фактического наличия материальных средств с книгой учёта роты.</p>
+
+                    <!-- TAB 4: Электронные заявки -->
+                    <div id="tab-content-4" class="tab-pane hidden">
+                        <div class="grid lg:grid-cols-12 gap-8 items-center">
+                            <div class="lg:col-span-6 space-y-4">
+                                <span class="px-3 py-1 rounded bg-tactical-green/20 text-tactical-green text-xs font-mono font-bold border border-tactical-green/40">
+                                    ЭКРАН №5: МОДУЛЬ ЗАЯВОК
+                                </span>
+                                <h3 class="text-xl sm:text-2xl font-bold text-white">Электронные заявки подразделения</h3>
+                                <p class="text-sm text-tactical-muted leading-relaxed">
+                                    Удобный инструмент взаимодействия между командирами расчётов и каптёркой.
+                                </p>
+                                <ul class="space-y-2 text-xs font-mono text-tactical-text">
+                                    <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-tactical-green"></i> Создание списка потребности позиций</li>
+                                    <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-tactical-green"></i> Статусы: Новая → В сборке → Собрана → Выдана</li>
+                                    <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-tactical-green"></i> Преобразование заявки в проводку «Подняли»</li>
+                                </ul>
+                                <div class="pt-4 flex items-center gap-3">
+                                    <button onclick="switchTab(3)" class="inline-flex items-center space-x-1.5 bg-tactical-bg text-tactical-muted font-medium px-3 py-2 rounded-xl text-xs hover:text-white transition-colors border border-tactical-border">
+                                        <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+                                        <span>Назад</span>
+                                    </button>
+                                    <button onclick="switchTab(5)" class="inline-flex items-center space-x-2 bg-tactical-green text-black font-bold px-4 py-2 rounded-xl text-xs hover:bg-tactical-accent transition-colors">
+                                        <span>Дальше → Справочник (95+) (Экран 6)</span>
+                                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="lg:col-span-6 bg-[#0E1410] border border-tactical-border rounded-2xl p-4 font-mono text-xs space-y-2">
+                                <div class="bg-tactical-card p-3 rounded-xl border border-tactical-green">
+                                    <div class="flex justify-between items-center mb-1">
+                                        <span class="text-white font-bold">Заявка №14 (ОП-1 «Север»)</span>
+                                        <span class="px-2 py-0.5 rounded bg-tactical-green text-black font-bold text-[9px]">СОБРАНА</span>
+                                    </div>
+                                    <div class="text-[10px] text-tactical-muted">Выстрел ПГ-7ВЛ: 6 шт. | 7.62х54 ЛПС: 2 цинка</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div id="tab-5" class="tab-pane hidden">
-                        <div class="text-tactical-green font-mono font-bold text-sm mb-2">ЭКРАН 6: ТАКТИЧЕСКИЙ QR И ШТРИХ-СКАНЕР</div>
-                        <p class="text-xs text-tactical-muted mb-4">Сканирование этикеток с ящиков для мгновенного списания или выдачи без ручного набора на клавиатуре.</p>
+
+                    <!-- TAB 5: Справочник номенклатуры -->
+                    <div id="tab-content-5" class="tab-pane hidden">
+                        <div class="grid lg:grid-cols-12 gap-8 items-center">
+                            <div class="lg:col-span-6 space-y-4">
+                                <span class="px-3 py-1 rounded bg-tactical-green/20 text-tactical-green text-xs font-mono font-bold border border-tactical-green/40">
+                                    ЭКРАН №6: КАТАЛОГ СЛУЖБ
+                                </span>
+                                <h3 class="text-xl sm:text-2xl font-bold text-white">Справочник (95+ позиций)</h3>
+                                <p class="text-sm text-tactical-muted leading-relaxed">
+                                    Полноценная база данных предметов снабжения по 11 службам довольствия с возможностью добавления кастомных позиций.
+                                </p>
+                                <ul class="space-y-2 text-xs font-mono text-tactical-text">
+                                    <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-tactical-green"></i> 11 категорий служб довольствия ВС РФ</li>
+                                    <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-tactical-green"></i> Единицы измерения: шт., компл., цинк, ящик, л, кг</li>
+                                    <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-tactical-green"></i> Быстрое добавление нестандартного трофейного БК</li>
+                                </ul>
+                                <div class="pt-4 flex items-center gap-3">
+                                    <button onclick="switchTab(4)" class="inline-flex items-center space-x-1.5 bg-tactical-bg text-tactical-muted font-medium px-3 py-2 rounded-xl text-xs hover:text-white transition-colors border border-tactical-border">
+                                        <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+                                        <span>Назад</span>
+                                    </button>
+                                    <button onclick="switchTab(6)" class="inline-flex items-center space-x-2 bg-tactical-green text-black font-bold px-4 py-2 rounded-xl text-xs hover:bg-tactical-accent transition-colors">
+                                        <span>Дальше → Сеть & Синхронизация (Экран 7)</span>
+                                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="lg:col-span-6 bg-[#0E1410] border border-tactical-border rounded-2xl p-4 font-mono text-xs space-y-2">
+                                <div class="grid grid-cols-2 gap-2 text-[10px]">
+                                    <div class="bg-tactical-card p-2 rounded border border-tactical-border">РАВ (Вооружение)</div>
+                                    <div class="bg-tactical-card p-2 rounded border border-tactical-border">Служба БПЛА</div>
+                                    <div class="bg-tactical-card p-2 rounded border border-tactical-border">СИБЗ (Бронезащита)</div>
+                                    <div class="bg-tactical-card p-2 rounded border border-tactical-border">Связь & РЭБ</div>
+                                    <div class="bg-tactical-card p-2 rounded border border-tactical-border">Медицинская</div>
+                                    <div class="bg-tactical-card p-2 rounded border border-tactical-border">Вещевая & Тыловая</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div id="tab-6" class="tab-pane hidden">
-                        <div class="text-tactical-green font-mono font-bold text-sm mb-2">ЭКРАН 7: БЭКАП И БЕЗОПАСНОСТЬ</div>
-                        <p class="text-xs text-tactical-muted mb-4">Экспорт всей базы данных в файл .kapterka_backup и шифрование паролем.</p>
+
+                    <!-- TAB 6: Сеть & Синхронизация -->
+                    <div id="tab-content-6" class="tab-pane hidden">
+                        <div class="grid lg:grid-cols-12 gap-8 items-center">
+                            <div class="lg:col-span-6 space-y-4">
+                                <span class="px-3 py-1 rounded bg-tactical-green/20 text-tactical-green text-xs font-mono font-bold border border-tactical-green/40">
+                                    ЭКРАН №7: СЕТЕВОЙ МОДУЛЬ
+                                </span>
+                                <h3 class="text-xl sm:text-2xl font-bold text-white">Защищенная сетевая синхронизация</h3>
+                                <p class="text-sm text-tactical-muted leading-relaxed">
+                                    Синхронизация между устройствами подразделения в закрытой Wi-Fi сети блиндажа без доступа в интернет и без использования Bluetooth.
+                                </p>
+                                <ul class="space-y-2 text-xs font-mono text-tactical-text">
+                                    <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-tactical-green"></i> Автоматическое обнаружение серверов в LAN</li>
+                                    <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-tactical-green"></i> Разрешение конфликтов проводок</li>
+                                    <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-tactical-green"></i> Полная радиомаскировка вне сети</li>
+                                </ul>
+                                <div class="pt-4 flex flex-wrap items-center gap-3">
+                                    <button onclick="switchTab(0)" class="inline-flex items-center space-x-1.5 bg-tactical-bg text-tactical-muted font-medium px-3 py-2 rounded-xl text-xs hover:text-white transition-colors border border-tactical-border">
+                                        <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+                                        <span>В начало (Экран 1)</span>
+                                    </button>
+                                    <a href="#download" class="inline-flex items-center space-x-2 bg-tactical-green text-black font-bold px-4 py-2 rounded-xl text-xs hover:bg-tactical-accent transition-colors shadow-md">
+                                        <i data-lucide="download" class="w-4 h-4"></i>
+                                        <span>Скачать APK (v2.5 PRO)</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="lg:col-span-6 bg-[#0E1410] border border-tactical-border rounded-2xl p-4 font-mono text-xs space-y-3">
+                                <div class="text-tactical-green font-bold border-b border-tactical-border pb-2 flex justify-between items-center">
+                                    <span>СОСТОЯНИЕ СЕТИ LAN</span>
+                                    <span class="text-[10px] text-tactical-green font-bold">ПОДКЛЮЧЕНО</span>
+                                </div>
+                                <div class="bg-tactical-card p-3 rounded-xl border border-tactical-border space-y-1 text-[11px]">
+                                    <div class="text-tactical-muted">Локальный IP: <span class="text-white font-mono font-bold">192.168.1.104</span></div>
+                                    <div class="text-tactical-muted">Порт синхронизации: <span class="text-white font-mono font-bold">8080 (TCP)</span></div>
+                                    <div class="text-tactical-muted">Активных узлов: <span class="text-tactical-green font-mono font-bold">3 терминала</span></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 5: FAQ (ВОПРОСЫ И ОТВЕТЫ) -->
+        <section id="faq" class="py-14 sm:py-20 bg-tactical-bg border-b border-tactical-border">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6">
+                
+                <div class="text-center max-w-2xl mx-auto mb-10">
+                    <div class="inline-flex items-center space-x-2 bg-tactical-card border border-tactical-green/40 px-3.5 py-1.5 rounded-full text-xs font-mono text-tactical-green mb-3">
+                        <i data-lucide="help-circle" class="w-4 h-4"></i>
+                        <span>ВОПРОСЫ И ОТВЕТЫ (FAQ)</span>
+                    </div>
+                    <h2 class="text-2xl sm:text-4xl font-extrabold text-white">
+                        Справочник и частые вопросы
+                    </h2>
+                    <p class="text-xs sm:text-sm text-tactical-muted mt-2">
+                        Ответы на ключевые вопросы по работе приложения в полевых условиях
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-8">
+                    
+                    <!-- FAQ Card 1 -->
+                    <div class="bg-tactical-card border border-tactical-border rounded-2xl p-5 shadow-sm">
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-xl bg-tactical-green/10 border border-tactical-green/30 flex items-center justify-center text-tactical-green shrink-0 mt-0.5">
+                                <i data-lucide="wifi-off" class="w-4 h-4"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-sm sm:text-base font-bold text-white font-mono">1. Работает ли приложение без интернета?</h3>
+                                <p class="text-xs sm:text-sm text-gray-300 mt-2 leading-relaxed">
+                                    <strong class="text-tactical-green">Да, полностью на 100% автономно.</strong> Приложение разработано для условий радиомолчания и отсутствия сети. Вся база данных хранится локально на вашем смартфоне во встроенном хранилище SQLite.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Card 2 -->
+                    <div class="bg-tactical-card border border-tactical-border rounded-2xl p-5 shadow-sm">
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-xl bg-tactical-green/10 border border-tactical-green/30 flex items-center justify-center text-tactical-green shrink-0 mt-0.5">
+                                <i data-lucide="shield-check" class="w-4 h-4"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-sm sm:text-base font-bold text-white font-mono">2. Передаются ли данные на серверы?</h3>
+                                <p class="text-xs sm:text-sm text-gray-300 mt-2 leading-relaxed">
+                                    <strong class="text-tactical-green">Категорически нет.</strong> В приложении нет сетевых модулей слежения, нет рекламы, не требуется регистрация по номеру или email. Данные роты, позывные и номера стволов остаются строго на вашем телефоне.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Card 3 -->
+                    <div class="bg-tactical-card border border-tactical-border rounded-2xl p-5 shadow-sm">
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-xl bg-tactical-green/10 border border-tactical-green/30 flex items-center justify-center text-tactical-green shrink-0 mt-0.5">
+                                <i data-lucide="hard-drive-download" class="w-4 h-4"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-sm sm:text-base font-bold text-white font-mono">3. Как перенести базу на другой телефон?</h3>
+                                <p class="text-xs sm:text-sm text-gray-300 mt-2 leading-relaxed">
+                                    В разделе «Настройки» есть кнопка <strong class="text-tactical-green">«Экспорт резервной копии»</strong>. Выгружается зашифрованный файл, который можно перенести через Flash-накопитель, карту памяти MicroSD или провод.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Card 4 -->
+                    <div class="bg-tactical-card border border-tactical-border rounded-2xl p-5 shadow-sm">
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-xl bg-tactical-green/10 border border-tactical-green/30 flex items-center justify-center text-tactical-green shrink-0 mt-0.5">
+                                <i data-lucide="boxes" class="w-4 h-4"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-sm sm:text-base font-bold text-white font-mono">4. Какие службы довольствия поддерживаются?</h3>
+                                <p class="text-xs sm:text-sm text-gray-300 mt-2 leading-relaxed">
+                                    В базе заложены готовые справочники для: <strong class="text-white">РАВ и боеприпасов</strong>, <strong class="text-white">Связи и РЭБ</strong>, <strong class="text-white">БПЛА и FPV-дронов</strong>, <strong class="text-white">СИБЗ и вещевого имущества</strong>, медицины, ГСМ и автобронетанковой службы.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SEO Context Box -->
+                <div class="bg-tactical-card/60 border border-tactical-border rounded-2xl p-4 text-xs text-tactical-muted leading-relaxed">
+                    <strong class="text-white font-mono">Назначение АСУ «КАПТЁРКА PRO»:</strong>
+                    Автоматизация войскового и складского учёта в подразделениях вооруженных сил, добровольческих батальонах, на огневых позициях (ОП) и пунктах временной дислокации (ПВД). Заменяет журналы учёта формы 26 и накладные.
                 </div>
             </div>
         </section>
 
-        <!-- SECTION 5: DOWNLOAD APK -->
-        <section id="download" class="py-14 sm:py-20 bg-tactical-bg border-b border-tactical-border">
+        <!-- SECTION 6: DOWNLOAD APK -->
+        <section id="download" class="py-14 sm:py-20 bg-tactical-dark border-b border-tactical-border">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
                 
-                <div class="inline-flex items-center space-x-2 bg-tactical-card border border-tactical-border px-3.5 py-1.5 rounded-full text-xs font-mono text-tactical-green mb-4">
+                <div class="inline-flex items-center space-x-2 bg-tactical-card border border-tactical-border px-3.5 py-1.5 rounded-full text-xs font-mono text-tactical-green mb-3">
                     <i data-lucide="download" class="w-3.5 h-3.5"></i>
                     <span>ОФИЦИАЛЬНЫЙ ДИСТРИБУТИВ</span>
                 </div>
@@ -479,7 +888,7 @@
                     <!-- Main Download Link -->
                     <a href="kapterka-app.apk" download="kapterka-app.apk" class="inline-flex items-center justify-center space-x-3 bg-tactical-green hover:bg-tactical-accent text-black font-black text-base sm:text-lg px-8 sm:px-10 py-4 rounded-2xl transition-all shadow-xl glow-green transform hover:scale-[1.02] w-full sm:w-auto mb-6">
                         <i data-lucide="download" class="w-5 h-5"></i>
-                        <span>СКАЧАТЬ ФАЙЛ APK</span>
+                        <span>СКАЧАТЬ ФАЙЛ APK (ПРЯМАЯ ССЫЛКА)</span>
                     </a>
 
                     <!-- Specs Table -->
@@ -490,11 +899,11 @@
                         </div>
                         <div class="bg-tactical-bg p-2.5 rounded-xl border border-tactical-border">
                             <div class="text-tactical-muted text-[10px]">ОС ANDROID</div>
-                            <div class="text-white font-bold">8.0 и новее</div>
+                            <div class="text-white font-bold">8.0+</div>
                         </div>
                         <div class="bg-tactical-bg p-2.5 rounded-xl border border-tactical-border">
                             <div class="text-tactical-muted text-[10px]">СЕТЬ</div>
-                            <div class="text-tactical-green font-bold">Не требуется</div>
+                            <div class="text-tactical-green font-bold">Офлайн</div>
                         </div>
                         <div class="bg-tactical-bg p-2.5 rounded-xl border border-tactical-border">
                             <div class="text-tactical-muted text-[10px]">ЛИЦЕНЗИЯ</div>
@@ -505,99 +914,11 @@
             </div>
         </section>
 
-        <!-- SECTION 6: FAQ & SEO KNOWLEDGE BASE (ЧАСТО ЗАДАВАЕМЫЕ ВОПРОСЫ) -->
-        <section id="faq" class="py-14 sm:py-20 bg-tactical-dark border-b border-tactical-border">
-            <div class="max-w-5xl mx-auto px-4 sm:px-6">
-                
-                <div class="text-center max-w-2xl mx-auto mb-10">
-                    <div class="inline-flex items-center space-x-2 bg-tactical-card border border-tactical-green/40 px-3 py-1 rounded-full text-xs font-mono text-tactical-green mb-3">
-                        <i data-lucide="help-circle" class="w-3.5 h-3.5"></i>
-                        <span>СПРАВОЧНИК И БАЗА ЗНАНИЙ</span>
-                    </div>
-                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white">
-                        Часто задаваемые вопросы (FAQ)
-                    </h2>
-                    <p class="text-xs sm:text-sm text-tactical-muted mt-2">
-                        Всё о безопасности данных, установке, переносе баз и автономной работе АСУ.
-                    </p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                    
-                    <!-- FAQ Card 1 -->
-                    <div class="bg-tactical-card border border-tactical-border rounded-2xl p-5 shadow-sm">
-                        <div class="flex items-start gap-3">
-                            <div class="w-8 h-8 rounded-xl bg-tactical-green/10 border border-tactical-green/30 flex items-center justify-center text-tactical-green shrink-0 mt-0.5">
-                                <i data-lucide="wifi-off" class="w-4 h-4"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-base font-bold text-white font-mono">Работает ли приложение без интернета?</h3>
-                                <p class="text-xs sm:text-sm text-gray-300 mt-1.5 leading-relaxed">
-                                    <strong class="text-tactical-green">Да, на 100%.</strong> АСУ «КАПТЁРКА PRO» спроектирована специально для условий радиомолчания и отсутствия связи. Вся база данных хранится локально на вашем смартфоне во встроенном зашифрованном хранилище SQLite.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- FAQ Card 2 -->
-                    <div class="bg-tactical-card border border-tactical-border rounded-2xl p-5 shadow-sm">
-                        <div class="flex items-start gap-3">
-                            <div class="w-8 h-8 rounded-xl bg-tactical-green/10 border border-tactical-green/30 flex items-center justify-center text-tactical-green shrink-0 mt-0.5">
-                                <i data-lucide="shield-check" class="w-4 h-4"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-base font-bold text-white font-mono">Передаются ли данные на серверы?</h3>
-                                <p class="text-xs sm:text-sm text-gray-300 mt-1.5 leading-relaxed">
-                                    <strong class="text-tactical-green">Категорически нет.</strong> Приложение не имеет сетевых модулей отправки отчетов, не требует регистрации, телефонных номеров или почты. Ваши списки личного состава, серийные номера оружия и накладные остаются исключительно на вашем устройстве.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- FAQ Card 3 -->
-                    <div class="bg-tactical-card border border-tactical-border rounded-2xl p-5 shadow-sm">
-                        <div class="flex items-start gap-3">
-                            <div class="w-8 h-8 rounded-xl bg-tactical-green/10 border border-tactical-green/30 flex items-center justify-center text-tactical-green shrink-0 mt-0.5">
-                                <i data-lucide="hard-drive-download" class="w-4 h-4"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-base font-bold text-white font-mono">Как перенести данные на другой телефон?</h3>
-                                <p class="text-xs sm:text-sm text-gray-300 mt-1.5 leading-relaxed">
-                                    В приложении встроен модуль <strong class="text-tactical-green">«Резервное копирование и экспорт»</strong>. Вы можете в 1 клик сохранить зашифрованный файл бэкапа на MicroSD-карту или передать его через провод / Flash-накопитель на любой другой телефон с установленной программой.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- FAQ Card 4 -->
-                    <div class="bg-tactical-card border border-tactical-border rounded-2xl p-5 shadow-sm">
-                        <div class="flex items-start gap-3">
-                            <div class="w-8 h-8 rounded-xl bg-tactical-green/10 border border-tactical-green/30 flex items-center justify-center text-tactical-green shrink-0 mt-0.5">
-                                <i data-lucide="boxes" class="w-4 h-4"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-base font-bold text-white font-mono">Какие категории имущества есть в базе?</h3>
-                                <p class="text-xs sm:text-sm text-gray-300 mt-1.5 leading-relaxed">
-                                    Предусмотрены специализированные шаблоны для: <strong class="text-white">Службы РАВ</strong> (вооружение, боеприпасы), <strong class="text-white">Связи и РЭБ</strong> (радиостанции, аккумуляторы), <strong class="text-white">БПЛА</strong> (коптеры, пульты, сбросы), <strong class="text-white">Вещевой службы</strong> (бронежилеты, шлемы, форма), медицины и автотранспорта.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Search Optimization Meta Text -->
-                <div class="mt-6 bg-tactical-card/50 border border-tactical-border/70 rounded-2xl p-4 text-[11px] text-tactical-muted leading-relaxed">
-                    <strong class="text-white font-mono">Назначение автоматизированной системы учёта:</strong>
-                    Программный комплекс АСУ «КАПТЁРКА PRO» (версия 2.5) предназначен для начальников складов, старшин рот и батарей, командиров взводов, операторов БАС и волонтёрских групп. Система полностью заменяет рукописные журналы и книги учёта материальных средств, исключает недостачи и путаницу при ротации личного состава.
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION 7: DEVELOPER HUB & FEEDBACK -->
-        <section id="developer-hub" class="py-14 sm:py-20 bg-tactical-bg border-b border-tactical-border">
+        <!-- SECTION 7: DEVELOPER HUB & FEEDBACK (NO TG SUPPORT) -->
+        <section id="developer-hub" class="py-12 sm:py-16 bg-tactical-bg border-b border-tactical-border">
             <div class="max-w-4xl mx-auto px-4 sm:px-6">
-                <div class="text-center max-w-2xl mx-auto mb-10">
-                    <div class="inline-flex items-center space-x-2 bg-tactical-card border border-tactical-border px-3 py-1 rounded-full text-xs font-mono text-tactical-green mb-3">
+                <div class="text-center max-w-2xl mx-auto mb-8">
+                    <div class="inline-flex items-center space-x-2 bg-tactical-card border border-tactical-border px-3 py-1 rounded-full text-xs font-mono text-tactical-green mb-2">
                         <i data-lucide="user-check" class="w-3.5 h-3.5"></i>
                         <span>РАЗРАБОТЧИК & СВЯЗЬ</span>
                     </div>
@@ -606,31 +927,47 @@
                     </h2>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <!-- Author Info -->
-                    <div class="bg-tactical-card border border-tactical-border p-6 rounded-2xl">
-                        <div class="w-14 h-14 rounded-2xl bg-tactical-darkGreen border border-tactical-green flex items-center justify-center text-tactical-green text-xl font-bold font-mono mb-4">
-                            ВА
+                    <div class="bg-tactical-card border border-tactical-border p-5 rounded-2xl flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-2xl bg-tactical-darkGreen border border-tactical-green flex items-center justify-center text-tactical-green text-lg font-bold font-mono mb-3">
+                                ВА
+                            </div>
+                            <h3 class="text-base font-bold text-white mb-0.5">Васев А.Е.</h3>
+                            <p class="text-xs text-tactical-muted font-mono mb-4">Автор и разработчик АСУ «КАПТЁРКА PRO»</p>
+                            
+                            <div class="space-y-3 text-xs">
+                                <div class="flex items-center gap-2.5 text-gray-300">
+                                    <div class="w-7 h-7 rounded-lg bg-tactical-green/10 flex items-center justify-center text-tactical-green">
+                                        <i data-lucide="mail" class="w-4 h-4"></i>
+                                    </div>
+                                    <div>
+                                        <div class="text-[10px] text-tactical-muted">ЭЛЕКТРОННАЯ ПОЧТА:</div>
+                                        <a href="mailto:alex.666.881@gmail.com" class="font-mono text-tactical-green hover:underline">alex.666.881@gmail.com</a>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-2.5 text-gray-300">
+                                    <div class="w-7 h-7 rounded-lg bg-tactical-gold/10 flex items-center justify-center text-tactical-gold">
+                                        <i data-lucide="shield-check" class="w-4 h-4"></i>
+                                    </div>
+                                    <div>
+                                        <div class="text-[10px] text-tactical-muted">СТАТУС ПРОЕКТА:</div>
+                                        <span class="text-white font-mono font-bold">Официальный релиз v2.5 PRO</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <h3 class="text-lg font-bold text-white mb-1">Васев А.Е.</h3>
-                        <p class="text-xs text-tactical-muted font-mono mb-4">Автор и разработчик АСУ «КАПТЁРКА PRO»</p>
-                        
-                        <div class="space-y-3 text-xs">
-                            <div class="flex items-center gap-2 text-gray-300">
-                                <i data-lucide="mail" class="w-4 h-4 text-tactical-green"></i>
-                                <span class="font-mono">alex.666.881@gmail.com</span>
-                            </div>
-                            <div class="flex items-center gap-2 text-gray-300">
-                                <i data-lucide="send" class="w-4 h-4 text-tactical-green"></i>
-                                <span>Telegram: <a href="https://t.me/share/url?url=https://kapterka-pro.ru/" target="_blank" class="text-tactical-green hover:underline">Поддержка</a></span>
-                            </div>
+
+                        <div class="mt-4 pt-3 border-t border-tactical-border text-[11px] text-tactical-muted">
+                            По всем вопросам внедрения, доработок справочников или предложений по функционалу пишите автору на почту.
                         </div>
                     </div>
 
                     <!-- Quick Email Form -->
-                    <div class="bg-tactical-card border border-tactical-border p-6 rounded-2xl">
-                        <h3 class="text-sm font-bold text-white font-mono uppercase mb-3">Написать разработчику:</h3>
-                        <form onsubmit="handleSendFeedback(event)" class="space-y-3 text-xs">
+                    <div class="bg-tactical-card border border-tactical-border p-5 rounded-2xl">
+                        <h3 class="text-xs font-bold text-white font-mono uppercase mb-2">Написать разработчику:</h3>
+                        <form onsubmit="handleSendFeedback(event)" class="space-y-2.5 text-xs">
                             <div>
                                 <input type="text" id="fb-author" placeholder="Ваш позывной или подразделение" required class="w-full bg-tactical-bg border border-tactical-border rounded-xl px-3 py-2 text-white placeholder-gray-500 focus:outline-none focus:border-tactical-green">
                             </div>
@@ -638,7 +975,7 @@
                                 <textarea id="fb-text" rows="3" placeholder="Опишите пожелание, вопрос или нужную функцию..." required class="w-full bg-tactical-bg border border-tactical-border rounded-xl px-3 py-2 text-white placeholder-gray-500 focus:outline-none focus:border-tactical-green"></textarea>
                             </div>
                             <button type="submit" class="w-full bg-tactical-green hover:bg-tactical-accent text-black font-bold py-2.5 rounded-xl transition-all shadow-md">
-                                Отправить письмо
+                                Отправить письмо автору
                             </button>
                         </form>
                     </div>
@@ -648,7 +985,7 @@
     </main>
 
     <!-- FOOTER WITH YANDEX INFORMER -->
-    <footer class="bg-tactical-dark border-t border-tactical-border py-8 text-xs text-tactical-muted">
+    <footer class="bg-tactical-dark border-t border-tactical-border py-6 text-xs text-tactical-muted">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
             <div>
                 <div class="font-bold text-white font-mono">АСУ «КАПТЁРКА PRO» v2.5</div>
@@ -668,35 +1005,32 @@
 
     <!-- SCRIPTS -->
     <script>
-        // Init Lucide
-        try {
+        // Init Lucide Icons
+        document.addEventListener('DOMContentLoaded', function() {
             if (window.lucide) {
                 lucide.createIcons();
             }
-        } catch(e) {
-            console.error(e);
-        }
+        });
 
-        // Tab switcher
+        // 1. Showcase Screens Switcher
         function switchTab(index) {
-            document.querySelectorAll('.tab-pane').forEach((p, i) => {
-                if (i === index) {
-                    p.classList.remove('hidden');
-                    p.classList.add('block');
+            document.querySelectorAll('.tab-pane').forEach((pane, idx) => {
+                if (idx === index) {
+                    pane.classList.remove('hidden');
                 } else {
-                    p.classList.add('hidden');
-                    p.classList.remove('block');
+                    pane.classList.add('hidden');
                 }
             });
-            document.querySelectorAll('.tab-btn').forEach((b, i) => {
-                if (i === index) {
-                    b.classList.remove('bg-tactical-card', 'text-tactical-muted');
-                    b.classList.add('bg-tactical-green', 'text-black');
+            document.querySelectorAll('.tab-button').forEach((btn, idx) => {
+                if (idx === index) {
+                    btn.classList.add('tab-btn-active', 'shadow-md');
+                    btn.classList.remove('bg-tactical-card', 'text-tactical-muted');
                 } else {
-                    b.classList.add('bg-tactical-card', 'text-tactical-muted');
-                    b.classList.remove('bg-tactical-green', 'text-black');
+                    btn.classList.remove('tab-btn-active', 'shadow-md');
+                    btn.classList.add('bg-tactical-card', 'text-tactical-muted');
                 }
             });
+            try { if (window.lucide) { lucide.createIcons(); } } catch(e) { console.log(e); }
         }
 
         // Email form handler
