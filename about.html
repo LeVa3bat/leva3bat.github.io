@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О программе — АСУ «КАПТЁРКА PRO» v2.5</title>
+    
+    <!-- Yandex Verification -->
+    <meta name="yandex-verification" content="c2db071fb79fadd3" />
+    <meta name="yandex-verification" content="32c529e993f021eb" />
+
+    <!-- SEO & Metadata -->
+    <meta name="description" content="Назначение программы АСУ «КАПТЁРКА PRO»: отказ от бумажных тетрадей, номерной учёт оружия и БПЛА, исключение недостач.">
+    <meta name="keywords" content="каптерка, учёт оружия, учет бпла, учет снаряжения, военный склад, программа для старшины, инструкция каптерка">
+    <meta name="author" content="Васев А.Е. • АСУ Каптёрка PRO">
+    <link rel="canonical" href="https://kapterka-pro.ru/about.html" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kapterka-pro.ru/about.html">
+    <meta property="og:title" content="О программе — АСУ «КАПТЁРКА PRO» v2.5">
+    <meta property="og:description" content="Назначение программы АСУ «КАПТЁРКА PRO»: отказ от бумажных тетрадей, номерной учёт оружия и БПЛА, исключение недостач.">
+    <meta property="og:site_name" content="АСУ КАПТЁРКА PRO">
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(112062746, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true,
+            webvisor:true
+        });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/112062746" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        tactical: {
+                            bg: '#080C09',
+                            dark: '#0D140F',
+                            card: '#121C14',
+                            border: '#1B2B1F',
+                            borderBright: '#2D4A34',
+                            green: '#4CAF50',
+                            accent: '#66BB6A',
+                            darkGreen: '#142918',
+                            muted: '#8E9F90',
+                            gold: '#D4AF37',
+                            goldDark: '#8C7320',
+                            amber: '#FFB300'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #080C09;
+            color: #E0E6E1;
+            font-family: 'Inter', sans-serif;
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(76, 175, 80, 0.12), transparent 50%),
+                radial-gradient(circle at 100% 100%, rgba(27, 59, 27, 0.15), transparent 40%);
+        }
+        .tactical-grid {
+            background-size: 32px 32px;
+            background-image: 
+                linear-gradient(to right, rgba(27, 43, 31, 0.3) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(27, 43, 31, 0.3) 1px, transparent 1px);
+        }
+        .glow-green {
+            box-shadow: 0 0 25px rgba(76, 175, 80, 0.25);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-tactical-green selection:text-black">
+
+    <!-- TOP SYSTEM STATUS BAR -->
+    <div class="bg-tactical-dark border-b border-tactical-border text-tactical-muted text-xs font-mono py-1.5 px-4 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+            <div class="flex items-center space-x-2">
+                <span class="inline-block w-2 h-2 rounded-full bg-tactical-green animate-pulse"></span>
+                <span class="text-tactical-green font-bold">ОФИЦИАЛЬНЫЙ РЕСУРС:</span>
+                <a href="index.html" class="text-white font-mono hover:text-tactical-green transition-colors">kapterka-pro.ru</a>
+                <span class="text-tactical-border hidden sm:inline">|</span>
+                <span class="hidden sm:inline text-gray-400">Автономная система складского учёта v2.5 PRO</span>
+            </div>
+            <div class="flex items-center space-x-3 sm:space-x-4 text-[11px]">
+                <span class="text-tactical-gold font-bold flex items-center gap-1">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5"></i> 100% ОФЛАЙН
+                </span>
+                <a href="about.html" class="hover:text-tactical-green text-gray-300 transition-colors font-medium">О программе</a>
+                <a href="manual.html" class="hover:text-tactical-green text-gray-300 transition-colors font-medium">Инструкция</a>
+                <a href="index.html#showcase" class="hover:text-tactical-green text-gray-300 transition-colors font-medium">Скриншоты</a>
+                <a href="index.html#faq" class="hover:text-tactical-green text-gray-300 transition-colors font-medium">FAQ</a>
+                <a href="index.html#download" class="text-tactical-green font-bold hover:underline">СКАЧАТЬ APK</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN HEADER -->
+    <header class="bg-tactical-dark/95 backdrop-blur-md border-b border-tactical-border sticky top-[33px] z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+            <a href="index.html" class="flex items-center space-x-3 group">
+                <div class="w-10 h-10 rounded-xl bg-tactical-darkGreen border border-tactical-green/40 flex items-center justify-center text-tactical-green group-hover:scale-105 transition-transform shadow-md">
+                    <i data-lucide="shield" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <div class="flex items-center space-x-2">
+                        <span class="font-extrabold text-lg sm:text-xl tracking-wider text-white">КАПТЁРКА <span class="text-tactical-green">PRO</span></span>
+                        <span class="bg-tactical-green/20 text-tactical-green text-[10px] font-mono font-bold px-1.5 py-0.5 rounded border border-tactical-green/30">v2.5</span>
+                    </div>
+                    <span class="text-[10px] font-mono text-tactical-muted block -mt-0.5 tracking-tight">ТАКТИЧЕСКИЙ СКЛАДСКОЙ УЧЁТ</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden lg:flex items-center space-x-6 text-sm font-medium text-tactical-muted">
+                <a href="index.html" class="hover:text-tactical-green transition-colors flex items-center gap-1">
+                    <i data-lucide="home" class="w-4 h-4 text-tactical-green"></i> Главная
+                </a>
+                <a href="about.html" class="hover:text-tactical-green transition-colors flex items-center gap-1 text-white font-semibold">
+                    <i data-lucide="info" class="w-4 h-4 text-tactical-green"></i> О программе
+                </a>
+                <a href="manual.html" class="hover:text-tactical-green transition-colors flex items-center gap-1 ">
+                    <i data-lucide="book-open" class="w-4 h-4 text-tactical-green"></i> Инструкция
+                </a>
+                <a href="index.html#showcase" class="hover:text-tactical-green transition-colors flex items-center gap-1">
+                    <i data-lucide="smartphone" class="w-4 h-4 text-tactical-green"></i> Скриншоты
+                </a>
+                <a href="index.html#faq" class="hover:text-tactical-green transition-colors flex items-center gap-1">
+                    <i data-lucide="help-circle" class="w-4 h-4 text-tactical-green"></i> Вопросы (FAQ)
+                </a>
+            </nav>
+
+            <div class="flex items-center space-x-3">
+                <a href="index.html#download" class="inline-flex items-center space-x-2 bg-tactical-green hover:bg-tactical-accent text-black font-bold text-xs sm:text-sm px-4 py-2 rounded-xl transition-all shadow-md glow-green">
+                    <i data-lucide="download" class="w-4 h-4"></i>
+                    <span>Скачать APK</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow tactical-grid">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-8 pb-2">
+            <div class="flex items-center space-x-2 text-xs font-mono text-tactical-muted">
+                <a href="index.html" class="hover:text-tactical-green flex items-center gap-1">
+                    <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i> На главную
+                </a>
+                <span>/</span>
+                <span class="text-tactical-green font-bold">О программе</span>
+            </div>
+        </div>
+
+        
+        <!-- SECTION: О ПРОГРАММЕ И НАЗНАЧЕНИЕ -->
+        <section class="py-8 sm:py-14 bg-tactical-dark border-b border-tactical-border relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6">
+                
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <div class="inline-flex items-center space-x-2 bg-tactical-card border border-tactical-green/40 px-4 py-1.5 rounded-full text-xs font-mono text-tactical-green mb-3">
+                        <i data-lucide="info" class="w-4 h-4"></i>
+                        <span>О СИСТЕМЕ</span>
+                    </div>
+                    <h1 class="text-3xl sm:text-4xl font-black text-white tracking-tight">
+                        Для чего создана АСУ «КАПТЁРКА PRO»
+                    </h1>
+                    <p class="text-tactical-muted text-sm sm:text-base mt-3 leading-relaxed">
+                        Автоматизированная система учёта имущества, созданная специально для старшин, командиров взводов, рот и материально ответственных лиц в полевых условиях.
+                    </p>
+                </div>
+
+                <!-- 3 Pillars of the App -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                    
+                    <div class="bg-tactical-card border border-tactical-border p-6 sm:p-7 rounded-2xl relative overflow-hidden flex flex-col justify-between">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-tactical-green/5 rounded-bl-full -z-0"></div>
+                        <div class="relative z-10">
+                            <div class="w-12 h-12 rounded-xl bg-tactical-green/10 border border-tactical-green/30 flex items-center justify-center text-tactical-green mb-4">
+                                <i data-lucide="file-x" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-white mb-2">Отказ от бумажных тетрадей</h3>
+                            <p class="text-xs sm:text-sm text-tactical-muted leading-relaxed">
+                                Бумажные журналы рвутся, мокнут под дождём, в них стираются и теряются записи о выдаче оружия, раций и БК. «Каптёрка PRO» надёжно хранит все данные в зашифрованной локальной базе прямо в вашем телефоне.
+                            </p>
+                        </div>
+                        <div class="mt-5 pt-3 border-t border-tactical-border/60 text-tactical-green text-xs font-mono font-semibold flex items-center gap-1.5">
+                            <i data-lucide="check-circle" class="w-4 h-4"></i> 100% сохранение данных
+                        </div>
+                    </div>
+
+                    <div class="bg-tactical-card border border-tactical-border p-6 sm:p-7 rounded-2xl relative overflow-hidden flex flex-col justify-between">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-tactical-gold/5 rounded-bl-full -z-0"></div>
+                        <div class="relative z-10">
+                            <div class="w-12 h-12 rounded-xl bg-tactical-gold/10 border border-tactical-gold/30 flex items-center justify-center text-tactical-gold mb-4">
+                                <i data-lucide="crosshair" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-white mb-2">Точный номерной учёт</h3>
+                            <p class="text-xs sm:text-sm text-tactical-muted leading-relaxed">
+                                За секунду проверяйте: у кого из бойцов находится конкретный автомат (по номеру), квадрокоптер DJI Mavic, тепловизионный прицел или радиостанция с её частотным диапазоном.
+                            </p>
+                        </div>
+                        <div class="mt-5 pt-3 border-t border-tactical-border/60 text-tactical-gold text-xs font-mono font-semibold flex items-center gap-1.5">
+                            <i data-lucide="check-circle" class="w-4 h-4"></i> Мгновенный поиск по позывному
+                        </div>
+                    </div>
+
+                    <div class="bg-tactical-card border border-tactical-border p-6 sm:p-7 rounded-2xl relative overflow-hidden flex flex-col justify-between">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-blue-500/5 rounded-bl-full -z-0"></div>
+                        <div class="relative z-10">
+                            <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 mb-4">
+                                <i data-lucide="shield-alert" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-white mb-2">Исключение недостач</h3>
+                            <p class="text-xs sm:text-sm text-tactical-muted leading-relaxed">
+                                При сдаче смены, передислокации подразделения или инвентаризации остатков приложение выдаёт точный баланс: сколько на складе и сколько числится за личным составом на позициях.
+                            </p>
+                        </div>
+                        <div class="mt-5 pt-3 border-t border-tactical-border/60 text-blue-400 text-xs font-mono font-semibold flex items-center gap-1.5">
+                            <i data-lucide="check-circle" class="w-4 h-4"></i> Баланс сойдется до патрона
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Who is this app for -->
+                <div class="bg-tactical-card border border-tactical-border rounded-2xl p-6 sm:p-8 mb-12">
+                    <h3 class="text-base sm:text-lg font-bold text-white mb-5 flex items-center gap-2 font-mono">
+                        <i data-lucide="users" class="w-5 h-5 text-tactical-green"></i>
+                        ДЛЯ КОГО ПРЕДНАЗНАЧЕНА ПРОГРАММА:
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs sm:text-sm">
+                        <div class="flex items-start gap-3 p-4 rounded-xl bg-tactical-bg border border-tactical-border/60">
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-tactical-green shrink-0 mt-0.5"></i>
+                            <div>
+                                <strong class="text-white block mb-1">Старшины рот и батарей</strong>
+                                <span class="text-tactical-muted text-xs leading-relaxed">Учёт вещевого, инженерного имущества, бронежилетов, касок, спальников, генераторов и шанцевого инструмента.</span>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3 p-4 rounded-xl bg-tactical-bg border border-tactical-border/60">
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-tactical-green shrink-0 mt-0.5"></i>
+                            <div>
+                                <strong class="text-white block mb-1">Начальники службы РАВ / БК</strong>
+                                <span class="text-tactical-muted text-xs leading-relaxed">Учёт стрелкового оружия по номерам, цинков патронов, гранат, выстрелов РПГ и средств маскировки.</span>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3 p-4 rounded-xl bg-tactical-bg border border-tactical-border/60">
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-tactical-green shrink-0 mt-0.5"></i>
+                            <div>
+                                <strong class="text-white block mb-1">Связисты и техники РЭБ</strong>
+                                <span class="text-tactical-muted text-xs leading-relaxed">Учёт радиостанций (Азарт, Комбат, Baofeng), антенн, аккумуляторов, гарнитур и переносных глушилок.</span>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3 p-4 rounded-xl bg-tactical-bg border border-tactical-border/60">
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-tactical-green shrink-0 mt-0.5"></i>
+                            <div>
+                                <strong class="text-white block mb-1">Расчёты БПЛА и операторы</strong>
+                                <span class="text-tactical-muted text-xs leading-relaxed">Учёт FPV-дронов, мавиков, пультов управления, FPV-очков, батарей и зарядных станций EcoFlow.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation link to Manual -->
+                <div class="flex flex-col sm:flex-row items-center justify-between bg-tactical-card border border-tactical-green/30 p-6 rounded-2xl gap-4">
+                    <div>
+                        <div class="text-white font-bold text-base">Хотите узнать, как пошагово работать с программой?</div>
+                        <div class="text-xs text-tactical-muted">Ознакомьтесь с пошаговой инструкцией: от создания базы до резервного копирования.</div>
+                    </div>
+                    <a href="manual.html" class="inline-flex items-center space-x-2 bg-tactical-green hover:bg-tactical-accent text-black font-bold text-sm px-6 py-3 rounded-xl transition-all shadow-md shrink-0">
+                        <i data-lucide="book-open" class="w-4 h-4"></i>
+                        <span>Перейти к инструкции →</span>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-tactical-dark border-t border-tactical-border py-12 text-tactical-muted text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 rounded-lg bg-tactical-card border border-tactical-border flex items-center justify-center text-tactical-green">
+                        <i data-lucide="shield" class="w-4 h-4"></i>
+                    </div>
+                    <div>
+                        <div class="text-white font-bold font-mono">АСУ «КАПТЁРКА PRO» v2.5</div>
+                        <div class="text-tactical-muted text-[11px]">Автономная система тактического складского учёта</div>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap gap-4 text-xs font-mono">
+                    <a href="index.html" class="hover:text-tactical-green transition-colors">Главная</a>
+                    <a href="about.html" class="hover:text-tactical-green transition-colors">О программе</a>
+                    <a href="manual.html" class="hover:text-tactical-green transition-colors">Инструкция</a>
+                    <a href="index.html#showcase" class="hover:text-tactical-green transition-colors">Скриншоты</a>
+                    <a href="index.html#download" class="hover:text-tactical-green transition-colors text-tactical-green font-bold">Скачать APK</a>
+                </div>
+
+                <div class="text-center md:text-right font-mono text-[11px]">
+                    <div>© 2026 АСУ «КАПТЁРКА PRO». Все права защищены.</div>
+                    <div class="text-tactical-muted">Разработчик: Васев А.Е.</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lucide Icons Script -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

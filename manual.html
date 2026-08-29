@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Инструкция по эксплуатации — АСУ «КАПТЁРКА PRO» v2.5</title>
+    
+    <!-- Yandex Verification -->
+    <meta name="yandex-verification" content="c2db071fb79fadd3" />
+    <meta name="yandex-verification" content="32c529e993f021eb" />
+
+    <!-- SEO & Metadata -->
+    <meta name="description" content="Пошаговая инструкция пользователя АСУ «КАПТЁРКА PRO»: первый вход, справочник, операции Привезли, Подняли, Сдали, журнал и резервные копии.">
+    <meta name="keywords" content="каптерка, учёт оружия, учет бпла, учет снаряжения, военный склад, программа для старшины, инструкция каптерка">
+    <meta name="author" content="Васев А.Е. • АСУ Каптёрка PRO">
+    <link rel="canonical" href="https://kapterka-pro.ru/manual.html" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kapterka-pro.ru/manual.html">
+    <meta property="og:title" content="Инструкция по эксплуатации — АСУ «КАПТЁРКА PRO» v2.5">
+    <meta property="og:description" content="Пошаговая инструкция пользователя АСУ «КАПТЁРКА PRO»: первый вход, справочник, операции Привезли, Подняли, Сдали, журнал и резервные копии.">
+    <meta property="og:site_name" content="АСУ КАПТЁРКА PRO">
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(112062746, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true,
+            webvisor:true
+        });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/112062746" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        tactical: {
+                            bg: '#080C09',
+                            dark: '#0D140F',
+                            card: '#121C14',
+                            border: '#1B2B1F',
+                            borderBright: '#2D4A34',
+                            green: '#4CAF50',
+                            accent: '#66BB6A',
+                            darkGreen: '#142918',
+                            muted: '#8E9F90',
+                            gold: '#D4AF37',
+                            goldDark: '#8C7320',
+                            amber: '#FFB300'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #080C09;
+            color: #E0E6E1;
+            font-family: 'Inter', sans-serif;
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(76, 175, 80, 0.12), transparent 50%),
+                radial-gradient(circle at 100% 100%, rgba(27, 59, 27, 0.15), transparent 40%);
+        }
+        .tactical-grid {
+            background-size: 32px 32px;
+            background-image: 
+                linear-gradient(to right, rgba(27, 43, 31, 0.3) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(27, 43, 31, 0.3) 1px, transparent 1px);
+        }
+        .glow-green {
+            box-shadow: 0 0 25px rgba(76, 175, 80, 0.25);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-tactical-green selection:text-black">
+
+    <!-- TOP SYSTEM STATUS BAR -->
+    <div class="bg-tactical-dark border-b border-tactical-border text-tactical-muted text-xs font-mono py-1.5 px-4 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+            <div class="flex items-center space-x-2">
+                <span class="inline-block w-2 h-2 rounded-full bg-tactical-green animate-pulse"></span>
+                <span class="text-tactical-green font-bold">ОФИЦИАЛЬНЫЙ РЕСУРС:</span>
+                <a href="index.html" class="text-white font-mono hover:text-tactical-green transition-colors">kapterka-pro.ru</a>
+                <span class="text-tactical-border hidden sm:inline">|</span>
+                <span class="hidden sm:inline text-gray-400">Автономная система складского учёта v2.5 PRO</span>
+            </div>
+            <div class="flex items-center space-x-3 sm:space-x-4 text-[11px]">
+                <span class="text-tactical-gold font-bold flex items-center gap-1">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5"></i> 100% ОФЛАЙН
+                </span>
+                <a href="about.html" class="hover:text-tactical-green text-gray-300 transition-colors font-medium">О программе</a>
+                <a href="manual.html" class="hover:text-tactical-green text-gray-300 transition-colors font-medium">Инструкция</a>
+                <a href="index.html#showcase" class="hover:text-tactical-green text-gray-300 transition-colors font-medium">Скриншоты</a>
+                <a href="index.html#faq" class="hover:text-tactical-green text-gray-300 transition-colors font-medium">FAQ</a>
+                <a href="index.html#download" class="text-tactical-green font-bold hover:underline">СКАЧАТЬ APK</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN HEADER -->
+    <header class="bg-tactical-dark/95 backdrop-blur-md border-b border-tactical-border sticky top-[33px] z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+            <a href="index.html" class="flex items-center space-x-3 group">
+                <div class="w-10 h-10 rounded-xl bg-tactical-darkGreen border border-tactical-green/40 flex items-center justify-center text-tactical-green group-hover:scale-105 transition-transform shadow-md">
+                    <i data-lucide="shield" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <div class="flex items-center space-x-2">
+                        <span class="font-extrabold text-lg sm:text-xl tracking-wider text-white">КАПТЁРКА <span class="text-tactical-green">PRO</span></span>
+                        <span class="bg-tactical-green/20 text-tactical-green text-[10px] font-mono font-bold px-1.5 py-0.5 rounded border border-tactical-green/30">v2.5</span>
+                    </div>
+                    <span class="text-[10px] font-mono text-tactical-muted block -mt-0.5 tracking-tight">ТАКТИЧЕСКИЙ СКЛАДСКОЙ УЧЁТ</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden lg:flex items-center space-x-6 text-sm font-medium text-tactical-muted">
+                <a href="index.html" class="hover:text-tactical-green transition-colors flex items-center gap-1">
+                    <i data-lucide="home" class="w-4 h-4 text-tactical-green"></i> Главная
+                </a>
+                <a href="about.html" class="hover:text-tactical-green transition-colors flex items-center gap-1 ">
+                    <i data-lucide="info" class="w-4 h-4 text-tactical-green"></i> О программе
+                </a>
+                <a href="manual.html" class="hover:text-tactical-green transition-colors flex items-center gap-1 text-white font-semibold">
+                    <i data-lucide="book-open" class="w-4 h-4 text-tactical-green"></i> Инструкция
+                </a>
+                <a href="index.html#showcase" class="hover:text-tactical-green transition-colors flex items-center gap-1">
+                    <i data-lucide="smartphone" class="w-4 h-4 text-tactical-green"></i> Скриншоты
+                </a>
+                <a href="index.html#faq" class="hover:text-tactical-green transition-colors flex items-center gap-1">
+                    <i data-lucide="help-circle" class="w-4 h-4 text-tactical-green"></i> Вопросы (FAQ)
+                </a>
+            </nav>
+
+            <div class="flex items-center space-x-3">
+                <a href="index.html#download" class="inline-flex items-center space-x-2 bg-tactical-green hover:bg-tactical-accent text-black font-bold text-xs sm:text-sm px-4 py-2 rounded-xl transition-all shadow-md glow-green">
+                    <i data-lucide="download" class="w-4 h-4"></i>
+                    <span>Скачать APK</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow tactical-grid">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-8 pb-2">
+            <div class="flex items-center space-x-2 text-xs font-mono text-tactical-muted">
+                <a href="index.html" class="hover:text-tactical-green flex items-center gap-1">
+                    <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i> На главную
+                </a>
+                <span>/</span>
+                <span class="text-tactical-green font-bold">Руководство пользователя (Инструкция)</span>
+            </div>
+        </div>
+
+        
+        <!-- SECTION: ПОЛНАЯ ИНСТРУКЦИЯ ПО ЭКСПЛУАТАЦИИ -->
+        <section class="py-8 sm:py-14 bg-tactical-bg border-b border-tactical-border">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6">
+                
+                <!-- Section Header -->
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <div class="inline-flex items-center space-x-2 bg-tactical-card border border-tactical-green/40 px-4 py-1.5 rounded-full text-xs font-mono text-tactical-green mb-3">
+                        <i data-lucide="book-open" class="w-4 h-4"></i>
+                        <span>РУКОВОДСТВО ПОЛЬЗОВАТЕЛЯ</span>
+                    </div>
+                    <h1 class="text-3xl sm:text-4xl font-black text-white tracking-tight">
+                        Полная пошаговая инструкция к АСУ «КАПТЁРКА PRO»
+                    </h1>
+                    <p class="text-tactical-muted text-sm sm:text-base mt-3 leading-relaxed">
+                        Пошаговое руководство от первого запуска приложения до ежедневного полевого учёта и создания резервных копий
+                    </p>
+                </div>
+
+                <!-- Steps Container -->
+                <div class="space-y-6 max-w-4xl mx-auto">
+                    
+                    <!-- STEP 1 -->
+                    <div class="bg-tactical-card border border-tactical-border rounded-2xl p-6 sm:p-7 shadow-sm transition-all hover:border-tactical-green/50">
+                        <div class="flex flex-col md:flex-row md:items-start gap-5">
+                            <div class="w-12 h-12 rounded-2xl bg-tactical-green text-black font-mono font-black text-xl flex items-center justify-center shrink-0 shadow-md">
+                                01
+                            </div>
+                            <div class="flex-grow">
+                                <div class="flex flex-wrap items-center gap-2 mb-2">
+                                    <h2 class="text-lg sm:text-xl font-bold text-white">Первый вход и создание профиля</h2>
+                                    <span class="text-[10px] font-mono bg-tactical-darkGreen text-tactical-green border border-tactical-green/30 px-2 py-0.5 rounded-md font-semibold">Начало работы</span>
+                                </div>
+                                <p class="text-xs sm:text-sm text-gray-300 leading-relaxed mb-3">
+                                    При первом запуске приложения создайте локальный профиль (например, ваш позывной или номер роты/склада).
+                                </p>
+                                <div class="bg-tactical-dark/80 border border-tactical-border/70 rounded-xl p-4 text-xs text-tactical-muted space-y-1.5 font-mono">
+                                    <div class="flex items-center gap-2 text-gray-200">
+                                        <i data-lucide="check" class="w-4 h-4 text-tactical-green"></i>
+                                        <span>Пароль и данные сохраняются строго внутри телефона в зашифрованной SQLite базе.</span>
+                                    </div>
+                                    <div class="flex items-center gap-2 text-gray-200">
+                                        <i data-lucide="check" class="w-4 h-4 text-tactical-green"></i>
+                                        <span>Для входа не требуется сим-карта, мобильная сеть или интернет.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 2 -->
+                    <div class="bg-tactical-card border border-tactical-border rounded-2xl p-6 sm:p-7 shadow-sm transition-all hover:border-tactical-green/50">
+                        <div class="flex flex-col md:flex-row md:items-start gap-5">
+                            <div class="w-12 h-12 rounded-2xl bg-tactical-darkGreen border border-tactical-green text-tactical-green font-mono font-black text-xl flex items-center justify-center shrink-0 shadow-md">
+                                02
+                            </div>
+                            <div class="flex-grow">
+                                <div class="flex flex-wrap items-center gap-2 mb-2">
+                                    <h2 class="text-lg sm:text-xl font-bold text-white">Заполнение Справочника (Номенклатура имущества)</h2>
+                                    <span class="text-[10px] font-mono bg-tactical-darkGreen text-tactical-green border border-tactical-green/30 px-2 py-0.5 rounded-md font-semibold">Раздел «Справочник»</span>
+                                </div>
+                                <p class="text-xs sm:text-sm text-gray-300 leading-relaxed mb-3">
+                                    Внесите всё имущество, которое числится за вашим подразделением, распределив его по удобным категориям:
+                                </p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs">
+                                    <div class="p-3 rounded-xl bg-tactical-dark/60 border border-tactical-border/60">
+                                        <span class="text-tactical-green font-bold block mb-1">1. Категории:</span>
+                                        <span class="text-tactical-muted">Служба РАВ, Боеприпасы, Связь, БПЛА, Экипировка, Инженерное имущество.</span>
+                                    </div>
+                                    <div class="p-3 rounded-xl bg-tactical-dark/60 border border-tactical-border/60">
+                                        <span class="text-tactical-green font-bold block mb-1">2. Единицы измерения:</span>
+                                        <span class="text-tactical-muted">Штуки (шт), цинки, комплекты, метры, упаковки.</span>
+                                    </div>
+                                    <div class="p-3 rounded-xl bg-tactical-dark/60 border border-tactical-border/60">
+                                        <span class="text-tactical-green font-bold block mb-1">3. Серийные номера:</span>
+                                        <span class="text-tactical-muted">Для номерного имущества (автоматы, пистолеты, рации, дроны) вводите уникальный серийный номер.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 3 -->
+                    <div class="bg-tactical-card border border-tactical-border rounded-2xl p-6 sm:p-7 shadow-sm transition-all hover:border-tactical-green/50">
+                        <div class="flex flex-col md:flex-row md:items-start gap-5">
+                            <div class="w-12 h-12 rounded-2xl bg-tactical-darkGreen border border-tactical-green text-tactical-green font-mono font-black text-xl flex items-center justify-center shrink-0 shadow-md">
+                                03
+                            </div>
+                            <div class="flex-grow">
+                                <div class="flex flex-wrap items-center gap-2 mb-2">
+                                    <h2 class="text-lg sm:text-xl font-bold text-white">Операция «Привезли» (Поступление на склад)</h2>
+                                    <span class="text-[10px] font-mono bg-emerald-900/60 text-emerald-300 border border-emerald-500/30 px-2 py-0.5 rounded-md font-semibold">Приход / Оприходование</span>
+                                </div>
+                                <p class="text-xs sm:text-sm text-gray-300 leading-relaxed mb-3">
+                                    Используется, когда в подразделение привезли снабжение с тылового склада, новую партию БК или гуманитарную помощь:
+                                </p>
+                                <ol class="list-decimal list-inside text-xs sm:text-sm text-gray-300 space-y-2 bg-tactical-dark/60 p-4 rounded-xl border border-tactical-border/60">
+                                    <li>Нажмите зелёную кнопку <strong class="text-tactical-green">«Привезли»</strong> на главном экране.</li>
+                                    <li>Выберите позицию из справочника (или создайте новую на лету).</li>
+                                    <li>Укажите количество прибывшего имущества и источник поступления (например: <em>«Склад батальона»</em> или <em>«Гумконвой»</em>).</li>
+                                    <li>Нажмите <strong>«Сохранить приход»</strong> — остаток на складе мгновенно увеличится, а операция запишется в журнал с датой и временем.</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 4 -->
+                    <div class="bg-tactical-card border border-tactical-border rounded-2xl p-6 sm:p-7 shadow-sm transition-all hover:border-tactical-green/50">
+                        <div class="flex flex-col md:flex-row md:items-start gap-5">
+                            <div class="w-12 h-12 rounded-2xl bg-tactical-darkGreen border border-tactical-green text-tactical-green font-mono font-black text-xl flex items-center justify-center shrink-0 shadow-md">
+                                04
+                            </div>
+                            <div class="flex-grow">
+                                <div class="flex flex-wrap items-center gap-2 mb-2">
+                                    <h2 class="text-lg sm:text-xl font-bold text-white">Операция «Подняли» (Выдача бойцам и расчетам)</h2>
+                                    <span class="text-[10px] font-mono bg-amber-900/60 text-amber-300 border border-amber-500/30 px-2 py-0.5 rounded-md font-semibold">Расход / Закрепление</span>
+                                </div>
+                                <p class="text-xs sm:text-sm text-gray-300 leading-relaxed mb-3">
+                                    Используется при выдаче оружия, боекомплекта, радиостанций или экипировки личному составу перед выходом на боевую задачу:
+                                </p>
+                                <ol class="list-decimal list-inside text-xs sm:text-sm text-gray-300 space-y-2 bg-tactical-dark/60 p-4 rounded-xl border border-tactical-border/60">
+                                    <li>Нажмите кнопку <strong class="text-tactical-gold">«Подняли»</strong> на главном экране.</li>
+                                    <li>Выберите имущество, которое выдаётся, и укажите количество.</li>
+                                    <li>Введите <strong>Позывной</strong> бойца (или выберите взвод/расчёт), которому передаётся матчасть.</li>
+                                    <li>Нажмите <strong>«Подтвердить выдачу»</strong> — количество на складе уменьшится, а позиция автоматически закрепится за указанным бойцом.</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 5 -->
+                    <div class="bg-tactical-card border border-tactical-border rounded-2xl p-6 sm:p-7 shadow-sm transition-all hover:border-tactical-green/50">
+                        <div class="flex flex-col md:flex-row md:items-start gap-5">
+                            <div class="w-12 h-12 rounded-2xl bg-tactical-darkGreen border border-tactical-green text-tactical-green font-mono font-black text-xl flex items-center justify-center shrink-0 shadow-md">
+                                05
+                            </div>
+                            <div class="flex-grow">
+                                <div class="flex flex-wrap items-center gap-2 mb-2">
+                                    <h2 class="text-lg sm:text-xl font-bold text-white">Операция «Сдали» (Возврат имущества на склад)</h2>
+                                    <span class="text-[10px] font-mono bg-blue-900/60 text-blue-300 border border-blue-500/30 px-2 py-0.5 rounded-md font-semibold">Возврат / Снятие с подотчёта</span>
+                                </div>
+                                <p class="text-xs sm:text-sm text-gray-300 leading-relaxed mb-3">
+                                    Когда группа возвращается с позиций или боец сдает закреплённое за ним оружие, рацию или прибор ночного видения:
+                                </p>
+                                <div class="bg-tactical-dark/60 p-4 rounded-xl border border-tactical-border/60 text-xs sm:text-sm text-gray-300 leading-relaxed">
+                                    В окне возврата выберите позывной бойца -> приложение покажет <strong>полный список всего, что за ним числится</strong> -> отметьте сданные позиции -> нажмите «Принять на склад». Имущество вернётся на остаток в каптёрку.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 6 -->
+                    <div class="bg-tactical-card border border-tactical-border rounded-2xl p-6 sm:p-7 shadow-sm transition-all hover:border-tactical-green/50">
+                        <div class="flex flex-col md:flex-row md:items-start gap-5">
+                            <div class="w-12 h-12 rounded-2xl bg-tactical-darkGreen border border-tactical-green text-tactical-green font-mono font-black text-xl flex items-center justify-center shrink-0 shadow-md">
+                                06
+                            </div>
+                            <div class="flex-grow">
+                                <div class="flex flex-wrap items-center gap-2 mb-2">
+                                    <h2 class="text-lg sm:text-xl font-bold text-white">Журнал операций и аудит</h2>
+                                    <span class="text-[10px] font-mono bg-tactical-darkGreen text-tactical-green border border-tactical-green/30 px-2 py-0.5 rounded-md font-semibold">Раздел «История»</span>
+                                </div>
+                                <p class="text-xs sm:text-sm text-gray-300 leading-relaxed mb-2">
+                                    Вкладка <strong>«История»</strong> сохраняет поминутную хронологию каждого движения имущества. Вы всегда можете открыть журнал и точно узнать:
+                                </p>
+                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs mt-3">
+                                    <div class="p-2.5 rounded-lg bg-tactical-dark/50 border border-tactical-border/40 text-gray-300">
+                                        <strong class="text-white block font-mono">КТО ВЗЯЛ?</strong>
+                                        Позывной бойца или номер расчёта.
+                                    </div>
+                                    <div class="p-2.5 rounded-lg bg-tactical-dark/50 border border-tactical-border/40 text-gray-300">
+                                        <strong class="text-white block font-mono">КОГДА?</strong>
+                                        Точная дата и время проведения записи.
+                                    </div>
+                                    <div class="p-2.5 rounded-lg bg-tactical-dark/50 border border-tactical-border/40 text-gray-300">
+                                        <strong class="text-white block font-mono">СКОЛЬКО?</strong>
+                                        Точное количество и серийные номера.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 7 -->
+                    <div class="bg-tactical-card border border-tactical-border rounded-2xl p-6 sm:p-7 shadow-sm transition-all hover:border-tactical-green/50">
+                        <div class="flex flex-col md:flex-row md:items-start gap-5">
+                            <div class="w-12 h-12 rounded-2xl bg-tactical-green text-black font-mono font-black text-xl flex items-center justify-center shrink-0 shadow-md">
+                                07
+                            </div>
+                            <div class="flex-grow">
+                                <div class="flex flex-wrap items-center gap-2 mb-2">
+                                    <h2 class="text-lg sm:text-xl font-bold text-white">Резервное копирование и перенос на другой телефон</h2>
+                                    <span class="text-[10px] font-mono bg-tactical-darkGreen text-tactical-green border border-tactical-green/30 px-2 py-0.5 rounded-md font-semibold">Раздел «Настройки»</span>
+                                </div>
+                                <p class="text-xs sm:text-sm text-gray-300 leading-relaxed mb-3">
+                                    Чтобы никогда не потерять данные подразделения при поломке или утере телефона:
+                                </p>
+                                <div class="bg-tactical-dark/80 border border-tactical-border/70 rounded-xl p-4 text-xs space-y-2 text-gray-300">
+                                    <div class="flex items-start gap-2">
+                                        <i data-lucide="hard-drive" class="w-4 h-4 text-tactical-green shrink-0 mt-0.5"></i>
+                                        <div>
+                                            <strong>Создание бэкапа:</strong> В Настройках нажмите <em>«Создать резервную копию»</em>. Файл базы данных мгновенно сохранится на Flash-карту памяти MicroSD или во внутреннюю память телефона.
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start gap-2">
+                                        <i data-lucide="refresh-cw" class="w-4 h-4 text-tactical-green shrink-0 mt-0.5"></i>
+                                        <div>
+                                            <strong>Восстановление:</strong> На новом смартфоне установите APK, откройте Настройки -> <em>«Восстановить из файла»</em>. Вся база, позывные и история восстановятся за 1 секунду.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Call to action inside manual -->
+                <div class="mt-12 max-w-4xl mx-auto text-center bg-gradient-to-r from-tactical-card via-tactical-darkGreen/20 to-tactical-card border border-tactical-green/40 p-8 rounded-3xl">
+                    <h3 class="text-xl sm:text-2xl font-black text-white mb-2">
+                        Готовы внедрить учёт в своём подразделении?
+                    </h3>
+                    <p class="text-xs sm:text-sm text-tactical-muted max-w-xl mx-auto mb-6">
+                        Скачайте установочный APK-файл прямо сейчас и настройте справочник за 5 минут.
+                    </p>
+                    <a href="index.html#download" class="inline-flex items-center space-x-3 bg-tactical-green hover:bg-tactical-accent text-black font-black text-sm sm:text-base px-8 py-3.5 rounded-2xl transition-all shadow-lg glow-green transform hover:scale-[1.02]">
+                        <i data-lucide="download" class="w-5 h-5"></i>
+                        <span>СКАЧАТЬ АСУ «КАПТЁРКА PRO» v2.5</span>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-tactical-dark border-t border-tactical-border py-12 text-tactical-muted text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 rounded-lg bg-tactical-card border border-tactical-border flex items-center justify-center text-tactical-green">
+                        <i data-lucide="shield" class="w-4 h-4"></i>
+                    </div>
+                    <div>
+                        <div class="text-white font-bold font-mono">АСУ «КАПТЁРКА PRO» v2.5</div>
+                        <div class="text-tactical-muted text-[11px]">Автономная система тактического складского учёта</div>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap gap-4 text-xs font-mono">
+                    <a href="index.html" class="hover:text-tactical-green transition-colors">Главная</a>
+                    <a href="about.html" class="hover:text-tactical-green transition-colors">О программе</a>
+                    <a href="manual.html" class="hover:text-tactical-green transition-colors">Инструкция</a>
+                    <a href="index.html#showcase" class="hover:text-tactical-green transition-colors">Скриншоты</a>
+                    <a href="index.html#download" class="hover:text-tactical-green transition-colors text-tactical-green font-bold">Скачать APK</a>
+                </div>
+
+                <div class="text-center md:text-right font-mono text-[11px]">
+                    <div>© 2026 АСУ «КАПТЁРКА PRO». Все права защищены.</div>
+                    <div class="text-tactical-muted">Разработчик: Васев А.Е.</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lucide Icons Script -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
