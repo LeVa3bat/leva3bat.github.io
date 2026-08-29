@@ -1,0 +1,16 @@
+{
+  "name": "АСУ КАПТЁРКА PRO",
+  "short_name": "Каптёрка",
+  "description": "Автономная система тактического складского учёта для подразделений",
+  "start_url": "/manual.html",
+  "display": "standalone",
+  "background_color": "#0a0f0d",
+  "theme_color": "#4CAF50",
+  "icons": [
+    {
+      "src": "images/screenshot-1.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}

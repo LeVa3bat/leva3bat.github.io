@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://kapterka-pro.ru/sitemap.xml
+Host: https://kapterka-pro.ru

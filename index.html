@@ -129,6 +129,34 @@
             background: #4CAF50;
         }
     </style>
+    <!-- PWA & Mobile Settings -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4CAF50">
+    <link rel="canonical" href="https://kapterka-pro.ru/">
+    
+    <!-- Schema.org SoftwareApplication Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "АСУ «КАПТЁРКА PRO»",
+      "operatingSystem": "Android",
+      "applicationCategory": "BusinessApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "RUB"
+      },
+      "description": "Автономная система тактического складского учёта вооружения, боеприпасов, средств связи, БПЛА и вещевого имущества роты/взвода без интернета.",
+      "downloadUrl": "https://kapterka-pro.ru/kapterka-app.apk",
+      "softwareVersion": "2.5",
+      "fileSize": "34MB",
+      "author": {
+        "@type": "Person",
+        "name": "Васев А.Е."
+      }
+    }
+    </script>
 </head>
 <body class="min-h-screen flex flex-col antialiased selection:bg-tactical-green selection:text-black">
 
@@ -272,6 +300,25 @@
                             <i data-lucide="copy" class="w-3.5 h-3.5 text-tactical-green"></i>
                             Копия
                         </button>
+                    </div>
+                </div>
+
+                
+                <!-- QR Code for Instant Mobile Download -->
+                <div class="max-w-md mx-auto bg-tactical-card border border-tactical-border/90 rounded-2xl p-4 mb-8 shadow-xl flex items-center gap-4 text-left">
+                    <div class="bg-tactical-bg p-1.5 rounded-xl border border-tactical-green/40 shrink-0">
+                        <img src="images/qr-download.png" alt="QR-код для скачивания APK" class="w-20 h-20 rounded-lg">
+                    </div>
+                    <div>
+                        <div class="text-xs font-mono font-bold text-tactical-green flex items-center gap-1.5 mb-1">
+                            <i data-lucide="qr-code" class="w-4 h-4"></i> НАВЕДИТЕ КАМЕРУ
+                        </div>
+                        <div class="text-xs font-bold text-white mb-1 leading-snug">
+                            Скачать APK прямо на телефон
+                        </div>
+                        <div class="text-[11px] text-tactical-muted leading-tight">
+                            Отсканируйте камерой смартфона для мгновенной загрузки приложения v2.5.
+                        </div>
                     </div>
                 </div>
 
