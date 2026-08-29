@@ -168,10 +168,12 @@
             <!-- User Auth Bar / Actions -->
             <div class="flex items-center space-x-2 sm:space-x-3">
                 <div id="nav-user-profile" class="hidden flex items-center space-x-2 bg-tactical-card border border-tactical-border px-3 py-1.5 rounded-xl text-xs font-mono">
-                    <span class="w-2 h-2 rounded-full bg-tactical-green"></span>
+                    <span class="w-2 h-2 rounded-full bg-tactical-green animate-pulse"></span>
+                    <span class="text-tactical-muted">Позывной:</span>
                     <span id="nav-callsign-display" class="font-bold text-white"></span>
-                    <button onclick="logoutUser()" class="text-tactical-red hover:text-white ml-2 transition-colors" title="Выйти">
+                    <button onclick="logoutUser()" class="ml-2 bg-tactical-bg hover:bg-tactical-red/20 text-tactical-red hover:text-white border border-tactical-border px-2 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1" title="Выйти из кабинета">
                         <i data-lucide="log-out" class="w-3.5 h-3.5"></i>
+                        <span class="hidden sm:inline">Выход</span>
                     </button>
                 </div>
                 
@@ -208,30 +210,34 @@
 
         <!-- TOP CONTROLS / TABS -->
         <div class="flex flex-wrap items-center justify-between gap-3 pb-6 border-b border-tactical-border">
-            <div class="flex flex-wrap items-center gap-2">
-                <button id="tab-btn-chat" onclick="switchMainTab('chat')" class="tab-btn active px-4 py-2.5 rounded-xl border border-tactical-border text-xs sm:text-sm font-semibold flex items-center gap-2 transition-all">
+            <div id="dynamic-tabs-container" class="flex flex-wrap items-center gap-2">
+                <!-- Logged in state tabs -->
+                <button id="tab-btn-profile" onclick="switchMainTab('profile')" class="tab-btn active px-4 py-2.5 rounded-xl border border-tactical-border text-xs sm:text-sm font-semibold flex items-center gap-2 transition-all">
+                    <i data-lucide="user-check" class="w-4 h-4"></i>
+                    <span>Личный кабинет</span>
+                </button>
+                <button id="tab-btn-chat" onclick="switchMainTab('chat')" class="tab-btn px-4 py-2.5 rounded-xl border border-tactical-border text-xs sm:text-sm font-semibold flex items-center gap-2 transition-all">
                     <i data-lucide="message-square" class="w-4 h-4"></i>
                     <span>Оперативный Чат</span>
                     <span id="chat-count-badge" class="bg-tactical-green/20 text-tactical-green text-[10px] px-1.5 py-0.5 rounded-full font-mono font-bold">0</span>
                 </button>
-                <button id="tab-btn-profile" onclick="switchMainTab('profile')" class="tab-btn px-4 py-2.5 rounded-xl border border-tactical-border text-xs sm:text-sm font-semibold flex items-center gap-2 transition-all">
-                    <i data-lucide="user-check" class="w-4 h-4"></i>
-                    <span>Личный кабинет</span>
-                </button>
-                <button id="tab-btn-register" onclick="switchMainTab('register')" class="tab-btn px-4 py-2.5 rounded-xl border border-tactical-border text-xs sm:text-sm font-semibold flex items-center gap-2 transition-all">
+                
+                <!-- Logged out state tabs (hidden when logged in) -->
+                <button id="tab-btn-register" onclick="switchMainTab('register')" class="tab-btn hidden px-4 py-2.5 rounded-xl border border-tactical-border text-xs sm:text-sm font-semibold flex items-center gap-2 transition-all">
                     <i data-lucide="user-plus" class="w-4 h-4"></i>
                     <span>Регистрация</span>
                 </button>
-                <button id="tab-btn-login" onclick="switchMainTab('login')" class="tab-btn px-4 py-2.5 rounded-xl border border-tactical-border text-xs sm:text-sm font-semibold flex items-center gap-2 transition-all">
+                <button id="tab-btn-login" onclick="switchMainTab('login')" class="tab-btn hidden px-4 py-2.5 rounded-xl border border-tactical-border text-xs sm:text-sm font-semibold flex items-center gap-2 transition-all">
                     <i data-lucide="log-in" class="w-4 h-4"></i>
                     <span>Вход</span>
                 </button>
             </div>
 
-            <div class="flex items-center gap-2">
-                <button onclick="openAdminModal()" class="px-3.5 py-2 rounded-xl bg-tactical-card hover:bg-tactical-border border border-tactical-gold/40 text-tactical-gold text-xs font-mono font-bold flex items-center gap-1.5 transition-all">
-                    <i data-lucide="shield-alert" class="w-3.5 h-3.5"></i>
-                    <span>Админ-панель</span>
+            <!-- Logged in Exit Action button -->
+            <div id="top-logout-container" class="hidden items-center gap-2">
+                <button onclick="logoutUser()" class="px-3.5 py-2 rounded-xl bg-tactical-card hover:bg-tactical-red/20 border border-tactical-border hover:border-tactical-red/50 text-tactical-red font-mono text-xs font-bold flex items-center gap-1.5 transition-all">
+                    <i data-lucide="log-out" class="w-3.5 h-3.5"></i>
+                    <span>Выйти из кабинета</span>
                 </button>
             </div>
         </div>
@@ -352,7 +358,7 @@
             </div>
         </section>
 
-        <!-- TAB 2: REGISTRATION FORM WITH VERIFICATION CODES -->
+        <!-- TAB 2: REGISTRATION FORM (DIRECT 1-STEP) -->
         <section id="view-register" class="mt-6 hidden">
             <div class="max-w-2xl mx-auto bg-tactical-card border border-tactical-border rounded-3xl p-6 sm:p-8 shadow-2xl">
                 
@@ -361,7 +367,7 @@
                         <i data-lucide="user-plus" class="w-6 h-6"></i>
                     </div>
                     <h2 class="text-2xl sm:text-3xl font-black text-white">Регистрация в системе</h2>
-                    <p class="text-xs sm:text-sm text-tactical-muted mt-1">Создайте учётную запись бойца / ответственного по складу с верификацией контактов</p>
+                    <p class="text-xs sm:text-sm text-tactical-muted mt-1">Быстрое создание учётной записи бойца для доступа к личному кабинету и чату</p>
                 </div>
 
                 <!-- OPSEC Warning Box -->
@@ -395,88 +401,58 @@
                         </div>
                     </div>
 
-                    <!-- Email Verification Block -->
-                    <div class="bg-tactical-bg/80 border border-tactical-border rounded-2xl p-4 space-y-2">
-                        <label class="block text-xs font-mono font-bold text-tactical-muted">EMAIL (ЭЛЕКТРОННАЯ ПОЧТА) <span class="text-tactical-green">*</span></label>
-                        <div class="flex flex-col sm:flex-row gap-2">
-                            <div class="relative flex-grow">
+                    <!-- Email & Phone Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-mono font-bold text-tactical-muted mb-1.5">EMAIL (ДЛЯ СВЯЗИ) <span class="text-tactical-green">*</span></label>
+                            <div class="relative">
                                 <input type="email" id="reg-email" placeholder="example@mail.ru" required
-                                    class="w-full bg-tactical-card border border-tactical-border rounded-xl pl-9 pr-3 py-2.5 text-sm text-white focus:outline-none focus:border-tactical-green font-mono">
+                                    class="w-full bg-tactical-bg border border-tactical-border rounded-xl pl-9 pr-3 py-2.5 text-sm text-white focus:outline-none focus:border-tactical-green font-mono">
                                 <i data-lucide="mail" class="w-4 h-4 text-tactical-muted absolute left-3 top-3"></i>
                             </div>
-                            <button type="button" id="btn-send-email-code" onclick="sendEmailVerificationCode()" 
-                                class="px-4 py-2.5 bg-tactical-darkGreen hover:bg-tactical-borderBright text-tactical-green font-mono text-xs font-bold rounded-xl border border-tactical-green/50 transition-all flex items-center justify-center gap-1.5 shrink-0">
-                                <i data-lucide="send" class="w-3.5 h-3.5"></i>
-                                <span>Получить код</span>
-                            </button>
                         </div>
 
-                        <!-- Email Code Input (Appears when code sent) -->
-                        <div id="email-code-box" class="hidden pt-2 border-t border-tactical-border/60 flex items-center gap-2">
-                            <input type="text" id="reg-email-code" placeholder="6-значный код из почты" maxlength="6"
-                                class="w-48 bg-tactical-card border border-tactical-green/60 rounded-xl px-3 py-2 text-sm text-center font-mono font-bold text-tactical-green tracking-widest focus:outline-none">
-                            <button type="button" onclick="verifyEmailCode()" class="px-3.5 py-2 bg-tactical-green text-black font-bold text-xs rounded-xl">
-                                Подтвердить Email
-                            </button>
-                            <span id="email-verify-status" class="text-xs font-mono text-tactical-muted"></span>
-                        </div>
-                    </div>
-
-                    <!-- Phone Verification Block -->
-                    <div class="bg-tactical-bg/80 border border-tactical-border rounded-2xl p-4 space-y-2">
-                        <label class="block text-xs font-mono font-bold text-tactical-muted">НОМЕР ТЕЛЕФОНА <span class="text-tactical-green">*</span></label>
-                        <div class="flex flex-col sm:flex-row gap-2">
-                            <div class="relative flex-grow">
+                        <div>
+                            <label class="block text-xs font-mono font-bold text-tactical-muted mb-1.5">НОМЕР ТЕЛЕФОНА <span class="text-tactical-green">*</span></label>
+                            <div class="relative">
                                 <input type="tel" id="reg-phone" placeholder="+7 (9xx) xxx-xx-xx" required
-                                    class="w-full bg-tactical-card border border-tactical-border rounded-xl pl-9 pr-3 py-2.5 text-sm text-white focus:outline-none focus:border-tactical-green font-mono">
+                                    class="w-full bg-tactical-bg border border-tactical-border rounded-xl pl-9 pr-3 py-2.5 text-sm text-white focus:outline-none focus:border-tactical-green font-mono">
                                 <i data-lucide="phone" class="w-4 h-4 text-tactical-muted absolute left-3 top-3"></i>
                             </div>
-                            <button type="button" id="btn-send-phone-code" onclick="sendPhoneVerificationCode()" 
-                                class="px-4 py-2.5 bg-tactical-darkGreen hover:bg-tactical-borderBright text-tactical-green font-mono text-xs font-bold rounded-xl border border-tactical-green/50 transition-all flex items-center justify-center gap-1.5 shrink-0">
-                                <i data-lucide="message-square" class="w-3.5 h-3.5"></i>
-                                <span>Код по SMS/TG</span>
-                            </button>
-                        </div>
-
-                        <!-- Phone Code Input (Appears when code sent) -->
-                        <div id="phone-code-box" class="hidden pt-2 border-t border-tactical-border/60 flex items-center gap-2">
-                            <input type="text" id="reg-phone-code" placeholder="6-значный код" maxlength="6"
-                                class="w-48 bg-tactical-card border border-tactical-green/60 rounded-xl px-3 py-2 text-sm text-center font-mono font-bold text-tactical-green tracking-widest focus:outline-none">
-                            <button type="button" onclick="verifyPhoneCode()" class="px-3.5 py-2 bg-tactical-green text-black font-bold text-xs rounded-xl">
-                                Подтвердить Тел.
-                            </button>
-                            <span id="phone-verify-status" class="text-xs font-mono text-tactical-muted"></span>
                         </div>
                     </div>
 
-                    <!-- Password -->
+                    <!-- Password & Comment -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                             <label class="block text-xs font-mono font-bold text-tactical-muted mb-1.5">ПАРОЛЬ ДЛЯ ВХОДА <span class="text-tactical-green">*</span></label>
                             <div class="relative">
-                                <input type="password" id="reg-password" placeholder="Минимум 6 символов" required minlength="6"
+                                <input type="password" id="reg-password" placeholder="Минимум 4 символа" required minlength="4"
                                     class="w-full bg-tactical-bg border border-tactical-border rounded-xl pl-9 pr-3 py-2.5 text-sm text-white focus:outline-none focus:border-tactical-green font-mono">
                                 <i data-lucide="key" class="w-4 h-4 text-tactical-muted absolute left-3 top-3"></i>
                             </div>
                         </div>
 
                         <div>
-                            <label class="block text-xs font-mono font-bold text-tactical-muted mb-1.5">ДОПОЛНИТЕЛЬНЫЙ КОММЕНТАРИЙ / ПОЖЕЛАНИЯ</label>
-                            <input type="text" id="reg-comment" placeholder="Должность или пожелания (без секретных данных)"
+                            <label class="block text-xs font-mono font-bold text-tactical-muted mb-1.5">ПОЖЕЛАНИЯ / КОММЕНТАРИЙ</label>
+                            <input type="text" id="reg-comment" placeholder="Пожелания или задачи (без секретных данных)"
                                 class="w-full bg-tactical-bg border border-tactical-border rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-tactical-green">
-                            <span class="text-[10px] text-tactical-muted block mt-1">⚠️ Запрещено указывать пункты дислокации, направления действий и гео-координаты.</span>
                         </div>
                     </div>
 
                     <!-- Submit Button -->
                     <button type="submit" id="btn-submit-reg" class="w-full bg-tactical-green hover:bg-tactical-accent text-black font-black text-sm py-3.5 rounded-2xl transition-all shadow-xl glow-green transform hover:scale-[1.01] flex items-center justify-center gap-2">
                         <i data-lucide="check-circle" class="w-5 h-5"></i>
-                        <span>ЗАВЕРШИТЬ РЕГИСТРАЦИЮ</span>
+                        <span>ЗАРЕГИСТРИРОВАТЬСЯ И ВОЙТИ В КАБИНЕТ</span>
                     </button>
 
                     <div class="text-center text-xs text-tactical-muted">
                         Уже есть аккаунт? <button type="button" onclick="switchMainTab('login')" class="text-tactical-green underline font-bold">Войти в кабинет</button>
                     </div>
+
+                </form>
+            </div>
+        </section>
 
                 </form>
             </div>
@@ -788,6 +764,32 @@
             renderChatFeed();
             updateCommunityStats();
             syncWithGitHubRegistry();
+
+            // Handle Hash routing
+            const hash = window.location.hash;
+            if (hash === '#admin') {
+                openAdminModal();
+            } else if (hash === '#register') {
+                switchMainTab('register');
+            } else if (hash === '#login') {
+                switchMainTab('login');
+            } else if (hash === '#chat') {
+                switchMainTab('chat');
+            } else {
+                if (currentUser) {
+                    switchMainTab('profile');
+                } else {
+                    switchMainTab('register');
+                }
+            }
+
+            // Secret key combination for Admin Panel (Ctrl + Shift + A)
+            window.addEventListener('keydown', (e) => {
+                if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'A' || e.key === 'a' || e.key === 'Ф' || e.key === 'ф')) {
+                    e.preventDefault();
+                    openAdminModal();
+                }
+            });
         });
 
         // TAB SWITCHING
@@ -797,13 +799,16 @@
 
             if (tab === 'chat') {
                 document.getElementById('view-chat').classList.remove('hidden');
-                document.getElementById('tab-btn-chat').classList.add('active');
+                const btn = document.getElementById('tab-btn-chat');
+                if (btn) btn.classList.add('active');
             } else if (tab === 'register') {
                 document.getElementById('view-register').classList.remove('hidden');
-                document.getElementById('tab-btn-register').classList.add('active');
+                const btn = document.getElementById('tab-btn-register');
+                if (btn) btn.classList.add('active');
             } else if (tab === 'login') {
                 document.getElementById('view-login').classList.remove('hidden');
-                document.getElementById('tab-btn-login').classList.add('active');
+                const btn = document.getElementById('tab-btn-login');
+                if (btn) btn.classList.add('active');
             } else if (tab === 'profile') {
                 if (!currentUser) {
                     showToast('Сначала войдите в аккаунт или зарегистрируйтесь');
@@ -811,7 +816,8 @@
                     return;
                 }
                 document.getElementById('view-profile').classList.remove('hidden');
-                document.getElementById('tab-btn-profile').classList.add('active');
+                const btn = document.getElementById('tab-btn-profile');
+                if (btn) btn.classList.add('active');
                 renderUserProfile();
             }
             lucide.createIcons();
@@ -843,63 +849,7 @@
             }
         }
 
-        // VERIFICATION CODES (EMAIL & PHONE)
-        function sendEmailVerificationCode() {
-            const email = document.getElementById('reg-email').value.trim();
-            if (!email || !email.includes('@')) {
-                alert('Пожалуйста, введите корректный адрес электронной почты!');
-                return;
-            }
-            generatedEmailCode = Math.floor(100000 + Math.random() * 900000).toString();
-            document.getElementById('email-code-box').classList.remove('hidden');
-            document.getElementById('email-verify-status').innerText = 'Код выслан! Введите его в поле слева.';
-            document.getElementById('email-verify-status').className = 'text-xs font-mono text-tactical-gold';
-            
-            // Send alert to Telegram with code
-            sendTelegramAlert(`📧 <b>ПРОВЕРОЧНЫЙ КОД EMAIL</b>\n\nАдрес: <code>${email}</code>\nКод подтверждения: <code>${generatedEmailCode}</code>`);
-            showToast(`Код проверки Email: ${generatedEmailCode} (также продублирован в Telegram)`);
-        }
-
-        function verifyEmailCode() {
-            const entered = document.getElementById('reg-email-code').value.trim();
-            if (entered === generatedEmailCode && generatedEmailCode !== '') {
-                isEmailVerified = true;
-                document.getElementById('email-verify-status').innerText = '✅ Email подтверждён!';
-                document.getElementById('email-verify-status').className = 'text-xs font-mono text-tactical-green font-bold';
-                showToast('Email успешно верифицирован!');
-            } else {
-                alert('Неверный проверочный код Email! Попробуйте снова.');
-            }
-        }
-
-        function sendPhoneVerificationCode() {
-            const phone = document.getElementById('reg-phone').value.trim();
-            if (!phone || phone.length < 6) {
-                alert('Пожалуйста, введите корректный номер телефона!');
-                return;
-            }
-            generatedPhoneCode = Math.floor(100000 + Math.random() * 900000).toString();
-            document.getElementById('phone-code-box').classList.remove('hidden');
-            document.getElementById('phone-verify-status').innerText = 'Код выслан! Введите его в поле.';
-            document.getElementById('phone-verify-status').className = 'text-xs font-mono text-tactical-gold';
-
-            sendTelegramAlert(`📱 <b>ПРОВЕРОЧНЫЙ КОД ТЕЛЕФОНА</b>\n\nНомер: <code>${phone}</code>\nКод подтверждения: <code>${generatedPhoneCode}</code>`);
-            showToast(`Код проверки Телефона: ${generatedPhoneCode}`);
-        }
-
-        function verifyPhoneCode() {
-            const entered = document.getElementById('reg-phone-code').value.trim();
-            if (entered === generatedPhoneCode && generatedPhoneCode !== '') {
-                isPhoneVerified = true;
-                document.getElementById('phone-verify-status').innerText = '✅ Телефон подтверждён!';
-                document.getElementById('phone-verify-status').className = 'text-xs font-mono text-tactical-green font-bold';
-                showToast('Телефон успешно верифицирован!');
-            } else {
-                alert('Неверный проверочный код телефона! Попробуйте снова.');
-            }
-        }
-
-        // REGISTRATION SUBMISSION
+        // REGISTRATION SUBMISSION (DIRECT & INSTANT)
         async function handleRegistrationSubmit(e) {
             e.preventDefault();
             const callsign = document.getElementById('reg-callsign').value.trim();
@@ -909,8 +859,9 @@
             const password = document.getElementById('reg-password').value.trim();
             const comment = document.getElementById('reg-comment').value.trim();
 
-            if (!isEmailVerified) {
-                if (!confirm('Email не был верифицирован по коду. Продолжить регистрацию?')) return;
+            if (!callsign || !unit || !email || !password) {
+                alert('Пожалуйста, заполните все обязательные поля!');
+                return;
             }
 
             const newUser = {
@@ -920,8 +871,8 @@
                 email: email,
                 phone: phone,
                 password: password,
-                isEmailVerified: isEmailVerified,
-                isPhoneVerified: isPhoneVerified,
+                isEmailVerified: true,
+                isPhoneVerified: true,
                 licenseStatus: 'FREE',
                 registeredAt: new Date().toLocaleString('ru-RU'),
                 adminNote: comment ? `Заметка: ${comment}` : ''
@@ -933,13 +884,13 @@
             currentUser = newUser;
             localStorage.setItem('kapterka_user', JSON.stringify(currentUser));
 
-            // Send notification to Admin Telegram
+            // Send instant notification to Admin Telegram
             await sendTelegramAlert(
                 `🪖 <b>НОВАЯ РЕГИСТРАЦИЯ БОЙЦА НА САЙТЕ!</b>\n\n` +
                 `👤 <b>Позывной:</b> <b>${callsign}</b>\n` +
                 `🏢 <b>Подразделение:</b> ${unit}\n` +
-                `📧 <b>Email:</b> <code>${email}</code> ${isEmailVerified ? '✅' : '⚠️'}\n` +
-                `📱 <b>Телефон:</b> <code>${phone}</code> ${isPhoneVerified ? '✅' : '⚠️'}\n` +
+                `📧 <b>Email:</b> <code>${email}</code>\n` +
+                `📱 <b>Телефон:</b> <code>${phone}</code>\n` +
                 `📝 <b>Комментарий:</b> ${comment || '—'}\n` +
                 `🕒 <b>Время:</b> ${newUser.registeredAt}`
             );
@@ -949,7 +900,7 @@
 
             updateAuthHeaderState();
             updateCommunityStats();
-            showToast('Регистрация успешно завершена! Добро пожаловать!');
+            showToast('Регистрация успешно завершена! Вы вошли в личный кабинет.');
             switchMainTab('profile');
         }
 
@@ -960,7 +911,7 @@
             const pass = document.getElementById('login-password').value.trim();
 
             const found = allUsers.find(u => 
-                (u.callsign.toLowerCase() === ident || u.email.toLowerCase() === ident || u.phone.includes(ident)) &&
+                (u.callsign.toLowerCase() === ident || (u.email && u.email.toLowerCase() === ident) || (u.phone && u.phone.includes(ident))) &&
                 (!u.password || u.password === pass)
             );
 
@@ -979,20 +930,45 @@
             currentUser = null;
             localStorage.removeItem('kapterka_user');
             updateAuthHeaderState();
-            showToast('Вы вышли из аккаунта');
-            switchMainTab('chat');
+            showToast('Вы вышли из личного кабинета');
+            switchMainTab('register');
         }
 
         function updateAuthHeaderState() {
+            const navProfile = document.getElementById('nav-user-profile');
+            const navAuthButtons = document.getElementById('nav-auth-buttons');
+            const topLogout = document.getElementById('top-logout-container');
+            const tabProfile = document.getElementById('tab-btn-profile');
+            const tabRegister = document.getElementById('tab-btn-register');
+            const tabLogin = document.getElementById('tab-btn-login');
+
             if (currentUser) {
-                document.getElementById('nav-user-profile').classList.remove('hidden');
+                if (navProfile) navProfile.classList.remove('hidden');
+                if (navAuthButtons) navAuthButtons.classList.add('hidden');
+                if (topLogout) {
+                    topLogout.classList.remove('hidden');
+                    topLogout.classList.add('flex');
+                }
                 document.getElementById('nav-callsign-display').innerText = currentUser.callsign;
-                document.getElementById('nav-auth-buttons').classList.add('hidden');
-                document.getElementById('chat-author-input').value = currentUser.callsign;
-                document.getElementById('chat-unit-input').value = currentUser.unit || '';
+                
+                if (tabProfile) tabProfile.classList.remove('hidden');
+                if (tabRegister) tabRegister.classList.add('hidden');
+                if (tabLogin) tabLogin.classList.add('hidden');
+
+                const chatAuthor = document.getElementById('chat-author-input');
+                const chatUnit = document.getElementById('chat-unit-input');
+                if (chatAuthor) chatAuthor.value = currentUser.callsign;
+                if (chatUnit) chatUnit.value = currentUser.unit || '';
             } else {
-                document.getElementById('nav-user-profile').classList.add('hidden');
-                document.getElementById('nav-auth-buttons').classList.remove('hidden');
+                if (navProfile) navProfile.classList.add('hidden');
+                if (navAuthButtons) navAuthButtons.classList.remove('hidden');
+                if (topLogout) {
+                    topLogout.classList.add('hidden');
+                    topLogout.classList.remove('flex');
+                }
+                if (tabProfile) tabProfile.classList.add('hidden');
+                if (tabRegister) tabRegister.classList.remove('hidden');
+                if (tabLogin) tabLogin.classList.remove('hidden');
             }
         }
 
