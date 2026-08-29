@@ -190,7 +190,7 @@
                 </div>
 
                 <!-- 3 Pillars of the App -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
                     
                     <div class="bg-tactical-card border border-tactical-border p-6 sm:p-7 rounded-2xl relative overflow-hidden flex flex-col justify-between">
                         <div class="absolute top-0 right-0 w-24 h-24 bg-tactical-green/5 rounded-bl-full -z-0"></div>
@@ -237,6 +237,28 @@
                         </div>
                         <div class="mt-5 pt-3 border-t border-tactical-border/60 text-blue-400 text-xs font-mono font-semibold flex items-center gap-1.5">
                             <i data-lucide="check-circle" class="w-4 h-4"></i> Баланс сойдется до патрона
+                        </div>
+                    </div>
+
+                
+                    <!-- Card 4: Point Synchronization -->
+                    <div class="bg-tactical-card border border-tactical-green/40 p-6 sm:p-7 rounded-2xl relative overflow-hidden flex flex-col justify-between shadow-lg">
+                        <div class="absolute top-0 right-0 w-28 h-28 bg-tactical-green/10 rounded-bl-full -z-0"></div>
+                        <div class="relative z-10">
+                            <div class="w-12 h-12 rounded-xl bg-tactical-green/15 border border-tactical-green/40 flex items-center justify-center text-tactical-green mb-4 shadow-sm">
+                                <i data-lucide="refresh-cw" class="w-6 h-6 animate-spin-slow"></i>
+                            </div>
+                            <div class="flex items-center gap-2 mb-2">
+                                <h3 class="text-lg font-bold text-white">Синхронизация по точкам</h3>
+                                <span class="text-[10px] font-mono bg-tactical-darkGreen text-tactical-green border border-tactical-green/40 px-2 py-0.5 rounded-full font-bold">OFFLINE-FIRST</span>
+                            </div>
+                            <p class="text-xs sm:text-sm text-gray-300 leading-relaxed">
+                                <strong>Когда нет связи:</strong> данные надёжно копятся в локальной памяти телефона на каждой огневой позиции, ВОРе или каптёрке.<br>
+                                <strong>Когда появляется связь:</strong> все накопленные приходы, расходы и перемещения автоматически выгружаются и сводятся в единый баланс.
+                            </p>
+                        </div>
+                        <div class="mt-5 pt-3 border-t border-tactical-border/80 text-tactical-green text-xs font-mono font-semibold flex items-center gap-1.5">
+                            <i data-lucide="check-circle" class="w-4 h-4"></i> Бесшовный обмен между подразделениями
                         </div>
                     </div>
 
@@ -297,8 +319,8 @@
 
     </main>
 
-    <!-- FOOTER -->
-    <footer class="bg-tactical-dark border-t border-tactical-border py-12 text-tactical-muted text-xs">
+        <!-- FOOTER -->
+    <footer class="bg-tactical-dark border-t border-tactical-border py-8 text-tactical-muted text-xs">
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
             <div class="flex flex-col md:flex-row justify-between items-center gap-6">
                 <div class="flex items-center space-x-3">
@@ -311,17 +333,27 @@
                     </div>
                 </div>
 
-                <div class="flex flex-wrap gap-4 text-xs font-mono">
+                <div class="flex flex-wrap items-center justify-center gap-4 text-xs font-mono">
                     <a href="index.html" class="hover:text-tactical-green transition-colors">Главная</a>
                     <a href="about.html" class="hover:text-tactical-green transition-colors">О программе</a>
                     <a href="manual.html" class="hover:text-tactical-green transition-colors">Инструкция</a>
                     <a href="index.html#showcase" class="hover:text-tactical-green transition-colors">Скриншоты</a>
-                    <a href="kapterka-app.apk" download="kapterka-app-v2.5.apk" class="hover:text-tactical-green transition-colors text-tactical-green font-bold">Скачать APK</a>
+                    <a href="kapterka-app.apk" download="kapterka-app-v2.5.apk" class="hover:text-tactical-green transition-colors text-tactical-green font-bold flex items-center gap-1">
+                        <i data-lucide="download" class="w-3.5 h-3.5"></i> Скачать APK
+                    </a>
                 </div>
 
-                <div class="text-center md:text-right font-mono text-[11px]">
-                    <div>© 2026 АСУ «КАПТЁРКА PRO». Все права защищены.</div>
-                    <div class="text-tactical-muted">Разработчик: Васев А.Е.</div>
+                <div class="flex items-center gap-4 text-center md:text-right font-mono text-[11px]">
+                    <div>
+                        <div class="text-white font-semibold">© 2026 АСУ «КАПТЁРКА PRO»</div>
+                        <div class="text-tactical-muted">Разработчик: Васев А.Е.</div>
+                    </div>
+                    <!-- Yandex.Metrika Informer -->
+                    <a href="https://metrika.yandex.ru/stat/?id=112062746&amp;from=informer"
+                       target="_blank" rel="nofollow" class="inline-block hover:opacity-90 transition-opacity" title="Яндекс.Метрика">
+                        <img src="https://informer.yandex.ru/informer/112062746/3_1_FFFFFFFF_EFEFEFFF_0_pageviews"
+                             style="width:88px; height:31px; border:0;" alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)" class="ym-advanced-informer rounded" data-cid="112062746" data-lang="ru" />
+                    </a>
                 </div>
             </div>
         </div>
