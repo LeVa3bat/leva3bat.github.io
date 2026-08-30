@@ -1351,15 +1351,48 @@
             document.body.removeChild(link);
         }
 
+        // Safe UTF-8 Base64 Helpers
+        function utf8ToBase64(str) {
+            try {
+                const bytes = new TextEncoder().encode(str);
+                let binary = '';
+                const len = bytes.byteLength;
+                for (let i = 0; i < len; i++) {
+                    binary += String.fromCharCode(bytes[i]);
+                }
+                return btoa(binary);
+            } catch (e) {
+                return btoa(unescape(encodeURIComponent(str)));
+            }
+        }
+
+        function base64ToUtf8(str) {
+            try {
+                const binary = atob(str.replace(/\s/g, ''));
+                const bytes = new Uint8Array(binary.length);
+                for (let i = 0; i < binary.length; i++) {
+                    bytes[i] = binary.charCodeAt(i);
+                }
+                return new TextDecoder('utf-8').decode(bytes);
+            } catch (e) {
+                try {
+                    return decodeURIComponent(escape(atob(str.replace(/\s/g, ''))));
+                } catch (e2) {
+                    return atob(str.replace(/\s/g, ''));
+                }
+            }
+        }
+
         // GITHUB API SYNC FOR COMMUNITY & USERS
         async function syncWithGitHubRegistry() {
             try {
-                const res = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/api/users.json`, {
+                const res = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/api/users.json?_t=${Date.now()}`, {
+                    cache: 'no-store',
                     headers: { 'Accept': 'application/vnd.github.v3+json' }
                 });
                 if (res.ok) {
                     const data = await res.json();
-                    const content = decodeURIComponent(escape(atob(data.content)));
+                    const content = base64ToUtf8(data.content);
                     const parsed = JSON.parse(content);
                     if (parsed && Array.isArray(parsed.users)) {
                         // Merge users
@@ -1379,7 +1412,8 @@
         async function pushUsersToGitHub() {
             try {
                 let sha = null;
-                const getRes = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/api/users.json`, {
+                const getRes = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/api/users.json?_t=${Date.now()}`, {
+                    cache: 'no-store',
                     headers: {
                         'Authorization': `token ${GITHUB_TOKEN}`,
                         'Accept': 'application/vnd.github.v3+json'
@@ -1394,7 +1428,7 @@
                     updatedAt: Date.now(),
                     users: allUsers
                 };
-                const contentB64 = btoa(unescape(encodeURIComponent(JSON.stringify(payload, null, 2))));
+                const contentB64 = utf8ToBase64(JSON.stringify(payload, null, 2));
                 await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/api/users.json`, {
                     method: 'PUT',
                     headers: {
@@ -1417,7 +1451,8 @@
             try {
                 let sha = null;
                 let ordersData = { updatedAt: Date.now(), orders: {} };
-                const res = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/api/approved_orders.json`, {
+                const res = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/api/approved_orders.json?_t=${Date.now()}`, {
+                    cache: 'no-store',
                     headers: {
                         'Authorization': `token ${GITHUB_TOKEN}`,
                         'Accept': 'application/vnd.github.v3+json'
@@ -1426,14 +1461,16 @@
                 if (res.ok) {
                     const data = await res.json();
                     sha = data.sha;
-                    ordersData = JSON.parse(decodeURIComponent(escape(atob(data.content))));
+                    ordersData = JSON.parse(base64ToUtf8(data.content));
                 }
+
+                if (!ordersData.orders) ordersData.orders = {};
 
                 const now = Date.now();
                 const key = `KAPT-PRO-5763271833-30D-${Math.floor(now/1000)}`;
                 const cleanCallsign = (callsign || "Боец").trim().toLowerCase();
 
-                ordersData.orders[`USER_${cleanCallsign}`] = {
+                const record = {
                     status: "APPROVED",
                     callsign: callsign,
                     unitName: unit || "Каптёрка",
@@ -1442,9 +1479,11 @@
                     approvedAt: now,
                     expiresAt: now + (30 * 24 * 3600 * 1000)
                 };
+
+                ordersData.orders[`USER_${cleanCallsign}`] = record;
                 ordersData.updatedAt = now;
 
-                const contentB64 = btoa(unescape(encodeURIComponent(JSON.stringify(ordersData, null, 2))));
+                const contentB64 = utf8ToBase64(JSON.stringify(ordersData, null, 2));
                 await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/api/approved_orders.json`, {
                     method: 'PUT',
                     headers: {
