@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>КАПТЁРКА PRO v2.5 — Автоматизированный учёт имущества и боеприпасов</title>
-    <meta name="description" content="Защищенная мобильная система оперативного учёта имущества, боеприпасов и экипировки для складов подразделения и огневых позиций. Работает автономно и с защищенной синхронизацией.">
+    <title>КАПТЁРКА PRO v2.6 — Автоматизированный учёт имущества и боеприпасов</title>
+    <meta name="description" content="Защищенная мобильная система оперативного учёта имущества, боеприпасов и экипировки для складов подразделения и огневых позиций. Работает автономно и с защищенной синхронизацией по индивидуальному ключу.">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons CDN -->
@@ -110,7 +110,7 @@
                     СИСТЕМА АКТИВНА
                 </span>
                 <span class="hidden sm:inline text-tactical-dim">|</span>
-                <span class="hidden sm:inline text-tactical-muted">Версия: <b class="text-white font-bold">2.5 PRO</b> (Сборка 2508)</span>
+                <span class="hidden sm:inline text-tactical-muted">Версия: <b class="text-white font-bold">2.6 PRO</b> (Сборка 2601)</span>
                 <span class="hidden md:inline text-tactical-dim">|</span>
                 <span class="hidden md:inline text-tactical-muted">Разработчик: <b class="text-tactical-green">Васев А.Е.</b></span>
             </div>
@@ -174,7 +174,7 @@
                 </a>
                 <a href="#download" class="inline-flex items-center space-x-2 bg-tactical-green hover:bg-tactical-accent text-black font-bold text-xs sm:text-sm px-4 sm:px-5 py-2.5 rounded-xl transition-all duration-200 shadow-md glow-green">
                     <i data-lucide="download" class="w-4 h-4"></i>
-                    <span>Скачать APK v2.5</span>
+                    <span>Скачать APK v2.6</span>
                 </a>
             </div>
         </div>
@@ -188,7 +188,7 @@
                 <!-- Status Badge -->
                 <div class="inline-flex items-center space-x-2 bg-tactical-card border border-tactical-border px-4 py-1.5 rounded-full text-xs font-mono text-tactical-green mb-6 shadow-sm">
                     <span class="w-2 h-2 rounded-full bg-tactical-green badge-pulse"></span>
-                    <span>ПОЛНОСТЬЮ АВТОНОМНЫЙ ОФЛАЙН УЧЁТ + СЕТЬ</span>
+                    <span>ПОЛНОСТЬЮ АВТОНОМНЫЙ ОФЛАЙН УЧЁТ + СЕТЬ ПО КЛЮЧУ</span>
                 </div>
 
                 <!-- Main Heading -->
@@ -209,7 +209,7 @@
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5 max-w-md mx-auto mb-10">
                     <a href="#download" class="w-full sm:w-auto flex items-center justify-center space-x-3 bg-tactical-green hover:bg-tactical-accent text-black font-extrabold px-7 py-3.5 rounded-xl text-sm sm:text-base transition-all duration-200 shadow-xl glow-green">
                         <i data-lucide="download" class="w-5 h-5"></i>
-                        <span>Скачать APK (v2.5 PRO)</span>
+                        <span>Скачать APK (v2.6 PRO)</span>
                     </a>
                     <a href="#showcase" class="w-full sm:w-auto flex items-center justify-center space-x-2 bg-tactical-card hover:bg-tactical-cardHover text-white font-medium border border-tactical-border hover:border-tactical-green px-6 py-3.5 rounded-xl text-sm sm:text-base transition-colors">
                         <i data-lucide="layout-grid" class="w-5 h-5 text-tactical-green"></i>
@@ -397,11 +397,14 @@
                                     </div>
                                 </div>
                                 <div class="flex justify-end gap-1.5 mb-2">
-                                    <span class="text-[9px] px-2.5 py-1 rounded bg-[#1B3020] text-tactical-green font-bold border border-tactical-green/50 flex items-center gap-1">
-                                        <i data-lucide="refresh-cw" class="w-3 h-3"></i> Обновить
+                                    <span class="text-[9px] px-2 py-1 rounded bg-tactical-green text-black font-bold flex items-center gap-1">
+                                        <i data-lucide="refresh-cw" class="w-3 h-3"></i> Синхр.
                                     </span>
-                                    <span class="text-[9px] px-2.5 py-1 rounded bg-[#332B1A] text-[#E2C044] font-bold border border-[#E2C044]/50 flex items-center gap-1">
-                                        <i data-lucide="upload" class="w-3 h-3"></i> Выгрузить
+                                    <span class="text-[9px] px-2 py-1 rounded border border-tactical-green text-tactical-green font-bold flex items-center gap-1">
+                                        <i data-lucide="share-2" class="w-3 h-3"></i> 2-й тел.
+                                    </span>
+                                    <span class="text-[9px] px-2 py-1 rounded border border-[#E2C044] text-[#E2C044] font-bold flex items-center gap-1">
+                                        <i data-lucide="upload" class="w-3 h-3"></i> Экспорт
                                     </span>
                                 </div>
                                 <div class="bg-tactical-green/10 border border-tactical-green/40 rounded p-1.5 mb-2 text-[9px] text-tactical-green font-bold flex items-center gap-1.5">
@@ -903,7 +906,7 @@
                                 </button>
                                 <a href="#download" class="inline-flex items-center justify-center gap-2 bg-tactical-green hover:bg-tactical-accent text-black font-bold px-5 py-3 rounded-xl text-xs sm:text-sm transition-all duration-150 shadow-md glow-green">
                                     <i data-lucide="download" class="w-4 h-4"></i>
-                                    <span>Скачать APK (v2.5 PRO)</span>
+                                    <span>Скачать APK (v2.6 PRO)</span>
                                 </a>
                                 <a href="#developer-hub" onclick="switchDevTab(1)" class="inline-flex items-center justify-center gap-2 bg-tactical-card hover:bg-tactical-cardHover text-tactical-gold border border-tactical-gold/40 font-bold px-4 py-3 rounded-xl text-xs sm:text-sm transition-all duration-150">
                                     <i data-lucide="message-square-plus" class="w-4 h-4"></i>
@@ -998,7 +1001,7 @@
                                     </div>
                                     <div>
                                         <div class="text-[10px] text-tactical-muted uppercase">Актуальная версия</div>
-                                        <div class="text-tactical-gold font-bold text-xs">v2.5 PRO (Сборка 2508)</div>
+                                        <div class="text-tactical-gold font-bold text-xs">v2.6 PRO (Сборка 2601)</div>
                                     </div>
                                 </div>
                             </div>
@@ -1076,56 +1079,32 @@
                                 <h3 class="text-2xl font-bold text-white mt-0.5">Новости программы и график обновлений</h3>
                             </div>
                             <span class="px-3 py-1 bg-tactical-green/10 border border-tactical-green/40 text-tactical-green rounded-full text-xs font-mono font-bold">
-                                ТЕКУЩАЯ ВЕРСИЯ: 2.5 PRO
+                                ТЕКУЩАЯ ВЕРСИЯ: 2.6 PRO
                             </span>
                         </div>
 
                         <div class="space-y-5 font-sans">
                             
-                            <!-- Current Release: v2.5 PRO -->
+                            <!-- Current Release: v2.6 PRO -->
                             <div class="bg-tactical-bg border-2 border-tactical-green/60 rounded-2xl p-5 sm:p-6 shadow-lg relative">
                                 <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
                                     <div class="flex items-center gap-2">
-                                        <span class="px-2.5 py-1 rounded bg-tactical-green text-black font-bold text-xs font-mono">v2.5 PRO</span>
-                                        <span class="text-white font-bold text-base sm:text-lg">Актуальный боевой релиз (Сборка 2508)</span>
+                                        <span class="px-2.5 py-1 rounded bg-tactical-green text-black font-bold text-xs font-mono">v2.6 PRO</span>
+                                        <span class="text-white font-bold text-base sm:text-lg">Актуальный боевой релиз (Сборка 2601)</span>
                                     </div>
-                                    <span class="text-xs font-mono text-tactical-muted">Август 2026</span>
+                                    <span class="text-xs font-mono text-tactical-green font-bold">Август 2026</span>
                                 </div>
                                 <ul class="space-y-2 text-xs sm:text-sm text-tactical-muted list-disc list-inside">
+                                    <li><b class="text-white">Индивидуальная облачная синхронизация по приватному ключу (unitCode):</b> безопасный изолированный обмен остатками и проводками между доверенными устройствами.</li>
+                                    <li><b class="text-white">Компактные и выровненные кнопки управления:</b> «Синхр.», «2-й тел.», «Экспорт» с идеальной фиксацией размера и верстки.</li>
+                                    <li><b class="text-white">Автоматическая проверка статуса лицензии:</b> интеграция с договором 5763271833 и Telegram-ботом обратной связи.</li>
                                     <li><b class="text-white">База 95+ номенклатурных позиций</b> по всем 11 службам довольствия (РАВ, БПЛА, СИБЗ, Связь, Медицина).</li>
                                     <li><b class="text-white">4 тактические операции</b>: «Привезли», «Перемещение», «Подняли», «Отстрел» (Форма 8).</li>
-                                    <li><b class="text-white">Модуль «Заявка»</b> с контролем сбора и выдачи на позиции.</li>
-                                    <li><b class="text-white">Защищенная сетевая синхронизация</b> без использования Bluetooth (радиомаскировка).</li>
                                     <li><b class="text-white">Экспорт отчётов в Excel (.xlsx)</b> и локальное резервное копирование.</li>
                                 </ul>
                             </div>
 
-                            <!-- Upcoming Release: v2.6 PRO with ROBOKASSA & USER FEEDBACK ENGINE -->
-                            <div class="bg-tactical-bg border-2 border-tactical-gold/70 rounded-2xl p-5 sm:p-6 shadow-md relative">
-                                <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
-                                    <div class="flex items-center gap-2">
-                                        <span class="px-2.5 py-1 rounded bg-tactical-gold text-black font-bold text-xs font-mono">v2.6 PRO</span>
-                                        <span class="text-white font-bold text-base sm:text-lg">В разработке (Ближайшее обновление)</span>
-                                    </div>
-                                    <span class="text-xs font-mono text-tactical-gold font-bold">Сентябрь 2026</span>
-                                </div>
-                                <ul class="space-y-2.5 text-xs sm:text-sm text-tactical-muted">
-                                    <li class="flex items-start gap-2.5">
-                                        <span class="text-tactical-gold font-bold">●</span>
-                                        <span><b class="text-white">Интеграция платёжной системы через Робокассу (Robokassa):</b> удобная, моментальная и безопасная оплата лицензий PRO, автоматическое продление доступа и официальные фискальные чеки.</span>
-                                    </li>
-                                    <li class="flex items-start gap-2.5">
-                                        <span class="text-tactical-gold font-bold">●</span>
-                                        <span><b class="text-white">Встроенный центр приёма претензий, пожеланий и исправлений:</b> отправка отзывов, запросов на добавление калибров/экипировки и сообщений об ошибках прямо из приложения разработчику.</span>
-                                    </li>
-                                    <li class="flex items-start gap-2.5">
-                                        <span class="text-tactical-gold font-bold">●</span>
-                                        <span><b class="text-white">Оптимизация сетевого протокола</b> для стабильной синхронизации на медленных полевых спутниковых терминалах.</span>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <!-- Future Release: v3.0 PRO -->
+                            <!-- Upcoming Release: v3.0 PRO -->
                             <div class="bg-tactical-bg/70 border border-tactical-border rounded-2xl p-4 sm:p-5 text-xs text-tactical-muted">
                                 <div class="flex items-center justify-between mb-1.5">
                                     <span class="font-bold text-white flex items-center gap-1.5 text-sm">
@@ -1269,7 +1248,7 @@
                     <i data-lucide="shield-check" class="w-5 h-5"></i>
                 </div>
                 <div>
-                    <span class="font-bold text-white font-mono">КАПТЁРКА PRO v2.5</span>
+                    <span class="font-bold text-white font-mono">КАПТЁРКА PRO v2.6</span>
                     <p class="text-[10px] text-tactical-dim font-mono">Разработчик: Васев А.Е. • alex.666.881@gmail.com</p>
                 </div>
             </div>
