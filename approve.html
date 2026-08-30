@@ -165,13 +165,45 @@
         const BOT_TOKEN = [('8913866950:' + 'AAFSMMAOHyULBE4'), 'uhsxdEoYG5fUT0-pSSr8'].join('');
         const DEV_CHAT_ID = '7426550032';
 
+        // Safe UTF-8 Base64 Encoders
+        function utf8ToBase64(str) {
+            try {
+                const bytes = new TextEncoder().encode(str);
+                let binary = '';
+                const len = bytes.byteLength;
+                for (let i = 0; i < len; i++) {
+                    binary += String.fromCharCode(bytes[i]);
+                }
+                return btoa(binary);
+            } catch (e) {
+                return btoa(unescape(encodeURIComponent(str)));
+            }
+        }
+
+        function base64ToUtf8(str) {
+            try {
+                const binary = atob(str.replace(/\s/g, ''));
+                const bytes = new Uint8Array(binary.length);
+                for (let i = 0; i < binary.length; i++) {
+                    bytes[i] = binary.charCodeAt(i);
+                }
+                return new TextDecoder('utf-8').decode(bytes);
+            } catch (e) {
+                try {
+                    return decodeURIComponent(escape(atob(str.replace(/\s/g, ''))));
+                } catch (e2) {
+                    return atob(str.replace(/\s/g, ''));
+                }
+            }
+        }
+
         // Parse URL params
         const urlParams = new URLSearchParams(window.location.search);
-        const orderId = urlParams.get('order') || urlParams.get('orderId') || 'KAPT_5763271833_' + Math.floor(Date.now() / 1000);
-        const callsign = urlParams.get('callsign') || 'Боец';
-        const unitName = urlParams.get('unit') || 'Подразделение';
-        const amount = urlParams.get('amount') || '500';
-        let licenseKey = urlParams.get('key') || '';
+        const orderId = (urlParams.get('order') || urlParams.get('orderId') || 'KAPT_5763271833_' + Math.floor(Date.now() / 1000)).trim();
+        const callsign = (urlParams.get('callsign') || 'Боец').trim();
+        const unitName = (urlParams.get('unit') || 'Подразделение').trim();
+        const amount = (urlParams.get('amount') || '500').trim();
+        let licenseKey = (urlParams.get('key') || '').trim();
 
         if (!licenseKey) {
             licenseKey = 'KAPT-PRO-5763271833-30D-' + Math.random().toString(36).substring(2, 10).toUpperCase();
@@ -185,135 +217,160 @@
 
         // Auto approve if requested via query param (e.g. ?auto=1)
         if (urlParams.get('auto') === '1' || urlParams.get('approve') === '1') {
-            setTimeout(approvePayment, 500);
+            setTimeout(approvePayment, 400);
         }
 
         function copyKey() {
             navigator.clipboard.writeText(licenseKey).then(() => {
-                alert('PRO-ключ скопирован в буфер обмена!');
+                alert('PRO-ключ скопирован в буфер обмена: ' + licenseKey);
+            }).catch(() => {
+                prompt('Скопируйте PRO-ключ вручную:', licenseKey);
             });
         }
 
         async function approvePayment() {
             showLoading(true);
-            try {
-                // 1. Fetch current approved_orders.json from GitHub
-                const apiUrl = `https://api.github.com/repos/${GITHUB_REPO}/contents/api/approved_orders.json`;
-                
-                let currentFile = null;
-                let ordersData = { updatedAt: Date.now(), orders: {} };
-                
+            let attempts = 0;
+            const maxAttempts = 3;
+
+            while (attempts < maxAttempts) {
+                attempts++;
                 try {
-                    const getResp = await fetch(apiUrl, {
-                        headers: {
-                            'Authorization': `token ${GITHUB_TOKEN}`,
-                            'Accept': 'application/vnd.github.v3+json'
-                        }
-                    });
-                    if (getResp.ok) {
-                        currentFile = await getResp.json();
-                        const rawB64 = currentFile.content.replace(/\s/g, '');
-                        try {
-                            const decodedContent = decodeURIComponent(escape(atob(rawB64)));
+                    // 1. Fetch current approved_orders.json from GitHub with cache-busting
+                    const apiUrl = `https://api.github.com/repos/${GITHUB_REPO}/contents/api/approved_orders.json?_t=${Date.now()}`;
+                    
+                    let currentSha = null;
+                    let ordersData = { updatedAt: Date.now(), orders: {} };
+                    
+                    try {
+                        const getResp = await fetch(apiUrl, {
+                            cache: 'no-store',
+                            headers: {
+                                'Authorization': `token ${GITHUB_TOKEN}`,
+                                'Accept': 'application/vnd.github.v3+json'
+                            }
+                        });
+                        if (getResp.ok) {
+                            const currentFile = await getResp.json();
+                            currentSha = currentFile.sha;
+                            const decodedContent = base64ToUtf8(currentFile.content);
                             ordersData = JSON.parse(decodedContent);
-                        } catch (utfErr) {
-                            const decodedContent = atob(rawB64);
-                            ordersData = JSON.parse(decodedContent);
                         }
+                    } catch (fetchErr) {
+                        console.warn('Error fetching existing orders:', fetchErr);
                     }
-                } catch (e) {
-                    console.warn('Error fetching existing orders, creating new:', e);
-                }
 
-                if (!ordersData.orders) ordersData.orders = {};
+                    if (!ordersData.orders || typeof ordersData.orders !== 'object') {
+                        ordersData.orders = {};
+                    }
 
-                // Add or update this order as APPROVED
-                const now = Date.now();
-                const expiresAt = now + (30 * 24 * 60 * 60 * 1000); // 30 days
-                
-                ordersData.orders[orderId] = {
-                    status: 'APPROVED',
-                    callsign: callsign,
-                    unitName: unitName,
-                    amount: parseInt(amount, 10) || 500,
-                    key: licenseKey,
-                    approvedAt: now,
-                    expiresAt: expiresAt
-                };
-
-                // Also index by callsign lowercase
-                if (callsign && callsign.trim() !== 'Боец') {
-                    const cleanCallsign = callsign.trim().toLowerCase();
-                    ordersData.orders['USER_' + cleanCallsign] = {
+                    // Add or update this order as APPROVED
+                    const now = Date.now();
+                    const expiresAt = now + (30 * 24 * 60 * 60 * 1000); // 30 days
+                    
+                    const orderRecord = {
                         status: 'APPROVED',
-                        orderId: orderId,
                         callsign: callsign,
+                        unitName: unitName,
+                        amount: parseInt(amount, 10) || 500,
                         key: licenseKey,
                         approvedAt: now,
                         expiresAt: expiresAt
                     };
-                }
 
-                ordersData.updatedAt = now;
+                    // Save by direct orderId
+                    ordersData.orders[orderId] = orderRecord;
+                    ordersData.orders[orderId.toUpperCase()] = orderRecord;
 
-                // Save back to GitHub
-                const updatedContentBase64 = btoa(unescape(encodeURIComponent(JSON.stringify(ordersData, null, 2))));
-                
-                const putPayload = {
-                    message: `✅ Подтверждение оплаты OrderId: ${orderId} (${callsign}) - PRO активирован`,
-                    content: updatedContentBase64
-                };
-                if (currentFile && currentFile.sha) {
-                    putPayload.sha = currentFile.sha;
-                }
+                    // Also index by user callsign for instant matching in app
+                    if (callsign && callsign.toLowerCase() !== 'боец') {
+                        const cleanCallsign = callsign.toLowerCase();
+                        ordersData.orders['USER_' + cleanCallsign] = {
+                            status: 'APPROVED',
+                            orderId: orderId,
+                            callsign: callsign,
+                            unitName: unitName,
+                            amount: parseInt(amount, 10) || 500,
+                            key: licenseKey,
+                            approvedAt: now,
+                            expiresAt: expiresAt
+                        };
+                    }
 
-                const putResp = await fetch(apiUrl, {
-                    method: 'PUT',
-                    headers: {
-                        'Authorization': `token ${GITHUB_TOKEN}`,
-                        'Accept': 'application/vnd.github.v3+json',
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(putPayload)
-                });
+                    ordersData.updatedAt = now;
 
-                if (!putResp.ok) {
-                    const errTxt = await putResp.text();
-                    throw new Error('GitHub API Error: ' + errTxt);
-                }
+                    // Save back to GitHub
+                    const updatedContentBase64 = utf8ToBase64(JSON.stringify(ordersData, null, 2));
+                    
+                    const putPayload = {
+                        message: `✅ Подтверждение оплаты OrderId: ${orderId} (${callsign}) - PRO активирован`,
+                        content: updatedContentBase64
+                    };
+                    if (currentSha) {
+                        putPayload.sha = currentSha;
+                    }
 
-                // 2. Notify Telegram Bot about success
-                try {
-                    const tgText = `✅ <b>ПЛАТЁЖ ПОДТВЕРЖДЁН АДМИНИСТРАТОРОМ!</b>\n\n` +
-                        `🪖 <b>Позывной:</b> <b>${callsign}</b>\n` +
-                        `🏢 <b>Подразделение:</b> ${unitName}\n` +
-                        `💰 <b>Сумма:</b> ${amount} ₽\n` +
-                        `🧾 <b>Заказ:</b> <code>${orderId}</code>\n` +
-                        `🔑 <b>PRO-ключ:</b> <code>${licenseKey}</code>\n\n` +
-                        `<i>Лицензия PRO успешно активирована на сервере. Приложение бойца автоматически переведено в PRO-режим!</i>`;
-
-                    await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                            chat_id: DEV_CHAT_ID,
-                            text: tgText,
-                            parse_mode: 'HTML'
-                        })
+                    const putResp = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/api/approved_orders.json`, {
+                        method: 'PUT',
+                        headers: {
+                            'Authorization': `token ${GITHUB_TOKEN}`,
+                            'Accept': 'application/vnd.github.v3+json',
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(putPayload)
                     });
-                } catch (tgErr) {
-                    console.warn('Telegram notify error:', tgErr);
+
+                    if (putResp.ok || putResp.status === 200 || putResp.status === 201) {
+                        // Success!
+                        break;
+                    } else if (putResp.status === 409 && attempts < maxAttempts) {
+                        // Conflict (SHA changed in meantime), retry loop with backoff
+                        console.warn(`SHA conflict on attempt ${attempts}, retrying...`);
+                        await new Promise(r => setTimeout(r, 600));
+                        continue;
+                    } else {
+                        const errTxt = await putResp.text();
+                        throw new Error(`GitHub API HTTP ${putResp.status}: ${errTxt}`);
+                    }
+
+                } catch (err) {
+                    if (attempts >= maxAttempts) {
+                        throw err;
+                    }
+                    await new Promise(r => setTimeout(r, 600));
                 }
-
-                showLoading(false);
-                showStatus(true, '🎉 ПЛАТЁЖ УСПЕШНО ПОДТВЕРЖДЁН!<br><br>Лицензия PRO активирована на 30 дней. Приложение бойца автоматически активирует PRO при нажатии «Проверить статус» или при перезапуске.');
-                document.getElementById('actionButtons').classList.add('hidden');
-
-            } catch (err) {
-                console.error(err);
-                showLoading(false);
-                showStatus(false, 'Ошибка при подтверждении: ' + err.message);
             }
+
+            try {
+                // 2. Notify Telegram Bot about success
+                const tgText = `✅ <b>ПЛАТЁЖ ПОДТВЕРЖДЁН АДМИНИСТРАТОРОМ!</b>\n\n` +
+                    `🪖 <b>Позывной:</b> <b>${callsign}</b>\n` +
+                    `🏢 <b>Подразделение:</b> ${unitName}\n` +
+                    `💰 <b>Сумма:</b> ${amount} ₽\n` +
+                    `🧾 <b>Заказ:</b> <code>${orderId}</code>\n` +
+                    `🔑 <b>PRO-ключ:</b> <code>${licenseKey}</code>\n\n` +
+                    `<i>Лицензия PRO успешно активирована на 30 дней в облачном реестре. Приложение бойца активирует PRO при нажатии «Проверить статус»!</i>`;
+
+                await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        chat_id: DEV_CHAT_ID,
+                        text: tgText,
+                        parse_mode: 'HTML'
+                    })
+                });
+            } catch (tgErr) {
+                console.warn('Telegram notify error:', tgErr);
+            }
+
+            showLoading(false);
+            showStatus(true, `🎉 <b>ПЛАТЁЖ УСПЕШНО ПОДТВЕРЖДЁН!</b><br><br>` +
+                `Позывной: <b>${callsign}</b><br>` +
+                `Заказ: <code>${orderId}</code><br>` +
+                `Лицензия PRO выдана на <b>30 дней</b>.<br><br>` +
+                `<i>Боец в приложении нажимает «Проверить статус активации PRO» и мгновенно получает доступ.</i>`);
+            document.getElementById('actionButtons').classList.add('hidden');
         }
 
         async function rejectPayment() {
