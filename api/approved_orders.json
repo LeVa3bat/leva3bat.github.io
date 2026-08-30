@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1788029057958,
+  "updatedAt": 1788087770512,
   "orders": {
     "KAPT_5763271833_1788028953": {
       "status": "APPROVED",
@@ -19,6 +19,15 @@
       "key": "KAPT-PRO-5763271833-30D-1788029057",
       "approvedAt": 1788029057958,
       "expiresAt": 1790621057958
+    },
+    "KAPT_5763271833_1788087730": {
+      "status": "APPROVED",
+      "callsign": "Боец",
+      "unitName": "Каптёрка",
+      "amount": 500,
+      "key": "eyJsaWNlbnNlSWQiOiJLQVBULTE5ODMtODU5NC1QUk8iLCJjb250cmFjdE51bWJlciI6IjU3NjMyNzE4MzMiLCJjYWxsc2lnbiI6ItCR0L7QtdGGIiwidW5pdE5hbWUiOiLQmtCw0L/RgtGR0YDQutCwIiwidGllciI6IlBSTyIsImlzc3VlZEF0IjoxNzg4MDg3NzMyMzkxLCJleHBpcmVzQXQiOjE3OTA2Nzk3MzIzOTEsIm5vbmNlIjoidHhfMzM5NzA5NDkifQ==.9awng5nFfeSIkAymrAtc80vJcK1XJrtg4P5LT7ZKYOY=",
+      "approvedAt": 1788087770512,
+      "expiresAt": 1790679770512
     }
   }
 }
