@@ -141,7 +141,7 @@
             <!-- Loading Spinner -->
             <div id="loadingBox" class="hidden text-center py-6">
                 <div class="inline-block w-8 h-8 border-4 border-tactical-accent border-t-transparent rounded-full animate-spin mb-3"></div>
-                <div class="text-sm font-mono text-gray-300">Связь с сервером лицензий...</div>
+                <div class="text-sm font-mono text-gray-300" id="loadingText">Связь с сервером лицензий...</div>
             </div>
 
             <!-- Back Link -->
@@ -159,49 +159,51 @@
 
     <script>
         const GITHUB_REPO = 'LeVa3bat/leva3bat.github.io';
-        // Assembled token parts for automatic deployment sync
+        // Assembled token parts
         const TOKEN_PARTS = [('gh' + 'p_'), 'ZQlKyDNRNkyT', 'VE8O7EqW6qKnuRykqI3hedvZ'];
         const GITHUB_TOKEN = TOKEN_PARTS.join('');
         const BOT_TOKEN = [('8913866950:' + 'AAFSMMAOHyULBE4'), 'uhsxdEoYG5fUT0-pSSr8'].join('');
         const DEV_CHAT_ID = '7426550032';
 
-        // Safe UTF-8 Base64 Encoders
+        // Robust UTF-8 <-> Base64 helpers
         function utf8ToBase64(str) {
             try {
-                const bytes = new TextEncoder().encode(str);
-                let binary = '';
-                const len = bytes.byteLength;
-                for (let i = 0; i < len; i++) {
-                    binary += String.fromCharCode(bytes[i]);
+                if (typeof TextEncoder !== 'undefined') {
+                    const bytes = new TextEncoder().encode(str);
+                    let binary = '';
+                    for (let i = 0; i < bytes.length; i++) {
+                        binary += String.fromCharCode(bytes[i]);
+                    }
+                    return btoa(binary);
                 }
-                return btoa(binary);
             } catch (e) {
-                return btoa(unescape(encodeURIComponent(str)));
+                console.warn('TextEncoder error, falling back:', e);
             }
+            return btoa(unescape(encodeURIComponent(str)));
         }
 
-        function base64ToUtf8(str) {
+        function base64ToUtf8(b64) {
             try {
-                const binary = atob(str.replace(/\s/g, ''));
-                const bytes = new Uint8Array(binary.length);
-                for (let i = 0; i < binary.length; i++) {
-                    bytes[i] = binary.charCodeAt(i);
+                const cleaned = b64.replace(/\s/g, '');
+                if (typeof TextDecoder !== 'undefined') {
+                    const binary = atob(cleaned);
+                    const bytes = new Uint8Array(binary.length);
+                    for (let i = 0; i < binary.length; i++) {
+                        bytes[i] = binary.charCodeAt(i);
+                    }
+                    return new TextDecoder('utf-8').decode(bytes);
                 }
-                return new TextDecoder('utf-8').decode(bytes);
             } catch (e) {
-                try {
-                    return decodeURIComponent(escape(atob(str.replace(/\s/g, ''))));
-                } catch (e2) {
-                    return atob(str.replace(/\s/g, ''));
-                }
+                console.warn('TextDecoder error, falling back:', e);
             }
+            return decodeURIComponent(escape(atob(b64.replace(/\s/g, ''))));
         }
 
         // Parse URL params
         const urlParams = new URLSearchParams(window.location.search);
         const orderId = (urlParams.get('order') || urlParams.get('orderId') || 'KAPT_5763271833_' + Math.floor(Date.now() / 1000)).trim();
         const callsign = (urlParams.get('callsign') || 'Боец').trim();
-        const unitName = (urlParams.get('unit') || 'Подразделение').trim();
+        const unitName = (urlParams.get('unit') || urlParams.get('unitName') || 'Каптёрка').trim();
         const amount = (urlParams.get('amount') || '500').trim();
         let licenseKey = (urlParams.get('key') || '').trim();
 
@@ -222,22 +224,20 @@
 
         function copyKey() {
             navigator.clipboard.writeText(licenseKey).then(() => {
-                alert('PRO-ключ скопирован в буфер обмена: ' + licenseKey);
-            }).catch(() => {
-                prompt('Скопируйте PRO-ключ вручную:', licenseKey);
+                alert('PRO-ключ скопирован в буфер обмена!');
             });
         }
 
         async function approvePayment() {
-            showLoading(true);
-            let attempts = 0;
-            const maxAttempts = 3;
+            showLoading(true, 'Подключение к реестру лицензий...');
+            const maxRetries = 3;
 
-            while (attempts < maxAttempts) {
-                attempts++;
+            for (let attempt = 1; attempt <= maxRetries; attempt++) {
                 try {
-                    // 1. Fetch current approved_orders.json from GitHub with cache-busting
-                    const apiUrl = `https://api.github.com/repos/${GITHUB_REPO}/contents/api/approved_orders.json?_t=${Date.now()}`;
+                    showLoading(true, `Синхронизация с сервером (попытка ${attempt}/${maxRetries})...`);
+                    
+                    // 1. Fetch current approved_orders.json with cache buster
+                    const apiUrl = `https://api.github.com/repos/${GITHUB_REPO}/contents/api/approved_orders.json?ref=main&t=${Date.now()}`;
                     
                     let currentSha = null;
                     let ordersData = { updatedAt: Date.now(), orders: {} };
@@ -251,24 +251,25 @@
                             }
                         });
                         if (getResp.ok) {
-                            const currentFile = await getResp.json();
-                            currentSha = currentFile.sha;
-                            const decodedContent = base64ToUtf8(currentFile.content);
-                            ordersData = JSON.parse(decodedContent);
+                            const fileObj = await getResp.json();
+                            currentSha = fileObj.sha;
+                            if (fileObj.content) {
+                                const rawJson = base64ToUtf8(fileObj.content);
+                                ordersData = JSON.parse(rawJson);
+                            }
                         }
                     } catch (fetchErr) {
-                        console.warn('Error fetching existing orders:', fetchErr);
+                        console.warn('Fetch error:', fetchErr);
                     }
 
-                    if (!ordersData.orders || typeof ordersData.orders !== 'object') {
-                        ordersData.orders = {};
-                    }
+                    if (!ordersData.orders) ordersData.orders = {};
 
-                    // Add or update this order as APPROVED
+                    // 2. Add/Update order
                     const now = Date.now();
                     const expiresAt = now + (30 * 24 * 60 * 60 * 1000); // 30 days
-                    
-                    const orderRecord = {
+
+                    // Order entry
+                    ordersData.orders[orderId] = {
                         status: 'APPROVED',
                         callsign: callsign,
                         unitName: unitName,
@@ -278,11 +279,7 @@
                         expiresAt: expiresAt
                     };
 
-                    // Save by direct orderId
-                    ordersData.orders[orderId] = orderRecord;
-                    ordersData.orders[orderId.toUpperCase()] = orderRecord;
-
-                    // Also index by user callsign for instant matching in app
+                    // Callsign index
                     if (callsign && callsign.toLowerCase() !== 'боец') {
                         const cleanCallsign = callsign.toLowerCase();
                         ordersData.orders['USER_' + cleanCallsign] = {
@@ -299,18 +296,19 @@
 
                     ordersData.updatedAt = now;
 
-                    // Save back to GitHub
+                    // 3. Encode & Put to GitHub
                     const updatedContentBase64 = utf8ToBase64(JSON.stringify(ordersData, null, 2));
                     
                     const putPayload = {
-                        message: `✅ Подтверждение оплаты OrderId: ${orderId} (${callsign}) - PRO активирован`,
+                        message: `✅ Подтвержден платеж OrderId: ${orderId} (${callsign}) - PRO`,
                         content: updatedContentBase64
                     };
                     if (currentSha) {
                         putPayload.sha = currentSha;
                     }
 
-                    const putResp = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/api/approved_orders.json`, {
+                    const putUrl = `https://api.github.com/repos/${GITHUB_REPO}/contents/api/approved_orders.json`;
+                    const putResp = await fetch(putUrl, {
                         method: 'PUT',
                         headers: {
                             'Authorization': `token ${GITHUB_TOKEN}`,
@@ -320,63 +318,59 @@
                         body: JSON.stringify(putPayload)
                     });
 
-                    if (putResp.ok || putResp.status === 200 || putResp.status === 201) {
-                        // Success!
-                        break;
-                    } else if (putResp.status === 409 && attempts < maxAttempts) {
-                        // Conflict (SHA changed in meantime), retry loop with backoff
-                        console.warn(`SHA conflict on attempt ${attempts}, retrying...`);
+                    if (putResp.status === 409 || putResp.status === 422) {
+                        console.warn(`Attempt ${attempt} got conflict (${putResp.status}), retrying...`);
                         await new Promise(r => setTimeout(r, 600));
                         continue;
-                    } else {
-                        const errTxt = await putResp.text();
-                        throw new Error(`GitHub API HTTP ${putResp.status}: ${errTxt}`);
                     }
+
+                    if (!putResp.ok) {
+                        const errTxt = await putResp.text();
+                        throw new Error(`GitHub HTTP ${putResp.status}: ${errTxt}`);
+                    }
+
+                    // 4. Notify Telegram Bot on success
+                    try {
+                        const tgText = `✅ <b>ПЛАТЁЖ ПОДТВЕРЖДЁН АДМИНИСТРАТОРОМ!</b>\n\n` +
+                            `🪖 <b>Позывной:</b> <b>${callsign}</b>\n` +
+                            `🏢 <b>Подразделение:</b> ${unitName}\n` +
+                            `💰 <b>Сумма:</b> ${amount} ₽\n` +
+                            `🧾 <b>Заказ:</b> <code>${orderId}</code>\n` +
+                            `🔑 <b>PRO-ключ:</b> <code>${licenseKey}</code>\n\n` +
+                            `<i>Лицензия PRO успешно активирована на 30 дней в облачном реестре. Приложение бойца активирует PRO при нажатии «Проверить статус»!</i>`;
+
+                        await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                chat_id: DEV_CHAT_ID,
+                                text: tgText,
+                                parse_mode: 'HTML'
+                            })
+                        });
+                    } catch (tgErr) {
+                        console.warn('Telegram notify error:', tgErr);
+                    }
+
+                    showLoading(false);
+                    showStatus(true, '🎉 ПЛАТЁЖ УСПЕШНО ПОДТВЕРЖДЁН!<br><br>Лицензия PRO активирована на 30 дней для бойца <b>' + callsign + '</b>.<br>Приложение автоматически переведено в PRO-режим.');
+                    document.getElementById('actionButtons').classList.add('hidden');
+                    return; // Success!
 
                 } catch (err) {
-                    if (attempts >= maxAttempts) {
-                        throw err;
+                    console.error(`Attempt ${attempt} error:`, err);
+                    if (attempt === maxRetries) {
+                        showLoading(false);
+                        showStatus(false, 'Ошибка при подтверждении: ' + err.message + '<br><br><button onclick="approvePayment()" class="mt-2 bg-tactical-accent hover:bg-tactical-highlight text-black font-bold px-4 py-2 rounded-lg text-xs font-mono">🔄 Повторить попытку</button>');
                     }
-                    await new Promise(r => setTimeout(r, 600));
                 }
             }
-
-            try {
-                // 2. Notify Telegram Bot about success
-                const tgText = `✅ <b>ПЛАТЁЖ ПОДТВЕРЖДЁН АДМИНИСТРАТОРОМ!</b>\n\n` +
-                    `🪖 <b>Позывной:</b> <b>${callsign}</b>\n` +
-                    `🏢 <b>Подразделение:</b> ${unitName}\n` +
-                    `💰 <b>Сумма:</b> ${amount} ₽\n` +
-                    `🧾 <b>Заказ:</b> <code>${orderId}</code>\n` +
-                    `🔑 <b>PRO-ключ:</b> <code>${licenseKey}</code>\n\n` +
-                    `<i>Лицензия PRO успешно активирована на 30 дней в облачном реестре. Приложение бойца активирует PRO при нажатии «Проверить статус»!</i>`;
-
-                await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        chat_id: DEV_CHAT_ID,
-                        text: tgText,
-                        parse_mode: 'HTML'
-                    })
-                });
-            } catch (tgErr) {
-                console.warn('Telegram notify error:', tgErr);
-            }
-
-            showLoading(false);
-            showStatus(true, `🎉 <b>ПЛАТЁЖ УСПЕШНО ПОДТВЕРЖДЁН!</b><br><br>` +
-                `Позывной: <b>${callsign}</b><br>` +
-                `Заказ: <code>${orderId}</code><br>` +
-                `Лицензия PRO выдана на <b>30 дней</b>.<br><br>` +
-                `<i>Боец в приложении нажимает «Проверить статус активации PRO» и мгновенно получает доступ.</i>`);
-            document.getElementById('actionButtons').classList.add('hidden');
         }
 
         async function rejectPayment() {
             if (!confirm('Вы уверены, что хотите отклонить эту заявку на оплату?')) return;
             
-            showLoading(true);
+            showLoading(true, 'Отклонение заявки...');
             try {
                 // Notify Telegram
                 const tgText = `❌ <b>ЗАЯВКА НА ОПЛАТУ ОТКЛОНЕНА</b>\n\n` +
@@ -403,9 +397,16 @@
             }
         }
 
-        function showLoading(show) {
-            document.getElementById('loadingBox').classList.toggle('hidden', !show);
-            document.getElementById('actionButtons').classList.toggle('hidden', show);
+        function showLoading(show, text) {
+            const box = document.getElementById('loadingBox');
+            if (box) box.classList.toggle('hidden', !show);
+            const lbl = document.getElementById('loadingText');
+            if (lbl && text) lbl.textContent = text;
+            const btns = document.getElementById('actionButtons');
+            if (btns && show) btns.classList.add('hidden');
+            else if (btns && !show && document.getElementById('statusBanner').classList.contains('hidden')) {
+                btns.classList.remove('hidden');
+            }
         }
 
         function showStatus(isSuccess, htmlText) {
