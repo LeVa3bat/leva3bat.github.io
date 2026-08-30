@@ -151,6 +151,9 @@
                 <a href="#features" class="hover:text-tactical-green transition-colors flex items-center gap-1.5">
                     <i data-lucide="layers" class="w-4 h-4 text-tactical-green"></i> Возможности
                 </a>
+                <a href="#screenshots" class="hover:text-tactical-green transition-colors flex items-center gap-1.5">
+                    <i data-lucide="image" class="w-4 h-4 text-tactical-green"></i> Скриншоты (Фото)
+                </a>
                 <a href="#showcase" class="hover:text-tactical-green transition-colors flex items-center gap-1.5">
                     <i data-lucide="layout" class="w-4 h-4 text-tactical-green"></i> Экраны (7)
                 </a>
@@ -206,14 +209,14 @@
                 </p>
 
                 <!-- CTA Buttons -->
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5 max-w-md mx-auto mb-10">
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5 max-w-lg mx-auto mb-10">
                     <a href="#download" class="w-full sm:w-auto flex items-center justify-center space-x-3 bg-tactical-green hover:bg-tactical-accent text-black font-extrabold px-7 py-3.5 rounded-xl text-sm sm:text-base transition-all duration-200 shadow-xl glow-green">
                         <i data-lucide="download" class="w-5 h-5"></i>
                         <span>Скачать APK (v2.6 PRO)</span>
                     </a>
-                    <a href="#showcase" class="w-full sm:w-auto flex items-center justify-center space-x-2 bg-tactical-card hover:bg-tactical-cardHover text-white font-medium border border-tactical-border hover:border-tactical-green px-6 py-3.5 rounded-xl text-sm sm:text-base transition-colors">
-                        <i data-lucide="layout-grid" class="w-5 h-5 text-tactical-green"></i>
-                        <span>Экраны программы</span>
+                    <a href="#screenshots" class="w-full sm:w-auto flex items-center justify-center space-x-2 bg-tactical-card hover:bg-tactical-cardHover text-white font-medium border border-tactical-border hover:border-tactical-green px-6 py-3.5 rounded-xl text-sm sm:text-base transition-colors">
+                        <i data-lucide="camera" class="w-5 h-5 text-tactical-green"></i>
+                        <span>Живые скриншоты (10)</span>
                     </a>
                 </div>
 
@@ -329,6 +332,131 @@
 
             </div>
         </section>
+
+        <!-- REAL APP SCREENSHOTS CAROUSEL (РЕАЛЬНЫЕ ФОТО И СКРИНШОТЫ ПРОГРАММЫ) -->
+        <section id="screenshots" class="py-16 bg-tactical-card/40 border-b border-tactical-border relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6">
+                <div class="text-center max-w-3xl mx-auto mb-10">
+                    <div class="inline-flex items-center space-x-2 bg-tactical-card border border-tactical-border px-3 py-1 rounded-full text-xs font-mono text-tactical-green mb-3">
+                        <i data-lucide="camera" class="w-3.5 h-3.5"></i>
+                        <span>РЕАЛЬНЫЙ ИНТЕРФЕЙС ПРИЛОЖЕНИЯ</span>
+                    </div>
+                    <h2 class="text-2xl sm:text-4xl font-extrabold text-white mb-3">
+                        Фотографии и Скриншоты с Устройств
+                    </h2>
+                    <p class="text-tactical-muted text-sm sm:text-base">
+                        Листайте карусель реальных боевых скриншотов приложения. Нажмите на любой снимок для просмотра в полном разрешении.
+                    </p>
+                </div>
+
+                <!-- Carousel Container -->
+                <div class="relative max-w-5xl mx-auto">
+                    <!-- Nav buttons -->
+                    <button onclick="scrollScreenshots(-1)" class="absolute -left-3 sm:-left-5 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-tactical-darkGreen/90 border border-tactical-green/60 hover:bg-tactical-green hover:text-black text-tactical-green flex items-center justify-center transition-all shadow-xl backdrop-blur">
+                        <i data-lucide="chevron-left" class="w-6 h-6"></i>
+                    </button>
+                    <button onclick="scrollScreenshots(1)" class="absolute -right-3 sm:-right-5 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-tactical-darkGreen/90 border border-tactical-green/60 hover:bg-tactical-green hover:text-black text-tactical-green flex items-center justify-center transition-all shadow-xl backdrop-blur">
+                        <i data-lucide="chevron-right" class="w-6 h-6"></i>
+                    </button>
+
+                    <!-- Scrollable Row -->
+                    <div id="screenshots-container" class="flex gap-4 sm:gap-6 overflow-x-auto scroll-smooth pb-4 px-2 no-scrollbar snap-x snap-mandatory">
+                        
+                        <!-- Slide 1 -->
+                        <div class="snap-center shrink-0 w-[240px] sm:w-[280px] group cursor-pointer" onclick="openPhotoModal('images/photo_2026-08-27_16-13-52.jpg', 'Главный журнал остатков и учет номенклатуры')">
+                            <div class="rounded-2xl overflow-hidden border-2 border-tactical-border group-hover:border-tactical-green bg-tactical-bg transition-all shadow-lg group-hover:scale-[1.02] duration-200">
+                                <img src="images/photo_2026-08-27_16-13-52.jpg" alt="Главный журнал остатков" class="w-full h-[460px] object-cover object-top" loading="lazy">
+                            </div>
+                            <div class="mt-2 text-center">
+                                <span class="text-xs font-bold text-white group-hover:text-tactical-green transition-colors">Главный журнал учёта</span>
+                            </div>
+                        </div>
+
+                        <!-- Slide 2 -->
+                        <div class="snap-center shrink-0 w-[240px] sm:w-[280px] group cursor-pointer" onclick="openPhotoModal('images/photo_2026-08-27_16-13-53.jpg', 'Журнал операций: Подняли / Отстрел / Привезли')">
+                            <div class="rounded-2xl overflow-hidden border-2 border-tactical-border group-hover:border-tactical-green bg-tactical-bg transition-all shadow-lg group-hover:scale-[1.02] duration-200">
+                                <img src="images/photo_2026-08-27_16-13-53.jpg" alt="Журнал операций" class="w-full h-[460px] object-cover object-top" loading="lazy">
+                            </div>
+                            <div class="mt-2 text-center">
+                                <span class="text-xs font-bold text-white group-hover:text-tactical-green transition-colors">Тактические операции</span>
+                            </div>
+                        </div>
+
+                        <!-- Slide 3 -->
+                        <div class="snap-center shrink-0 w-[240px] sm:w-[280px] group cursor-pointer" onclick="openPhotoModal('images/photo_2026-08-27_16-13-54.jpg', 'Быстрое списание боеприпасов и расход')">
+                            <div class="rounded-2xl overflow-hidden border-2 border-tactical-border group-hover:border-tactical-green bg-tactical-bg transition-all shadow-lg group-hover:scale-[1.02] duration-200">
+                                <img src="images/photo_2026-08-27_16-13-54.jpg" alt="Быстрое списание" class="w-full h-[460px] object-cover object-top" loading="lazy">
+                            </div>
+                            <div class="mt-2 text-center">
+                                <span class="text-xs font-bold text-white group-hover:text-tactical-green transition-colors">Списание и расход</span>
+                            </div>
+                        </div>
+
+                        <!-- Slide 4 -->
+                        <div class="snap-center shrink-0 w-[240px] sm:w-[280px] group cursor-pointer" onclick="openPhotoModal('images/photo_2026-08-27_16-13-55.jpg', 'Электронная заявка на боеприпасы и СИБЗ')">
+                            <div class="rounded-2xl overflow-hidden border-2 border-tactical-border group-hover:border-tactical-green bg-tactical-bg transition-all shadow-lg group-hover:scale-[1.02] duration-200">
+                                <img src="images/photo_2026-08-27_16-13-55.jpg" alt="Электронная заявка" class="w-full h-[460px] object-cover object-top" loading="lazy">
+                            </div>
+                            <div class="mt-2 text-center">
+                                <span class="text-xs font-bold text-white group-hover:text-tactical-green transition-colors">Модуль «Заявка»</span>
+                            </div>
+                        </div>
+
+                        <!-- Slide 5 -->
+                        <div class="snap-center shrink-0 w-[240px] sm:w-[280px] group cursor-pointer" onclick="openPhotoModal('images/photo_2026-08-27_16-13-56.jpg', 'Справочник имущества: 11 служб и 95+ номенклатур')">
+                            <div class="rounded-2xl overflow-hidden border-2 border-tactical-border group-hover:border-tactical-green bg-tactical-bg transition-all shadow-lg group-hover:scale-[1.02] duration-200">
+                                <img src="images/photo_2026-08-27_16-13-56.jpg" alt="Справочник имущества" class="w-full h-[460px] object-cover object-top" loading="lazy">
+                            </div>
+                            <div class="mt-2 text-center">
+                                <span class="text-xs font-bold text-white group-hover:text-tactical-green transition-colors">Справочник 95+ позиций</span>
+                            </div>
+                        </div>
+
+                        <!-- Slide 6 -->
+                        <div class="snap-center shrink-0 w-[240px] sm:w-[280px] group cursor-pointer" onclick="openPhotoModal('images/photo_2026-08-27_16-13-57.jpg', 'История проводок и фильтрация по датам')">
+                            <div class="rounded-2xl overflow-hidden border-2 border-tactical-border group-hover:border-tactical-green bg-tactical-bg transition-all shadow-lg group-hover:scale-[1.02] duration-200">
+                                <img src="images/photo_2026-08-27_16-13-57.jpg" alt="История проводок" class="w-full h-[460px] object-cover object-top" loading="lazy">
+                            </div>
+                            <div class="mt-2 text-center">
+                                <span class="text-xs font-bold text-white group-hover:text-tactical-green transition-colors">История проводок</span>
+                            </div>
+                        </div>
+
+                        <!-- Slide 7 -->
+                        <div class="snap-center shrink-0 w-[240px] sm:w-[280px] group cursor-pointer" onclick="openPhotoModal('images/photo_2026-08-29_09-11-25.jpg', 'Синхронизация между устройствами командира и склада')">
+                            <div class="rounded-2xl overflow-hidden border-2 border-tactical-border group-hover:border-tactical-green bg-tactical-bg transition-all shadow-lg group-hover:scale-[1.02] duration-200">
+                                <img src="images/photo_2026-08-29_09-11-25.jpg" alt="Сетевая синхронизация" class="w-full h-[460px] object-cover object-top" loading="lazy">
+                            </div>
+                            <div class="mt-2 text-center">
+                                <span class="text-xs font-bold text-white group-hover:text-tactical-green transition-colors">Синхронизация по сети</span>
+                            </div>
+                        </div>
+
+                        <!-- Slide 8 -->
+                        <div class="snap-center shrink-0 w-[240px] sm:w-[280px] group cursor-pointer" onclick="openPhotoModal('images/photo_2026-08-29_09-11-26.jpg', 'Управление складами и огневыми точками')">
+                            <div class="rounded-2xl overflow-hidden border-2 border-tactical-border group-hover:border-tactical-green bg-tactical-bg transition-all shadow-lg group-hover:scale-[1.02] duration-200">
+                                <img src="images/photo_2026-08-29_09-11-26.jpg" alt="Управление складами" class="w-full h-[460px] object-cover object-top" loading="lazy">
+                            </div>
+                            <div class="mt-2 text-center">
+                                <span class="text-xs font-bold text-white group-hover:text-tactical-green transition-colors">Точки и склады учёта</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FULLSCREEN PHOTO LIGHTBOX MODAL -->
+        <div id="photo-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden items-center justify-center p-4" onclick="closePhotoModal()">
+            <div class="relative max-w-3xl w-full max-h-[90vh] flex flex-col items-center" onclick="event.stopPropagation()">
+                <button onclick="closePhotoModal()" class="absolute -top-12 right-0 text-tactical-muted hover:text-white bg-tactical-card p-2 rounded-full border border-tactical-border">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+                <img id="modal-img" src="" alt="Скриншот" class="max-h-[75vh] w-auto rounded-2xl border border-tactical-green/40 shadow-2xl object-contain">
+                <div id="modal-caption" class="mt-4 text-center text-sm font-bold text-white font-mono bg-tactical-bg/80 px-4 py-2 rounded-xl border border-tactical-border"></div>
+            </div>
+        </div>
 
         <!-- COMPACT INTERACTIVE TABS SHOWCASE (ЭКРАНЫ ПРОГРАММЫ ВО ВКЛАДКАХ С КНОПКОЙ ДАЛЬШЕ НА КАЖДОМ ЭКРАНЕ) -->
         <section id="showcase" class="py-16 bg-tactical-bg border-b border-tactical-border">
@@ -1402,7 +1530,36 @@ ${text}
             showToast("Открываем почту для отправки автору...");
         }
 
-        // 7. Real Visitor Counter Implementation
+        // 7. Screenshots Carousel & Lightbox
+        function scrollScreenshots(direction) {
+            const container = document.getElementById('screenshots-container');
+            if (container) {
+                const scrollAmount = direction * 320;
+                container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            }
+        }
+
+        function openPhotoModal(src, caption) {
+            const modal = document.getElementById('photo-modal');
+            const img = document.getElementById('modal-img');
+            const cap = document.getElementById('modal-caption');
+            if (modal && img && cap) {
+                img.src = src;
+                cap.innerText = caption;
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            }
+        }
+
+        function closePhotoModal() {
+            const modal = document.getElementById('photo-modal');
+            if (modal) {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }
+        }
+
+        // 8. Real Visitor Counter Implementation
         (function initRealCounter() {
             const BASE_VISITS = 15840;
             let localVisits = parseInt(localStorage.getItem('kapterka_site_visits') || '0', 10);
