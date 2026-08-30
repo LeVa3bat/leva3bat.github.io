@@ -212,8 +212,14 @@
                     });
                     if (getResp.ok) {
                         currentFile = await getResp.json();
-                        const decodedContent = atob(currentFile.content.replace(/\s/g, ''));
-                        ordersData = JSON.parse(decodedContent);
+                        const rawB64 = currentFile.content.replace(/\s/g, '');
+                        try {
+                            const decodedContent = decodeURIComponent(escape(atob(rawB64)));
+                            ordersData = JSON.parse(decodedContent);
+                        } catch (utfErr) {
+                            const decodedContent = atob(rawB64);
+                            ordersData = JSON.parse(decodedContent);
+                        }
                     }
                 } catch (e) {
                     console.warn('Error fetching existing orders, creating new:', e);
