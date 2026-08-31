@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>История версий — АСУ «КАПТЁРКА PRO» (от v1.0 до v2.9 PRO)</title>
+    <title>История версий — АСУ «КАПТЁРКА PRO» (от v1.0 до v2.9 PRO 2026)</title>
     
     <!-- Favicon & App Icons -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -18,15 +18,15 @@
     <meta name="yandex-verification" content="32c529e993f021eb" />
 
     <!-- SEO & Metadata -->
-    <meta name="description" content="История версий и этапы развития программы АСУ «КАПТЁРКА PRO»: хронология обновлений от v1.0 до v2.9 PRO, цели проекта, решенные проблемы и дорожная карта будущего.">
-    <meta name="keywords" content="каптерка история версий, обновления каптерка pro, changelog каптерка, учет оружия история, версии каптерка, roadmap каптерка pro">
+    <meta name="description" content="Полная история версий и этапы развития программы АСУ «КАПТЁРКА PRO» за 2026 год: хронология обновлений от v1.0 до v2.9 PRO, цели проекта, решенные проблемы и дорожная карта будущего.">
+    <meta name="keywords" content="каптерка история версий 2026, обновления каптерка pro, changelog каптерка, учет оружия история, версии каптерка, roadmap каптерка pro">
     <meta name="author" content="Васев А.Е. • АСУ Каптёрка PRO">
     <link rel="canonical" href="https://kapterka-pro.ru/versions.html" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://kapterka-pro.ru/versions.html">
-    <meta property="og:title" content="История версий — АСУ «КАПТЁРКА PRO»">
+    <meta property="og:title" content="История версий — АСУ «КАПТЁРКА PRO» (2026)">
     <meta property="og:description" content="Хронология эволюции системы: от чего мы ушли, как развивалась программа от v1.0 до v2.9 PRO и куда мы стремимся.">
     <meta property="og:site_name" content="АСУ КАПТЁРКА PRO">
 
@@ -85,55 +85,13 @@
     </script>
 
     <style>
-        /* CRITICAL OFFLINE / CDN-SAFE CSS RESET AND UTILITIES */
         *, ::before, ::after { box-sizing: border-box; border-width: 0; border-style: solid; border-color: #233326; }
         html { line-height: 1.5; -webkit-text-size-adjust: 100%; font-family: Inter, system-ui, sans-serif; }
         body { margin: 0; line-height: inherit; }
         a { color: inherit; text-decoration: inherit; }
         button, input, optgroup, select, textarea { font-family: inherit; font-size: 100%; line-height: inherit; margin: 0; }
         
-        .flex { display: flex !important; }
-        .inline-flex { display: inline-flex !important; }
-        .grid { display: grid !important; }
-        .block { display: block !important; }
-        .inline-block { display: inline-block !important; }
-        .flex-col { flex-direction: column !important; }
-        .flex-row { flex-direction: row !important; }
-        .flex-grow { flex-grow: 1 !important; }
-        .items-center { align-items: center !important; }
-        .justify-between { justify-content: space-between !important; }
-        .justify-center { justify-content: center !important; }
-        .text-center { text-align: center !important; }
-        .relative { position: relative !important; }
-        .absolute { position: absolute !important; }
-        .fixed { position: fixed !important; }
-        .sticky { position: sticky !important; }
-        .top-0 { top: 0 !important; }
-        .z-40 { z-index: 40 !important; }
-        .z-50 { z-index: 50 !important; }
-        .w-full { width: 100% !important; }
-        .max-w-7xl { max-width: 80rem !important; }
-        .max-w-5xl { max-width: 64rem !important; }
-        .max-w-4xl { max-width: 56rem !important; }
-        .max-w-2xl { max-width: 42rem !important; }
-        .mx-auto { margin-left: auto !important; margin-right: auto !important; }
-        .gap-2 { gap: 0.5rem !important; }
-        .gap-3 { gap: 0.75rem !important; }
-        .gap-4 { gap: 1rem !important; }
-        .gap-6 { gap: 1.5rem !important; }
-        .gap-8 { gap: 2rem !important; }
-        .p-4 { padding: 1rem !important; }
-        .p-6 { padding: 1.5rem !important; }
-        .px-4 { padding-left: 1rem !important; padding-right: 1rem !important; }
-        .py-2 { padding-top: 0.5rem !important; padding-bottom: 0.5rem !important; }
-        .rounded-xl { border-radius: 0.75rem !important; }
-        .rounded-2xl { border-radius: 1rem !important; }
-        .rounded-3xl { border-radius: 1.5rem !important; }
-        .rounded-full { border-radius: 9999px !important; }
-        .border { border-width: 1px !important; }
-        .border-tactical-border { border-color: #233326 !important; }
-        .border-tactical-green { border-color: #4CAF50 !important; }
-        .hidden, [hidden] { display: none !important; }
+        .tabular-nums { font-variant-numeric: tabular-nums; }
 
         body {
             background-color: #080C09;
@@ -152,24 +110,29 @@
         .glow-green {
             box-shadow: 0 0 25px rgba(76, 175, 80, 0.25);
         }
-        .timeline-line {
-            position: absolute;
-            left: 24px;
-            top: 24px;
-            bottom: 24px;
-            width: 2px;
-            background: linear-gradient(to bottom, #4CAF50, #1B2B1F 90%, transparent);
+        .glow-green-sm {
+            box-shadow: 0 0 12px rgba(76, 175, 80, 0.2);
         }
-        @media (min-width: 768px) {
-            .timeline-line {
-                left: 32px;
-            }
+        
+        /* Custom Accordion Styling */
+        details summary {
+            list-style: none;
+            cursor: pointer;
+        }
+        details summary::-webkit-details-marker {
+            display: none;
+        }
+        details[open] summary .accordion-chevron {
+            transform: rotate(180deg);
+        }
+        details[open] {
+            border-color: rgba(76, 175, 80, 0.6) !important;
+            background-color: rgba(18, 28, 20, 0.95) !important;
+        }
+        .accordion-chevron {
+            transition: transform 0.25s ease-in-out;
         }
     </style>
-    <!-- PWA & Mobile Settings -->
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#4CAF50">
-    <link rel="canonical" href="https://kapterka-pro.ru/versions.html">
 </head>
 <body class="min-h-screen flex flex-col antialiased selection:bg-tactical-green selection:text-black">
 
@@ -181,7 +144,7 @@
                 <span class="text-tactical-green font-bold">ОФИЦИАЛЬНЫЙ РЕСУРС:</span>
                 <a href="index.html" class="text-white font-mono hover:text-tactical-green transition-colors">kapterka-pro.ru</a>
                 <span class="text-tactical-border hidden sm:inline">|</span>
-                <span class="hidden sm:inline text-gray-400">Хронология версий и Roadmap v2.9 PRO</span>
+                <span class="hidden sm:inline text-gray-400">Хронология версий и Roadmap 2026 г.</span>
             </div>
             <div class="flex items-center space-x-3 sm:space-x-4 text-[11px]">
                 <span class="text-tactical-gold font-bold flex items-center gap-1">
@@ -210,7 +173,7 @@
                 <div>
                     <div class="flex items-center space-x-2">
                         <span class="font-extrabold text-lg sm:text-xl tracking-wider text-white">КАПТЁРКА <span class="text-tactical-green">PRO</span></span>
-                        <span class="bg-tactical-green/20 text-tactical-green text-[10px] font-mono font-bold px-1.5 py-0.5 rounded border border-tactical-green/30">v2.9</span>
+                        <span class="bg-tactical-green/20 text-tactical-green text-[10px] font-mono font-bold px-1.5 py-0.5 rounded border border-tactical-green/30">2026</span>
                     </div>
                     <span class="text-[10px] font-mono text-tactical-muted block -mt-0.5 tracking-tight">ИСТОРИЯ ВЕРСИЙ & ROADMAP</span>
                 </div>
@@ -249,20 +212,20 @@
         <!-- HERO SECTION -->
         <section class="max-w-7xl mx-auto px-4 sm:px-6 pt-10 pb-8 text-center">
             <div class="inline-flex items-center space-x-2 bg-tactical-darkGreen border border-tactical-green/30 px-3.5 py-1.5 rounded-full text-xs font-mono text-tactical-green mb-4 shadow-sm">
-                <i data-lucide="git-commit" class="w-3.5 h-3.5 text-tactical-green animate-spin" style="animation-duration: 6s;"></i>
-                <span>ХРОНОЛОГИЯ РАЗВИТИЯ • ОТ v1.0 ДО v2.9 PRO</span>
+                <i data-lucide="git-commit" class="w-3.5 h-3.5 text-tactical-green"></i>
+                <span class="tabular-nums">ХРОНОЛОГИЯ РАЗВИТИЯ 2026 г. • ОТ v1.0 ДО v2.9 PRO</span>
             </div>
             <h1 class="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight mb-4">
                 ИСТОРИЯ ВЕРСИЙ ПРОГРАММЫ: <br class="hidden sm:inline" />
                 <span class="text-tactical-green">ОТ ЧЕГО МЫ УШЛИ И КУДА СТРЕМИМСЯ</span>
             </h1>
             <p class="text-tactical-muted text-sm sm:text-base max-w-3xl mx-auto leading-relaxed">
-                Полный путь создания АСУ «КАПТЁРКА PRO»: реальный боевой опыт, отказ от размокших окопных тетрадей, защита от радиодемаскировки и непрерывная эволюция до полноценной сетевой тактической экосистемы.
+                Полный путь создания АСУ «КАПТЁРКА PRO» в 2026 году: реальный боевой опыт, отказ от размокших окопных тетрадей, защита от радиодемаскировки и непрерывная эволюция до полноценной сетевой тактической экосистемы.
             </p>
         </section>
 
         <!-- MISSION & PHILOSOPHY: FROM WHAT WE ESCAPED -->
-        <section class="max-w-7xl mx-auto px-4 sm:px-6 pb-12">
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 pb-10">
             <div class="bg-tactical-card border border-tactical-border rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
                 <div class="absolute top-0 right-0 w-80 h-80 bg-tactical-green/5 rounded-full blur-3xl pointer-events-none"></div>
                 
@@ -277,394 +240,482 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-5 text-xs sm:text-sm">
-                    <div class="p-5 rounded-2xl bg-tactical-dark/80 border border-tactical-border/80 flex flex-col justify-between">
+                    <!-- Item 1 -->
+                    <div class="p-5 rounded-2xl bg-tactical-dark/80 border border-tactical-border/80 flex flex-col justify-between hover:border-tactical-borderBright transition-all">
                         <div>
-                            <div class="w-9 h-9 rounded-xl bg-rose-950/60 border border-rose-500/40 text-rose-400 flex items-center justify-center mb-3 font-mono font-bold">
-                                ❌ 01
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="w-8 h-8 rounded-xl bg-rose-950/60 border border-rose-500/40 text-rose-400 flex items-center justify-center font-mono font-bold tabular-nums">
+                                    01
+                                </span>
+                                <span class="text-[10px] font-mono text-rose-400 bg-rose-950/40 px-2 py-0.5 rounded border border-rose-900/50">Проблема</span>
                             </div>
                             <h3 class="text-white font-bold text-base mb-2">Бумажные тетради и грязь</h3>
                             <p class="text-gray-300 leading-relaxed">
                                 Залитые дождем блокноты, неразборчивые почерки, оторванные страницы и потерянные накладные при ночных выдачах в блиндажах приводили к хаосу и недостачам.
                             </p>
                         </div>
-                        <div class="mt-4 pt-3 border-t border-tactical-border/50 text-[11px] font-mono text-tactical-green">
-                            ✓ Решено: 100% цифровой учет на защищенном смартфоне.
+                        <div class="mt-4 pt-3 border-t border-tactical-border/50 text-[11px] font-mono text-tactical-green flex items-center gap-1.5">
+                            <i data-lucide="check-circle-2" class="w-3.5 h-3.5 shrink-0"></i>
+                            <span>Решено: 100% цифровой учет на защищенном смартфоне.</span>
                         </div>
                     </div>
 
-                    <div class="p-5 rounded-2xl bg-tactical-dark/80 border border-tactical-border/80 flex flex-col justify-between">
+                    <!-- Item 2 -->
+                    <div class="p-5 rounded-2xl bg-tactical-dark/80 border border-tactical-border/80 flex flex-col justify-between hover:border-tactical-borderBright transition-all">
                         <div>
-                            <div class="w-9 h-9 rounded-xl bg-rose-950/60 border border-rose-500/40 text-rose-400 flex items-center justify-center mb-3 font-mono font-bold">
-                                ❌ 02
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="w-8 h-8 rounded-xl bg-rose-950/60 border border-rose-500/40 text-rose-400 flex items-center justify-center font-mono font-bold tabular-nums">
+                                    02
+                                </span>
+                                <span class="text-[10px] font-mono text-rose-400 bg-rose-950/40 px-2 py-0.5 rounded border border-rose-900/50">Опасность</span>
                             </div>
                             <h3 class="text-white font-bold text-base mb-2">Радиодемаскировка Bluetooth</h3>
                             <p class="text-gray-300 leading-relaxed">
                                 Использование Bluetooth и незащищенного радиоэфира в зоне ЛБС моментально пеленгуется средствами радиотехнической разведки противника, ставя под удар пункт боепитания.
                             </p>
                         </div>
-                        <div class="mt-4 pt-3 border-t border-tactical-border/50 text-[11px] font-mono text-tactical-green">
-                            ✓ Решено: Полный отказ от Bluetooth. Синхронизация строго по сетевому IP-каналу при связи.
+                        <div class="mt-4 pt-3 border-t border-tactical-border/50 text-[11px] font-mono text-tactical-green flex items-center gap-1.5">
+                            <i data-lucide="check-circle-2" class="w-3.5 h-3.5 shrink-0"></i>
+                            <span>Решено: Полный отказ от Bluetooth. Синхронизация строго по IP.</span>
                         </div>
                     </div>
 
-                    <div class="p-5 rounded-2xl bg-tactical-dark/80 border border-tactical-border/80 flex flex-col justify-between">
+                    <!-- Item 3 -->
+                    <div class="p-5 rounded-2xl bg-tactical-dark/80 border border-tactical-border/80 flex flex-col justify-between hover:border-tactical-borderBright transition-all">
                         <div>
-                            <div class="w-9 h-9 rounded-xl bg-rose-950/60 border border-rose-500/40 text-rose-400 flex items-center justify-center mb-3 font-mono font-bold">
-                                ❌ 03
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="w-8 h-8 rounded-xl bg-rose-950/60 border border-rose-500/40 text-rose-400 flex items-center justify-center font-mono font-bold tabular-nums">
+                                    03
+                                </span>
+                                <span class="text-[10px] font-mono text-rose-400 bg-rose-950/40 px-2 py-0.5 rounded border border-rose-900/50">Уязвимость</span>
                             </div>
-                            <h3 class="text-white font-bold text-base mb-2">Зависимость от облака</h3>
+                            <h3 class="text-white font-bold text-base mb-2">Зависимость от интернета</h3>
                             <p class="text-gray-300 leading-relaxed">
                                 Большинство гражданских CRM требуют постоянного интернета и серверов. При подавлении РЭБ или в окопах такие программы мгновенно превращаются в «кирпич».
                             </p>
                         </div>
-                        <div class="mt-4 pt-3 border-t border-tactical-border/50 text-[11px] font-mono text-tactical-green">
-                            ✓ Решено: Принцип Offline-First. Автономная база данных SQLite/Room внутри устройства.
+                        <div class="mt-4 pt-3 border-t border-tactical-border/50 text-[11px] font-mono text-tactical-green flex items-center gap-1.5">
+                            <i data-lucide="check-circle-2" class="w-3.5 h-3.5 shrink-0"></i>
+                            <span>Решено: Принцип Offline-First. Автономная база Room/SQLite.</span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- TIMELINE SECTION: DETAILED VERSION HISTORY -->
+        <!-- TIMELINE SECTION: DETAILED VERSION HISTORY WITH ACCORDIONS -->
         <section class="max-w-5xl mx-auto px-4 sm:px-6 pb-16">
             
-            <div class="text-center mb-10">
-                <span class="text-tactical-green font-mono text-xs tracking-wider uppercase bg-tactical-card px-3 py-1 rounded-full border border-tactical-border">
-                    Эволюция возможностей
-                </span>
-                <h2 class="text-2xl sm:text-3xl font-black text-white mt-2">Полная хронология версий</h2>
-                <p class="text-tactical-muted text-xs sm:text-sm mt-1">От первого прототипа до профессионального боевого комплекса v2.9 PRO</p>
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">
+                <div>
+                    <span class="text-tactical-green font-mono text-xs tracking-wider uppercase bg-tactical-card px-3 py-1 rounded-full border border-tactical-border">
+                        ХРОНОЛОГИЯ 2026 ГОДА
+                    </span>
+                    <h2 class="text-2xl sm:text-3xl font-black text-white mt-1">Версии программы и список изменений</h2>
+                </div>
+                
+                <!-- Expand / Collapse All Controls -->
+                <div class="flex items-center space-x-2 text-xs font-mono">
+                    <button type="button" onclick="toggleAllVersions(true)" class="px-3 py-1.5 bg-tactical-card hover:bg-tactical-border border border-tactical-border rounded-xl text-tactical-green hover:text-white transition-all flex items-center gap-1">
+                        <i data-lucide="chevrons-down" class="w-3.5 h-3.5"></i>
+                        <span>Развернуть все</span>
+                    </button>
+                    <button type="button" onclick="toggleAllVersions(false)" class="px-3 py-1.5 bg-tactical-card hover:bg-tactical-border border border-tactical-border rounded-xl text-tactical-muted hover:text-white transition-all flex items-center gap-1">
+                        <i data-lucide="chevrons-up" class="w-3.5 h-3.5"></i>
+                        <span>Свернуть все</span>
+                    </button>
+                </div>
             </div>
 
-            <!-- TIMELINE CONTAINER -->
-            <div class="relative space-y-8">
-                
-                <!-- Vertical timeline line -->
-                <div class="timeline-line hidden sm:block"></div>
+            <!-- ACCORDIONS CONTAINER -->
+            <div class="space-y-4 font-sans" id="versions-container">
 
                 <!-- ==================== VERSION 2.9 PRO (CURRENT) ==================== -->
-                <div class="relative sm:pl-16">
-                    <!-- Marker on line -->
-                    <div class="hidden sm:flex absolute left-0 top-1.5 w-16 items-center justify-center">
-                        <div class="w-8 h-8 rounded-full bg-tactical-green border-4 border-tactical-bg flex items-center justify-center text-black font-bold text-xs shadow-lg animate-pulse">
-                            ★
-                        </div>
-                    </div>
-
-                    <div class="bg-tactical-card border-2 border-tactical-green rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden">
-                        <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-tactical-green/10 rounded-full blur-3xl pointer-events-none"></div>
-                        
-                        <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
-                            <div class="flex items-center gap-3">
-                                <span class="text-2xl sm:text-3xl font-black font-mono text-tactical-green">v2.9 PRO</span>
-                                <span class="bg-tactical-green text-black font-mono font-bold text-xs px-2.5 py-0.5 rounded-full uppercase shadow">
-                                    ТЕКУЩАЯ ВЕРСИЯ
+                <details class="version-item bg-tactical-card border-2 border-tactical-green/80 rounded-2xl overflow-hidden transition-all shadow-xl" open>
+                    <summary class="p-5 sm:p-6 select-none bg-tactical-card hover:bg-tactical-darkGreen/40 transition-colors">
+                        <div class="flex items-start justify-between gap-4">
+                            <div class="flex items-start space-x-3 sm:space-x-4">
+                                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-tactical-green text-black flex items-center justify-center font-black text-sm sm:text-base shrink-0 shadow-md">
+                                    ★
+                                </div>
+                                <div>
+                                    <div class="flex flex-wrap items-center gap-2 mb-1">
+                                        <span class="text-xl sm:text-2xl font-black font-mono text-tactical-green tabular-nums">v2.9 PRO</span>
+                                        <span class="bg-tactical-green text-black font-mono font-bold text-[10px] px-2 py-0.5 rounded-full uppercase shadow">
+                                            АКТУАЛЬНЫЙ РЕЛИЗ
+                                        </span>
+                                        <span class="bg-tactical-darkGreen text-tactical-green border border-tactical-green/40 font-mono text-[10px] px-2 py-0.5 rounded">
+                                            СЕТЬ & ОНЛАЙН
+                                        </span>
+                                    </div>
+                                    <h3 class="text-white font-bold text-sm sm:text-base">
+                                        Сетевая синхронизация роты, Мониторинг бойцов Онлайн и Верификация Email
+                                    </h3>
+                                    <p class="text-tactical-muted text-xs sm:text-sm mt-1 leading-snug">
+                                        Глобальное обновление сетевого стека: защищенная авто-репликация данных без радиодемаскирующего Bluetooth.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex flex-col items-end shrink-0 pt-1">
+                                <span class="text-xs font-mono text-tactical-green font-bold bg-tactical-dark px-2.5 py-1 rounded-lg border border-tactical-border tabular-nums">
+                                    Август 2026
+                                </span>
+                                <span class="accordion-chevron text-tactical-muted mt-3">
+                                    <i data-lucide="chevron-down" class="w-5 h-5"></i>
                                 </span>
                             </div>
-                            <span class="text-xs font-mono text-tactical-muted bg-tactical-dark px-3 py-1 rounded-lg border border-tactical-border">
-                                Август 2026
-                            </span>
                         </div>
+                    </summary>
 
-                        <h3 class="text-lg sm:text-xl font-bold text-white mb-3">
-                            Сетевая синхронизация роты, Мониторинг бойцов Онлайн и Верификация Email
-                        </h3>
-                        <p class="text-xs sm:text-sm text-gray-300 leading-relaxed mb-4">
-                            Глобальное обновление сетевого стека: переход к защищенной автоматической репликации между смартфонами подразделения (старшина, каптёр, комвзвода, комроты) без применения радиодемаскирующего Bluetooth.
-                        </p>
-
-                        <!-- Key Features of v2.9 -->
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs mb-4">
-                            <div class="p-3.5 rounded-xl bg-tactical-dark border border-tactical-green/30 text-gray-300">
+                    <!-- Expanded Content -->
+                    <div class="p-5 sm:p-6 pt-0 border-t border-tactical-border/60 bg-tactical-dark/60 text-xs sm:text-sm space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs pt-4">
+                            <div class="p-3.5 rounded-xl bg-tactical-card border border-tactical-green/30 text-gray-300">
                                 <strong class="text-tactical-green font-mono block mb-1 flex items-center gap-1.5">
-                                    <i data-lucide="wifi" class="w-4 h-4"></i> Авто-синхронизация ПО СЕТИ:
+                                    <i data-lucide="wifi" class="w-4 h-4"></i> Автоматическая сетевая синхронизация:
                                 </strong>
-                                Как только телефон подключается к Wi-Fi, 4G или спутниковой связи, журнал и остатки синхронизируются в фоновом режиме.
+                                При появлении Wi-Fi, 4G или спутниковой связи журнал и остатки синхронизируются в фоновом режиме между устройствами роты.
                             </div>
-                            <div class="p-3.5 rounded-xl bg-tactical-dark border border-tactical-green/30 text-gray-300">
+                            <div class="p-3.5 rounded-xl bg-tactical-card border border-tactical-green/30 text-gray-300">
                                 <strong class="text-tactical-gold font-mono block mb-1 flex items-center gap-1.5">
                                     <i data-lucide="radio" class="w-4 h-4"></i> Мониторинг бойцов Онлайн:
-                                </h4>
-                                Индикатор «🟢 В сети» в шапке открывает диалог со списком всех активных бойцов подразделения за последние 10 минут с их смартфонами.
+                                </strong>
+                                Индикатор «🟢 В сети» в шапке открывает диалог со списком активных бойцов подразделения за последние 10 минут с моделями устройств.
                             </div>
-                            <div class="p-3.5 rounded-xl bg-tactical-dark border border-tactical-green/30 text-gray-300">
+                            <div class="p-3.5 rounded-xl bg-tactical-card border border-tactical-green/30 text-gray-300">
                                 <strong class="text-white font-mono block mb-1 flex items-center gap-1.5">
-                                    <i data-lucide="mail-check" class="w-4 h-4 text-tactical-green"></i> Верификация Email по коду:
+                                    <i data-lucide="mail-check" class="w-4 h-4 text-tactical-green"></i> Верификация Email по 4-значному коду:
                                 </strong>
-                                Подтверждение подлинности учетной записи 4-значным проверочным кодом и мгновенным push-уведомлением в шторку Android.
+                                Подтверждение подлинности учетной записи с мгновенным push-уведомлением в шторку Android.
                             </div>
-                            <div class="p-3.5 rounded-xl bg-tactical-dark border border-tactical-green/30 text-gray-300">
+                            <div class="p-3.5 rounded-xl bg-tactical-card border border-tactical-green/30 text-gray-300">
                                 <strong class="text-cyan-400 font-mono block mb-1 flex items-center gap-1.5">
-                                    <i data-lucide="smartphone" class="w-4 h-4"></i> Общий ключ роты (kapt_xxxxxx):
+                                    <i data-lucide="smartphone" class="w-4 h-4"></i> Единый код роты (kapt_xxxxxx):
                                 </strong>
-                                Мгновенное подключение 2-го и 3-го смартфона к общей базе роты без сложных настроек.
+                                Мгновенное подключение 2-го и 3-го смартфона к общей базе подразделения в один клик.
                             </div>
                         </div>
 
-                        <div class="flex items-center gap-2 pt-3 border-t border-tactical-border/60">
-                            <span class="text-[11px] font-mono text-tactical-muted">Статус:</span>
-                            <span class="text-[11px] font-mono text-tactical-green font-bold">Выпущена в релиз • Рекомендуется всем подразделениям</span>
+                        <div class="p-4 rounded-xl bg-tactical-dark border border-tactical-border text-xs text-gray-300">
+                            <span class="font-mono text-tactical-green font-bold block mb-1.5">🎯 Главная цель обновления:</span>
+                            Обеспечить мгновенный обмен остатками БК и имущества между старшиной, командиром роты и взводными опорными пунктами без создания радиоэфирного следа для РЭР противника.
+                        </div>
+
+                        <div class="flex items-center justify-between pt-2 text-[11px] font-mono text-tactical-muted">
+                            <span>Сборка: <code class="text-tactical-green">kapterka-pro-v2.9.apk</code></span>
+                            <span class="text-tactical-green font-bold">Статус: Релиз в войска</span>
                         </div>
                     </div>
-                </div>
+                </details>
 
                 <!-- ==================== VERSION 2.8 ==================== -->
-                <div class="relative sm:pl-16">
-                    <div class="hidden sm:flex absolute left-0 top-1.5 w-16 items-center justify-center">
-                        <div class="w-6 h-6 rounded-full bg-tactical-darkGreen border-2 border-tactical-green flex items-center justify-center text-tactical-green text-[10px] font-bold">
-                            ✓
-                        </div>
-                    </div>
-
-                    <div class="bg-tactical-card border border-tactical-border rounded-3xl p-6 sm:p-7 shadow-lg">
-                        <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
-                            <div class="flex items-center gap-2">
-                                <span class="text-xl sm:text-2xl font-black font-mono text-white">v2.8</span>
-                                <span class="bg-tactical-darkGreen text-tactical-green font-mono text-xs px-2 py-0.5 rounded border border-tactical-green/30">
-                                    ОТЧЕТНОСТЬ
+                <details class="version-item bg-tactical-card border border-tactical-border rounded-2xl overflow-hidden transition-all shadow-md">
+                    <summary class="p-5 sm:p-6 select-none bg-tactical-card hover:bg-tactical-darkGreen/30 transition-colors">
+                        <div class="flex items-start justify-between gap-4">
+                            <div class="flex items-start space-x-3 sm:space-x-4">
+                                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-tactical-darkGreen border border-tactical-green/40 text-tactical-green flex items-center justify-center font-black text-sm sm:text-base shrink-0">
+                                    2.8
+                                </div>
+                                <div>
+                                    <div class="flex flex-wrap items-center gap-2 mb-1">
+                                        <span class="text-xl sm:text-2xl font-black font-mono text-white tabular-nums">v2.8</span>
+                                        <span class="bg-tactical-darkGreen text-tactical-green font-mono text-[10px] px-2 py-0.5 rounded border border-tactical-green/30">
+                                            УСТАВНАЯ ОТЧЕТНОСТЬ
+                                        </span>
+                                    </div>
+                                    <h3 class="text-white font-bold text-sm sm:text-base">
+                                        Уставные ведомости: Форма №8 (Акт списания) и Форма №18
+                                    </h3>
+                                    <p class="text-tactical-muted text-xs sm:text-sm mt-1 leading-snug">
+                                        Внедрение стандартных войсковых форм для мгновенной сдачи отчетности в службу РАВ и штаб.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex flex-col items-end shrink-0 pt-1">
+                                <span class="text-xs font-mono text-tactical-muted bg-tactical-dark px-2.5 py-1 rounded-lg border border-tactical-border tabular-nums">
+                                    Август 2026
+                                </span>
+                                <span class="accordion-chevron text-tactical-muted mt-3">
+                                    <i data-lucide="chevron-down" class="w-5 h-5"></i>
                                 </span>
                             </div>
-                            <span class="text-xs font-mono text-tactical-muted bg-tactical-dark px-2.5 py-1 rounded border border-tactical-border">
-                                Февраль 2026
-                            </span>
                         </div>
+                    </summary>
 
-                        <h3 class="text-base sm:text-lg font-bold text-white mb-2">
-                            Уставная войсковая отчетность: Форма №8 и Форма №18
-                        </h3>
-                        <p class="text-xs sm:text-sm text-gray-300 leading-relaxed mb-4">
-                            Внедрение стандартных уставных войсковых ведомостей и актов для сдачи отчетности в службу РАВ и штаб полка.
-                        </p>
-
-                        <ul class="space-y-2 text-xs text-gray-300 font-mono">
-                            <li class="flex items-start gap-2">
+                    <!-- Expanded Content -->
+                    <div class="p-5 sm:p-6 pt-0 border-t border-tactical-border/60 bg-tactical-dark/60 text-xs sm:text-sm space-y-3">
+                        <div class="pt-4 space-y-2">
+                            <div class="flex items-start gap-2 text-gray-300">
                                 <i data-lucide="check" class="w-4 h-4 text-tactical-green shrink-0 mt-0.5"></i>
-                                <span><strong>Форма №8 (Акт списания):</strong> Автоматическое формирование официального акта на израсходованные боеприпасы с номерами приказов и подписями комиссии.</span>
-                            </li>
-                            <li class="flex items-start gap-2">
+                                <span><strong>Форма №8 (Акт списания боеприпасов):</strong> Автогенерация официального акта на израсходованные выстрелы, патроны и мины с указанием приказов и состава комиссии.</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-gray-300">
                                 <i data-lucide="check" class="w-4 h-4 text-tactical-green shrink-0 mt-0.5"></i>
-                                <span><strong>Форма №18 (Книга наличия и движения):</strong> Полная сводная таблица прихода, расхода и остатков по 9 службам с выгрузкой в Excel/CSV.</span>
-                            </li>
-                            <li class="flex items-start gap-2">
+                                <span><strong>Форма №18 (Книга учета наличия и движения):</strong> Полная сводная таблица прихода, расхода и остатков по 9 службам с выгрузкой в Excel/CSV.</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-gray-300">
                                 <i data-lucide="check" class="w-4 h-4 text-tactical-green shrink-0 mt-0.5"></i>
-                                <span><strong>Криптографический ключ RSA-2048:</strong> Защита целостности базы данных и лицензирование расширенных PRO-функций.</span>
-                            </li>
-                        </ul>
+                                <span><strong>Криптографический ключ RSA-2048:</strong> Защита целостности локальной базы данных и лицензирование расширенных возможностей.</span>
+                            </div>
+                        </div>
+                        <div class="p-3 rounded-xl bg-tactical-dark border border-tactical-border text-xs text-gray-400">
+                            <span class="text-tactical-green font-mono font-semibold">Результат:</span> Время подготовки ежемесячного отчета для службы РАВ сократилось с 8 часов до 2 минут.
+                        </div>
                     </div>
-                </div>
+                </details>
 
                 <!-- ==================== VERSION 2.6 ==================== -->
-                <div class="relative sm:pl-16">
-                    <div class="hidden sm:flex absolute left-0 top-1.5 w-16 items-center justify-center">
-                        <div class="w-6 h-6 rounded-full bg-tactical-darkGreen border-2 border-tactical-border flex items-center justify-center text-tactical-muted text-[10px] font-bold">
-                            ✓
-                        </div>
-                    </div>
-
-                    <div class="bg-tactical-card border border-tactical-border rounded-3xl p-6 sm:p-7 shadow-lg">
-                        <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
-                            <div class="flex items-center gap-2">
-                                <span class="text-xl sm:text-2xl font-black font-mono text-white">v2.6</span>
-                                <span class="bg-tactical-darkGreen text-tactical-green font-mono text-xs px-2 py-0.5 rounded border border-tactical-green/30">
-                                    FPV И ЗАЯВКИ
+                <details class="version-item bg-tactical-card border border-tactical-border rounded-2xl overflow-hidden transition-all shadow-md">
+                    <summary class="p-5 sm:p-6 select-none bg-tactical-card hover:bg-tactical-darkGreen/30 transition-colors">
+                        <div class="flex items-start justify-between gap-4">
+                            <div class="flex items-start space-x-3 sm:space-x-4">
+                                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-tactical-darkGreen border border-tactical-green/40 text-tactical-green flex items-center justify-center font-black text-sm sm:text-base shrink-0">
+                                    2.6
+                                </div>
+                                <div>
+                                    <div class="flex flex-wrap items-center gap-2 mb-1">
+                                        <span class="text-xl sm:text-2xl font-black font-mono text-white tabular-nums">v2.6</span>
+                                        <span class="bg-tactical-darkGreen text-tactical-green font-mono text-[10px] px-2 py-0.5 rounded border border-tactical-green/30">
+                                            БПЛА И FPV
+                                        </span>
+                                    </div>
+                                    <h3 class="text-white font-bold text-sm sm:text-base">
+                                        Спецкомплектующие к БК, Эра FPV-дронов и Модуль Заявок
+                                    </h3>
+                                    <p class="text-tactical-muted text-xs sm:text-sm mt-1 leading-snug">
+                                        Полноценная интеграция беспилотной авиации, плат инициации, взрывателей и подачи срочных потребностей.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex flex-col items-end shrink-0 pt-1">
+                                <span class="text-xs font-mono text-tactical-muted bg-tactical-dark px-2.5 py-1 rounded-lg border border-tactical-border tabular-nums">
+                                    Июль 2026
+                                </span>
+                                <span class="accordion-chevron text-tactical-muted mt-3">
+                                    <i data-lucide="chevron-down" class="w-5 h-5"></i>
                                 </span>
                             </div>
-                            <span class="text-xs font-mono text-tactical-muted bg-tactical-dark px-2.5 py-1 rounded border border-tactical-border">
-                                Декабрь 2025
-                            </span>
                         </div>
+                    </summary>
 
-                        <h3 class="text-base sm:text-lg font-bold text-white mb-2">
-                            Эра БПЛА, комплектующие к боеприпасам и Модуль Заявок
-                        </h3>
-                        <p class="text-xs sm:text-sm text-gray-300 leading-relaxed mb-4">
-                            Адаптация программы под реалии современной войны беспилотников и быстрой доставки снабжения на огневые точки.
-                        </p>
-
-                        <ul class="space-y-2 text-xs text-gray-300 font-mono">
-                            <li class="flex items-start gap-2">
+                    <!-- Expanded Content -->
+                    <div class="p-5 sm:p-6 pt-0 border-t border-tactical-border/60 bg-tactical-dark/60 text-xs sm:text-sm space-y-3">
+                        <div class="pt-4 space-y-2">
+                            <div class="flex items-start gap-2 text-gray-300">
                                 <i data-lucide="check" class="w-4 h-4 text-tactical-green shrink-0 mt-0.5"></i>
-                                <span><strong>Спецкомплектующие:</strong> Взрыватели (М-12, М-6, РГМ-2М, МВЧ-62), пороховые заряды, запалы УЗРГМ-2/УДЗ, платы инициации FPV, хвостовики сбросов.</span>
-                            </li>
-                            <li class="flex items-start gap-2">
+                                <span><strong>Учет спецкомплектующих:</strong> Взрыватели (М-12, М-6, РГМ-2М, МВЧ-62), пороховые заряды 4Б24, запалы УЗРГМ-2/УДЗ, платы инициации FPV, хвостовики сбросов.</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-gray-300">
                                 <i data-lucide="check" class="w-4 h-4 text-tactical-green shrink-0 mt-0.5"></i>
-                                <span><strong>Модуль Заявок:</strong> Подача срочной потребности с позиций (Плановая, Срочная, Экстренная) с отслеживанием статуса комплектации.</span>
-                            </li>
-                            <li class="flex items-start gap-2">
+                                <span><strong>Модуль Заявок:</strong> Подача срочной потребности с позиций (Плановая, Срочная, Экстренная) с контролем комплектации на складе.</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-gray-300">
                                 <i data-lucide="check" class="w-4 h-4 text-tactical-green shrink-0 mt-0.5"></i>
-                                <span><strong>Push-оповещения Android:</strong> Оповещение бойцов при готовности заявки к выдаче.</span>
-                            </li>
-                        </ul>
+                                <span><strong>Push-оповещения:</strong> Мгновенные уведомления бойцам о готовности заказанного снабжения к выдаче.</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </details>
 
                 <!-- ==================== VERSION 2.3 ==================== -->
-                <div class="relative sm:pl-16">
-                    <div class="hidden sm:flex absolute left-0 top-1.5 w-16 items-center justify-center">
-                        <div class="w-6 h-6 rounded-full bg-tactical-darkGreen border-2 border-tactical-border flex items-center justify-center text-tactical-muted text-[10px] font-bold">
-                            ✓
-                        </div>
-                    </div>
-
-                    <div class="bg-tactical-card border border-tactical-border rounded-3xl p-6 sm:p-7 shadow-lg">
-                        <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
-                            <div class="flex items-center gap-2">
-                                <span class="text-xl sm:text-2xl font-black font-mono text-white">v2.3</span>
-                                <span class="bg-tactical-darkGreen text-tactical-green font-mono text-xs px-2 py-0.5 rounded border border-tactical-green/30">
-                                    МУЛЬТИ-СКЛАД
+                <details class="version-item bg-tactical-card border border-tactical-border rounded-2xl overflow-hidden transition-all shadow-md">
+                    <summary class="p-5 sm:p-6 select-none bg-tactical-card hover:bg-tactical-darkGreen/30 transition-colors">
+                        <div class="flex items-start justify-between gap-4">
+                            <div class="flex items-start space-x-3 sm:space-x-4">
+                                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-tactical-darkGreen border border-tactical-green/40 text-tactical-green flex items-center justify-center font-black text-sm sm:text-base shrink-0">
+                                    2.3
+                                </div>
+                                <div>
+                                    <div class="flex flex-wrap items-center gap-2 mb-1">
+                                        <span class="text-xl sm:text-2xl font-black font-mono text-white tabular-nums">v2.3</span>
+                                        <span class="bg-tactical-darkGreen text-tactical-green font-mono text-[10px] px-2 py-0.5 rounded border border-tactical-green/30">
+                                            МУЛЬТИ-СКЛАД
+                                        </span>
+                                    </div>
+                                    <h3 class="text-white font-bold text-sm sm:text-base">
+                                        Мульти-склад, 9 Служб довольствия и Операция «Перемещение»
+                                    </h3>
+                                    <p class="text-tactical-muted text-xs sm:text-sm mt-1 leading-snug">
+                                        Раздельный учет позиций роты (Базовый склад, СПВ, Опорные пункты) и межскладской перевод.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex flex-col items-end shrink-0 pt-1">
+                                <span class="text-xs font-mono text-tactical-muted bg-tactical-dark px-2.5 py-1 rounded-lg border border-tactical-border tabular-nums">
+                                    Июнь 2026
+                                </span>
+                                <span class="accordion-chevron text-tactical-muted mt-3">
+                                    <i data-lucide="chevron-down" class="w-5 h-5"></i>
                                 </span>
                             </div>
-                            <span class="text-xs font-mono text-tactical-muted bg-tactical-dark px-2.5 py-1 rounded border border-tactical-border">
-                                Октябрь 2025
-                            </span>
                         </div>
+                    </summary>
 
-                        <h3 class="text-base sm:text-lg font-bold text-white mb-2">
-                            Мульти-склад, 9 Служб довольствия и Операция «Перемещение»
-                        </h3>
-                        <p class="text-xs sm:text-sm text-gray-300 leading-relaxed mb-4">
-                            Переход от учета одного склада к распределенной структуре роты (Базовый склад, СПВ, Опорные пункты, минометные позиции).
-                        </p>
-
-                        <ul class="space-y-2 text-xs text-gray-300 font-mono">
-                            <li class="flex items-start gap-2">
+                    <!-- Expanded Content -->
+                    <div class="p-5 sm:p-6 pt-0 border-t border-tactical-border/60 bg-tactical-dark/60 text-xs sm:text-sm space-y-3">
+                        <div class="pt-4 space-y-2">
+                            <div class="flex items-start gap-2 text-gray-300">
                                 <i data-lucide="check" class="w-4 h-4 text-tactical-green shrink-0 mt-0.5"></i>
-                                <span><strong>Операция «Перемещение»:</strong> Корректный перевод матсредств между позициями с проверкой остатков склада-донора.</span>
-                            </li>
-                            <li class="flex items-start gap-2">
+                                <span><strong>Операция «Перемещение»:</strong> Корректный межскладской перевод матсредств с автоматической проверкой остатков склада-донора.</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-gray-300">
                                 <i data-lucide="check" class="w-4 h-4 text-tactical-green shrink-0 mt-0.5"></i>
                                 <span><strong>9 специализированных служб:</strong> РАВ, БПЛА, Инженерная, Связь/РЭБ, Вещевая, Медслужба, Прод, ГСМ, Автомобильная.</span>
-                            </li>
-                        </ul>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </details>
 
                 <!-- ==================== VERSION 2.0 ==================== -->
-                <div class="relative sm:pl-16">
-                    <div class="hidden sm:flex absolute left-0 top-1.5 w-16 items-center justify-center">
-                        <div class="w-6 h-6 rounded-full bg-tactical-darkGreen border-2 border-tactical-border flex items-center justify-center text-tactical-muted text-[10px] font-bold">
-                            ✓
-                        </div>
-                    </div>
-
-                    <div class="bg-tactical-card border border-tactical-border rounded-3xl p-6 sm:p-7 shadow-lg">
-                        <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
-                            <div class="flex items-center gap-2">
-                                <span class="text-xl sm:text-2xl font-black font-mono text-white">v2.0</span>
-                                <span class="bg-tactical-darkGreen text-tactical-green font-mono text-xs px-2 py-0.5 rounded border border-tactical-green/30">
-                                    ТАКТИЧЕСКИЙ РЕЖИМ
+                <details class="version-item bg-tactical-card border border-tactical-border rounded-2xl overflow-hidden transition-all shadow-md">
+                    <summary class="p-5 sm:p-6 select-none bg-tactical-card hover:bg-tactical-darkGreen/30 transition-colors">
+                        <div class="flex items-start justify-between gap-4">
+                            <div class="flex items-start space-x-3 sm:space-x-4">
+                                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-tactical-darkGreen border border-tactical-green/40 text-tactical-green flex items-center justify-center font-black text-sm sm:text-base shrink-0">
+                                    2.0
+                                </div>
+                                <div>
+                                    <div class="flex flex-wrap items-center gap-2 mb-1">
+                                        <span class="text-xl sm:text-2xl font-black font-mono text-white tabular-nums">v2.0</span>
+                                        <span class="bg-tactical-darkGreen text-tactical-green font-mono text-[10px] px-2 py-0.5 rounded border border-tactical-green/30">
+                                            ТАКТИЧЕСКИЙ РЕЖИМ
+                                        </span>
+                                    </div>
+                                    <h3 class="text-white font-bold text-sm sm:text-base">
+                                        Tactical OLED Dark Theme, Боевой расход и Резервное копирование
+                                    </h3>
+                                    <p class="text-tactical-muted text-xs sm:text-sm mt-1 leading-snug">
+                                        Ночная светомаскировка, списание израсходованного БК с актами и бэкапы на MicroSD.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex flex-col items-end shrink-0 pt-1">
+                                <span class="text-xs font-mono text-tactical-muted bg-tactical-dark px-2.5 py-1 rounded-lg border border-tactical-border tabular-nums">
+                                    Апрель 2026
+                                </span>
+                                <span class="accordion-chevron text-tactical-muted mt-3">
+                                    <i data-lucide="chevron-down" class="w-5 h-5"></i>
                                 </span>
                             </div>
-                            <span class="text-xs font-mono text-tactical-muted bg-tactical-dark px-2.5 py-1 rounded border border-tactical-border">
-                                Июль 2025
-                            </span>
                         </div>
+                    </summary>
 
-                        <h3 class="text-base sm:text-lg font-bold text-white mb-2">
-                            Tactical Dark Theme, Боевой расход и Резервное копирование
-                        </h3>
-                        <p class="text-xs sm:text-sm text-gray-300 leading-relaxed mb-4">
-                            Глубокий редизайн интерфейса под ночную светомаскировку на OLED-дисплеях и внедрение учета боевых потерь.
-                        </p>
-
-                        <ul class="space-y-2 text-xs text-gray-300 font-mono">
-                            <li class="flex items-start gap-2">
+                    <!-- Expanded Content -->
+                    <div class="p-5 sm:p-6 pt-0 border-t border-tactical-border/60 bg-tactical-dark/60 text-xs sm:text-sm space-y-3">
+                        <div class="pt-4 space-y-2">
+                            <div class="flex items-start gap-2 text-gray-300">
                                 <i data-lucide="check" class="w-4 h-4 text-tactical-green shrink-0 mt-0.5"></i>
-                                <span><strong>Операция «Отстрел / Списание»:</strong> Списание израсходованного БК с фиксацией акта и даты.</span>
-                            </li>
-                            <li class="flex items-start gap-2">
+                                <span><strong>Операция «Отстрел / Списание»:</strong> Фиксация боевого расхода боеприпасов с привязкой к боевому распоряжению.</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-gray-300">
                                 <i data-lucide="check" class="w-4 h-4 text-tactical-green shrink-0 mt-0.5"></i>
-                                <span><strong>Резервное копирование:</strong> Мгновенное сохранение защищенного файла базы на Flash-карту MicroSD.</span>
-                            </li>
-                            <li class="flex items-start gap-2">
+                                <span><strong>Резервное копирование:</strong> Мгновенное сохранение зашифрованного архива базы данных на карту MicroSD.</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-gray-300">
                                 <i data-lucide="check" class="w-4 h-4 text-tactical-green shrink-0 mt-0.5"></i>
-                                <span><strong>Поминутный журнал аудита:</strong> Хронология каждого движения матчасти с позывным автора.</span>
-                            </li>
-                        </ul>
+                                <span><strong>Поминутный журнал аудита:</strong> Нестираемая история каждого действия с позывным оператора.</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </details>
 
                 <!-- ==================== VERSION 1.5 ==================== -->
-                <div class="relative sm:pl-16">
-                    <div class="hidden sm:flex absolute left-0 top-1.5 w-16 items-center justify-center">
-                        <div class="w-6 h-6 rounded-full bg-tactical-darkGreen border-2 border-tactical-border flex items-center justify-center text-tactical-muted text-[10px] font-bold">
-                            ✓
-                        </div>
-                    </div>
-
-                    <div class="bg-tactical-card border border-tactical-border rounded-3xl p-6 sm:p-7 shadow-lg">
-                        <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
-                            <div class="flex items-center gap-2">
-                                <span class="text-xl sm:text-2xl font-black font-mono text-white">v1.5</span>
-                                <span class="bg-tactical-darkGreen text-tactical-green font-mono text-xs px-2 py-0.5 rounded border border-tactical-green/30">
-                                    НОМЕРНОЙ УЧЁТ
+                <details class="version-item bg-tactical-card border border-tactical-border rounded-2xl overflow-hidden transition-all shadow-md">
+                    <summary class="p-5 sm:p-6 select-none bg-tactical-card hover:bg-tactical-darkGreen/30 transition-colors">
+                        <div class="flex items-start justify-between gap-4">
+                            <div class="flex items-start space-x-3 sm:space-x-4">
+                                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-tactical-darkGreen border border-tactical-green/40 text-tactical-green flex items-center justify-center font-black text-sm sm:text-base shrink-0">
+                                    1.5
+                                </div>
+                                <div>
+                                    <div class="flex flex-wrap items-center gap-2 mb-1">
+                                        <span class="text-xl sm:text-2xl font-black font-mono text-white tabular-nums">v1.5</span>
+                                        <span class="bg-tactical-darkGreen text-tactical-green font-mono text-[10px] px-2 py-0.5 rounded border border-tactical-green/30">
+                                            НОМЕРНОЙ УЧЕТ
+                                        </span>
+                                    </div>
+                                    <h3 class="text-white font-bold text-sm sm:text-base">
+                                        Номерное оружие, Операция «Сдали» и Карточка бойца
+                                    </h3>
+                                    <p class="text-tactical-muted text-xs sm:text-sm mt-1 leading-snug">
+                                        Контроль серийных номеров дорогостоящего имущества и возврат снаряжения на склад.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex flex-col items-end shrink-0 pt-1">
+                                <span class="text-xs font-mono text-tactical-muted bg-tactical-dark px-2.5 py-1 rounded-lg border border-tactical-border tabular-nums">
+                                    Февраль 2026
+                                </span>
+                                <span class="accordion-chevron text-tactical-muted mt-3">
+                                    <i data-lucide="chevron-down" class="w-5 h-5"></i>
                                 </span>
                             </div>
-                            <span class="text-xs font-mono text-tactical-muted bg-tactical-dark px-2.5 py-1 rounded border border-tactical-border">
-                                Апрель 2025
-                            </span>
                         </div>
+                    </summary>
 
-                        <h3 class="text-base sm:text-lg font-bold text-white mb-2">
-                            Номерное оружие, Операция «Сдали» и Карточка бойца
-                        </h3>
-                        <p class="text-xs sm:text-sm text-gray-300 leading-relaxed mb-4">
-                            Введение строгого контроля серийных номеров дорогостоящего оборудования (рации, тепловизоры, ночники) и механизма сдачи имущества обратно на склад.
-                        </p>
-
-                        <ul class="space-y-2 text-xs text-gray-300 font-mono">
-                            <li class="flex items-start gap-2">
+                    <!-- Expanded Content -->
+                    <div class="p-5 sm:p-6 pt-0 border-t border-tactical-border/60 bg-tactical-dark/60 text-xs sm:text-sm space-y-3">
+                        <div class="pt-4 space-y-2">
+                            <div class="flex items-start gap-2 text-gray-300">
                                 <i data-lucide="check" class="w-4 h-4 text-tactical-green shrink-0 mt-0.5"></i>
-                                <span><strong>Серийные номера:</strong> Поштучная привязка номеров стволов и приборов к позывным бойцов.</span>
-                            </li>
-                            <li class="flex items-start gap-2">
+                                <span><strong>Серийные номера:</strong> Поштучная привязка номеров автоматов, ночников, раций и тепловизоров к бойцам.</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-gray-300">
                                 <i data-lucide="check" class="w-4 h-4 text-tactical-green shrink-0 mt-0.5"></i>
-                                <span><strong>Операция «Сдали»:</strong> Принятие имущества обратно при возвращении бойца с боевой задачи.</span>
-                            </li>
-                        </ul>
+                                <span><strong>Операция «Сдали»:</strong> Прием имущества обратно на склад при возвращении группы с боевой задачи.</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </details>
 
                 <!-- ==================== VERSION 1.0 ==================== -->
-                <div class="relative sm:pl-16">
-                    <div class="hidden sm:flex absolute left-0 top-1.5 w-16 items-center justify-center">
-                        <div class="w-6 h-6 rounded-full bg-tactical-darkGreen border-2 border-tactical-border flex items-center justify-center text-tactical-muted text-[10px] font-bold">
-                            ✓
-                        </div>
-                    </div>
-
-                    <div class="bg-tactical-card border border-tactical-border rounded-3xl p-6 sm:p-7 shadow-lg">
-                        <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
-                            <div class="flex items-center gap-2">
-                                <span class="text-xl sm:text-2xl font-black font-mono text-white">v1.0</span>
-                                <span class="bg-tactical-darkGreen text-tactical-green font-mono text-xs px-2 py-0.5 rounded border border-tactical-green/30">
-                                    ПЕРВЫЙ РЕЛИЗ
+                <details class="version-item bg-tactical-card border border-tactical-border rounded-2xl overflow-hidden transition-all shadow-md">
+                    <summary class="p-5 sm:p-6 select-none bg-tactical-card hover:bg-tactical-darkGreen/30 transition-colors">
+                        <div class="flex items-start justify-between gap-4">
+                            <div class="flex items-start space-x-3 sm:space-x-4">
+                                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-tactical-darkGreen border border-tactical-green/40 text-tactical-green flex items-center justify-center font-black text-sm sm:text-base shrink-0">
+                                    1.0
+                                </div>
+                                <div>
+                                    <div class="flex flex-wrap items-center gap-2 mb-1">
+                                        <span class="text-xl sm:text-2xl font-black font-mono text-white tabular-nums">v1.0</span>
+                                        <span class="bg-tactical-darkGreen text-tactical-green font-mono text-[10px] px-2 py-0.5 rounded border border-tactical-green/30">
+                                            ПЕРВЫЙ РЕЛИЗ
+                                        </span>
+                                    </div>
+                                    <h3 class="text-white font-bold text-sm sm:text-base">
+                                        Рождение проекта: отказ от тетради старшины
+                                    </h3>
+                                    <p class="text-tactical-muted text-xs sm:text-sm mt-1 leading-snug">
+                                        Первый рабочий прототип в блиндаже. Автономная база SQLite для фиксации прихода («Привезли») и выдачи («Подняли»).
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex flex-col items-end shrink-0 pt-1">
+                                <span class="text-xs font-mono text-tactical-muted bg-tactical-dark px-2.5 py-1 rounded-lg border border-tactical-border tabular-nums">
+                                    Январь 2026
+                                </span>
+                                <span class="accordion-chevron text-tactical-muted mt-3">
+                                    <i data-lucide="chevron-down" class="w-5 h-5"></i>
                                 </span>
                             </div>
-                            <span class="text-xs font-mono text-tactical-muted bg-tactical-dark px-2.5 py-1 rounded border border-tactical-border">
-                                Февраль 2025
-                            </span>
                         </div>
+                    </summary>
 
-                        <h3 class="text-base sm:text-lg font-bold text-white mb-2">
-                            Рождение проекта: отказ от тетради старшины
-                        </h3>
-                        <p class="text-xs sm:text-sm text-gray-300 leading-relaxed mb-4">
-                            Первый рабочий прототип в блиндаже. Простейшая автономная база SQLite на Android для фиксации прихода («Привезли») и расхода («Подняли») патронов и автоматов.
-                        </p>
-
-                        <ul class="space-y-2 text-xs text-gray-300 font-mono">
-                            <li class="flex items-start gap-2">
+                    <!-- Expanded Content -->
+                    <div class="p-5 sm:p-6 pt-0 border-t border-tactical-border/60 bg-tactical-dark/60 text-xs sm:text-sm space-y-3">
+                        <div class="pt-4 space-y-2">
+                            <div class="flex items-start gap-2 text-gray-300">
                                 <i data-lucide="check" class="w-4 h-4 text-tactical-green shrink-0 mt-0.5"></i>
-                                <span>Локальная база данных Room/SQLite без интернета.</span>
-                            </li>
-                            <li class="flex items-start gap-2">
+                                <span>Локальная база данных Room/SQLite без потребности в интернете.</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-gray-300">
                                 <i data-lucide="check" class="w-4 h-4 text-tactical-green shrink-0 mt-0.5"></i>
-                                <span>Две базовые операции: Приход и Выдача по позывному.</span>
-                            </li>
-                        </ul>
+                                <span>Две базовые операции: Приход и Выдача матсредств под позывной.</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </details>
 
             </div>
         </section>
@@ -677,7 +728,7 @@
                 <div class="max-w-3xl mb-8">
                     <div class="inline-flex items-center space-x-2 bg-tactical-darkGreen border border-tactical-green/40 px-3.5 py-1.5 rounded-full text-xs font-mono text-tactical-green mb-3">
                         <i data-lucide="rocket" class="w-3.5 h-3.5"></i>
-                        <span>КУДА МЫ СТРЕМИМСЯ • ROADMAP 2026–2027</span>
+                        <span class="tabular-nums">КУДА МЫ СТРЕМИМСЯ • ROADMAP 2026–2027</span>
                     </div>
                     <h2 class="text-2xl sm:text-4xl font-black text-white leading-tight">
                         Будущее проекта: Создание единого цифрового стандарта тыла и ЛБС
@@ -693,7 +744,7 @@
                     <div class="bg-tactical-dark/90 border border-tactical-border/90 rounded-2xl p-5 hover:border-tactical-green/60 transition-colors flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between mb-3">
-                                <span class="w-8 h-8 rounded-xl bg-tactical-darkGreen border border-tactical-green/40 text-tactical-green flex items-center justify-center font-mono font-bold">
+                                <span class="w-8 h-8 rounded-xl bg-tactical-darkGreen border border-tactical-green/40 text-tactical-green flex items-center justify-center font-mono font-bold tabular-nums">
                                     01
                                 </span>
                                 <span class="text-[10px] font-mono bg-cyan-950/60 text-cyan-300 border border-cyan-500/30 px-2 py-0.5 rounded">В разработке</span>
@@ -712,7 +763,7 @@
                     <div class="bg-tactical-dark/90 border border-tactical-border/90 rounded-2xl p-5 hover:border-tactical-green/60 transition-colors flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between mb-3">
-                                <span class="w-8 h-8 rounded-xl bg-tactical-darkGreen border border-tactical-green/40 text-tactical-green flex items-center justify-center font-mono font-bold">
+                                <span class="w-8 h-8 rounded-xl bg-tactical-darkGreen border border-tactical-green/40 text-tactical-green flex items-center justify-center font-mono font-bold tabular-nums">
                                     02
                                 </span>
                                 <span class="text-[10px] font-mono bg-amber-950/60 text-amber-300 border border-amber-500/30 px-2 py-0.5 rounded">Проектирование</span>
@@ -731,7 +782,7 @@
                     <div class="bg-tactical-dark/90 border border-tactical-border/90 rounded-2xl p-5 hover:border-tactical-green/60 transition-colors flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between mb-3">
-                                <span class="w-8 h-8 rounded-xl bg-tactical-darkGreen border border-tactical-green/40 text-tactical-green flex items-center justify-center font-mono font-bold">
+                                <span class="w-8 h-8 rounded-xl bg-tactical-darkGreen border border-tactical-green/40 text-tactical-green flex items-center justify-center font-mono font-bold tabular-nums">
                                     03
                                 </span>
                                 <span class="text-[10px] font-mono bg-tactical-green/20 text-tactical-green border border-tactical-green/40 px-2 py-0.5 rounded">В планах</span>
@@ -750,7 +801,7 @@
                     <div class="bg-tactical-dark/90 border border-tactical-border/90 rounded-2xl p-5 hover:border-tactical-green/60 transition-colors flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between mb-3">
-                                <span class="w-8 h-8 rounded-xl bg-tactical-darkGreen border border-tactical-green/40 text-tactical-green flex items-center justify-center font-mono font-bold">
+                                <span class="w-8 h-8 rounded-xl bg-tactical-darkGreen border border-tactical-green/40 text-tactical-green flex items-center justify-center font-mono font-bold tabular-nums">
                                     04
                                 </span>
                                 <span class="text-[10px] font-mono bg-cyan-950/60 text-cyan-300 border border-cyan-500/30 px-2 py-0.5 rounded">Проектирование</span>
@@ -769,7 +820,7 @@
                     <div class="bg-tactical-dark/90 border border-tactical-border/90 rounded-2xl p-5 hover:border-tactical-green/60 transition-colors flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between mb-3">
-                                <span class="w-8 h-8 rounded-xl bg-tactical-darkGreen border border-tactical-green/40 text-tactical-green flex items-center justify-center font-mono font-bold">
+                                <span class="w-8 h-8 rounded-xl bg-tactical-darkGreen border border-tactical-green/40 text-tactical-green flex items-center justify-center font-mono font-bold tabular-nums">
                                     05
                                 </span>
                                 <span class="text-[10px] font-mono bg-tactical-green/20 text-tactical-green border border-tactical-green/40 px-2 py-0.5 rounded">Идея</span>
@@ -788,7 +839,7 @@
                     <div class="bg-tactical-dark/90 border border-tactical-border/90 rounded-2xl p-5 hover:border-tactical-green/60 transition-colors flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between mb-3">
-                                <span class="w-8 h-8 rounded-xl bg-tactical-darkGreen border border-tactical-green/40 text-tactical-green flex items-center justify-center font-mono font-bold">
+                                <span class="w-8 h-8 rounded-xl bg-tactical-darkGreen border border-tactical-green/40 text-tactical-green flex items-center justify-center font-mono font-bold tabular-nums">
                                     06
                                 </span>
                                 <span class="text-[10px] font-mono bg-tactical-green/20 text-tactical-green border border-tactical-green/40 px-2 py-0.5 rounded">Развитие</span>
@@ -876,6 +927,13 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>
         lucide.createIcons();
+
+        function toggleAllVersions(openState) {
+            const items = document.querySelectorAll('.version-item');
+            items.forEach(el => {
+                el.open = openState;
+            });
+        }
     </script>
 </body>
 </html>
