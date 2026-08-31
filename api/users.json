@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1788200366779,
+  "updatedAt": 1788200373245,
   "users": [
     {
       "id": "usr_101",
@@ -12,19 +12,6 @@
       "licenseStatus": "PRO",
       "registeredAt": "28.08.2026, 18:04:13",
       "adminNote": "Главный разработчик и администратор АСУ"
-    },
-    {
-      "id": "usr_mtfp15lm",
-      "callsign": "Лева",
-      "unit": "Мин бат",
-      "email": "alex.666.881@gmail.com",
-      "phone": "",
-      "password": "5763271833",
-      "isEmailVerified": true,
-      "isPhoneVerified": false,
-      "licenseStatus": "FREE",
-      "registeredAt": "30.08.2026, 13:55:34",
-      "adminNote": ""
     },
     {
       "id": "usr_mthcd5ru",
