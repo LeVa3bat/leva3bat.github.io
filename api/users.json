@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1788186994843,
+  "updatedAt": 1788188774956,
   "users": [
     {
       "id": "usr_101",
@@ -10,7 +10,7 @@
       "isEmailVerified": true,
       "isPhoneVerified": true,
       "licenseStatus": "PRO",
-      "registeredAt": "27.08.2026, 13:55:09",
+      "registeredAt": "28.08.2026, 18:04:13",
       "adminNote": "Главный разработчик и администратор АСУ"
     },
     {
@@ -22,33 +22,20 @@
       "isEmailVerified": true,
       "isPhoneVerified": true,
       "licenseStatus": "PRO",
-      "registeredAt": "30.08.2026, 01:55:09",
+      "registeredAt": "31.08.2026, 06:04:13",
       "adminNote": "Учёт оружия и БК роты"
     },
     {
-      "id": "usr_mtfp15lm",
-      "callsign": "Лева",
-      "unit": "Мин бат",
-      "email": "alex.666.881@gmail.com",
-      "phone": "",
-      "password": "5763271833",
-      "isEmailVerified": true,
-      "isPhoneVerified": false,
-      "licenseStatus": "FREE",
-      "registeredAt": "30.08.2026, 13:55:34",
-      "adminNote": ""
-    },
-    {
-      "id": "usr_mthcd5ru",
-      "callsign": "ЛЕВА",
-      "unit": "Мин бат",
-      "email": "alex.666.881@gmail.com",
-      "phone": "+79490534438",
-      "password": "ax0800035",
+      "id": "usr_mthdfbn7",
+      "callsign": "Кот",
+      "unit": "РотаКот",
+      "email": "cat@agmail.com",
+      "phone": "+79167493479",
+      "password": "catcat",
       "isEmailVerified": true,
       "isPhoneVerified": true,
       "licenseStatus": "FREE",
-      "registeredAt": "31.08.2026, 17:36:32",
+      "registeredAt": "31.08.2026, 18:06:12",
       "adminNote": ""
     }
   ]
