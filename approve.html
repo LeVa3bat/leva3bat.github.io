@@ -129,41 +129,35 @@
                         <span>Ручное подтверждение через Telegram-бота</span>
                     </div>
                     <p class="text-gray-300 leading-relaxed text-[11px] sm:text-xs">
-                        Пока шлюз Робокасса находится на технической модерации, оплата принимается прямым переводом разработчику. После перевода заявка проверяется и подтверждается администратором через Telegram-бота.
+                        Оплата лицензии PRO (500 ₽ / 30 дней) принимается через администратора. После связи и подтверждения платежа лицензия мгновенно активируется в облачном реестре и связывается с вашим позывным.
                     </p>
                 </div>
 
-                <!-- Payment Requisites Box -->
-                <div class="bg-black/50 border border-tactical-border rounded-xl p-4 space-y-2.5 font-mono text-xs">
-                    <div class="text-tactical-accent font-bold uppercase tracking-wider text-[11px]">Реквизиты для оплаты:</div>
-                    
-                    <div class="flex items-center justify-between bg-tactical-bg p-2.5 rounded-lg border border-tactical-border/60">
-                        <div>
-                            <div class="text-gray-400 text-[10px]">СБП / Т-Банк / Сбербанк:</div>
-                            <div class="text-white font-bold text-sm tracking-wide">+7 (949) 053-44-38</div>
-                            <div class="text-gray-400 text-[10px]">Получатель: Александр Е. В.</div>
-                        </div>
-                        <button onclick="navigator.clipboard.writeText('+79490534438'); alert('Номер +79490534438 скопирован!');" class="bg-tactical-accent/20 hover:bg-tactical-accent/30 text-tactical-highlight border border-tactical-accent/40 px-2.5 py-1.5 rounded text-[11px] font-bold">
-                            Копировать
-                        </button>
+                <!-- Payment Instruction Box -->
+                <div class="bg-black/50 border border-tactical-border rounded-xl p-4 space-y-3 font-mono text-xs">
+                    <div class="text-tactical-accent font-bold uppercase tracking-wider text-[11px] flex items-center justify-between">
+                        <span>Порядок оплаты:</span>
+                        <span class="text-tactical-highlight font-bold">500 ₽</span>
                     </div>
 
-                    <div class="text-[11px] text-gray-400 bg-tactical-bg/60 p-2.5 rounded-lg border border-tactical-border/40">
-                        💬 <strong class="text-white">Комментарий к платежу:</strong> <code class="text-tactical-green font-bold" id="requisiteComment">Позывной</code>
+                    <div class="text-[11px] text-gray-300 bg-tactical-bg/80 p-3 rounded-lg border border-tactical-border/60 space-y-2">
+                        <div>1. Свяжитесь с разработчиком в Telegram для получения платёжных реквизитов.</div>
+                        <div>2. Укажите ваш позывной: <strong class="text-tactical-green" id="orderCallsignDisplay">Боец</strong> и номер заказа: <code class="text-tactical-accent font-bold" id="requisiteComment">KAPT_...</code>.</div>
+                        <div>3. После перевода администратор подтвердит заявку через бота, и PRO-статус активируется автоматически.</div>
                     </div>
                 </div>
 
                 <!-- Action buttons for buyer -->
                 <div class="space-y-2.5 pt-1">
-                    <button onclick="checkOrderStatus(true)" class="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-tactical-accent to-tactical-highlight text-white font-bold font-heading text-sm sm:text-base tracking-wide hover:brightness-110 active:scale-[0.99] transition duration-200 glow-green flex items-center justify-center gap-2">
-                        <i data-lucide="refresh-cw" class="w-4 h-4"></i>
-                        <span>ПРО ВЕРИТЬ СТАТУС ОПЛАТЫ</span>
-                    </button>
-
-                    <a href="https://t.me/alex_666_881" target="_blank" rel="noopener noreferrer" class="w-full py-3 px-4 rounded-xl bg-[#229ED9]/20 border border-[#229ED9]/40 text-[#45B2E8] font-semibold text-xs sm:text-sm hover:bg-[#229ED9]/30 transition duration-200 flex items-center justify-center gap-2">
-                        <i data-lucide="send" class="w-4 h-4"></i>
-                        <span>Отправить чек разработчику в Telegram</span>
+                    <a href="https://t.me/alex_666_881" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-[#229ED9] to-[#1E88E5] text-white font-bold font-heading text-sm sm:text-base tracking-wide hover:brightness-110 active:scale-[0.99] transition duration-200 shadow-lg shadow-blue-900/30 flex items-center justify-center gap-2">
+                        <i data-lucide="send" class="w-5 h-5"></i>
+                        <span>НАПИСАТЬ В TELEGRAM (@alex_666_881)</span>
                     </a>
+
+                    <button onclick="checkOrderStatus(true)" class="w-full py-3.5 px-4 rounded-xl bg-tactical-accent/20 border border-tactical-accent/50 text-tactical-highlight font-bold font-heading text-xs sm:text-sm tracking-wide hover:bg-tactical-accent/30 active:scale-[0.99] transition duration-200 flex items-center justify-center gap-2">
+                        <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+                        <span>ПРОВЕРИТЬ СТАТУС ОПЛАТЫ</span>
+                    </button>
                 </div>
 
                 <!-- Key Box (Only shown after confirmed) -->
@@ -283,6 +277,8 @@
         // Populate DOM elements
         document.getElementById('displayOrderId').textContent = orderId;
         document.getElementById('displayCallsign').textContent = callsign;
+        const callsignEl = document.getElementById('orderCallsignDisplay');
+        if (callsignEl) callsignEl.textContent = callsign;
         document.getElementById('displayUnit').textContent = unitName;
         document.getElementById('displayAmount').textContent = amount + ' ₽';
         document.getElementById('requisiteComment').textContent = `${callsign} (${orderId})`;
@@ -433,6 +429,17 @@
         async function approvePayment() {
             if (!isAdmin) {
                 promptAdminLogin();
+                return;
+            }
+
+            const confirmMsg = `⚠️ ПРЕДУПРЕЖДЕНИЕ АДМИНИСТРАТОРУ:\n\n` +
+                `Вы подтверждаете получение оплаты ${amount} ₽ и выдачу лицензии PRO на 30 дней для:\n\n` +
+                `• Позывной: «${callsign}»\n` +
+                `• Подразделение: «${unitName}»\n` +
+                `• Номер заказа: ${orderId}\n\n` +
+                `Активировать PRO-лицензию?`;
+
+            if (!confirm(confirmMsg)) {
                 return;
             }
 
