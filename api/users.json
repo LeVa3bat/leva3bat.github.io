@@ -30,10 +30,10 @@
       "callsign": "Лева",
       "unit": "Мин бат",
       "email": "alex.666.881@gmail.com",
-      "phone": "+79490534438",
+      "phone": "",
       "password": "5763271833",
       "isEmailVerified": true,
-      "isPhoneVerified": true,
+      "isPhoneVerified": false,
       "licenseStatus": "FREE",
       "registeredAt": "30.08.2026, 13:55:34",
       "adminNote": ""
