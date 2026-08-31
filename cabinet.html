@@ -218,6 +218,9 @@
                 <a href="manual.html" class="hover:text-tactical-green transition-colors flex items-center gap-1.5">
                     <i data-lucide="book-open" class="w-4 h-4 text-tactical-green"></i> Инструкция
                 </a>
+                <a href="versions.html" class="hover:text-tactical-green transition-colors flex items-center gap-1.5">
+                    <i data-lucide="git-branch" class="w-4 h-4 text-tactical-green"></i> История версий
+                </a>
                 <a href="cabinet.html" class="text-tactical-green font-bold transition-colors flex items-center gap-1.5 border-b-2 border-tactical-green pb-1">
                     <i data-lucide="users" class="w-4 h-4 text-tactical-green"></i> Кабинет & Чат
                 </a>
@@ -621,6 +624,47 @@
         </section>
 
     </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-tactical-dark border-t border-tactical-border py-8 text-tactical-muted text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 rounded-lg bg-tactical-card border border-tactical-border flex items-center justify-center text-tactical-green">
+                        <i data-lucide="shield" class="w-4 h-4"></i>
+                    </div>
+                    <div>
+                        <div class="text-white font-bold font-mono">АСУ «КАПТЁРКА PRO» v2.9</div>
+                        <div class="text-tactical-muted text-[11px]">Автономная система тактического складского учёта</div>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap items-center justify-center gap-4 text-xs font-mono">
+                    <a href="index.html" class="hover:text-tactical-green transition-colors">Главная</a>
+                    <a href="about.html" class="hover:text-tactical-green transition-colors">О программе</a>
+                    <a href="manual.html" class="hover:text-tactical-green transition-colors">Инструкция</a>
+                    <a href="versions.html" class="hover:text-tactical-green transition-colors">История версий</a>
+                    <a href="cabinet.html" class="hover:text-tactical-green transition-colors text-tactical-green">Кабинет & Чат</a>
+                    <a href="https://github.com/LeVa3bat/leva3bat.github.io/releases/download/v2.9-pro/kapterka-v2.9.apk" download="kapterka-pro-v2.9.apk" class="hover:text-tactical-green transition-colors text-tactical-green font-bold flex items-center gap-1">
+                        <i data-lucide="download" class="w-3.5 h-3.5"></i> Скачать APK
+                    </a>
+                </div>
+
+                <div class="flex items-center gap-4 text-center md:text-right font-mono text-[11px]">
+                    <div>
+                        <div class="text-white font-semibold">© 2026 АСУ «КАПТЁРКА PRO»</div>
+                        <div class="text-tactical-muted">Разработчик: Васев А.Е.</div>
+                    </div>
+                    <!-- Yandex.Metrika Informer -->
+                    <a href="https://metrika.yandex.ru/stat/?id=112062746&amp;from=informer"
+                       target="_blank" rel="nofollow" class="inline-block hover:opacity-90 transition-opacity" title="Яндекс.Метрика">
+                        <img src="https://informer.yandex.ru/informer/112062746/3_1_FFFFFFFF_EFEFEFFF_0_pageviews"
+                             style="width:88px; height:31px; border:0;" alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)" class="ym-advanced-informer rounded" data-cid="112062746" data-lang="ru" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <!-- ADMIN MODAL / PANEL -->
     <div id="admin-modal" style="display: none !important;" onclick="if(event.target===this) closeAdminModal()" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md items-center justify-center p-4 hidden">
