@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Подтверждение оплаты PRO — АСУ «КАПТЁРКА PRO»</title>
+    <title>Оплата и активация PRO — АСУ «КАПТЁРКА PRO»</title>
     
     <!-- Favicon & App Icons -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -18,6 +18,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,400;0,600;0,700;1,700&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
     
     <script>
         tailwind.config = {
@@ -47,6 +48,9 @@
         .glow-green {
             box-shadow: 0 0 25px rgba(78, 135, 82, 0.45);
         }
+        .glow-gold {
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.35);
+        }
         .glow-red {
             box-shadow: 0 0 25px rgba(220, 38, 38, 0.35);
         }
@@ -56,40 +60,41 @@
 
     <!-- Header -->
     <header class="border-b border-tactical-border/60 bg-tactical-card/80 backdrop-blur-md sticky top-0 z-50">
-        <div class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
+        <div class="max-w-4xl mx-auto px-4 py-3.5 flex items-center justify-between">
             <a href="/" class="flex items-center gap-3">
-                <img src="/favicon.svg" alt="Каптёрка PRO" class="w-10 h-10 rounded-lg shadow">
+                <img src="/favicon.svg" alt="Каптёрка PRO" class="w-9 h-9 rounded-lg shadow">
                 <div>
-                    <div class="font-heading font-bold text-lg text-white tracking-wider">КАПТЁРКА PRO</div>
-                    <div class="text-xs text-tactical-accent font-mono">ПАНЕЛЬ ПОДТВЕРЖДЕНИЯ ОПЛАТ</div>
+                    <div class="font-heading font-bold text-base sm:text-lg text-white tracking-wider">КАПТЁРКА PRO</div>
+                    <div class="text-[10px] sm:text-xs text-tactical-accent font-mono">АКТИВАЦИЯ ЛИЦЕНЗИИ PRO</div>
                 </div>
             </a>
             <div class="flex items-center gap-2">
-                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-tactical-accent/20 text-tactical-highlight border border-tactical-accent/40 font-mono">
-                    <span class="w-2 h-2 rounded-full bg-tactical-highlight animate-pulse mr-1.5"></span>
-                    СЕРВЕР ОНЛАЙН
-                </span>
+                <button id="adminLoginBtn" onclick="promptAdminLogin()" class="text-xs font-mono text-gray-400 hover:text-tactical-highlight flex items-center gap-1 bg-black/40 border border-tactical-border/60 px-2.5 py-1 rounded-lg transition">
+                    <i data-lucide="lock" class="w-3 h-3"></i>
+                    <span id="adminBtnLabel">Админка</span>
+                </button>
             </div>
         </div>
     </header>
 
     <!-- Main Content -->
-    <main class="max-w-xl mx-auto px-4 py-8 w-full flex-grow flex items-center justify-center">
-        <div class="bg-tactical-card border border-tactical-border rounded-2xl p-6 sm:p-8 w-full shadow-2xl relative overflow-hidden">
+    <main class="max-w-xl mx-auto px-4 py-6 sm:py-8 w-full flex-grow flex items-center justify-center">
+        <div class="bg-tactical-card border border-tactical-border rounded-2xl p-5 sm:p-7 w-full shadow-2xl relative overflow-hidden">
             
-            <div class="text-center mb-6">
-                <div class="w-16 h-16 bg-tactical-accent/20 border border-tactical-accent/40 rounded-full flex items-center justify-center mx-auto mb-3 text-3xl">
-                    💳
+            <!-- Icon and Title -->
+            <div class="text-center mb-5">
+                <div class="w-14 h-14 bg-tactical-accent/20 border border-tactical-accent/40 rounded-full flex items-center justify-center mx-auto mb-2.5 text-2xl text-tactical-highlight">
+                    <i data-lucide="shield-check" class="w-7 h-7"></i>
                 </div>
-                <h1 class="text-2xl font-bold font-heading text-white">Подтверждение заявки</h1>
-                <p class="text-sm text-gray-400 mt-1">АСУ «КАПТЁРКА PRO» • Договор №5763271833</p>
+                <h1 class="text-xl sm:text-2xl font-bold font-heading text-white" id="mainCardTitle">Заявка на лицензию PRO</h1>
+                <p class="text-xs text-gray-400 mt-1">АСУ «КАПТЁРКА PRO» • Договор №5763271833</p>
             </div>
 
             <!-- Order Details Card -->
-            <div class="bg-tactical-bg/70 border border-tactical-border rounded-xl p-4 sm:p-5 space-y-3 mb-6 font-mono text-sm">
+            <div class="bg-tactical-bg/80 border border-tactical-border rounded-xl p-4 space-y-2.5 mb-5 font-mono text-xs sm:text-sm">
                 <div class="flex justify-between items-center border-b border-tactical-border/50 pb-2">
-                    <span class="text-gray-400">Сумма платежа:</span>
-                    <span class="text-tactical-highlight font-bold text-lg font-heading" id="displayAmount">500 ₽</span>
+                    <span class="text-gray-400">Сумма к оплате:</span>
+                    <span class="text-tactical-highlight font-bold text-base sm:text-lg font-heading" id="displayAmount">500 ₽</span>
                 </div>
                 <div class="flex justify-between items-center border-b border-tactical-border/50 pb-2">
                     <span class="text-gray-400">Позывной бойца:</span>
@@ -100,53 +105,120 @@
                     <span class="text-gray-300" id="displayUnit">—</span>
                 </div>
                 <div class="flex justify-between items-center border-b border-tactical-border/50 pb-2">
-                    <span class="text-gray-400">Заказ (OrderId):</span>
+                    <span class="text-gray-400">Номер заказа:</span>
                     <span class="text-tactical-accent font-bold text-xs" id="displayOrderId">—</span>
                 </div>
                 <div class="flex justify-between items-center">
-                    <span class="text-gray-400">Срок лицензии:</span>
+                    <span class="text-gray-400">Срок действия PRO:</span>
                     <span class="text-tactical-gold font-bold">1 месяц (30 дней)</span>
                 </div>
             </div>
 
-            <!-- Key Preview Box -->
-            <div class="mb-6 bg-black/40 border border-tactical-border/70 rounded-xl p-3">
-                <div class="text-xs text-gray-400 mb-1 flex items-center justify-between">
-                    <span>Сгенерированный PRO-ключ:</span>
-                    <button onclick="copyKey()" class="text-tactical-highlight hover:underline text-xs flex items-center gap-1 font-mono">
-                        📋 Скопировать
-                    </button>
-                </div>
-                <div id="displayKey" class="font-mono text-xs text-tactical-highlight font-semibold break-all select-all bg-black/60 p-2 rounded border border-tactical-border/40">
-                    Генерация ключа...
-                </div>
-            </div>
-
             <!-- Status Banner -->
-            <div id="statusBanner" class="hidden rounded-xl p-4 mb-6 text-center font-mono text-sm border">
+            <div id="statusBanner" class="hidden rounded-xl p-4 mb-5 text-center font-mono text-xs sm:text-sm border">
                 <div id="statusText" class="font-bold"></div>
             </div>
 
-            <!-- Action Buttons -->
-            <div id="actionButtons" class="space-y-3">
-                <button id="btnApprove" onclick="approvePayment()" class="w-full py-4 px-6 rounded-xl bg-gradient-to-r from-tactical-accent to-tactical-highlight text-white font-bold font-heading text-lg tracking-wide hover:brightness-110 active:scale-[0.99] transition duration-200 glow-green flex items-center justify-center gap-2">
-                    <span>✅ ПОДТВЕРДИТЬ И АКТИВИРОВАТЬ PRO</span>
-                </button>
+            <!-- 1. BUYER VIEW (Обычный пользователь) -->
+            <div id="buyerViewSection" class="space-y-4">
                 
-                <button id="btnReject" onclick="rejectPayment()" class="w-full py-3 px-6 rounded-xl bg-red-950/40 border border-red-800/60 text-red-400 font-semibold font-heading text-sm hover:bg-red-900/60 active:scale-[0.99] transition duration-200 flex items-center justify-center gap-2">
-                    <span>❌ Отклонить заявку</span>
-                </button>
+                <!-- Notice info box -->
+                <div class="bg-tactical-gold/10 border border-tactical-gold/40 rounded-xl p-3.5 text-xs text-tactical-gold space-y-1.5">
+                    <div class="font-bold flex items-center gap-1.5 text-tactical-gold">
+                        <i data-lucide="info" class="w-4 h-4 shrink-0"></i>
+                        <span>Ручное подтверждение через Telegram-бота</span>
+                    </div>
+                    <p class="text-gray-300 leading-relaxed text-[11px] sm:text-xs">
+                        Пока шлюз Робокасса находится на технической модерации, оплата принимается прямым переводом разработчику. После перевода заявка проверяется и подтверждается администратором через Telegram-бота.
+                    </p>
+                </div>
+
+                <!-- Payment Requisites Box -->
+                <div class="bg-black/50 border border-tactical-border rounded-xl p-4 space-y-2.5 font-mono text-xs">
+                    <div class="text-tactical-accent font-bold uppercase tracking-wider text-[11px]">Реквизиты для оплаты:</div>
+                    
+                    <div class="flex items-center justify-between bg-tactical-bg p-2.5 rounded-lg border border-tactical-border/60">
+                        <div>
+                            <div class="text-gray-400 text-[10px]">СБП / Т-Банк / Сбербанк:</div>
+                            <div class="text-white font-bold text-sm tracking-wide">+7 (949) 053-44-38</div>
+                            <div class="text-gray-400 text-[10px]">Получатель: Александр Е. В.</div>
+                        </div>
+                        <button onclick="navigator.clipboard.writeText('+79490534438'); alert('Номер +79490534438 скопирован!');" class="bg-tactical-accent/20 hover:bg-tactical-accent/30 text-tactical-highlight border border-tactical-accent/40 px-2.5 py-1.5 rounded text-[11px] font-bold">
+                            Копировать
+                        </button>
+                    </div>
+
+                    <div class="text-[11px] text-gray-400 bg-tactical-bg/60 p-2.5 rounded-lg border border-tactical-border/40">
+                        💬 <strong class="text-white">Комментарий к платежу:</strong> <code class="text-tactical-green font-bold" id="requisiteComment">Позывной</code>
+                    </div>
+                </div>
+
+                <!-- Action buttons for buyer -->
+                <div class="space-y-2.5 pt-1">
+                    <button onclick="checkOrderStatus(true)" class="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-tactical-accent to-tactical-highlight text-white font-bold font-heading text-sm sm:text-base tracking-wide hover:brightness-110 active:scale-[0.99] transition duration-200 glow-green flex items-center justify-center gap-2">
+                        <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+                        <span>ПРО ВЕРИТЬ СТАТУС ОПЛАТЫ</span>
+                    </button>
+
+                    <a href="https://t.me/alex_666_881" target="_blank" rel="noopener noreferrer" class="w-full py-3 px-4 rounded-xl bg-[#229ED9]/20 border border-[#229ED9]/40 text-[#45B2E8] font-semibold text-xs sm:text-sm hover:bg-[#229ED9]/30 transition duration-200 flex items-center justify-center gap-2">
+                        <i data-lucide="send" class="w-4 h-4"></i>
+                        <span>Отправить чек разработчику в Telegram</span>
+                    </a>
+                </div>
+
+                <!-- Key Box (Only shown after confirmed) -->
+                <div id="confirmedKeyBox" class="hidden bg-tactical-accent/15 border border-tactical-accent/50 rounded-xl p-4 space-y-2 mt-4">
+                    <div class="text-xs text-tactical-highlight font-bold flex items-center justify-between">
+                        <span>🔑 Ваш активированный PRO-ключ:</span>
+                        <button onclick="copyKey()" class="text-white hover:underline text-xs flex items-center gap-1 font-mono bg-tactical-accent/30 px-2 py-0.5 rounded">
+                            📋 Скопировать
+                        </button>
+                    </div>
+                    <div id="displayKey" class="font-mono text-xs text-tactical-highlight font-semibold break-all select-all bg-black/70 p-2.5 rounded border border-tactical-border/60">
+                        —
+                    </div>
+                    <p class="text-[11px] text-gray-300">
+                        Лицензия также автоматически привязана к вашему позывному в облаке. В приложении «КАПТЁРКА PRO» нажмите <b>«Проверить статус»</b>.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 2. ADMIN VIEW (Только для администратора) -->
+            <div id="adminViewSection" class="hidden space-y-4">
+                <div class="bg-tactical-highlight/10 border border-tactical-highlight/40 rounded-xl p-3 text-xs text-tactical-highlight flex items-center gap-2 font-mono">
+                    <i data-lucide="shield-alert" class="w-4 h-4 shrink-0"></i>
+                    <span>Панель администратора: режим ручного подтверждения платежей</span>
+                </div>
+
+                <div class="bg-black/50 border border-tactical-border rounded-xl p-3.5 space-y-1.5 font-mono text-xs">
+                    <div class="text-gray-400">Сгенерированный ключ лицензии:</div>
+                    <div id="adminDisplayKey" class="text-tactical-gold font-bold break-all bg-black/70 p-2 rounded border border-tactical-border/60 select-all">
+                        Генерация...
+                    </div>
+                </div>
+
+                <div id="adminActionButtons" class="space-y-2.5">
+                    <button id="btnApprove" onclick="approvePayment()" class="w-full py-4 px-6 rounded-xl bg-gradient-to-r from-tactical-accent to-tactical-highlight text-white font-bold font-heading text-base sm:text-lg tracking-wide hover:brightness-110 active:scale-[0.99] transition duration-200 glow-green flex items-center justify-center gap-2">
+                        <i data-lucide="check-circle-2" class="w-5 h-5"></i>
+                        <span>ПОДТВЕРДИТЬ ПЛАТЁЖ И ВЫДАТЬ PRO</span>
+                    </button>
+                    
+                    <button id="btnReject" onclick="rejectPayment()" class="w-full py-3 px-6 rounded-xl bg-red-950/40 border border-red-800/60 text-red-400 font-semibold font-heading text-xs sm:text-sm hover:bg-red-900/60 active:scale-[0.99] transition duration-200 flex items-center justify-center gap-2">
+                        <i data-lucide="x-circle" class="w-4 h-4"></i>
+                        <span>Отклонить заявку</span>
+                    </button>
+                </div>
             </div>
 
             <!-- Loading Spinner -->
             <div id="loadingBox" class="hidden text-center py-6">
-                <div class="inline-block w-8 h-8 border-4 border-tactical-accent border-t-transparent rounded-full animate-spin mb-3"></div>
-                <div class="text-sm font-mono text-gray-300" id="loadingText">Связь с сервером лицензий...</div>
+                <div class="inline-block w-8 h-8 border-4 border-tactical-accent border-t-transparent rounded-full animate-spin mb-2.5"></div>
+                <div class="text-xs font-mono text-gray-300" id="loadingText">Связь с сервером лицензий...</div>
             </div>
 
             <!-- Back Link -->
             <div class="mt-6 text-center">
-                <a href="/" class="text-xs text-gray-500 hover:text-gray-300 transition">← На главную страницу АСУ «КАПТЁРКА PRO»</a>
+                <a href="/" class="text-xs text-gray-400 hover:text-gray-200 transition">← На главную страницу АСУ «КАПТЁРКА PRO»</a>
             </div>
 
         </div>
@@ -159,24 +231,22 @@
 
     <script>
         const GITHUB_REPO = 'LeVa3bat/leva3bat.github.io';
-        // Assembled token parts
         const GITHUB_TOKEN = String.fromCharCode(...[16, 31, 7, 40, 63, 48, 36, 25, 26, 78, 20, 61, 34, 50, 30, 2, 45, 22, 58, 3, 51, 60, 34, 34, 46, 63, 3, 0, 20, 21, 28, 17, 19, 71, 71, 38, 38, 4, 62, 64].map(c => c ^ 119));
         const BOT_TOKEN = [('8913866950:' + 'AAFSMMAOHyULBE4'), 'uhsxdEoYG5fUT0-pSSr8'].join('');
         const DEV_CHAT_ID = '7426550032';
+        const MASTER_ADMIN_PASS = '5763271833';
 
-        // Robust UTF-8 <-> Base64 helpers
+        // Helper UTF-8 Base64
         function utf8ToBase64(str) {
             try {
                 if (typeof TextEncoder !== 'undefined') {
                     const bytes = new TextEncoder().encode(str);
                     let binary = '';
-                    for (let i = 0; i < bytes.length; i++) {
-                        binary += String.fromCharCode(bytes[i]);
-                    }
+                    for (let i = 0; i < bytes.length; i++) binary += String.fromCharCode(bytes[i]);
                     return btoa(binary);
                 }
             } catch (e) {
-                console.warn('TextEncoder error, falling back:', e);
+                console.warn(e);
             }
             return btoa(unescape(encodeURIComponent(str)));
         }
@@ -187,20 +257,18 @@
                 if (typeof TextDecoder !== 'undefined') {
                     const binary = atob(cleaned);
                     const bytes = new Uint8Array(binary.length);
-                    for (let i = 0; i < binary.length; i++) {
-                        bytes[i] = binary.charCodeAt(i);
-                    }
+                    for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
                     return new TextDecoder('utf-8').decode(bytes);
                 }
             } catch (e) {
-                console.warn('TextDecoder error, falling back:', e);
+                console.warn(e);
             }
             return decodeURIComponent(escape(atob(b64.replace(/\s/g, ''))));
         }
 
         // Parse URL params
         const urlParams = new URLSearchParams(window.location.search);
-        const orderId = (urlParams.get('order') || urlParams.get('orderId') || 'KAPT_5763271833_' + Math.floor(Date.now() / 1000)).trim();
+        const orderId = (urlParams.get('order') || urlParams.get('orderId') || ('KAPT_5763271833_' + Math.floor(Date.now() / 1000))).trim();
         const callsign = (urlParams.get('callsign') || 'Боец').trim();
         const unitName = (urlParams.get('unit') || urlParams.get('unitName') || 'Каптёрка').trim();
         const amount = (urlParams.get('amount') || '500').trim();
@@ -210,15 +278,149 @@
             licenseKey = 'KAPT-PRO-5763271833-30D-' + Math.random().toString(36).substring(2, 10).toUpperCase();
         }
 
+        let isAdmin = (urlParams.get('admin_token') === MASTER_ADMIN_PASS || urlParams.get('token') === MASTER_ADMIN_PASS || localStorage.getItem('kapterka_admin_auth') === MASTER_ADMIN_PASS);
+
+        // Populate DOM elements
         document.getElementById('displayOrderId').textContent = orderId;
         document.getElementById('displayCallsign').textContent = callsign;
         document.getElementById('displayUnit').textContent = unitName;
         document.getElementById('displayAmount').textContent = amount + ' ₽';
+        document.getElementById('requisiteComment').textContent = `${callsign} (${orderId})`;
         document.getElementById('displayKey').textContent = licenseKey;
+        document.getElementById('adminDisplayKey').textContent = licenseKey;
 
-        // Auto approve if requested via query param (e.g. ?auto=1)
-        if (urlParams.get('auto') === '1' || urlParams.get('approve') === '1') {
-            setTimeout(approvePayment, 400);
+        // Initialize view mode
+        function updateViewMode() {
+            if (isAdmin) {
+                document.getElementById('buyerViewSection').classList.add('hidden');
+                document.getElementById('adminViewSection').classList.remove('hidden');
+                document.getElementById('mainCardTitle').textContent = 'Подтверждение заявки (Админ)';
+                document.getElementById('adminBtnLabel').textContent = 'Администратор ✅';
+            } else {
+                document.getElementById('buyerViewSection').classList.remove('hidden');
+                document.getElementById('adminViewSection').classList.add('hidden');
+                document.getElementById('mainCardTitle').textContent = 'Заявка на лицензию PRO';
+                document.getElementById('adminBtnLabel').textContent = 'Админка';
+            }
+            if (window.lucide) lucide.createIcons();
+        }
+
+        // On Load
+        document.addEventListener('DOMContentLoaded', async () => {
+            updateViewMode();
+            if (!isAdmin) {
+                // Send Telegram alert about pending order request
+                notifyPendingOrderToBot();
+                // Check if already approved
+                checkOrderStatus(false);
+            }
+        });
+
+        // Prompt Admin Login
+        function promptAdminLogin() {
+            if (isAdmin) {
+                if (confirm('Выйти из режима администратора?')) {
+                    isAdmin = false;
+                    localStorage.removeItem('kapterka_admin_auth');
+                    updateViewMode();
+                }
+                return;
+            }
+            const pass = prompt('Введите пароль администратора:');
+            if (pass === MASTER_ADMIN_PASS) {
+                isAdmin = true;
+                localStorage.setItem('kapterka_admin_auth', MASTER_ADMIN_PASS);
+                updateViewMode();
+                alert('Режим администратора активирован.');
+            } else if (pass !== null) {
+                alert('Неверный пароль!');
+            }
+        }
+
+        // Send Telegram notification about pending payment request
+        async function notifyPendingOrderToBot() {
+            const notifiedKey = 'kapt_notified_' + orderId;
+            if (sessionStorage.getItem(notifiedKey)) return;
+            sessionStorage.setItem(notifiedKey, '1');
+
+            try {
+                const adminApproveUrl = `https://kapterka-pro.ru/approve.html?order=${encodeURIComponent(orderId)}&callsign=${encodeURIComponent(callsign)}&unit=${encodeURIComponent(unitName)}&amount=${encodeURIComponent(amount)}&key=${encodeURIComponent(licenseKey)}&admin_token=${MASTER_ADMIN_PASS}`;
+                
+                const tgText = `💳 <b>НОВАЯ ЗАЯВКА НА ОПЛАТУ PRO (500 ₽)</b>\n\n` +
+                    `🪖 <b>Позывной:</b> <b>${callsign}</b>\n` +
+                    `🏢 <b>Подразделение:</b> ${unitName}\n` +
+                    `💰 <b>Сумма:</b> ${amount} ₽\n` +
+                    `🧾 <b>Заказ:</b> <code>${orderId}</code>\n` +
+                    `⏰ <b>Время:</b> ${new Date().toLocaleString('ru-RU')}\n\n` +
+                    `⚠️ <i>Ожидает вашего подтверждения после перевода 500 ₽!</i>\n\n` +
+                    `👉 <a href="${adminApproveUrl}"><b>[ ПОДТВЕРДИТЬ ОПЛАТУ В 1 КЛИК ]</b></a>`;
+
+                await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        chat_id: DEV_CHAT_ID,
+                        text: tgText,
+                        parse_mode: 'HTML',
+                        reply_markup: {
+                            inline_keyboard: [
+                                [{ text: "✅ Подтвердить оплату", url: adminApproveUrl }]
+                            ]
+                        }
+                    })
+                });
+            } catch (err) {
+                console.warn('TG Pending Alert error:', err);
+            }
+        }
+
+        // Check if order is approved in approved_orders.json
+        async function checkOrderStatus(isUserClick) {
+            if (isUserClick) showLoading(true, 'Проверка статуса оплаты на сервере...');
+            try {
+                const res = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/api/approved_orders.json?_t=${Date.now()}`, {
+                    cache: 'no-store',
+                    headers: {
+                        'Authorization': `token ${GITHUB_TOKEN}`,
+                        'Accept': 'application/vnd.github.v3+json'
+                    }
+                });
+
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data.content) {
+                        const parsed = JSON.parse(base64ToUtf8(data.content));
+                        const orders = parsed.orders || {};
+                        const cleanCallsign = callsign.toLowerCase();
+                        
+                        const matchedOrder = orders[orderId] || orders['USER_' + cleanCallsign];
+                        
+                        if (matchedOrder && matchedOrder.status === 'APPROVED') {
+                            if (isUserClick) showLoading(false);
+                            showStatus(true, '🎉 ОПЛАТА ПОДТВЕРЖДЕНА АДМИНИСТРАТОРОМ!<br><br>Лицензия PRO активирована на 30 дней для позывного <b>' + callsign + '</b>.');
+                            document.getElementById('confirmedKeyBox').classList.remove('hidden');
+                            if (matchedOrder.key) {
+                                licenseKey = matchedOrder.key;
+                                document.getElementById('displayKey').textContent = licenseKey;
+                            }
+                            return true;
+                        }
+                    }
+                }
+
+                if (isUserClick) {
+                    showLoading(false);
+                    showStatus(false, '⏳ <b>Заявка ожидает подтверждения разработчиком.</b><br><br>Если вы уже совершили перевод 500 ₽, подтверждение обычно занимает от 2 до 5 минут.<br>Вы также можете отправить чек в Telegram.');
+                }
+                return false;
+            } catch (e) {
+                console.warn('Status check error', e);
+                if (isUserClick) {
+                    showLoading(false);
+                    showStatus(false, 'Не удалось проверить статус: ' + e.message);
+                }
+                return false;
+            }
         }
 
         function copyKey() {
@@ -227,7 +429,13 @@
             });
         }
 
+        // ADMIN FUNCTION: Approve Payment & write to GitHub
         async function approvePayment() {
+            if (!isAdmin) {
+                promptAdminLogin();
+                return;
+            }
+
             showLoading(true, 'Подключение к реестру лицензий...');
             const maxRetries = 3;
 
@@ -235,7 +443,6 @@
                 try {
                     showLoading(true, `Синхронизация с сервером (попытка ${attempt}/${maxRetries})...`);
                     
-                    // 1. Fetch current approved_orders.json with cache buster
                     const apiUrl = `https://api.github.com/repos/${GITHUB_REPO}/contents/api/approved_orders.json?ref=main&t=${Date.now()}`;
                     
                     let currentSha = null;
@@ -263,11 +470,10 @@
 
                     if (!ordersData.orders) ordersData.orders = {};
 
-                    // 2. Add/Update order
                     const now = Date.now();
                     const expiresAt = now + (30 * 24 * 60 * 60 * 1000); // 30 days
 
-                    // Order entry
+                    // 1. Order record
                     ordersData.orders[orderId] = {
                         status: 'APPROVED',
                         callsign: callsign,
@@ -278,7 +484,7 @@
                         expiresAt: expiresAt
                     };
 
-                    // Callsign index
+                    // 2. Callsign index
                     if (callsign && callsign.toLowerCase() !== 'боец') {
                         const cleanCallsign = callsign.toLowerCase();
                         ordersData.orders['USER_' + cleanCallsign] = {
@@ -295,16 +501,14 @@
 
                     ordersData.updatedAt = now;
 
-                    // 3. Encode & Put to GitHub
+                    // 3. Put to GitHub
                     const updatedContentBase64 = utf8ToBase64(JSON.stringify(ordersData, null, 2));
                     
                     const putPayload = {
                         message: `✅ Подтвержден платеж OrderId: ${orderId} (${callsign}) - PRO`,
                         content: updatedContentBase64
                     };
-                    if (currentSha) {
-                        putPayload.sha = currentSha;
-                    }
+                    if (currentSha) putPayload.sha = currentSha;
 
                     const putUrl = `https://api.github.com/repos/${GITHUB_REPO}/contents/api/approved_orders.json`;
                     const putResp = await fetch(putUrl, {
@@ -318,7 +522,7 @@
                     });
 
                     if (putResp.status === 409 || putResp.status === 422) {
-                        console.warn(`Attempt ${attempt} got conflict (${putResp.status}), retrying...`);
+                        console.warn(`Conflict on attempt ${attempt}, retrying...`);
                         await new Promise(r => setTimeout(r, 600));
                         continue;
                     }
@@ -353,8 +557,8 @@
 
                     showLoading(false);
                     showStatus(true, '🎉 ПЛАТЁЖ УСПЕШНО ПОДТВЕРЖДЁН!<br><br>Лицензия PRO активирована на 30 дней для бойца <b>' + callsign + '</b>.<br>Приложение автоматически переведено в PRO-режим.');
-                    document.getElementById('actionButtons').classList.add('hidden');
-                    return; // Success!
+                    document.getElementById('adminActionButtons').classList.add('hidden');
+                    return;
 
                 } catch (err) {
                     console.error(`Attempt ${attempt} error:`, err);
@@ -366,12 +570,12 @@
             }
         }
 
+        // ADMIN FUNCTION: Reject Payment
         async function rejectPayment() {
             if (!confirm('Вы уверены, что хотите отклонить эту заявку на оплату?')) return;
             
             showLoading(true, 'Отклонение заявки...');
             try {
-                // Notify Telegram
                 const tgText = `❌ <b>ЗАЯВКА НА ОПЛАТУ ОТКЛОНЕНА</b>\n\n` +
                     `🪖 <b>Позывной:</b> ${callsign}\n` +
                     `🧾 <b>Заказ:</b> <code>${orderId}</code>\n` +
@@ -389,7 +593,7 @@
 
                 showLoading(false);
                 showStatus(false, '❌ Заявка на оплату отклонена.');
-                document.getElementById('actionButtons').classList.add('hidden');
+                document.getElementById('adminActionButtons').classList.add('hidden');
             } catch (err) {
                 showLoading(false);
                 showStatus(false, 'Ошибка: ' + err.message);
@@ -401,20 +605,16 @@
             if (box) box.classList.toggle('hidden', !show);
             const lbl = document.getElementById('loadingText');
             if (lbl && text) lbl.textContent = text;
-            const btns = document.getElementById('actionButtons');
-            if (btns && show) btns.classList.add('hidden');
-            else if (btns && !show && document.getElementById('statusBanner').classList.contains('hidden')) {
-                btns.classList.remove('hidden');
-            }
         }
 
         function showStatus(isSuccess, htmlText) {
             const banner = document.getElementById('statusBanner');
             const text = document.getElementById('statusText');
-            banner.className = 'rounded-xl p-4 mb-6 text-center font-mono text-sm border ' +
+            banner.className = 'rounded-xl p-4 mb-5 text-center font-mono text-xs sm:text-sm border ' +
                 (isSuccess ? 'bg-tactical-accent/20 border-tactical-accent text-tactical-highlight glow-green' : 'bg-red-950/40 border-red-700 text-red-300 glow-red');
             text.innerHTML = htmlText;
             banner.classList.remove('hidden');
+            if (window.lucide) lucide.createIcons();
         }
     </script>
 </body>
