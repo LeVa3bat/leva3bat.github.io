@@ -1,19 +1,6 @@
 {
-  "updatedAt": 1788188999999,
+  "updatedAt": 1788200366779,
   "users": [
-    {
-      "id": "usr_yookassa_test",
-      "callsign": "Тестовый Покупатель",
-      "unit": "Проверка ЮKassa",
-      "email": "demo@kapterka-pro.ru",
-      "phone": "+7 (999) 777-55-33",
-      "password": "DemoPassword2026",
-      "isEmailVerified": true,
-      "isPhoneVerified": true,
-      "licenseStatus": "PRO",
-      "registeredAt": "31.08.2026, 21:00:00",
-      "adminNote": "Тестовый аккаунт для модераторов ЮKassa"
-    },
     {
       "id": "usr_101",
       "callsign": "Командир (Лев)",
@@ -27,16 +14,43 @@
       "adminNote": "Главный разработчик и администратор АСУ"
     },
     {
-      "id": "usr_102",
-      "callsign": "Старшина-1",
-      "unit": "1-й батальон • Каптёрка",
-      "email": "kapterka.depo@mail.ru",
-      "phone": "+7 (918) 456-78-90",
+      "id": "usr_mtfp15lm",
+      "callsign": "Лева",
+      "unit": "Мин бат",
+      "email": "alex.666.881@gmail.com",
+      "phone": "",
+      "password": "5763271833",
+      "isEmailVerified": true,
+      "isPhoneVerified": false,
+      "licenseStatus": "FREE",
+      "registeredAt": "30.08.2026, 13:55:34",
+      "adminNote": ""
+    },
+    {
+      "id": "usr_mthcd5ru",
+      "callsign": "ЛЕВА",
+      "unit": "Мин бат",
+      "email": "alex.666.881@gmail.com",
+      "phone": "+79490534438",
+      "password": "ax0800035",
+      "isEmailVerified": true,
+      "isPhoneVerified": true,
+      "licenseStatus": "FREE",
+      "registeredAt": "31.08.2026, 17:36:32",
+      "adminNote": ""
+    },
+    {
+      "id": "usr_yookassa_test",
+      "callsign": "Тестовый Покупатель",
+      "unit": "Проверка ЮKassa",
+      "email": "demo@kapterka-pro.ru",
+      "phone": "+7 (999) 777-55-33",
+      "password": "DemoPassword2026",
       "isEmailVerified": true,
       "isPhoneVerified": true,
       "licenseStatus": "PRO",
-      "registeredAt": "31.08.2026, 06:04:13",
-      "adminNote": "Учёт оружия и БК роты"
+      "registeredAt": "31.08.2026, 21:00:00",
+      "adminNote": "Тестовый аккаунт для модераторов ЮKassa"
     },
     {
       "id": "usr_mthdfbn7",
