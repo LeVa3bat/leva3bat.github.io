@@ -495,7 +495,58 @@
         <section id="features" class="py-8 sm:py-12 bg-tactical-bg border-b border-tactical-border">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 space-y-4">
                 
-                <!-- 1. ВОЗМОЖНОСТИ И МЕТРИКИ -->
+                                <!-- 0. ТАРИФЫ И СТОИМОСТЬ (СВЕРНУТО ПО УМОЛЧАНИЮ) -->
+                <details class="group bg-tactical-card border border-tactical-border rounded-2xl overflow-hidden transition-all shadow-md">
+                    <summary class="flex items-center justify-between p-4 sm:p-5 cursor-pointer list-none select-none bg-tactical-card hover:bg-tactical-cardHover transition-colors">
+                        <div class="flex items-center gap-3">
+                            <div class="w-9 h-9 rounded-xl bg-tactical-green/15 border border-tactical-green/30 flex items-center justify-center text-tactical-green shrink-0">
+                                <i data-lucide="tag" class="w-4 h-4"></i>
+                            </div>
+                            <div>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-sm sm:text-base font-bold text-white font-heading tracking-wide block">Тарифы и активация лицензии</span>
+                                    <span class="bg-tactical-green/20 text-tactical-green text-[10px] font-mono font-bold px-1.5 py-0.5 rounded border border-tactical-green/30">500 ₽ / 30 ДНЕЙ</span>
+                                </div>
+                                <span class="text-[11px] text-tactical-muted">Демо-период, условия продления и гарантия возврата</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs font-mono text-tactical-green">
+                            <span class="text-tactical-muted group-open:hidden">Развернуть</span>
+                            <span class="text-tactical-muted hidden group-open:inline">Свернуть</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 text-tactical-green transition-transform duration-200 group-open:rotate-180"></i>
+                        </div>
+                    </summary>
+                    <div class="p-4 sm:p-6 border-t border-tactical-border/70 bg-tactical-dark/50 space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="bg-tactical-card p-4 rounded-xl border border-tactical-border">
+                                <div class="text-tactical-gold font-bold text-xs uppercase font-mono mb-1">Демо-период</div>
+                                <div class="text-xl font-bold text-white mb-2">0 ₽ (Ознакомительный)</div>
+                                <p class="text-xs text-tactical-muted mb-2">После окончания демо база блокируется до продления.</p>
+                                <a href="index.html#download" class="text-xs text-tactical-green hover:underline flex items-center gap-1 font-mono">
+                                    <i data-lucide="download" class="w-3.5 h-3.5"></i> Скачать демо APK
+                                </a>
+                            </div>
+                            <div class="bg-tactical-card p-4 rounded-xl border border-tactical-green/50">
+                                <div class="text-tactical-green font-bold text-xs uppercase font-mono mb-1">Лицензия PRO</div>
+                                <div class="text-xl font-bold text-tactical-green mb-2">500 ₽ / 30 дней</div>
+                                <p class="text-xs text-tactical-muted mb-3">Полная разблокировка, сетевая синхронизация, отчёты.</p>
+                                <a href="pricing.html" class="inline-flex items-center gap-1.5 bg-tactical-green hover:bg-tactical-accent text-black font-bold text-xs px-3.5 py-2 rounded-lg shadow-sm transition-all">
+                                    <span>Перейти к тарифам и оплате</span>
+                                    <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-tactical-muted pt-2 border-t border-tactical-border/60 font-mono">
+                            <span>Гарантия возврата 100% средств: 14 дней</span>
+                            <div class="space-x-3">
+                                <a href="refund.html" class="text-tactical-gold hover:underline">Заявка на возврат</a>
+                                <span>•</span>
+                                <a href="offer.html" class="text-tactical-green hover:underline">Оферта</a>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+<!-- 1. ВОЗМОЖНОСТИ И МЕТРИКИ -->
                 <details class="group bg-tactical-card border border-tactical-border rounded-2xl overflow-hidden transition-all shadow-md">
                     <summary class="flex items-center justify-between p-4 sm:p-5 cursor-pointer list-none select-none bg-tactical-card hover:bg-tactical-cardHover transition-colors">
                         <div class="flex items-center gap-3">
