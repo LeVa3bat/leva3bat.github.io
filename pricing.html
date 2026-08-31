@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тарифы и лицензия | АСУ «КАПТЁРКА PRO» v2.9</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,400;0,600;0,700;1,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        tactical: {
+                            bg: '#0c0f0d',
+                            dark: '#121713',
+                            card: '#18201a',
+                            border: '#233326',
+                            green: '#4ade80',
+                            accent: '#22c55e',
+                            gold: '#facc15',
+                            muted: '#809184'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                        heading: ['Chakra Petch', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0c0f0d;
+            background-image: 
+                linear-gradient(to right, rgba(35, 51, 38, 0.15) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(35, 51, 38, 0.15) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+    </style>
+</head>
+<body class="text-gray-200 font-sans min-h-screen flex flex-col justify-between selection:bg-tactical-green selection:text-black">
+
+    <!-- TOP BAR -->
+    <div class="bg-tactical-card/90 border-b border-tactical-border/60 text-xs py-1.5 px-4 font-mono">
+        <div class="max-w-6xl mx-auto flex items-center justify-between">
+            <div class="flex items-center space-x-2 text-tactical-green">
+                <span class="w-2 h-2 rounded-full bg-tactical-green animate-pulse"></span>
+                <span>ОФИЦИАЛЬНЫЙ РЕСУРС: <strong class="text-white">kapterka-pro.ru</strong></span>
+            </div>
+            <div class="hidden md:flex items-center space-x-4 text-tactical-muted">
+                <span>🛡 100% ОФЛАЙН</span>
+                <span>⚡ БЕЗ ИНТЕРНЕТА</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN NAVIGATION -->
+    <header class="border-b border-tactical-border/80 bg-tactical-bg/95 backdrop-blur sticky top-0 z-40">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+            <a href="index.html" class="flex items-center space-x-3 group">
+                <div class="w-9 h-9 rounded-lg bg-tactical-card border border-tactical-green/40 flex items-center justify-center text-tactical-green group-hover:border-tactical-green transition-colors">
+                    <i data-lucide="shield" class="w-5 h-5"></i>
+                </div>
+                <div class="flex flex-col">
+                    <div class="flex items-center space-x-1.5">
+                        <span class="font-heading font-black text-white text-base sm:text-lg tracking-wider leading-none">КАПТЁРКА <span class="text-tactical-green">PRO</span></span>
+                        <span class="text-[10px] font-mono font-bold bg-tactical-card px-1.5 py-0.5 rounded border border-tactical-green/30 text-tactical-green">v2.9</span>
+                    </div>
+                    <span class="text-[10px] text-tactical-muted font-mono tracking-widest leading-none mt-0.5">ТАКТИЧЕСКИЙ СКЛАДСКОЙ УЧЁТ</span>
+                </div>
+            </a>
+
+            <!-- Nav Links -->
+            <nav class="hidden md:flex items-center space-x-6 text-xs font-mono">
+                <a href="index.html" class="text-tactical-muted hover:text-white transition-colors">Главная</a>
+                <a href="pricing.html" class="text-tactical-green font-bold border-b border-tactical-green pb-0.5">Тарифы</a>
+                <a href="about.html" class="text-tactical-muted hover:text-white transition-colors">О программе</a>
+                <a href="manual.html" class="text-tactical-muted hover:text-white transition-colors">Инструкция</a>
+                <a href="versions.html" class="text-tactical-muted hover:text-white transition-colors">История версий</a>
+                <a href="cabinet.html" class="text-tactical-muted hover:text-white transition-colors flex items-center gap-1">
+                    <i data-lucide="users" class="w-3.5 h-3.5"></i>
+                    <span>Кабинет & Чат</span>
+                </a>
+            </nav>
+
+            <a href="cabinet.html#register" class="inline-flex items-center space-x-1.5 bg-tactical-green/15 hover:bg-tactical-green/25 text-tactical-green border border-tactical-green/40 px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-all">
+                <i data-lucide="user-plus" class="w-3.5 h-3.5"></i>
+                <span>Регистрация</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- MAIN PRICING CONTENT -->
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 py-10 sm:py-16">
+        
+        <!-- Header -->
+        <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
+            <div class="inline-flex items-center space-x-2 bg-tactical-card border border-tactical-green/40 px-3.5 py-1.5 rounded-full text-xs font-mono text-tactical-green mb-3 shadow-sm">
+                <i data-lucide="shield-alert" class="w-4 h-4 text-tactical-gold"></i>
+                <span>ДЕМО-РЕЖИМ • ЛИЦЕНЗИЯ НА 30 ДНЕЙ</span>
+            </div>
+            <h1 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight font-heading">
+                Тарифы и активация <span class="text-tactical-green">«КАПТЁРКА PRO»</span>
+            </h1>
+            <p class="text-xs sm:text-sm text-gray-300 mt-2.5 max-w-xl mx-auto leading-relaxed">
+                Бесплатный ознакомительный демо-период. Для постоянного использования и разблокировки базы приобретается лицензия на 30 дней.
+            </p>
+        </div>
+
+        <!-- Pricing Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch mb-10">
+            
+            <!-- Demo Card (5 cols) -->
+            <div class="md:col-span-5 bg-tactical-card/70 border border-tactical-border rounded-2xl p-6 flex flex-col justify-between shadow-md">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-10 h-10 rounded-xl bg-tactical-border/50 border border-tactical-border flex items-center justify-center text-tactical-gold">
+                            <i data-lucide="hourglass" class="w-5 h-5"></i>
+                        </div>
+                        <span class="text-xs font-mono font-bold text-tactical-gold uppercase px-2.5 py-1 bg-tactical-bg rounded-lg border border-tactical-gold/30">
+                            Демо-период
+                        </span>
+                    </div>
+
+                    <h2 class="text-xl font-bold text-white mb-1">Ознакомительный доступ</h2>
+                    <p class="text-xs text-tactical-muted mb-4 leading-relaxed">Для первого запуска и проверки функций учета в подразделении.</p>
+
+                    <div class="mb-5 pb-5 border-b border-tactical-border/70">
+                        <div class="flex items-baseline space-x-1">
+                            <span class="text-3xl sm:text-4xl font-black text-white font-heading">0</span>
+                            <span class="text-xl text-tactical-muted font-bold">₽</span>
+                        </div>
+                        <div class="flex items-center gap-1.5 text-xs text-tactical-gold mt-1 font-mono">
+                            <i data-lucide="alert-triangle" class="w-3.5 h-3.5 shrink-0"></i>
+                            <span>Ограниченный срок действия</span>
+                        </div>
+                    </div>
+
+                    <!-- Warning Demo Lock Box -->
+                    <div class="bg-tactical-dark/90 border border-tactical-gold/40 rounded-xl p-3.5 mb-5 text-xs leading-relaxed text-gray-200">
+                        <div class="flex items-center gap-1.5 font-bold text-tactical-gold mb-1">
+                            <i data-lucide="alert-triangle" class="w-4 h-4"></i>
+                            <span>Внимание:</span>
+                        </div>
+                        По истечении срока демо-версии приложение <strong class="text-white">блокируется</strong>. Для разблокировки и доступа к базе требуется продление лицензии.
+                    </div>
+
+                    <!-- Features List -->
+                    <ul class="space-y-2.5 text-xs text-gray-300 mb-6">
+                        <li class="flex items-center space-x-2">
+                            <i data-lucide="check" class="w-4 h-4 text-tactical-green shrink-0"></i>
+                            <span>Складской и номерной учёт на время демо</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i data-lucide="check" class="w-4 h-4 text-tactical-green shrink-0"></i>
+                            <span>100% офлайн-режим без интернета</span>
+                        </li>
+                        <li class="flex items-center space-x-2 text-tactical-gold">
+                            <i data-lucide="lock" class="w-4 h-4 text-tactical-gold shrink-0"></i>
+                            <span>Блокировка базы после окончания демо</span>
+                        </li>
+                        <li class="flex items-center space-x-2 text-tactical-muted">
+                            <i data-lucide="minus" class="w-4 h-4 shrink-0"></i>
+                            <span>Синхронизация нескольких телефонов</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <a href="index.html#download" 
+                        class="w-full inline-flex items-center justify-center space-x-2 bg-tactical-card hover:bg-tactical-border text-white font-bold text-xs sm:text-sm py-3 px-4 rounded-xl border border-tactical-border hover:border-tactical-muted transition-all">
+                        <i data-lucide="download" class="w-4 h-4 text-tactical-green"></i>
+                        <span>Скачать демо APK (Бесплатно)</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- PRO License Card (7 cols) -->
+            <div class="md:col-span-7 bg-tactical-card border-2 border-tactical-green/70 rounded-2xl p-6 sm:p-7 flex flex-col justify-between shadow-2xl relative overflow-hidden">
+                <div class="absolute -top-12 -right-12 w-44 h-44 bg-tactical-green/10 rounded-full blur-2xl pointer-events-none"></div>
+
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-11 h-11 rounded-xl bg-tactical-green/15 border border-tactical-green/40 flex items-center justify-center text-tactical-green shadow-sm">
+                            <i data-lucide="shield-check" class="w-6 h-6"></i>
+                        </div>
+                        <span class="text-xs font-mono font-bold text-black uppercase px-3 py-1 bg-tactical-green rounded-lg shadow-sm flex items-center gap-1">
+                            <i data-lucide="zap" class="w-3.5 h-3.5 fill-black"></i>
+                            Лицензия на 30 дней
+                        </span>
+                    </div>
+
+                    <h2 class="text-xl sm:text-2xl font-black text-white font-heading mb-1">
+                        «КАПТЁРКА PRO» — Доступ на 30 дней
+                    </h2>
+                    <p class="text-xs text-gray-300 mb-5 leading-relaxed">
+                        Снятие блокировки и полный неограниченный доступ ко всем функциям учета и синхронизации.
+                    </p>
+
+                    <div class="mb-6 pb-6 border-b border-tactical-border">
+                        <div class="flex items-baseline space-x-2">
+                            <span class="text-4xl sm:text-5xl font-black text-tactical-green font-heading">500</span>
+                            <span class="text-2xl text-tactical-green font-bold">₽</span>
+                            <span class="text-sm text-tactical-muted font-mono font-medium">/ 30 дней</span>
+                        </div>
+                        <div class="flex items-center gap-1.5 text-xs text-gray-300 mt-2 font-mono">
+                            <i data-lucide="key" class="w-3.5 h-3.5 text-tactical-green shrink-0"></i>
+                            <span>Активация ключа продления <strong class="text-white">сразу после оплаты</strong></span>
+                        </div>
+                    </div>
+
+                    <!-- Features -->
+                    <ul class="space-y-3 text-xs sm:text-sm text-gray-200 mb-6">
+                        <li class="flex items-start space-x-2.5">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-tactical-green shrink-0 mt-0.5"></i>
+                            <span><strong>Полная разблокировка на 30 дней</strong></span>
+                        </li>
+                        <li class="flex items-start space-x-2.5">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-tactical-green shrink-0 mt-0.5"></i>
+                            <span><strong>Синхронизация подразделения</strong> (2-й телефон)</span>
+                        </li>
+                        <li class="flex items-start space-x-2.5">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-tactical-green shrink-0 mt-0.5"></i>
+                            <span><strong>Номерной учёт</strong> оружия, БПЛА и оптики</span>
+                        </li>
+                        <li class="flex items-start space-x-2.5">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-tactical-green shrink-0 mt-0.5"></i>
+                            <span>Экспорт ведомостей в PDF и DOC</span>
+                        </li>
+                        <li class="flex items-start space-x-2.5">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-tactical-green shrink-0 mt-0.5"></i>
+                            <span>Резервные копии и перенос базы</span>
+                        </li>
+                        <li class="flex items-start space-x-2.5">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-tactical-green shrink-0 mt-0.5"></i>
+                            <span>Все обновления программы включены</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="space-y-3">
+                    <a href="cabinet.html#register"
+                        class="w-full inline-flex items-center justify-center space-x-2 bg-tactical-green hover:bg-tactical-accent text-black font-black text-sm sm:text-base py-3.5 px-6 rounded-xl transition-all shadow-lg glow-green transform hover:scale-[1.01]">
+                        <i data-lucide="shopping-cart" class="w-4 h-4"></i>
+                        <span>КУПИТЬ ЛИЦЕНЗИЮ НА 30 ДНЕЙ (500 ₽)</span>
+                    </a>
+                    
+                    <!-- Payment systems badge -->
+                    <div class="flex flex-wrap items-center justify-center gap-3 text-[11px] text-tactical-muted pt-1">
+                        <span class="flex items-center gap-1 font-mono"><i data-lucide="lock" class="w-3 h-3 text-tactical-green"></i> Защищённый платёж</span>
+                        <span class="text-gray-500">•</span>
+                        <span class="font-medium text-gray-300">СБП</span>
+                        <span class="text-gray-500">•</span>
+                        <span class="font-medium text-gray-300">МИР / Карты</span>
+                        <span class="text-gray-500">•</span>
+                        <span class="font-medium text-gray-300">ЮKassa</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- REFUND POLICY STRIP -->
+        <div class="bg-tactical-card border border-tactical-border rounded-xl p-4 sm:p-5 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-md mb-8">
+            <div class="flex items-center space-x-3 text-left w-full sm:w-auto">
+                <div class="w-9 h-9 rounded-lg bg-tactical-gold/15 border border-tactical-gold/30 flex items-center justify-center text-tactical-gold shrink-0">
+                    <i data-lucide="shield-check" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-sm font-bold text-white">100% Гарантия возврата денежных средств</span>
+                        <span class="bg-tactical-gold/20 text-tactical-gold text-[10px] font-mono font-bold px-1.5 py-0.5 rounded border border-tactical-gold/30">14 ДНЕЙ</span>
+                    </div>
+                    <p class="text-xs text-tactical-muted mt-0.5">Если приложение не подошло для вашего подразделения — вернем средства за 24 часа.</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-3 shrink-0 w-full sm:w-auto justify-end">
+                <a href="offer.html" class="text-xs font-mono text-tactical-muted hover:text-white underline">Оферта</a>
+                <span class="text-tactical-border">•</span>
+                <a href="refund.html" class="inline-flex items-center space-x-1.5 bg-tactical-gold/20 hover:bg-tactical-gold/30 text-tactical-gold border border-tactical-gold/40 text-xs font-bold py-2 px-3.5 rounded-lg transition-colors">
+                    <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+                    <span>Подать заявку на возврат</span>
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-tactical-border bg-tactical-dark/60 py-6 text-center text-xs text-tactical-muted font-mono">
+        <div class="max-w-6xl mx-auto px-4">
+            <p>АСУ «КАПТЁРКА PRO» • Разработчик: Васев А.Е. (ИНН 250104230398)</p>
+            <p class="mt-1 text-[11px]">
+                <a href="index.html" class="hover:text-tactical-green underline">Главная</a> • 
+                <a href="pricing.html" class="hover:text-tactical-green underline">Тарифы</a> • 
+                <a href="offer.html" class="hover:text-tactical-green underline">Публичная оферта</a> • 
+                <a href="refund.html" class="hover:text-tactical-green underline">Возврат средств</a> • 
+                <a href="mailto:alex.666.881@gmail.com" class="hover:text-tactical-green underline">alex.666.881@gmail.com</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
