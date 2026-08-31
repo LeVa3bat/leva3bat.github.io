@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Заявка на возврат средств | АСУ «КАПТЁРКА PRO»</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,400;0,600;0,700;1,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        tactical: {
+                            bg: '#0c0f0d',
+                            dark: '#121713',
+                            card: '#18201a',
+                            border: '#233326',
+                            green: '#4ade80',
+                            accent: '#22c55e',
+                            gold: '#facc15',
+                            muted: '#809184'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                        heading: ['Chakra Petch', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0c0f0d;
+            background-image: 
+                linear-gradient(to right, rgba(35, 51, 38, 0.15) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(35, 51, 38, 0.15) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+    </style>
+</head>
+<body class="text-gray-200 font-sans min-h-screen flex flex-col justify-between selection:bg-tactical-green selection:text-black">
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="border-b border-tactical-border/80 bg-tactical-bg/95 backdrop-blur sticky top-0 z-40">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+            <a href="index.html" class="flex items-center space-x-3 group">
+                <div class="w-9 h-9 rounded-lg bg-tactical-card border border-tactical-green/40 flex items-center justify-center text-tactical-green group-hover:border-tactical-green transition-colors">
+                    <i data-lucide="shield" class="w-5 h-5"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-heading font-black text-white text-base tracking-wider leading-none">КАПТЁРКА <span class="text-tactical-green">PRO</span></span>
+                    <span class="text-[10px] text-tactical-muted font-mono tracking-widest mt-0.5">СЛУЖБА ПОДДЕРЖКИ</span>
+                </div>
+            </a>
+            
+            <a href="index.html#pricing" class="inline-flex items-center space-x-1.5 text-xs font-mono text-tactical-muted hover:text-tactical-green transition-colors bg-tactical-card/60 px-3 py-1.5 rounded-lg border border-tactical-border">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                <span>Вернуться на сайт</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- MAIN FORM SECTION -->
+    <main class="max-w-xl w-full mx-auto px-4 py-8 sm:py-12">
+        
+        <div class="bg-tactical-card border border-tactical-border rounded-2xl p-5 sm:p-8 shadow-2xl relative overflow-hidden">
+            <!-- Decorative Accent -->
+            <div class="absolute top-0 right-0 w-32 h-32 bg-tactical-gold/5 rounded-full blur-2xl pointer-events-none"></div>
+
+            <!-- Form Container -->
+            <div id="refund-form-container">
+                <div class="flex items-center space-x-3.5 mb-5 pb-4 border-b border-tactical-border/70">
+                    <div class="w-12 h-12 rounded-xl bg-tactical-gold/15 border border-tactical-gold/40 flex items-center justify-center text-tactical-gold shrink-0">
+                        <i data-lucide="rotate-ccw" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h1 class="font-heading font-black text-xl sm:text-2xl text-white">
+                            Заявка на возврат средств
+                        </h1>
+                        <span class="text-xs text-tactical-muted block font-mono mt-0.5">Гарантия возврата 14 дней • Ответ за 24 часа</span>
+                    </div>
+                </div>
+
+                <div class="bg-tactical-dark/80 border border-tactical-border/60 rounded-xl p-3.5 mb-5 text-xs text-gray-300 space-y-1.5">
+                    <div class="flex items-center gap-1.5 text-tactical-gold font-bold font-mono">
+                        <i data-lucide="info" class="w-3.5 h-3.5"></i>
+                        <span>Условия возврата:</span>
+                    </div>
+                    <p class="text-tactical-muted text-[11px] leading-relaxed">
+                        Возврат денежных средств осуществляется в 100% объеме в течение 14 дней с момента оплаты на ту же карту/СБП. Заявка отправляется напрямую разработчику в Telegram.
+                    </p>
+                </div>
+
+                <form onsubmit="handleRefundSubmit(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-mono font-bold text-gray-300 mb-1.5">
+                            Ваш Email / Телефон / Telegram <span class="text-rose-400">*</span>
+                        </label>
+                        <input type="text" id="refund-contact" required placeholder="ivanov@mail.ru или @callsign"
+                               class="w-full bg-tactical-bg border border-tactical-border rounded-xl px-3.5 py-2.5 text-white text-xs sm:text-sm focus:outline-none focus:border-tactical-gold placeholder:text-tactical-muted/60 transition-colors">
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                        <div>
+                            <label class="block text-xs font-mono font-bold text-gray-300 mb-1.5">
+                                Причина обращения <span class="text-rose-400">*</span>
+                            </label>
+                            <select id="refund-topic" class="w-full bg-tactical-bg border border-tactical-border rounded-xl px-3 py-2.5 text-white text-xs focus:outline-none focus:border-tactical-gold">
+                                <option value="Возврат средств (14 дней)">Возврат средств (14 дней)</option>
+                                <option value="Не подошло на устройство">Не подошло на устройство</option>
+                                <option value="Сложности с активацией ключа">Сложности с активацией ключа</option>
+                                <option value="Другой вопрос">Вопрос разработчику</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-mono font-bold text-gray-300 mb-1.5">
+                                Номер чека / последние 4 цифры
+                            </label>
+                            <input type="text" id="refund-payment-info" placeholder="например: карта 4276 или СБП"
+                                   class="w-full bg-tactical-bg border border-tactical-border rounded-xl px-3.5 py-2.5 text-white text-xs focus:outline-none focus:border-tactical-gold placeholder:text-tactical-muted/60 transition-colors">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-mono font-bold text-gray-300 mb-1.5">
+                            Комментарий или реквизиты для связи <span class="text-rose-400">*</span>
+                        </label>
+                        <textarea id="refund-comment" rows="3" required placeholder="Опишите причину возврата или задайте вопрос..."
+                                  class="w-full bg-tactical-bg border border-tactical-border rounded-xl px-3.5 py-2.5 text-white text-xs sm:text-sm focus:outline-none focus:border-tactical-gold placeholder:text-tactical-muted/60 resize-none transition-colors"></textarea>
+                    </div>
+
+                    <button type="submit" id="refund-submit-btn" class="w-full inline-flex items-center justify-center space-x-2 bg-tactical-gold hover:bg-yellow-400 text-black font-black text-xs sm:text-sm py-3 px-4 rounded-xl transition-all shadow-md cursor-pointer">
+                        <i data-lucide="send" class="w-4 h-4"></i>
+                        <span>ОТПРАВИТЬ ЗАЯВКУ РАЗРАБОТЧИКУ</span>
+                    </button>
+                </form>
+
+                <div class="mt-5 pt-3.5 border-t border-tactical-border/60 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-tactical-muted font-mono">
+                    <span>Почта: <a href="mailto:alex.666.881@gmail.com" class="text-tactical-green hover:underline">alex.666.881@gmail.com</a></span>
+                    <span>Бот: <a href="https://t.me/kapterka_dev_notify_bot" target="_blank" class="text-tactical-green hover:underline">@kapterka_dev_notify_bot</a></span>
+                </div>
+            </div>
+
+            <!-- Success Screen -->
+            <div id="refund-success-container" class="hidden text-center py-8 space-y-4">
+                <div class="w-16 h-16 rounded-full bg-tactical-green/20 border-2 border-tactical-green text-tactical-green flex items-center justify-center mx-auto shadow-lg">
+                    <i data-lucide="check" class="w-8 h-8"></i>
+                </div>
+                <h2 class="text-xl font-bold text-white font-heading">Заявка успешно принята!</h2>
+                <p class="text-xs text-gray-300 max-w-sm mx-auto leading-relaxed">
+                    Ваше обращение мгновенно доставлено разработчику в Telegram. Мы свяжемся с вами в течение 24 часов для оформления возврата.
+                </p>
+                <div class="pt-3">
+                    <a href="index.html" class="inline-flex items-center space-x-2 bg-tactical-card hover:bg-tactical-border text-white font-bold text-xs py-2.5 px-6 rounded-xl border border-tactical-border transition-all">
+                        <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                        <span>Вернуться на главную</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-tactical-border bg-tactical-dark/60 py-6 text-center text-xs text-tactical-muted font-mono">
+        <div class="max-w-4xl mx-auto px-4">
+            <p>АСУ «КАПТЁРКА PRO» • Разработчик: Васев А.Е. (ИНН 250104230398)</p>
+            <p class="mt-1 text-[11px]">
+                <a href="offer.html" class="hover:text-tactical-green underline">Публичная оферта</a> • 
+                <a href="index.html#pricing" class="hover:text-tactical-green underline">Тарифы</a> • 
+                <a href="mailto:alex.666.881@gmail.com" class="hover:text-tactical-green underline">alex.666.881@gmail.com</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        const BOT_TOKEN = ["8913866950:", "AAFSMMAOHyULBE4uhsxdEoYG5fUT0-pSSr8"].join('');
+        const DEV_CHAT_ID = "7426550032";
+
+        async function handleRefundSubmit(e) {
+            e.preventDefault();
+            const btn = document.getElementById('refund-submit-btn');
+            const contact = document.getElementById('refund-contact').value.trim();
+            const topic = document.getElementById('refund-topic').value;
+            const paymentInfo = document.getElementById('refund-payment-info').value.trim() || 'Не указан';
+            const comment = document.getElementById('refund-comment').value.trim();
+
+            if (!contact || !comment) return;
+
+            btn.disabled = true;
+            btn.innerHTML = '<span class="inline-block mr-2">⏳</span> Отправка заявки...';
+
+            const now = new Date().toLocaleString('ru-RU', { timeZone: 'Europe/Moscow' });
+            const message = `🚨 <b>ЗАЯВКА НА ВОЗВРАТ / ОБРАЩЕНИЕ С САЙТА</b>\n\n` +
+                `👤 <b>Контакт:</b> <code>${contact}</code>\n` +
+                `📋 <b>Тема:</b> ${topic}\n` +
+                `💳 <b>Платёжные данные:</b> <code>${paymentInfo}</code>\n` +
+                `📝 <b>Комментарий:</b>\n${comment}\n\n` +
+                `⏱ <i>Время (МСК): ${now}</i>`;
+
+            try {
+                await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        chat_id: DEV_CHAT_ID,
+                        text: message,
+                        parse_mode: 'HTML'
+                    })
+                });
+
+                document.getElementById('refund-form-container').classList.add('hidden');
+                document.getElementById('refund-success-container').classList.remove('hidden');
+                lucide.createIcons();
+            } catch (err) {
+                console.error(err);
+                alert("Ошибка при отправке. Пожалуйста, напишите нам напрямую на alex.666.881@gmail.com");
+                btn.disabled = false;
+                btn.innerHTML = '<i data-lucide="send" class="w-4 h-4"></i><span>ОТПРАВИТЬ ЗАЯВКУ РАЗРАБОТЧИКУ</span>';
+                lucide.createIcons();
+            }
+        }
+    </script>
+</body>
+</html>
