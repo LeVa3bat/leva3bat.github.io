@@ -1357,7 +1357,14 @@
         function toggleUserPro(userId) {
             const u = allUsers.find(x => x.id === userId);
             if (u) {
-                u.licenseStatus = u.licenseStatus === 'PRO' ? 'FREE' : 'PRO';
+                const isGivingPro = u.licenseStatus !== 'PRO';
+                const warningMsg = isGivingPro
+                    ? `⚠️ ПРЕДУПРЕЖДЕНИЕ:\n\nВы действительно хотите выдать лицензию PRO на 30 дней для бойца «${u.callsign}» (${u.unit || 'без подразделения'})?\n\nДанные будут внесены в облачный реестр лицензий.`
+                    : `⚠️ ПРЕДУПРЕЖДЕНИЕ:\n\nВы действительно хотите снять статус PRO у бойца «${u.callsign}»?`;
+                
+                if (!confirm(warningMsg)) return;
+
+                u.licenseStatus = isGivingPro ? 'PRO' : 'FREE';
                 localStorage.setItem('kapterka_registered_users', JSON.stringify(allUsers));
                 
                 // If PRO given, also record into approved_orders
