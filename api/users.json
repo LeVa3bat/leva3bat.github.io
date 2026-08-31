@@ -1,6 +1,19 @@
 {
-  "updatedAt": 1788188774956,
+  "updatedAt": 1788188999999,
   "users": [
+    {
+      "id": "usr_yookassa_test",
+      "callsign": "Тестовый Покупатель",
+      "unit": "Проверка ЮKassa",
+      "email": "demo@kapterka-pro.ru",
+      "phone": "+7 (999) 777-55-33",
+      "password": "DemoPassword2026",
+      "isEmailVerified": true,
+      "isPhoneVerified": true,
+      "licenseStatus": "PRO",
+      "registeredAt": "31.08.2026, 21:00:00",
+      "adminNote": "Тестовый аккаунт для модераторов ЮKassa"
+    },
     {
       "id": "usr_101",
       "callsign": "Командир (Лев)",
