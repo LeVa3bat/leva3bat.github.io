@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1788087337184,
+  "updatedAt": 1788186994843,
   "users": [
     {
       "id": "usr_101",
@@ -36,6 +36,19 @@
       "isPhoneVerified": false,
       "licenseStatus": "FREE",
       "registeredAt": "30.08.2026, 13:55:34",
+      "adminNote": ""
+    },
+    {
+      "id": "usr_mthcd5ru",
+      "callsign": "ЛЕВА",
+      "unit": "Мин бат",
+      "email": "alex.666.881@gmail.com",
+      "phone": "+79490534438",
+      "password": "ax0800035",
+      "isEmailVerified": true,
+      "isPhoneVerified": true,
+      "licenseStatus": "FREE",
+      "registeredAt": "31.08.2026, 17:36:32",
       "adminNote": ""
     }
   ]
