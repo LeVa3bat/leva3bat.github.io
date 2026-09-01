@@ -207,47 +207,55 @@
                         <span class="text-[#4CAF50]">БЕЗ КОМИССИИ</span>
                     </div>
 
-                    <!-- Contract Requisite -->
-                    <div class="bg-[#161C24] p-3.5 rounded-xl border border-[#232D3B] flex items-center justify-between gap-2">
-                        <div>
-                            <div class="text-gray-400 text-[10px] uppercase">Номер договора:</div>
-                            <div class="text-[#FFD700] font-black text-lg sm:text-xl tracking-widest" id="contractNumText">5763271833</div>
-                        </div>
-                        <button type="button" id="btnCopyContract" class="px-3.5 py-2 rounded-lg bg-[#2E7D32]/30 hover:bg-[#2E7D32]/50 text-[#4CAF50] text-xs font-bold transition flex items-center gap-1.5 cursor-pointer border border-[#4CAF50]/30">
-                            <i data-lucide="copy" class="w-4 h-4"></i>
-                            <span>Копировать</span>
-                        </button>
-                    </div>
-
                     <!-- Details Table -->
-                    <div class="space-y-2 text-xs py-1">
-                        <div class="flex justify-between text-gray-300">
+                    <div class="space-y-2 text-xs py-1 px-1">
+                        <div class="flex justify-between text-gray-300 border-b border-[#232D3B] pb-1.5">
                             <span class="text-gray-400">Получатель:</span>
-                            <span class="text-white font-bold">ИП Васев А.Е.</span>
+                            <span class="text-white font-bold text-right">Васев Алексей Евгеньевич</span>
                         </div>
-                        <div class="flex justify-between text-gray-300">
-                            <span class="text-gray-400">ИНН:</span>
-                            <span class="text-white font-bold">771122334455</span>
+                        <div class="flex justify-between text-gray-300 border-b border-[#232D3B] pb-1.5 pt-1.5">
+                            <span class="text-gray-400">Номер счета:</span>
+                            <span class="text-white font-bold" id="accNumber">40817810700138229290</span>
                         </div>
-                        <div class="flex justify-between text-gray-300">
-                            <span class="text-gray-400">Договор эквайринга:</span>
-                            <span class="text-white font-bold">№5763271833</span>
+                        <div class="flex justify-between text-gray-300 border-b border-[#232D3B] pb-1.5 pt-1.5">
+                            <span class="text-gray-400">Банк-получатель:</span>
+                            <span class="text-white font-bold">АО "ТБанк"</span>
                         </div>
-                        <div class="flex justify-between text-gray-300">
+                        <div class="flex justify-between text-gray-300 border-b border-[#232D3B] pb-1.5 pt-1.5">
+                            <span class="text-gray-400">БИК:</span>
+                            <span class="text-white font-bold">044525974</span>
+                        </div>
+                        <div class="flex justify-between text-gray-300 border-b border-[#232D3B] pb-1.5 pt-1.5">
+                            <span class="text-gray-400">Корр. счет:</span>
+                            <span class="text-white font-bold">30101810145250000974</span>
+                        </div>
+                        <div class="flex justify-between text-gray-300 border-b border-[#232D3B] pb-1.5 pt-1.5">
+                            <span class="text-gray-400">ИНН Банка:</span>
+                            <span class="text-white font-bold">7710140679</span>
+                        </div>
+                        <div class="flex justify-between text-gray-300 border-b border-[#232D3B] pb-1.5 pt-1.5">
+                            <span class="text-gray-400">КПП Банка:</span>
+                            <span class="text-white font-bold">771301001</span>
+                        </div>
+                        <div class="flex justify-between text-gray-300 pt-1.5">
                             <span class="text-gray-400">Сумма к оплате:</span>
                             <span class="text-[#4CAF50] font-bold text-sm">500 ₽</span>
                         </div>
                     </div>
+                    
+                    <button type="button" id="btnCopyAcc" class="w-full py-2.5 rounded-lg bg-[#2E7D32]/20 hover:bg-[#2E7D32]/40 text-[#4CAF50] text-xs font-bold transition flex items-center justify-center gap-1.5 cursor-pointer border border-[#4CAF50]/30 mt-1 mb-2">
+                        <i data-lucide="copy" class="w-4 h-4"></i>
+                        <span>Копировать номер счета</span>
+                    </button>
 
                     <!-- Comment to transfer -->
-                    <div class="bg-[#161C24] p-3.5 rounded-xl border border-[#232D3B] flex items-center justify-between gap-2">
-                        <div class="truncate">
-                            <div class="text-gray-400 text-[10px] uppercase">Сообщение / Комментарий к переводу:</div>
-                            <div class="text-[#4CAF50] font-bold text-xs truncate" id="requisiteComment">Лицензия PRO (Боец)</div>
+                    <div class="bg-[#161C24] p-3.5 rounded-xl border border-[#232D3B] flex items-center justify-between gap-2 mt-2">
+                        <div class="overflow-hidden">
+                            <div class="text-gray-400 text-[10px] uppercase">Назначение платежа (ОБЯЗАТЕЛЬНО):</div>
+                            <div class="text-[#4CAF50] font-bold text-xs break-words whitespace-normal" id="requisiteComment">Перевод средств по договору № 5763271833 Васев Алексей Евгеньевич НДС не облагается</div>
                         </div>
-                        <button type="button" id="btnCopyComment" class="px-3 py-2 rounded-lg bg-[#2E7D32]/30 hover:bg-[#2E7D32]/50 text-[#4CAF50] text-xs font-bold transition flex items-center gap-1.5 cursor-pointer border border-[#4CAF50]/30 shrink-0">
+                        <button type="button" id="btnCopyComment" class="px-3 py-2 rounded-lg bg-[#2E7D32]/30 hover:bg-[#2E7D32]/50 text-[#4CAF50] text-xs font-bold transition flex items-center gap-1.5 cursor-pointer border border-[#4CAF50]/30 shrink-0 h-10">
                             <i data-lucide="copy" class="w-4 h-4"></i>
-                            <span>Копировать</span>
                         </button>
                     </div>
 
@@ -337,7 +345,7 @@
 
     <!-- Footer -->
     <footer class="border-t border-[#232D3B] py-4 text-center text-xs text-gray-500 font-mono">
-        © 2026 АСУ «КАПТЁРКА PRO»<br>ИП Васев А.Е. | ИНН 771122334455 • Договор эквайринга №5763271833
+        © 2026 АСУ «КАПТЁРКА PRO»<br>ИП Васев А.Е. | ИНН [ИНН разработчика] • Договор эквайринга №5763271833
     </footer>
 
     <!-- Logic Script -->
