@@ -389,7 +389,7 @@
                         const orders = parsed.orders || {};
                         const cleanCallsign = callsign.toLowerCase();
                         
-                        const matchedOrder = orders[orderId] || orders['USER_' + cleanCallsign];
+                        const matchedOrder = orders[orderId];
                         
                         if (matchedOrder && matchedOrder.status === 'APPROVED') {
                             if (isUserClick) showLoading(false);
