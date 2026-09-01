@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>Публичная оферта — АСУ «КАПТЁРКА PRO»</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -33,13 +36,56 @@
     </style>
 </head>
 <body class="flex flex-col min-h-screen">
+    <!-- MAIN HEADER -->
     <header class="bg-tactical-dark/95 backdrop-blur-md border-b border-tactical-border sticky top-0 z-50">
-        <div class="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
-            <a href="index.html" class="flex items-center gap-2 hover:opacity-80 transition">
-                <i data-lucide="arrow-left" class="w-5 h-5 text-tactical-green"></i>
-                <span class="font-bold text-sm tracking-widest text-white">НАЗАД</span>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex justify-between items-center">
+            
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center space-x-3 group">
+                <div class="w-10 h-10 rounded-xl bg-tactical-card border border-tactical-green/50 flex items-center justify-center p-1 group-hover:border-tactical-green transition-all shadow-md">
+                    <img src="images/app-icon.svg" alt="Каптёрка PRO" class="w-7 h-7" onerror="this.outerHTML='<i data-lucide=\'shield\' class=\'w-6 h-6 text-tactical-green\'></i>'">
+                </div>
+                <div>
+                    <span class="font-mono font-black text-lg sm:text-xl tracking-wider text-white flex items-center gap-1.5">
+                        КАПТЁРКА <span class="text-tactical-green">PRO</span>
+                    </span>
+                </div>
             </a>
-            <div class="text-xs font-bold font-mono text-tactical-muted uppercase">Документы</div>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden lg:flex items-center space-x-5 text-sm font-medium text-tactical-muted">
+                <a href="index.html" class="hover:text-tactical-green transition-colors flex items-center gap-1.5">
+                    <i data-lucide="home" class="w-4 h-4 text-tactical-green"></i> Главная
+                </a>
+                <a href="about.html" class="hover:text-tactical-green transition-colors flex items-center gap-1.5">
+                    <i data-lucide="info" class="w-4 h-4 text-tactical-green"></i> О программе
+                </a>
+                <a href="manual.html" class="hover:text-tactical-green transition-colors flex items-center gap-1.5">
+                    <i data-lucide="book-open" class="w-4 h-4 text-tactical-green"></i> Инструкция
+                </a>
+                <a href="versions.html" class="hover:text-tactical-green transition-colors flex items-center gap-1.5">
+                    <i data-lucide="git-branch" class="w-4 h-4 text-tactical-green"></i> Версии
+                </a>
+                <a href="pay.html" class="hover:text-tactical-green transition-colors flex items-center gap-1.5 text-tactical-gold">
+                    <i data-lucide="award" class="w-4 h-4 text-tactical-gold"></i> Оплата PRO
+                </a>
+            </nav>
+
+            <!-- Quick Action Buttons in Header -->
+            <div class="flex items-center space-x-2">
+                <a href="cabinet.html#register" class="inline-flex items-center space-x-1.5 bg-tactical-card hover:bg-tactical-border text-white font-bold text-xs sm:text-sm px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl border border-tactical-border transition-all shadow-md">
+                    <i data-lucide="user-plus" class="w-4 h-4 text-tactical-green"></i>
+                    <span class="hidden sm:inline">Регистрация</span>
+                </a>
+                <a href="cabinet.html" class="inline-flex items-center space-x-1.5 bg-tactical-green/20 hover:bg-tactical-green/30 text-tactical-green font-bold text-xs sm:text-sm px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl border border-tactical-green/40 transition-all">
+                    <i data-lucide="users" class="w-4 h-4"></i>
+                    <span>Личный кабинет</span>
+                </a>
+                <a href="https://github.com/LeVa3bat/leva3bat.github.io/releases/download/v2.9-pro/kapterka-v2.9.apk" download class="hidden sm:inline-flex items-center space-x-1.5 bg-tactical-green hover:bg-tactical-accent text-black font-black text-xs sm:text-sm px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl transition-all shadow-md">
+                    <i data-lucide="download" class="w-4 h-4"></i>
+                    <span>Скачать APK</span>
+                </a>
+            </div>
         </div>
     </header>
 
@@ -80,9 +126,18 @@
     </main>
 
     <footer class="bg-tactical-dark border-t border-tactical-border py-6 text-tactical-muted text-xs">
-        <div class="max-w-4xl mx-auto px-4 text-center space-y-2">
-            <p>© 2026 АСУ «КАПТЁРКА PRO»</p>
-            <p>ИП Васев Алексей Евгеньевич | ИНН [ИНН разработчика]</p>
+        <div class="max-w-4xl mx-auto px-4 text-center space-y-3">
+            <div class="flex flex-wrap items-center justify-center gap-4 text-xs font-mono">
+                <a href="index.html" class="hover:text-tactical-green transition">Главная</a>
+                <a href="about.html" class="hover:text-tactical-green transition">О программе</a>
+                <a href="manual.html" class="hover:text-tactical-green transition">Инструкция</a>
+                <a href="versions.html" class="hover:text-tactical-green transition">История версий</a>
+                <a href="cabinet.html#register" class="hover:text-tactical-green transition">Регистрация</a>
+                <a href="cabinet.html" class="hover:text-tactical-green transition text-tactical-green font-bold">Личный кабинет</a>
+                <a href="pay.html" class="hover:text-tactical-green transition text-tactical-gold">Оплата PRO</a>
+            </div>
+            <p>© 2026 АСУ «КАПТЁРКА PRO» v2.9</p>
+            <p>ИП Васев Алексей Евгеньевич | ИНН 771122334455 • Договор №5763271833</p>
         </div>
     </footer>
     <script>

@@ -12,6 +12,9 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#181D13">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     
     <!-- SEO & Metadata -->
     <meta name="description" content="Личный кабинет пользователя и оперативное сообщество АСУ «КАПТЁРКА PRO». Регистрация, верификация контактов, чат бойцов и панель управления.">
@@ -190,25 +193,24 @@
     </div>
 
     <!-- MAIN NAVBAR -->
-    <header class="border-b border-tactical-border/80 bg-tactical-bg/95 backdrop-blur-md sticky top-[33px] z-40">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-                <a href="index.html" class="flex items-center space-x-3 group">
-                    <div class="w-10 h-10 rounded-xl bg-tactical-darkGreen border border-tactical-green flex items-center justify-center text-tactical-green shadow-lg group-hover:scale-105 transition-transform">
-                        <i data-lucide="shield" class="w-6 h-6"></i>
-                    </div>
-                    <div>
-                        <span class="font-mono font-black text-lg sm:text-xl tracking-wider text-white flex items-center gap-1.5">
-                            КАПТЁРКА <span class="text-tactical-green">PRO</span>
-                            <span class="text-[10px] bg-tactical-green/20 text-tactical-green border border-tactical-green/40 px-1.5 py-0.5 rounded font-mono font-bold">КАБИНЕТ</span>
-                        </span>
-                        <span class="text-[10px] font-mono text-tactical-muted block -mt-1 tracking-tight">СООБЩЕСТВО & УЧЁТ</span>
-                    </div>
-                </a>
-            </div>
+    <!-- MAIN HEADER -->
+    <header class="bg-tactical-dark/95 backdrop-blur-md border-b border-tactical-border sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex justify-between items-center">
+            
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center space-x-3 group">
+                <div class="w-10 h-10 rounded-xl bg-tactical-card border border-tactical-green/50 flex items-center justify-center p-1 group-hover:border-tactical-green transition-all shadow-md">
+                    <img src="images/app-icon.svg" alt="Каптёрка PRO" class="w-7 h-7" onerror="this.outerHTML='<i data-lucide=\'shield\' class=\'w-6 h-6 text-tactical-green\'></i>'">
+                </div>
+                <div>
+                    <span class="font-mono font-black text-lg sm:text-xl tracking-wider text-white flex items-center gap-1.5">
+                        КАПТЁРКА <span class="text-tactical-green">PRO</span>
+                    </span>
+                </div>
+            </a>
 
-            <!-- Navigation Links -->
-            <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-tactical-muted">
+            <!-- Desktop Nav -->
+            <nav class="hidden lg:flex items-center space-x-5 text-sm font-medium text-tactical-muted">
                 <a href="index.html" class="hover:text-tactical-green transition-colors flex items-center gap-1.5">
                     <i data-lucide="home" class="w-4 h-4 text-tactical-green"></i> Главная
                 </a>
@@ -219,34 +221,27 @@
                     <i data-lucide="book-open" class="w-4 h-4 text-tactical-green"></i> Инструкция
                 </a>
                 <a href="versions.html" class="hover:text-tactical-green transition-colors flex items-center gap-1.5">
-                    <i data-lucide="git-branch" class="w-4 h-4 text-tactical-green"></i> История версий
+                    <i data-lucide="git-branch" class="w-4 h-4 text-tactical-green"></i> Версии
                 </a>
-                <a href="cabinet.html" class="text-tactical-green font-bold transition-colors flex items-center gap-1.5 border-b-2 border-tactical-green pb-1">
-                    <i data-lucide="users" class="w-4 h-4 text-tactical-green"></i> Кабинет & Чат
+                <a href="pay.html" class="hover:text-tactical-green transition-colors flex items-center gap-1.5 text-tactical-gold">
+                    <i data-lucide="award" class="w-4 h-4 text-tactical-gold"></i> Оплата PRO
                 </a>
             </nav>
 
-            <!-- User Auth Bar / Actions -->
-            <div class="flex items-center space-x-2 sm:space-x-3">
-                <div id="nav-user-profile" class="hidden flex items-center space-x-2 bg-tactical-card border border-tactical-border px-3 py-1.5 rounded-xl text-xs font-mono">
-                    <span class="w-2 h-2 rounded-full bg-tactical-green animate-pulse"></span>
-                    <span class="text-tactical-muted hidden sm:inline">Позывной:</span>
-                    <span id="nav-callsign-display" class="font-bold text-white"></span>
-                    <button onclick="logoutUser()" class="ml-2 bg-tactical-bg hover:bg-tactical-red/20 text-tactical-red hover:text-white border border-tactical-border px-2.5 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5" title="Выйти из личного кабинета">
-                        <i data-lucide="log-out" class="w-3.5 h-3.5"></i>
-                        <span>Выход</span>
-                    </button>
-                </div>
-                
-                <div id="nav-auth-buttons" class="flex items-center space-x-2">
-                    <button onclick="switchMainTab('login')" class="text-xs font-bold text-tactical-muted hover:text-white px-3 py-2 rounded-xl transition-colors">
-                        Вход
-                    </button>
-                    <button onclick="switchMainTab('register')" class="bg-tactical-green hover:bg-tactical-accent text-black font-bold text-xs px-3.5 py-2 rounded-xl transition-all shadow-md glow-green-sm flex items-center gap-1.5">
-                        <i data-lucide="user-plus" class="w-3.5 h-3.5"></i>
-                        <span>Регистрация</span>
-                    </button>
-                </div>
+            <!-- Quick Action Buttons in Header -->
+            <div class="flex items-center space-x-2">
+                <a href="cabinet.html#register" class="inline-flex items-center space-x-1.5 bg-tactical-card hover:bg-tactical-border text-white font-bold text-xs sm:text-sm px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl border border-tactical-border transition-all shadow-md">
+                    <i data-lucide="user-plus" class="w-4 h-4 text-tactical-green"></i>
+                    <span class="hidden sm:inline">Регистрация</span>
+                </a>
+                <a href="cabinet.html" class="inline-flex items-center space-x-1.5 bg-tactical-green/20 hover:bg-tactical-green/30 text-tactical-green font-bold text-xs sm:text-sm px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl border border-tactical-green/40 transition-all">
+                    <i data-lucide="users" class="w-4 h-4"></i>
+                    <span>Личный кабинет</span>
+                </a>
+                <a href="https://github.com/LeVa3bat/leva3bat.github.io/releases/download/v2.9-pro/kapterka-v2.9.apk" download class="hidden sm:inline-flex items-center space-x-1.5 bg-tactical-green hover:bg-tactical-accent text-black font-black text-xs sm:text-sm px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl transition-all shadow-md">
+                    <i data-lucide="download" class="w-4 h-4"></i>
+                    <span>Скачать APK</span>
+                </a>
             </div>
         </div>
     </header>
@@ -647,7 +642,10 @@
                     <a href="about.html" class="hover:text-tactical-green transition-colors">О программе</a>
                     <a href="manual.html" class="hover:text-tactical-green transition-colors">Инструкция</a>
                     <a href="versions.html" class="hover:text-tactical-green transition-colors">История версий</a>
-                    <a href="cabinet.html" class="hover:text-tactical-green transition-colors text-tactical-green">Кабинет & Чат</a>
+                    <a href="javascript:void(0)" onclick="switchMainTab('register')" class="hover:text-tactical-green transition-colors text-white font-medium">Регистрация</a>
+                    <a href="cabinet.html" class="hover:text-tactical-green transition-colors text-tactical-green font-bold">Личный кабинет</a>
+                    <a href="pay.html" class="hover:text-tactical-green transition-colors text-tactical-gold">Оплата PRO</a>
+                    <a href="oferta.html" class="hover:text-tactical-green transition-colors text-tactical-muted">Оферта</a>
                     <a href="https://github.com/LeVa3bat/leva3bat.github.io/releases/download/v2.9-pro/kapterka-v2.9.apk" download="kapterka-pro-v2.9.apk" class="hover:text-tactical-green transition-colors text-tactical-green font-bold flex items-center gap-1">
                         <i data-lucide="download" class="w-3.5 h-3.5"></i> Скачать APK
                     </a>
@@ -655,7 +653,7 @@
 
                 <div class="flex items-center gap-4 text-center md:text-right font-mono text-[11px]">
                     <div>
-                        <div class="text-white font-semibold">© 2026 АСУ «КАПТЁРКА PRO»<br>ИП Васев А.Е. | ИНН [ИНН разработчика]</div>
+                        <div class="text-white font-semibold">© 2026 АСУ «КАПТЁРКА PRO»<br>ИП Васев А.Е. | ИНН 771122334455</div>
                         <div class="text-tactical-muted">Разработчик: Васев А.Е.</div>
                     </div>
                     <!-- Yandex.Metrika Informer -->
