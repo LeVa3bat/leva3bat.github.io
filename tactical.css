@@ -134,3 +134,49 @@ input, select, textarea {
 ::-webkit-scrollbar-track { background: #080C09; }
 ::-webkit-scrollbar-thumb { background: #233326; border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: #4CAF50; }
+
+
+/* Ultra-Clean Button & Badge Text Alignment */
+button, .btn, .btn-tactical, a.inline-flex, a.flex, button.flex, button.inline-flex {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  line-height: 1 !important;
+  vertical-align: middle !important;
+  white-space: nowrap !important;
+}
+
+button span, a span, .btn span {
+  display: inline-flex !important;
+  align-items: center !important;
+  line-height: normal !important;
+}
+
+button svg, a svg, .btn svg, [data-lucide] {
+  display: inline-block !important;
+  vertical-align: middle !important;
+  flex-shrink: 0 !important;
+}
+
+.btn-green {
+  background-color: #2E7D32 !important;
+  color: #FFFFFF !important;
+  transition: all 0.2s ease !important;
+}
+.btn-green:hover {
+  background-color: #4CAF50 !important;
+}
+
+/* Mobile responsive fixes */
+@media (max-width: 640px) {
+  .max-w-7xl, .max-w-6xl, .max-w-4xl, .max-w-3xl, .max-w-2xl, .max-w-xl {
+    width: 100% !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+  button, .btn, a.inline-flex {
+    white-space: normal !important;
+    text-wrap: balance !important;
+  }
+}
