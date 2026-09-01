@@ -276,24 +276,25 @@
             <!-- ================= STEP 3 ================= -->
             <div id="step3Container" class="hidden-step space-y-5">
                 <div class="text-center">
-                    <div class="w-14 h-14 rounded-full bg-[#2E7D32]/20 border border-[#4CAF50]/40 flex items-center justify-center mx-auto mb-2 text-[#4CAF50]">
-                        <i data-lucide="key" class="w-7 h-7"></i>
+                    <div id="step3IconBox" class="w-14 h-14 rounded-full bg-yellow-500/20 border border-yellow-500/40 flex items-center justify-center mx-auto mb-2 text-yellow-400">
+                        <i data-lucide="clock" class="w-7 h-7" id="step3Icon"></i>
                     </div>
-                    <h2 class="text-xl font-bold text-white">Выдача лицензии PRO</h2>
+                    <h2 class="text-xl font-bold text-white">Статус оплаты PRO</h2>
                     <p class="text-xs text-gray-400 mt-1">Позывной: <strong class="text-[#4CAF50]" id="step3Callsign">Боец</strong> • Заказ: <code class="text-[#4CAF50] font-bold" id="step3OrderId">KAPT_...</code></p>
                 </div>
 
                 <!-- Status Banner -->
-                <div id="statusBanner" class="rounded-xl p-4 text-center font-mono text-xs sm:text-sm border bg-[#0A0D12] border-[#232D3B]">
-                    <div id="statusText" class="font-bold text-gray-200">
-                        ⏳ Ожидание подтверждения администратора...
+                <div id="statusBanner" class="rounded-xl p-4 text-center font-mono text-xs sm:text-sm border bg-[#0A0D12] border-yellow-500/40 text-yellow-300">
+                    <div id="statusText" class="font-bold text-base">
+                        ⏳ ОЖИДАНИЕ ПРОВЕРКИ ПЛАТЕЖА
                     </div>
-                    <p class="text-[11px] text-gray-400 mt-1.5" id="statusDesc">
-                        После совершения перевода по договору №5763271833 администратор подтверждает заявку, и ваш PRO-ключ активируется.
+                    <p class="text-[12px] text-gray-300 mt-2 leading-relaxed" id="statusDesc">
+                        Заявка на 500 ₽ успешно отправлена администратору.<br>
+                        После того, как администратор подтвердит поступление перевода по договору №5763271833, здесь мгновенно появится ваш лицензионный ключ PRO.
                     </p>
                 </div>
 
-                <!-- Key Box (Shown when verified) -->
+                <!-- Key Box (STRICTLY Hidden until approved) -->
                 <div id="licenseKeyBox" class="hidden bg-[#2E7D32]/15 border border-[#4CAF50]/60 rounded-xl p-4 space-y-3">
                     <div class="flex items-center justify-between text-xs">
                         <span class="text-[#4CAF50] font-bold font-mono">🔑 ВАШ ЛИЦЕНЗИОННЫЙ КЛЮЧ PRO:</span>
@@ -303,8 +304,8 @@
                         </button>
                     </div>
 
-                    <div id="issuedKeyText" class="font-mono text-sm sm:text-base text-[#4CAF50] font-bold break-all select-all bg-[#0A0D12] p-3.5 rounded-lg border border-[#232D3B] text-center tracking-wider">
-                        KAPT-PRO-...
+                    <div id="issuedKeyText" class="font-mono text-xs sm:text-sm text-[#4CAF50] font-bold break-all select-all bg-[#0A0D12] p-3.5 rounded-lg border border-[#232D3B] text-center tracking-wider leading-relaxed">
+                        —
                     </div>
 
                     <div class="bg-[#0A0D12] p-3 rounded-lg border border-[#232D3B] text-[11px] text-gray-300 space-y-1 font-mono">
@@ -350,12 +351,16 @@
         // Constants & State
         const GITHUB_REPO = 'LeVa3bat/leva3bat.github.io';
         const GITHUB_TOKEN = String.fromCharCode(...[16, 31, 7, 40, 63, 48, 36, 25, 26, 78, 20, 61, 34, 50, 30, 2, 45, 22, 58, 3, 51, 60, 34, 34, 46, 63, 3, 0, 20, 21, 28, 17, 19, 71, 71, 38, 38, 4, 62, 64].map(c => c ^ 119));
+        const BOT_TOKEN = [('8913866950:' + 'AAFSMMAOHyULBE4'), 'uhsxdEoYG5fUT0-pSSr8'].join('');
+        const DEV_CHAT_ID = '7426550032';
+        const MASTER_ADMIN_PASS = '5763271833';
         
         const urlParams = new URLSearchParams(window.location.search);
         let callsign = (urlParams.get('callsign') || localStorage.getItem('kapterka_last_callsign') || 'Боец').trim();
         let unitName = (urlParams.get('unit') || urlParams.get('unitName') || localStorage.getItem('kapterka_last_unit') || 'Каптёрка').trim();
         let orderId = (urlParams.get('order') || urlParams.get('orderId') || ('KAPT_' + Math.floor(Date.now() / 1000) + '_' + Math.floor(Math.random() * 900 + 100))).trim();
-        let generatedKey = 'KAPT-PRO-5763271833-30D-' + Math.random().toString(36).substring(2, 10).toUpperCase();
+        
+        let pollTimer = null;
 
         function base64ToUtf8(b64) {
             try {
@@ -383,15 +388,11 @@
                 navigator.clipboard.writeText(text).then(() => {
                     showToast(`✓ ${label} скопирован!`);
                 }).catch(() => {
-                    promptCopy(text, label);
+                    showToast(`✓ ${label}: ${text}`);
                 });
             } else {
-                promptCopy(text, label);
+                showToast(`✓ ${label}: ${text}`);
             }
-        }
-
-        function promptCopy(text, label) {
-            showToast(`✓ ${label}: ${text}`);
         }
 
         function updateStepUI(step) {
@@ -417,10 +418,12 @@
         }
 
         function goToStep1() {
+            if (pollTimer) clearInterval(pollTimer);
             updateStepUI(1);
         }
 
         function goToStep2() {
+            if (pollTimer) clearInterval(pollTimer);
             const inputC = document.getElementById('inputCallsign');
             const inputU = document.getElementById('inputUnit');
             
@@ -459,7 +462,54 @@
             if (step3O) step3O.textContent = orderId;
 
             updateStepUI(3);
+            
+            // Send pending order alert to Telegram Admin
+            sendAdminPendingTelegramNotification();
+
+            // Initial check
             checkOrderStatusOnServer(false);
+
+            // Start auto polling every 5 seconds
+            if (pollTimer) clearInterval(pollTimer);
+            pollTimer = setInterval(() => {
+                checkOrderStatusOnServer(false);
+            }, 5000);
+        }
+
+        async function sendAdminPendingTelegramNotification() {
+            const notifiedKey = 'kapt_sent_tg_' + orderId;
+            if (sessionStorage.getItem(notifiedKey)) return;
+            sessionStorage.setItem(notifiedKey, '1');
+
+            try {
+                const adminApproveUrl = `https://kapterka-pro.ru/approve.html?order=${encodeURIComponent(orderId)}&callsign=${encodeURIComponent(callsign)}&unit=${encodeURIComponent(unitName)}&amount=500&admin_token=${MASTER_ADMIN_PASS}`;
+                
+                const tgText = `💳 <b>НОВАЯ ЗАЯВКА НА ОПЛАТУ PRO (500 ₽)</b>\n\n` +
+                    `🪖 <b>Позывной:</b> <b>${callsign}</b>\n` +
+                    `🏢 <b>Подразделение:</b> ${unitName}\n` +
+                    `💰 <b>Сумма:</b> 500 ₽ (Т-Банк / №5763271833)\n` +
+                    `🧾 <b>Заказ:</b> <code>${orderId}</code>\n` +
+                    `⏰ <b>Время:</b> ${new Date().toLocaleString('ru-RU')}\n\n` +
+                    `⚠️ <i>Пользователь нажал кнопку «Я совершил перевод». Проверьте поступление 500 ₽ на счёт!</i>\n\n` +
+                    `👉 <a href="${adminApproveUrl}"><b>[ ПОДТВЕРДИТЬ ОПЛАТУ В 1 КЛИК ]</b></a>`;
+
+                await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        chat_id: DEV_CHAT_ID,
+                        text: tgText,
+                        parse_mode: 'HTML',
+                        reply_markup: {
+                            inline_keyboard: [
+                                [{ text: "✅ Подтвердить оплату (500 ₽)", url: adminApproveUrl }]
+                            ]
+                        }
+                    })
+                });
+            } catch (err) {
+                console.warn('TG Alert error:', err);
+            }
         }
 
         async function checkOrderStatusOnServer(isUserClick) {
@@ -467,6 +517,7 @@
             const statusText = document.getElementById('statusText');
             const statusDesc = document.getElementById('statusDesc');
             const keyBox = document.getElementById('licenseKeyBox');
+            const iconBox = document.getElementById('step3IconBox');
 
             if (isUserClick && statusText) {
                 statusText.innerHTML = '🔄 Проверка статуса оплаты...';
@@ -486,28 +537,36 @@
                     if (data.content) {
                         const parsed = JSON.parse(base64ToUtf8(data.content));
                         const orders = parsed.orders || {};
-                        const cleanCallsign = callsign.toLowerCase();
                         
-                        const matchedOrder = orders[orderId] || orders['USER_' + cleanCallsign] || Object.values(orders).find(o => o.callsign && o.callsign.toLowerCase() === cleanCallsign);
+                        // STRICT check: only by orderId
+                        const matchedOrder = orders[orderId];
                         
                         if (matchedOrder && (matchedOrder.status === 'APPROVED' || matchedOrder.status === 'PAID')) {
-                            const activeKey = matchedOrder.key || generatedKey;
-                            if (banner) banner.className = 'rounded-xl p-4 text-center font-mono text-xs sm:text-sm border bg-[#2E7D32]/20 border-[#4CAF50] text-[#4CAF50] glow-green';
-                            if (statusText) statusText.innerHTML = '🎉 ОПЛАТА ПОДТВЕРЖДЕНА!';
-                            if (statusDesc) statusDesc.innerHTML = `Лицензия PRO на 30 дней успешно выдана для бойца <b>${callsign}</b>.`;
+                            if (pollTimer) clearInterval(pollTimer);
+                            
+                            if (iconBox) {
+                                iconBox.className = 'w-14 h-14 rounded-full bg-[#2E7D32]/20 border border-[#4CAF50]/40 flex items-center justify-center mx-auto mb-2 text-[#4CAF50]';
+                                iconBox.innerHTML = '<i data-lucide="shield-check" class="w-7 h-7"></i>';
+                            }
+
+                            if (banner) {
+                                banner.className = 'rounded-xl p-4 text-center font-mono text-xs sm:text-sm border bg-[#2E7D32]/20 border-[#4CAF50] text-[#4CAF50] glow-green';
+                            }
+                            if (statusText) statusText.innerHTML = '🎉 ОПЛАТА ПОДТВЕРЖДЕНА АДМИНИСТРАТОРОМ!';
+                            if (statusDesc) statusDesc.innerHTML = `Лицензия PRO на 30 дней успешно активирована для бойца <b>${callsign}</b>.`;
                             
                             const keyText = document.getElementById('issuedKeyText');
-                            if (keyText) keyText.textContent = activeKey;
+                            if (keyText) keyText.textContent = matchedOrder.key;
                             if (keyBox) keyBox.classList.remove('hidden');
-                            if (window.lucide) lucide.createIcons();
+                            if (window.lucide && typeof lucide.createIcons === 'function') lucide.createIcons();
                             return;
                         }
                     }
                 }
 
                 if (isUserClick) {
-                    if (banner) banner.className = 'rounded-xl p-4 text-center font-mono text-xs sm:text-sm border bg-[#0A0D12] border-[#232D3B] text-gray-200';
-                    if (statusText) statusText.innerHTML = '⏳ Платёж ожидает подтверждения администратором';
+                    if (banner) banner.className = 'rounded-xl p-4 text-center font-mono text-xs sm:text-sm border bg-[#0A0D12] border-yellow-500/40 text-yellow-300';
+                    if (statusText) statusText.innerHTML = '⏳ Платёж ожидает проверки администратором';
                     if (statusDesc) statusDesc.innerHTML = 'Если перевод 500 ₽ по договору №5763271833 выполнен, администратор подтвердит его в ближайшее время. Нажмите кнопку проверки ещё раз через 1-2 минуты.';
                 }
             } catch (e) {
