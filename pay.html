@@ -5,55 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Оплата лицензии PRO — АСУ «КАПТЁРКА»</title>
     
+    
     <!-- Tailwind CSS (Offline-safe local bundle) -->
     <link rel="stylesheet" href="tailwind.min.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        tactical: {
-                            bg: '#0F1318',
-                            card: '#161C24',
-                            border: '#232D3B',
-                            accent: '#2E7D32',
-                            highlight: '#4CAF50',
-                            gold: '#FFD700',
-                            amber: '#FFB300',
-                            muted: '#9E9E9E',
-                            dark: '#0A0D12'
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'Courier New', 'monospace'],
-                        heading: ['Cabinet Grotesk', 'Inter', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
-
-    <!-- Lucide Icons -->
-    <script src="lucide.min.js"></script>
-
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        .glow-green {
-            box-shadow: 0 0 25px rgba(76, 175, 80, 0.25);
-        }
-        .bank-card {
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .bank-card:hover {
-            transform: translateY(-2px);
-        }
-        .bank-card.selected {
-            border-color: #4CAF50 !important;
-            background-color: rgba(46, 125, 50, 0.15) !important;
-        }
+        body { background-color: #0F1318 !important; color: #f3f4f6 !important; }
+        .bg-tactical-bg { background-color: #0F1318 !important; }
+        .bg-tactical-card { background-color: #161C24 !important; }
+        .border-tactical-border { border-color: #232D3B !important; }
+        .text-tactical-accent { color: #4CAF50 !important; }
+        .text-tactical-highlight { color: #4CAF50 !important; }
+        .bg-tactical-accent { background-color: #2E7D32 !important; }
+        .text-tactical-gold { color: #FFD700 !important; }
+        .bg-gradient-to-r { background: linear-gradient(to right, #2E7D32, #4CAF50) !important; }
+        .glow-green { box-shadow: 0 0 25px rgba(76, 175, 80, 0.4) !important; }
+        
+        /* Form Inputs */
+        input { background-color: rgba(0,0,0,0.6) !important; color: white !important; border: 1px solid #232D3B !important; }
+        input:focus { border-color: #4CAF50 !important; outline: none !important; }
+        
+        .bank-card { transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); background-color: rgba(0,0,0,0.4) !important; }
+        .bank-card:hover { transform: translateY(-2px); border-color: #4CAF50 !important; }
+        .bank-card.selected { border-color: #4CAF50 !important; background-color: rgba(46, 125, 50, 0.15) !important; }
+        
+        .hidden { display: none !important; }
     </style>
+
 </head>
 <body class="bg-tactical-bg text-gray-100 min-h-screen flex flex-col font-sans antialiased selection:bg-tactical-accent selection:text-white">
 
@@ -186,20 +164,7 @@
                         </div>
                     </div>
 
-                    <!-- Method 2: Card (YooMoney) -->
-                    <div onclick="selectPaymentMethod('card')" id="methodCard_card" class="bank-card cursor-pointer bg-black/40 border border-tactical-border rounded-xl p-3.5 transition hover:border-tactical-highlight space-y-2">
-                        <div class="flex items-center justify-between">
-                            <div class="font-bold text-white flex items-center gap-2">
-                                <i data-lucide="credit-card" class="w-4 h-4 text-tactical-accent"></i>
-                                <span>Банковской картой</span>
-                            </div>
-                            <span class="w-3.5 h-3.5 rounded-full border border-gray-600" id="radio_card"></span>
-                        </div>
-                        <div class="text-[11px] text-gray-400 leading-relaxed">
-                            Оплата любой картой РФ (МИР, Visa, Mastercard) через защищённый платёжный шлюз.
-                        </div>
                     </div>
-                </div>
 
                 <!-- Requisites Info Box (Т-Банк / Договор) -->
                 <div id="sbpInfoBox" class="bg-black/60 border border-tactical-border rounded-xl p-4 space-y-3.5 font-mono text-xs">
@@ -261,34 +226,6 @@
                             <span>СберБанк Онлайн</span>
                         </a>
                     </div>
-                </div>
-
-                <!-- Card Payment Form (YooMoney) -->
-                <div id="cardInfoBox" class="hidden bg-black/60 border border-tactical-border rounded-xl p-4 space-y-3 font-mono text-xs">
-                    <div class="text-tactical-accent font-bold text-[11px] uppercase tracking-wider flex items-center gap-2 mb-1">
-                        <i data-lucide="shield-check" class="w-4 h-4"></i>
-                        <span>Безопасная оплата банковской картой</span>
-                    </div>
-                    <div class="text-[11px] text-gray-300 leading-relaxed mb-3">
-                        Оплата картой любого банка РФ через защищённый платёжный шлюз ЮMoney.
-                    </div>
-                    
-                    <form method="POST" action="https://yoomoney.ru/quickpay/confirm" class="space-y-3" target="_blank">
-                        <input type="hidden" name="receiver" value="4100112345678901"> 
-                        <input type="hidden" name="formcomment" value="КАПТЁРКА PRO">
-                        <input type="hidden" name="short-dest" value="Лицензия КАПТЁРКА PRO">
-                        <input type="hidden" name="label" id="yooLabel" value="">
-                        <input type="hidden" name="quickpay-form" value="shop">
-                        <input type="hidden" name="targets" id="yooTargets" value="Лицензия КАПТЁРКА PRO">
-                        <input type="hidden" name="sum" value="500" data-type="number">
-                        <input type="hidden" name="paymentType" value="AC">
-                        <input type="hidden" name="successURL" value="https://kapterka-pro.ru/pay.html?success=true">
-                        
-                        <button type="submit" onclick="document.getElementById('yooTargets').value = 'Лицензия PRO для: ' + callsign; document.getElementById('yooLabel').value = callsign; setTimeout(goToStep3, 1000);" class="w-full py-4 px-6 rounded-xl bg-gradient-to-r from-tactical-accent to-tactical-highlight text-white font-bold font-heading text-base tracking-wide hover:brightness-110 active:scale-[0.99] transition duration-200 glow-green flex items-center justify-center gap-2">
-                            <i data-lucide="credit-card" class="w-5 h-5"></i>
-                            <span>ОПЛАТИТЬ 500 ₽ КАРТОЙ</span>
-                        </button>
-                    </form>
                 </div>
 
                 <!-- Submit Button for SBP -->
@@ -494,27 +431,10 @@
             }
         }
 
+        
         function selectPaymentMethod(m) {
             selectedMethod = m;
-            document.getElementById('methodCard_sbp').classList.toggle('selected', m === 'sbp');
-            document.getElementById('methodCard_card').classList.toggle('selected', m === 'card');
-            
-            document.getElementById('radio_sbp').className = m === 'sbp' 
-                ? 'w-3.5 h-3.5 rounded-full border border-tactical-highlight bg-tactical-highlight'
-                : 'w-3.5 h-3.5 rounded-full border border-gray-600';
-            document.getElementById('radio_card').className = m === 'card'
-                ? 'w-3.5 h-3.5 rounded-full border border-tactical-highlight bg-tactical-highlight'
-                : 'w-3.5 h-3.5 rounded-full border border-gray-600';
-                
-            if (m === 'card') {
-                document.getElementById('sbpInfoBox').classList.add('hidden');
-                document.getElementById('cardInfoBox').classList.remove('hidden');
-                document.getElementById('btnPrimaryAction').classList.add('hidden');
-            } else {
-                document.getElementById('sbpInfoBox').classList.remove('hidden');
-                document.getElementById('cardInfoBox').classList.add('hidden');
-                document.getElementById('btnPrimaryAction').classList.remove('hidden');
-            }
+        }
         }
 
         // Check order status in approved_orders.json
