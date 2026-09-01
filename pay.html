@@ -206,23 +206,24 @@
                         </div>
                     </div>
 
-                    <!-- Method 2: Telegram Direct -->
-                    <div onclick="selectPaymentMethod('tg')" id="methodCard_tg" class="bank-card cursor-pointer bg-black/40 border border-tactical-border rounded-xl p-4 transition hover:border-tactical-highlight space-y-2">
+                                        <!-- Method 2: Card (YooMoney) -->
+                    <div onclick="selectPaymentMethod('card')" id="methodCard_card" class="bank-card cursor-pointer bg-black/40 border border-tactical-border rounded-xl p-4 transition hover:border-tactical-highlight space-y-2">
                         <div class="flex items-center justify-between">
                             <div class="font-bold text-white flex items-center gap-2">
-                                <i data-lucide="send" class="w-4 h-4 text-blue-400"></i>
-                                <span>Напрямую по договору</span>
+                                <i data-lucide="credit-card" class="w-4 h-4 text-tactical-accent"></i>
+                                <span>Банковской картой</span>
                             </div>
-                            <span class="w-3.5 h-3.5 rounded-full border border-gray-600" id="radio_tg"></span>
+                            <span class="w-3.5 h-3.5 rounded-full border border-gray-600" id="radio_card"></span>
                         </div>
                         <div class="text-[11px] text-gray-400 leading-relaxed">
-                            Прямая связь с разработчиком для перевода по номеру договора и отправки чека.
+                            Официальная и безопасная оплата любой картой РФ через шлюз ЮMoney.
                         </div>
                     </div>
                 </div>
+                </div>
 
                 <!-- Requisites Info Box -->
-                <div class="bg-black/60 border border-tactical-border rounded-xl p-4 space-y-3 font-mono text-xs">
+                <div id="sbpInfoBox" class="bg-black/60 border border-tactical-border rounded-xl p-4 space-y-3 font-mono text-xs">
                     <div class="text-tactical-gold font-bold text-[11px] uppercase tracking-wider flex items-center justify-between">
                         <span>Реквизиты для перевода 500 ₽:</span>
                         <span class="text-tactical-highlight">СБП</span>
@@ -239,6 +240,35 @@
                     </div>
                 </div>
 
+                
+                <!-- Card Payment Form (YooMoney) -->
+                <div id="cardInfoBox" class="hidden bg-black/60 border border-tactical-border rounded-xl p-4 space-y-3 font-mono text-xs">
+                    <div class="text-tactical-accent font-bold text-[11px] uppercase tracking-wider flex items-center gap-2 mb-2">
+                        <i data-lucide="shield-check" class="w-4 h-4"></i>
+                        <span>Безопасная оплата картой</span>
+                    </div>
+                    <div class="text-[11px] text-gray-300 leading-relaxed mb-4">
+                        Платеж проходит через официальный шлюз ЮMoney. Данные вашей карты надежно защищены.
+                    </div>
+                    
+                    <form method="POST" action="https://yoomoney.ru/quickpay/confirm" class="space-y-3">
+                        <!-- ВНИМАНИЕ: ЗАМЕНИТЕ 41001... НА ВАШ НОМЕР КОШЕЛЬКА ЮMoney -->
+                        <input type="hidden" name="receiver" value="4100112345678901"> 
+                        <input type="hidden" name="formcomment" value="КАПТЁРКА PRO">
+                        <input type="hidden" name="short-dest" value="Лицензия КАПТЁРКА PRO">
+                        <input type="hidden" name="label" id="yooLabel" value="">
+                        <input type="hidden" name="quickpay-form" value="shop">
+                        <input type="hidden" name="targets" id="yooTargets" value="Лицензия КАПТЁРКА PRO">
+                        <input type="hidden" name="sum" value="500" data-type="number">
+                        <input type="hidden" name="paymentType" value="AC"> <!-- AC = card, PC = wallet -->
+                        <input type="hidden" name="successURL" value="https://kapterka-pro.ru/pay.html?success=true">
+                        
+                        <button type="submit" onclick="document.getElementById('yooTargets').value = 'Лицензия PRO для позывного: ' + document.getElementById('step1Callsign').value; document.getElementById('yooLabel').value = document.getElementById('step1Callsign').value;" class="w-full py-4 px-6 rounded-xl bg-gradient-to-r from-tactical-accent to-tactical-highlight text-white font-bold font-heading text-base tracking-wide hover:brightness-110 active:scale-[0.99] transition duration-200 glow-green flex items-center justify-center gap-2">
+                            <i data-lucide="credit-card" class="w-5 h-5"></i>
+                            <span>ОПЛАТИТЬ 500 ₽ КАРТОЙ</span>
+                        </button>
+                    </form>
+                </div>
                 <!-- Submit Button -->
                 <div class="space-y-2.5">
                     <a href="https://t.me/kapterka_admin" target="_blank" rel="noopener noreferrer" onclick="sendOrderNotification()" class="w-full py-4 px-6 rounded-xl bg-gradient-to-r from-[#229ED9] to-[#1E88E5] text-white font-bold font-heading text-base tracking-wide hover:brightness-110 active:scale-[0.99] transition duration-200 shadow-lg shadow-blue-900/30 flex items-center justify-center gap-2">
@@ -438,17 +468,29 @@
             }
         }
 
+
         function selectPaymentMethod(m) {
             selectedMethod = m;
             document.getElementById('methodCard_sbp').classList.toggle('selected', m === 'sbp');
-            document.getElementById('methodCard_tg').classList.toggle('selected', m === 'tg');
+            document.getElementById('methodCard_card').classList.toggle('selected', m === 'card');
             
             document.getElementById('radio_sbp').className = m === 'sbp' 
                 ? 'w-3.5 h-3.5 rounded-full border border-tactical-highlight bg-tactical-highlight'
                 : 'w-3.5 h-3.5 rounded-full border border-gray-600';
-            document.getElementById('radio_tg').className = m === 'tg'
+            document.getElementById('radio_card').className = m === 'card'
                 ? 'w-3.5 h-3.5 rounded-full border border-tactical-highlight bg-tactical-highlight'
                 : 'w-3.5 h-3.5 rounded-full border border-gray-600';
+                
+            // Toggle form visibility based on selection
+            if (m === 'card') {
+                document.getElementById('sbpInfoBox').classList.add('hidden');
+                document.getElementById('cardInfoBox').classList.remove('hidden');
+                document.getElementById('btnPrimaryAction').classList.add('hidden');
+            } else {
+                document.getElementById('sbpInfoBox').classList.remove('hidden');
+                document.getElementById('cardInfoBox').classList.add('hidden');
+                document.getElementById('btnPrimaryAction').classList.remove('hidden');
+            }
         }
 
         // Send TG alert ONLY for pending order
