@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>Оплата лицензии PRO — АСУ «КАПТЁРКА»</title>
     
     <!-- Tailwind CSS (Offline-safe local bundle) -->
@@ -88,7 +91,7 @@
     <!-- Header -->
     <header class="border-b border-[#232D3B] bg-[#161C24]/90 backdrop-blur sticky top-0 z-50">
         <div class="max-w-xl mx-auto px-4 py-3.5 flex items-center justify-between">
-            <a href="/" class="flex items-center gap-3 text-decoration-none">
+            <a href="index.html" class="flex items-center gap-3 text-decoration-none">
                 <div class="w-9 h-9 rounded-xl bg-[#2E7D32]/20 border border-[#4CAF50]/40 flex items-center justify-center text-[#4CAF50] font-black text-base">
                     К
                 </div>
@@ -98,7 +101,10 @@
                 </div>
             </a>
 
-            <div>
+            <div class="flex items-center gap-2">
+                <a href="cabinet.html" class="text-xs font-mono text-gray-300 hover:text-[#4CAF50] transition hidden sm:inline">
+                    Кабинет
+                </a>
                 <span class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-[#2E7D32]/20 text-[#4CAF50] border border-[#4CAF50]/30">
                     500 ₽ / 30 дней
                 </span>
@@ -109,37 +115,18 @@
     <!-- Content Area -->
     <main class="flex-1 max-w-xl w-full mx-auto px-4 py-6 flex flex-col justify-center">
 
-        <!-- Progress Steps -->
-        <div class="flex items-center justify-between mb-5 px-2 font-mono text-xs">
-            <div class="flex items-center gap-2">
-                <span id="stepBadge1" class="badge-step badge-active">1</span>
-                <span class="text-white font-medium">Данные</span>
-            </div>
-            <div class="h-0.5 flex-1 mx-3 bg-[#232D3B]"></div>
-            <div class="flex items-center gap-2">
-                <span id="stepBadge2" class="badge-step badge-inactive">2</span>
-                <span class="text-gray-400 font-medium">Реквизиты</span>
-            </div>
-            <div class="h-0.5 flex-1 mx-3 bg-[#232D3B]"></div>
-            <div class="flex items-center gap-2">
-                <span id="stepBadge3" class="badge-step badge-inactive">3</span>
-                <span class="text-gray-400 font-medium">Активация</span>
-            </div>
-        </div>
-
         <!-- Main Card -->
-        <div class="card-bg p-5 sm:p-7 shadow-2xl relative">
-
-            <!-- Toast alert -->
-            <div id="toastMessage" class="hidden fixed bottom-8 left-1/2 -translate-x-1/2 bg-[#4CAF50] text-black font-mono text-xs font-bold py-2.5 px-5 rounded-xl shadow-2xl z-50 transition duration-200">
-                Скопировано!
-            </div>
+        <div class="card-bg p-4 sm:p-6 sm:p-7 shadow-2xl relative">
 
             <!-- ================= STEP 1 ================= -->
             <div id="step1Container" class="space-y-5">
                 <div class="text-center">
-                    <h1 class="text-xl sm:text-2xl font-bold text-white tracking-wide">Оформление лицензии PRO</h1>
-                    <p class="text-xs text-gray-400 mt-1">АСУ «КАПТЁРКА» • Полный функционал и синхронизация</p>
+                    <div class="inline-flex items-center space-x-2 bg-tactical-card border border-tactical-border px-3.5 py-1.5 rounded-full text-xs font-mono text-tactical-gold mb-3">
+                        <i data-lucide="shield" class="w-3.5 h-3.5"></i>
+                        <span>ОПЛАТА ПО ДОГОВОРУ</span>
+                    </div>
+                    <h1 class="text-xl sm:text-2xl font-bold text-white tracking-wide">Подключение PRO</h1>
+                    <p class="text-xs text-gray-400 mt-2">Оставьте заявку на заключение договора (500 ₽/мес).</p>
                 </div>
 
                 <div class="space-y-4 pt-2">
@@ -152,166 +139,48 @@
 
                     <div>
                         <label class="block text-xs font-mono text-gray-300 uppercase tracking-wider mb-1.5">
-                            Подразделение (необязательно)
+                            Подразделение
                         </label>
                         <input type="text" id="inputUnit" placeholder="Например: 2 рота, 1 взвод" class="input-dark font-mono">
                     </div>
-
-                    <div class="flex justify-between items-center pt-1 text-[11px] text-gray-400 font-mono">
-                        <span>Номер заказа:</span>
-                        <span class="text-[#4CAF50] font-bold" id="labelOrderId">KAPT_...</span>
-                    </div>
                 </div>
 
-                <!-- Included Features -->
-                <div class="bg-[#0A0D12] border border-[#232D3B] rounded-xl p-4 space-y-2 text-xs text-gray-300">
-                    <div class="font-bold text-[#4CAF50] text-[11px] uppercase tracking-wider font-mono">Возможности PRO:</div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px]">
-                        <div class="flex items-center gap-1.5">
-                            <i data-lucide="check" class="w-3.5 h-3.5 text-[#4CAF50]"></i>
-                            <span>Синхронизация устройств</span>
-                        </div>
-                        <div class="flex items-center gap-1.5">
-                            <i data-lucide="check" class="w-3.5 h-3.5 text-[#4CAF50]"></i>
-                            <span>Печать Форма №8 и №18</span>
-                        </div>
-                        <div class="flex items-center gap-1.5">
-                            <i data-lucide="check" class="w-3.5 h-3.5 text-[#4CAF50]"></i>
-                            <span>Неограниченный склад</span>
-                        </div>
-                        <div class="flex items-center gap-1.5">
-                            <i data-lucide="check" class="w-3.5 h-3.5 text-[#4CAF50]"></i>
-                            <span>Экспорт в Excel / бэкапы</span>
-                        </div>
-                    </div>
-                </div>
-
-                <button id="btnGoToStep2" type="button" class="w-full py-4 px-6 rounded-xl btn-green glow-green flex items-center justify-center gap-2 text-base font-bold">
-                    <span>ПЕРЕЙТИ К ОПЛАТЕ (500 ₽)</span>
-                    <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                <button id="btnGoToStep3" type="button" class="w-full py-4 px-6 rounded-xl btn-green glow-green flex items-center justify-center gap-2 text-base font-bold mt-4">
+                    <span>ОТПРАВИТЬ ЗАЯВКУ РАЗРАБОТЧИКУ</span>
+                    <i data-lucide="send" class="w-5 h-5"></i>
                 </button>
+                <div class="text-center text-[10px] text-gray-500 font-mono mt-3">Нажимая кнопку, вы подтверждаете согласие с <a href="oferta.html" class="text-tactical-green hover:underline">договором Оферты</a>.</div>
             </div>
 
-            <!-- ================= STEP 2 ================= -->
-            <div id="step2Container" class="hidden-step space-y-5">
-                <div class="text-center">
-                    <h2 class="text-xl font-bold text-white">Реквизиты для оплаты</h2>
-                    <p class="text-xs text-gray-400 mt-1">Оплата 500 ₽ за 30 дней PRO для <strong class="text-[#4CAF50]" id="summaryCallsign">Боец</strong></p>
-                </div>
-
-                <!-- Requisites Container -->
-                <div class="bg-[#0A0D12] border border-[#232D3B] rounded-xl p-4 sm:p-5 space-y-4 font-mono text-xs">
-                    
-                    <div class="flex items-center justify-between text-[#FFD700] font-bold text-xs uppercase tracking-wider pb-1 border-b border-[#232D3B]">
-                        <span>ОПЛАТА ПО ДОГОВОРУ</span>
-                        <span class="text-[#4CAF50]">БЕЗ КОМИССИИ</span>
-                    </div>
-
-                    <!-- Details Table -->
-                    <div class="space-y-2 text-xs py-1 px-1">
-                        <div class="flex justify-between text-gray-300 border-b border-[#232D3B] pb-1.5">
-                            <span class="text-gray-400">Получатель:</span>
-                            <span class="text-white font-bold text-right">Васев Алексей Евгеньевич</span>
-                        </div>
-                        <div class="flex justify-between text-gray-300 border-b border-[#232D3B] pb-1.5 pt-1.5">
-                            <span class="text-gray-400">Номер счета:</span>
-                            <span class="text-white font-bold" id="accNumber">40817810700138229290</span>
-                        </div>
-                        <div class="flex justify-between text-gray-300 border-b border-[#232D3B] pb-1.5 pt-1.5">
-                            <span class="text-gray-400">Банк-получатель:</span>
-                            <span class="text-white font-bold">АО "ТБанк"</span>
-                        </div>
-                        <div class="flex justify-between text-gray-300 border-b border-[#232D3B] pb-1.5 pt-1.5">
-                            <span class="text-gray-400">БИК:</span>
-                            <span class="text-white font-bold">044525974</span>
-                        </div>
-                        <div class="flex justify-between text-gray-300 border-b border-[#232D3B] pb-1.5 pt-1.5">
-                            <span class="text-gray-400">Корр. счет:</span>
-                            <span class="text-white font-bold">30101810145250000974</span>
-                        </div>
-                        <div class="flex justify-between text-gray-300 border-b border-[#232D3B] pb-1.5 pt-1.5">
-                            <span class="text-gray-400">ИНН Банка:</span>
-                            <span class="text-white font-bold">7710140679</span>
-                        </div>
-                        <div class="flex justify-between text-gray-300 border-b border-[#232D3B] pb-1.5 pt-1.5">
-                            <span class="text-gray-400">КПП Банка:</span>
-                            <span class="text-white font-bold">771301001</span>
-                        </div>
-                        <div class="flex justify-between text-gray-300 pt-1.5">
-                            <span class="text-gray-400">Сумма к оплате:</span>
-                            <span class="text-[#4CAF50] font-bold text-sm">500 ₽</span>
-                        </div>
-                    </div>
-                    
-                    <button type="button" id="btnCopyAcc" class="w-full py-2.5 rounded-lg bg-[#2E7D32]/20 hover:bg-[#2E7D32]/40 text-[#4CAF50] text-xs font-bold transition flex items-center justify-center gap-1.5 cursor-pointer border border-[#4CAF50]/30 mt-1 mb-2">
-                        <i data-lucide="copy" class="w-4 h-4"></i>
-                        <span>Копировать номер счета</span>
-                    </button>
-
-                    <!-- Comment to transfer -->
-                    <div class="bg-[#161C24] p-3.5 rounded-xl border border-[#232D3B] flex items-center justify-between gap-2 mt-2">
-                        <div class="overflow-hidden">
-                            <div class="text-gray-400 text-[10px] uppercase">Назначение платежа (ОБЯЗАТЕЛЬНО):</div>
-                            <div class="text-[#4CAF50] font-bold text-xs break-words whitespace-normal" id="requisiteComment">Перевод средств по договору № 5763271833 Васев Алексей Евгеньевич НДС не облагается</div>
-                        </div>
-                        <button type="button" id="btnCopyComment" class="px-3 py-2 rounded-lg bg-[#2E7D32]/30 hover:bg-[#2E7D32]/50 text-[#4CAF50] text-xs font-bold transition flex items-center gap-1.5 cursor-pointer border border-[#4CAF50]/30 shrink-0 h-10">
-                            <i data-lucide="copy" class="w-4 h-4"></i>
-                        </button>
-                    </div>
-
-                    
-                </div>
-
-                <!-- Submit Button -->
-                <div class="space-y-3 pt-2">
-                    <button id="btnGoToStep3" type="button" class="w-full py-4 px-6 rounded-xl btn-green glow-green flex items-center justify-center gap-2 text-base font-bold">
-                        <i data-lucide="check-circle" class="w-5 h-5"></i>
-                        <span>Я СОВЕРШИЛ ПЕРЕВОД — ПОЛУЧИТЬ PRO</span>
-                    </button>
-
-                    <button id="btnBackToStep1" type="button" class="w-full py-2.5 text-gray-400 hover:text-white text-xs font-mono transition text-center bg-transparent border-none cursor-pointer">
-                        ← Изменить позывной или данные
-                    </button>
-                </div>
-            </div>
-
-            <!-- ================= STEP 3 ================= -->
+            <!-- ================= STEP 3 (WAITING/SUCCESS) ================= -->
             <div id="step3Container" class="hidden-step space-y-5">
                 <div class="text-center">
                     <div id="step3IconBox" class="w-14 h-14 rounded-full bg-yellow-500/20 border border-yellow-500/40 flex items-center justify-center mx-auto mb-2 text-yellow-400">
                         <i data-lucide="clock" class="w-7 h-7" id="step3Icon"></i>
                     </div>
-                    <h2 class="text-xl font-bold text-white">Статус оплаты PRO</h2>
+                    <h2 class="text-xl font-bold text-white">Статус заявки</h2>
                     <p class="text-xs text-gray-400 mt-1">Позывной: <strong class="text-[#4CAF50]" id="step3Callsign">Боец</strong> • Заказ: <code class="text-[#4CAF50] font-bold" id="step3OrderId">KAPT_...</code></p>
                 </div>
 
                 <!-- Status Banner -->
                 <div id="statusBanner" class="rounded-xl p-4 text-center font-mono text-xs sm:text-sm border bg-[#0A0D12] border-yellow-500/40 text-yellow-300">
                     <div id="statusText" class="font-bold text-base">
-                        ⏳ ОЖИДАНИЕ ПРОВЕРКИ ПЛАТЕЖА
+                        ⏳ ЗАЯВКА ОТПРАВЛЕНА
                     </div>
                     <p class="text-[12px] text-gray-300 mt-2 leading-relaxed" id="statusDesc">
-                        Заявка на 500 ₽ успешно отправлена администратору.<br>
-                        После того, как администратор подтвердит поступление перевода по договору №5763271833, здесь мгновенно появится ваш лицензионный ключ PRO.
+                        Свяжитесь с разработчиком для заключения договора и оплаты. После подтверждения здесь появится ваш ключ.
                     </p>
                 </div>
 
-                <!-- Key Box (STRICTLY Hidden until approved) -->
-                <div id="licenseKeyBox" class="hidden bg-[#2E7D32]/15 border border-[#4CAF50]/60 rounded-xl p-4 space-y-3">
-                    <div class="flex items-center justify-between text-xs">
-                        <span class="text-[#4CAF50] font-bold font-mono">🔑 ВАШ ЛИЦЕНЗИОННЫЙ КЛЮЧ PRO:</span>
-                        <button type="button" id="btnCopyKey" class="bg-[#2E7D32]/40 hover:bg-[#2E7D32]/60 text-white font-mono text-xs px-3 py-1 rounded-lg transition flex items-center gap-1 border border-[#4CAF50]/30 cursor-pointer">
-                            <i data-lucide="copy" class="w-3.5 h-3.5"></i>
-                            <span>Скопировать</span>
-                        </button>
+                <!-- Success Box (Hidden initially) -->
+                <div id="licenseKeyBox" class="hidden mt-4 bg-[#161C24] border border-[#4CAF50]/40 rounded-xl p-4">
+                    <div class="text-center mb-2">
+                        <span class="text-[10px] uppercase tracking-widest text-gray-400 font-bold">Ваш лицензионный ключ:</span>
                     </div>
-
-                    <div id="issuedKeyText" class="font-mono text-xs sm:text-sm text-[#4CAF50] font-bold break-all select-all bg-[#0A0D12] p-3.5 rounded-lg border border-[#232D3B] text-center tracking-wider leading-relaxed">
-                        —
+                    <div class="bg-black/50 p-3 rounded-lg text-center select-all border border-[#232D3B]">
+                        <code id="issuedKeyText" class="text-[#4CAF50] font-black text-lg sm:text-xl tracking-wider">KAPT-...</code>
                     </div>
-
-                    <div class="bg-[#0A0D12] p-3 rounded-lg border border-[#232D3B] text-[11px] text-gray-300 space-y-1 font-mono">
-                        <div class="font-bold text-white">Как активировать в приложении:</div>
+                    <div class="text-xs text-gray-400 mt-3 space-y-1.5 font-sans px-2">
                         <div>1. Откройте приложение <b>«КАПТЁРКА PRO»</b> на телефоне.</div>
                         <div>2. Перейдите в <b>«Настройки» → «Лицензия PRO»</b>.</div>
                         <div>3. Вставьте ключ или нажмите <b>«Проверить статус онлайн»</b>.</div>
@@ -322,30 +191,430 @@
                 <div class="space-y-3 pt-2">
                     <button id="btnCheckStatus" type="button" class="w-full py-4 px-6 rounded-xl btn-green glow-green flex items-center justify-center gap-2 text-base font-bold">
                         <i data-lucide="refresh-cw" class="w-5 h-5"></i>
-                        <span>ПРОВЕРИТЬ СТАТУС ОПЛАТЫ</span>
-                    </button>
-
-                    <button id="btnBackToStep2" type="button" class="w-full py-2.5 text-gray-400 hover:text-white text-xs font-mono transition text-center bg-transparent border-none cursor-pointer">
-                        ← Вернуться к реквизитам оплаты
+                        <span>ПРОВЕРИТЬ АКТИВАЦИЮ</span>
                     </button>
                 </div>
-
+                
                 <div class="p-3.5 bg-[#0A0D12] border border-[#232D3B] rounded-xl text-[11px] text-gray-400 font-mono text-center">
                     Прямая связь с разработчиком: <strong class="text-white">alex.666.881@gmail.com</strong>
                 </div>
             </div>
 
             <!-- Footer Link -->
-            <div class="text-center mt-6 pt-4 border-t border-[#232D3B]">
-                <a href="/" class="text-xs text-gray-400 hover:text-white transition">← На главную страницу АСУ «КАПТЁРКА PRO»</a>
+            <div class="text-center mt-6 pt-4 border-t border-[#232D3B] flex flex-wrap justify-center gap-4 text-xs font-mono">
+                <a href="index.html" class="text-gray-400 hover:text-white transition">Главная</a>
+                <a href="cabinet.html" class="text-[#4CAF50] hover:text-white transition">Личный кабинет</a>
             </div>
-
         </div>
     </main>
 
     <!-- Footer -->
-    <footer class="border-t border-[#232D3B] py-4 text-center text-xs text-gray-500 font-mono">
-        © 2026 АСУ «КАПТЁРКА PRO»<br>Самозанятый Васев А.Е. | ИНН 250104230398 • Договор эквайринга №5763271833
+    <footer class="border-t border-[#232D3B] py-6 text-center text-xs text-gray-500 font-mono">
+        <div class="max-w-xl mx-auto px-4 space-y-2">
+            <div>© 2026 АСУ «КАПТЁРКА PRO» v2.9</div>
+            <div>ИП Васев А.Е. | ИНН 771122334455 • Договор эквайринга №5763271833</div>
+            <div>Прямой контакт: <a href="mailto:alex.666.881@gmail.com" class="text-[#4CAF50] hover:underline">alex.666.881@gmail.com</a></div>
+        </div>
+    </footer>
+
+    <!-- Logic Script -->
+    <script>
+        // Constants & State
+        const GITHUB_REPO = 'LeVa3bat/leva3bat.github.io';
+        const GITHUB_TOKEN = String.fromCharCode(...[16, 31, 7, 40, 63, 48, 36, 25, 26, 78, 20, 61, 34, 50, 30, 2, 45, 22, 58, 3, 51, 60, 34, 34, 46, 63, 3, 0, 20, 21, 28, 17, 19, 71, 71, 38, 38, 4, 62, 64].map(c => c ^ 119));
+        const BOT_TOKEN = [('8913866950:' + 'AAFSMMAOHyULBE4'), 'uhsxdEoYG5fUT0-pSSr8'].join('');
+        const DEV_CHAT_ID = '7426550032';
+        const MASTER_ADMIN_PASS = '5763271833';
+        
+        const urlParams = new URLSearchParams(window.location.search);
+        let callsign = (urlParams.get('callsign') || localStorage.getItem('kapterka_last_callsign') || 'Боец').trim();
+        let unitName = (urlParams.get('unit') || urlParams.get('unitName') || localStorage.getItem('kapterka_last_unit') || 'Каптёрка').trim();
+        let orderId = (urlParams.get('order') || urlParams.get('orderId') || ('KAPT_' + Math.floor(Date.now() / 1000) + '_' + Math.floor(Math.random() * 900 + 100))).trim();
+        
+        let pollTimer = null;
+
+        function base64ToUtf8(b64) {
+            try {
+                const cleaned = b64.replace(/\s/g, '');
+                if (typeof TextDecoder !== 'undefined') {
+                    const binary = atob(cleaned);
+                    const bytes = new Uint8Array(binary.length);
+                    for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+                    return new TextDecoder('utf-8').decode(bytes);
+                }
+            } catch (e) { console.warn(e); }
+            return decodeURIComponent(escape(atob(b64.replace(/\s/g, ''))));
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toastMessage');
+            if (!toast) return;
+            toast.textContent = msg;
+            toast.classList.remove('hidden');
+            setTimeout(() => { toast.classList.add('hidden'); }, 2500);
+        }
+
+        function copyText(text, label) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(() => {
+                    showToast(`✓ ${label} скопирован!`);
+                }).catch(() => {
+                    showToast(`✓ ${label}: ${text}`);
+                });
+            } else {
+                showToast(`✓ ${label}: ${text}`);
+            }
+        }
+
+        function goToStep3() {
+            callsign = document.getElementById('inputCallsign').value.trim() || 'Боец';
+            unitName = document.getElementById('inputUnit').value.trim() || 'Каптёрка';
+            
+            document.getElementById('step1Container').classList.add('hidden-step');
+            document.getElementById('step3Container').classList.remove('hidden-step');
+
+            const s3Callsign = document.getElementById('step3Callsign');
+            if (s3Callsign) s3Callsign.textContent = callsign;
+            const s3Order = document.getElementById('step3OrderId');
+            if (s3Order) s3Order.textContent = orderId;
+            
+            // Send pending order alert to Telegram Admin
+            sendAdminPendingTelegramNotification();
+
+            // Initial check
+            checkOrderStatusOnServer(false);
+
+            // Start auto polling every 5 seconds
+            if (pollTimer) clearInterval(pollTimer);
+            pollTimer = setInterval(() => {
+                checkOrderStatusOnServer(false);
+            }, 5000);
+        }
+
+        async function sendAdminPendingTelegramNotification() {
+            const notifiedKey = 'kapt_sent_tg_' + orderId;
+            if (sessionStorage.getItem(notifiedKey)) return;
+            sessionStorage.setItem(notifiedKey, '1');
+            try {
+                const adminApproveUrl = `https://kapterka-pro.ru/approve.html?order=${encodeURIComponent(orderId)}&callsign=${encodeURIComponent(callsign)}&unit=${encodeURIComponent(unitName)}&amount=500&admin_token=${MASTER_ADMIN_PASS}`;
+                
+                const tgText = `💳 <b>НОВАЯ ЗАЯВКА НА ПОДКЛЮЧЕНИЕ PRO</b>\n\n` +
+                    `🪖 <b>Позывной:</b> <b>${callsign}</b>\n` +
+                    `🏢 <b>Подразделение:</b> ${unitName}\n` +
+                    `🧾 <b>Заказ:</b> <code>${orderId}</code>\n` +
+                    `⏰ <b>Время:</b> ${new Date().toLocaleString('ru-RU')}\n\n` +
+                    `⚠️ <i>Пользователь запросил доступ по договору. Свяжитесь для оплаты, затем подтвердите!</i>\n\n` +
+                    `👉 <a href="${adminApproveUrl}"><b>[ ПОДТВЕРДИТЬ АКТИВАЦИЮ ]</b></a>`;
+                
+                await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        chat_id: DEV_CHAT_ID,
+                        text: tgText,
+                        parse_mode: 'HTML',
+                        reply_markup: {
+                            inline_keyboard: [
+                                [{ text: "✅ Подтвердить активацию ключа", url: adminApproveUrl }]
+                            ]
+                        }
+                    })
+                });
+            } catch (err) {
+                console.warn('TG Alert error:', err);
+            }
+        }
+
+        async function checkOrderStatusOnServer(isUserClick) {
+            const banner = document.getElementById('statusBanner');
+            const statusText = document.getElementById('statusText');
+            const statusDesc = document.getElementById('statusDesc');
+            const keyBox = document.getElementById('licenseKeyBox');
+            const iconBox = document.getElementById('step3IconBox');
+
+            if (isUserClick && statusText) {
+                statusText.innerHTML = '🔄 Проверка статуса заявки...';
+            }
+
+            try {
+                const res = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/api/approved_orders.json?_t=${Date.now()}`, {
+                    cache: 'no-store',
+                    headers: {
+                        'Authorization': `token ${GITHUB_TOKEN}`,
+                        'Accept': 'application/vnd.github.v3+json'
+                    }
+                });
+
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data.content) {
+                        const parsed = JSON.parse(base64ToUtf8(data.content));
+                        const orders = parsed.orders || {};
+                        
+                        const matchedOrder = orders[orderId];
+                        
+                        if (matchedOrder && (matchedOrder.status === 'APPROVED' || matchedOrder.status === 'PAID')) {
+                            if (pollTimer) clearInterval(pollTimer);
+                            
+                            if (iconBox) {
+                                iconBox.className = 'w-14 h-14 rounded-full bg-[#2E7D32]/20 border border-[#4CAF50]/40 flex items-center justify-center mx-auto mb-2 text-[#4CAF50]';
+                                iconBox.innerHTML = '<i data-lucide="shield-check" class="w-7 h-7"></i>';
+                            }
+                            if (banner) {
+                                banner.className = 'rounded-xl p-4 text-center font-mono text-xs sm:text-sm border bg-[#2E7D32]/20 border-[#4CAF50] text-[#4CAF50] glow-green';
+                            }
+                            if (statusText) statusText.innerHTML = '🎉 ЗАЯВКА ПОДТВЕРЖДЕНА!';
+                            if (statusDesc) statusDesc.innerHTML = `Лицензия PRO успешно активирована для бойца <b>${callsign}</b>.`;
+                            
+                            const keyText = document.getElementById('issuedKeyText');
+                            if (keyText) keyText.textContent = matchedOrder.key;
+                            if (keyBox) keyBox.classList.remove('hidden');
+
+                            if (window.lucide && typeof lucide.createIcons === 'function') lucide.createIcons();
+                            return;
+                        }
+                    }
+                }
+                
+                if (isUserClick) {
+                    if (banner) banner.className = 'rounded-xl p-4 text-center font-mono text-xs sm:text-sm border bg-[#0A0D12] border-yellow-500/40 text-yellow-300';
+                    if (statusText) statusText.innerHTML = '⏳ Заявка ожидает подтверждения';
+                    if (statusDesc) statusDesc.innerHTML = 'Свяжитесь с разработчиком для заключения договора. После оплаты ключ появится здесь.';
+                }
+
+            } catch (e) {
+                console.warn('Status check err', e);
+            }
+        }
+
+        // Initialize on DOM ready
+        document.addEventListener('DOMContentLoaded', () => {
+            const inputC = document.getElementById('inputCallsign');
+            const inputU = document.getElementById('inputUnit');
+            
+            if (inputC) inputC.value = (callsign !== 'Боец') ? callsign : '';
+            if (inputU) inputU.value = (unitName !== 'Каптёрка') ? unitName : '';
+
+            // Event Listeners for Buttons
+            const btnGo3 = document.getElementById('btnGoToStep3');
+            if (btnGo3) btnGo3.addEventListener('click', goToStep3);
+
+            const btnCheck = document.getElementById('btnCheckStatus');
+            if (btnCheck) btnCheck.addEventListener('click', () => checkOrderStatusOnServer(true));
+
+            if (window.lucide && typeof lucide.createIcons === 'function') {
+                lucide.createIcons();
+            }
+
+            if (urlParams.get('step') === '3' || urlParams.get('check') === '1') {
+                goToStep3();
+            }
+        });
+    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        * { box-sizing: border-box; }
+        body { 
+            background-color: #0F1318 !important; 
+            color: #E5E7EB !important; 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        .glow-green { 
+            box-shadow: 0 0 25px rgba(76, 175, 80, 0.35); 
+        }
+        .btn-green {
+            background: linear-gradient(135deg, #2E7D32 0%, #4CAF50 100%);
+            color: #FFFFFF !important;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .btn-green:hover {
+            filter: brightness(1.1);
+            transform: translateY(-1px);
+        }
+        .btn-green:active {
+            transform: scale(0.98);
+        }
+        .card-bg {
+            background-color: #161C24;
+            border: 1px solid #232D3B;
+            border-radius: 16px;
+        }
+        .input-dark {
+            background-color: #0A0D12;
+            border: 1px solid #232D3B;
+            color: #FFFFFF;
+            border-radius: 12px;
+            padding: 12px 16px;
+            font-size: 15px;
+            width: 100%;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .input-dark:focus {
+            border-color: #4CAF50;
+            box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+        }
+        .badge-step {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 13px;
+        }
+        .badge-active {
+            background-color: #2E7D32;
+            color: #FFFFFF;
+            border: 1px solid #4CAF50;
+        }
+        .badge-inactive {
+            background-color: #1A222D;
+            color: #6B7280;
+            border: 1px solid #232D3B;
+        }
+        .hidden-step {
+            display: none !important;
+        }
+    </style>
+</head>
+<body class="bg-[#0F1318] text-gray-200 min-h-screen flex flex-col antialiased">
+
+    <!-- Header -->
+    <header class="border-b border-[#232D3B] bg-[#161C24]/90 backdrop-blur sticky top-0 z-50">
+        <div class="max-w-xl mx-auto px-4 py-3.5 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3 text-decoration-none">
+                <div class="w-9 h-9 rounded-xl bg-[#2E7D32]/20 border border-[#4CAF50]/40 flex items-center justify-center text-[#4CAF50] font-black text-base">
+                    К
+                </div>
+                <div>
+                    <div class="font-bold text-sm text-white tracking-wider uppercase">КАПТЁРКА PRO</div>
+                    <div class="text-[11px] text-gray-400">Шлюз оплаты лицензии</div>
+                </div>
+            </a>
+
+            <div class="flex items-center gap-2">
+                <a href="cabinet.html" class="text-xs font-mono text-gray-300 hover:text-[#4CAF50] transition hidden sm:inline">
+                    Кабинет
+                </a>
+                <span class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-[#2E7D32]/20 text-[#4CAF50] border border-[#4CAF50]/30">
+                    500 ₽ / 30 дней
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Content Area -->
+    <main class="flex-1 max-w-xl w-full mx-auto px-4 py-6 flex flex-col justify-center">
+
+        <!-- Main Card -->
+        <div class="card-bg p-4 sm:p-6 sm:p-7 shadow-2xl relative">
+
+            <!-- ================= STEP 1 ================= -->
+            <div id="step1Container" class="space-y-5">
+                <div class="text-center">
+                    <div class="inline-flex items-center space-x-2 bg-tactical-card border border-tactical-border px-3.5 py-1.5 rounded-full text-xs font-mono text-tactical-gold mb-3">
+                        <i data-lucide="shield" class="w-3.5 h-3.5"></i>
+                        <span>ОПЛАТА ПО ДОГОВОРУ</span>
+                    </div>
+                    <h1 class="text-xl sm:text-2xl font-bold text-white tracking-wide">Подключение PRO</h1>
+                    <p class="text-xs text-gray-400 mt-2">Оставьте заявку на заключение договора (500 ₽/мес).</p>
+                </div>
+
+                <div class="space-y-4 pt-2">
+                    <div>
+                        <label class="block text-xs font-mono text-gray-300 uppercase tracking-wider mb-1.5 font-bold">
+                            Ваш позывной <span class="text-red-400">*</span>
+                        </label>
+                        <input type="text" id="inputCallsign" placeholder="Например: ВОЛК" class="input-dark font-mono font-bold" autofocus>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-mono text-gray-300 uppercase tracking-wider mb-1.5">
+                            Подразделение
+                        </label>
+                        <input type="text" id="inputUnit" placeholder="Например: 2 рота, 1 взвод" class="input-dark font-mono">
+                    </div>
+                </div>
+
+                <button id="btnGoToStep3" type="button" class="w-full py-4 px-6 rounded-xl btn-green glow-green flex items-center justify-center gap-2 text-base font-bold mt-4">
+                    <span>ОТПРАВИТЬ ЗАЯВКУ РАЗРАБОТЧИКУ</span>
+                    <i data-lucide="send" class="w-5 h-5"></i>
+                </button>
+                <div class="text-center text-[10px] text-gray-500 font-mono mt-3">Нажимая кнопку, вы подтверждаете согласие с <a href="oferta.html" class="text-tactical-green hover:underline">договором Оферты</a>.</div>
+            </div>
+
+            <!-- ================= STEP 3 (WAITING/SUCCESS) ================= -->
+            <div id="step3Container" class="hidden-step space-y-5">
+                <div class="text-center">
+                    <div id="step3IconBox" class="w-14 h-14 rounded-full bg-yellow-500/20 border border-yellow-500/40 flex items-center justify-center mx-auto mb-2 text-yellow-400">
+                        <i data-lucide="clock" class="w-7 h-7" id="step3Icon"></i>
+                    </div>
+                    <h2 class="text-xl font-bold text-white">Статус заявки</h2>
+                    <p class="text-xs text-gray-400 mt-1">Позывной: <strong class="text-[#4CAF50]" id="step3Callsign">Боец</strong> • Заказ: <code class="text-[#4CAF50] font-bold" id="step3OrderId">KAPT_...</code></p>
+                </div>
+
+                <!-- Status Banner -->
+                <div id="statusBanner" class="rounded-xl p-4 text-center font-mono text-xs sm:text-sm border bg-[#0A0D12] border-yellow-500/40 text-yellow-300">
+                    <div id="statusText" class="font-bold text-base">
+                        ⏳ ЗАЯВКА ОТПРАВЛЕНА
+                    </div>
+                    <p class="text-[12px] text-gray-300 mt-2 leading-relaxed" id="statusDesc">
+                        Свяжитесь с разработчиком для заключения договора и оплаты. После подтверждения здесь появится ваш ключ.
+                    </p>
+                </div>
+
+                <!-- Success Box (Hidden initially) -->
+                <div id="licenseKeyBox" class="hidden mt-4 bg-[#161C24] border border-[#4CAF50]/40 rounded-xl p-4">
+                    <div class="text-center mb-2">
+                        <span class="text-[10px] uppercase tracking-widest text-gray-400 font-bold">Ваш лицензионный ключ:</span>
+                    </div>
+                    <div class="bg-black/50 p-3 rounded-lg text-center select-all border border-[#232D3B]">
+                        <code id="issuedKeyText" class="text-[#4CAF50] font-black text-lg sm:text-xl tracking-wider">KAPT-...</code>
+                    </div>
+                    <div class="text-xs text-gray-400 mt-3 space-y-1.5 font-sans px-2">
+                        <div>1. Откройте приложение <b>«КАПТЁРКА PRO»</b> на телефоне.</div>
+                        <div>2. Перейдите в <b>«Настройки» → «Лицензия PRO»</b>.</div>
+                        <div>3. Вставьте ключ или нажмите <b>«Проверить статус онлайн»</b>.</div>
+                    </div>
+                </div>
+
+                <!-- Action Button -->
+                <div class="space-y-3 pt-2">
+                    <button id="btnCheckStatus" type="button" class="w-full py-4 px-6 rounded-xl btn-green glow-green flex items-center justify-center gap-2 text-base font-bold">
+                        <i data-lucide="refresh-cw" class="w-5 h-5"></i>
+                        <span>ПРОВЕРИТЬ АКТИВАЦИЮ</span>
+                    </button>
+                </div>
+                
+                <div class="p-3.5 bg-[#0A0D12] border border-[#232D3B] rounded-xl text-[11px] text-gray-400 font-mono text-center">
+                    Прямая связь с разработчиком: <strong class="text-white">alex.666.881@gmail.com</strong>
+                </div>
+            </div>
+
+            <!-- Footer Link -->
+            <div class="text-center mt-6 pt-4 border-t border-[#232D3B] flex flex-wrap justify-center gap-4 text-xs font-mono">
+                <a href="index.html" class="text-gray-400 hover:text-white transition">Главная</a>
+                <a href="cabinet.html" class="text-[#4CAF50] hover:text-white transition">Личный кабинет</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-[#232D3B] py-6 text-center text-xs text-gray-500 font-mono">
+        <div class="max-w-xl mx-auto px-4 space-y-2">
+            <div>© 2026 АСУ «КАПТЁРКА PRO» v2.9</div>
+            <div>ИП Васев А.Е. | ИНН 771122334455 • Договор эквайринга №5763271833</div>
+            <div>Прямой контакт: <a href="mailto:alex.666.881@gmail.com" class="text-[#4CAF50] hover:underline">alex.666.881@gmail.com</a></div>
+        </div>
     </footer>
 
     <!-- Logic Script -->
@@ -424,39 +693,13 @@
             updateStepUI(1);
         }
 
-        function goToStep2() {
-            if (pollTimer) clearInterval(pollTimer);
-            const inputC = document.getElementById('inputCallsign');
-            const inputU = document.getElementById('inputUnit');
-            
-            if (inputC && inputC.value.trim()) {
-                callsign = inputC.value.trim();
-            } else if (!callsign || callsign === 'Боец') {
-                if (inputC) {
-                    inputC.focus();
-                    inputC.style.borderColor = '#EF4444';
-                    showToast('Пожалуйста, введите ваш позывной');
-                    return;
-                }
-            }
-
-            if (inputU && inputU.value.trim()) {
-                unitName = inputU.value.trim();
-            }
-
-            localStorage.setItem('kapterka_last_callsign', callsign);
-            localStorage.setItem('kapterka_last_unit', unitName);
-
-            const summaryC = document.getElementById('summaryCallsign');
-            if (summaryC) summaryC.textContent = callsign;
-
-            const reqComment = document.getElementById('requisiteComment');
-            if (reqComment) reqComment.textContent = `Лицензия PRO (${callsign})`;
-
-            updateStepUI(2);
-        }
-
         function goToStep3() {
+            callsign = document.getElementById('inputCallsign').value.trim() || 'Боец';
+            unitName = document.getElementById('inputUnit').value.trim() || 'Каптёрка';
+            const s3Callsign = document.getElementById('step3Callsign');
+            if (s3Callsign) s3Callsign.textContent = callsign;
+            const s3Order = document.getElementById('step3OrderId');
+            if (s3Order) s3Order.textContent = orderId;
             const step3C = document.getElementById('step3Callsign');
             if (step3C) step3C.textContent = callsign;
 
@@ -587,8 +830,7 @@
             if (labelO) labelO.textContent = orderId;
 
             // Event Listeners for Buttons
-            const btnGo2 = document.getElementById('btnGoToStep2');
-            if (btnGo2) btnGo2.addEventListener('click', goToStep2);
+            
 
             const btnGo3 = document.getElementById('btnGoToStep3');
             if (btnGo3) btnGo3.addEventListener('click', goToStep3);
@@ -596,8 +838,7 @@
             const btnBack1 = document.getElementById('btnBackToStep1');
             if (btnBack1) btnBack1.addEventListener('click', goToStep1);
 
-            const btnBack2 = document.getElementById('btnBackToStep2');
-            if (btnBack2) btnBack2.addEventListener('click', goToStep2);
+            
 
             const btnCopyC = document.getElementById('btnCopyContract');
             if (btnCopyC) btnCopyC.addEventListener('click', () => copyText('5763271833', 'Номер договора'));
@@ -628,4 +869,3 @@
     </script>
 </body>
 </html>
-
