@@ -327,13 +327,13 @@
                     <div class="bg-tactical-card border border-tactical-border rounded-2xl p-4">
                         <div class="text-xs font-mono font-bold text-tactical-muted uppercase mb-2">Категории эфира</div>
                         <div class="space-y-1 text-xs">
-                            <button onclick="setChatCategory('all')" id="cat-btn-all" class="w-full text-left px-3 py-2 rounded-lg bg-tactical-darkGreen text-tactical-green font-bold flex items-center justify-between">
+                            <button onclick="setChatCategory('all')" id="cat-btn-all" class="w-full text-center px-3 py-2 rounded-lg bg-tactical-darkGreen text-tactical-green font-bold flex items-center justify-between md:text-left">
                                 <span>📡 Общий эфир</span>
                             </button>
-                            <button onclick="setChatCategory('accounting')" id="cat-btn-accounting" class="w-full text-left px-3 py-2 rounded-lg text-tactical-muted hover:bg-tactical-cardHover hover:text-white flex items-center justify-between">
+                            <button onclick="setChatCategory('accounting')" id="cat-btn-accounting" class="w-full text-center px-3 py-2 rounded-lg text-tactical-muted hover:bg-tactical-cardHover hover:text-white flex items-center justify-between md:text-left">
                                 <span>📦 Вопросы по учёту</span>
                             </button>
-                            <button onclick="setChatCategory('reviews')" id="cat-btn-reviews" class="w-full text-left px-3 py-2 rounded-lg text-tactical-muted hover:bg-tactical-cardHover hover:text-white flex items-center justify-between">
+                            <button onclick="setChatCategory('reviews')" id="cat-btn-reviews" class="w-full text-center px-3 py-2 rounded-lg text-tactical-muted hover:bg-tactical-cardHover hover:text-white flex items-center justify-between md:text-left">
                                 <span>⭐ Отзывы и предложения</span>
                             </button>
                         </div>
@@ -604,7 +604,7 @@
                 </div>
 
                 <!-- Quick comment / feedback -->
-                <div class="bg-tactical-card border border-tactical-border rounded-2xl p-5">
+                <div class="bg-tactical-card border border-tactical-border rounded-2xl p-4 md:p-6">
                     <h3 class="text-sm font-bold text-white mb-2 flex items-center gap-2">
                         <i data-lucide="message-circle" class="w-4 h-4 text-tactical-green"></i>
                         <span>Оставить отзыв или вопрос разработчику</span>
@@ -748,7 +748,7 @@
 
                 <!-- Users Table -->
                 <div class="flex-grow overflow-y-auto border border-tactical-border rounded-2xl bg-tactical-bg">
-                    <table class="w-full text-left text-xs font-mono">
+                    <table class="w-full text-center text-xs font-mono md:text-left">
                         <thead class="bg-tactical-dark sticky top-0 border-b border-tactical-border text-tactical-muted">
                             <tr>
                                 <th class="p-3">Позывной / Часть</th>
@@ -1306,11 +1306,7 @@
                         </div>
                     </td>
                     <td class="p-3">
-                        <span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold ${
-                            u.licenseStatus === 'PRO' 
-                            ? 'bg-tactical-green/20 text-tactical-green border border-tactical-green/40' 
-                            : 'bg-tactical-border text-tactical-muted'
-                        }">
+                        <span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold ${ u.licenseStatus === 'PRO' ? 'bg-tactical-green/20 text-tactical-green border border-tactical-green/40' : 'bg-tactical-border text-tactical-muted' }">
                             ${u.licenseStatus || 'FREE'}
                         </span>
                     </td>
