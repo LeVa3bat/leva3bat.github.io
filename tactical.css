@@ -1,4 +1,4 @@
-/* Tactical Theme Stylesheet for Kapterka PRO */
+/* Tactical Theme Stylesheet for Kapterka PRO v2.9 */
 :root {
   --tactical-bg: #080C09;
   --tactical-dark: #050806;
@@ -17,6 +17,17 @@
   --tactical-dim: #556658;
 }
 
+*, *::before, *::after {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   background-color: #080C09 !important;
   color: #E0E6E1 !important;
@@ -24,6 +35,41 @@ body {
   background-image: 
     radial-gradient(circle at 50% 0%, rgba(76, 175, 80, 0.12), transparent 50%),
     radial-gradient(circle at 100% 100%, rgba(24, 51, 26, 0.2), transparent 45%) !important;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Mobile & Button Alignment Rules */
+a, button {
+  touch-action: manipulation;
+}
+
+.btn-tactical, button, a.inline-flex, a.flex {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  text-decoration: none;
+  line-height: 1.25;
+}
+
+.btn-tactical:active, button:active, a.inline-flex:active {
+  transform: scale(0.98);
+}
+
+/* Smooth Glows */
+.glow-green {
+  box-shadow: 0 0 25px -4px rgba(76, 175, 80, 0.4) !important;
+}
+
+.glow-green-sm {
+  box-shadow: 0 0 14px -2px rgba(76, 175, 80, 0.3) !important;
+}
+
+.glow-gold {
+  box-shadow: 0 0 25px -4px rgba(226, 192, 68, 0.35) !important;
 }
 
 .tactical-grid {
@@ -31,14 +77,6 @@ body {
   background-image: 
     linear-gradient(to right, rgba(35, 51, 38, 0.25) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(35, 51, 38, 0.25) 1px, transparent 1px) !important;
-}
-
-.glow-green {
-  box-shadow: 0 0 30px -5px rgba(76, 175, 80, 0.35) !important;
-}
-
-.glow-green-sm {
-  box-shadow: 0 0 15px -2px rgba(76, 175, 80, 0.25) !important;
 }
 
 /* Color utility classes */
@@ -62,6 +100,7 @@ body {
 .border-tactical-green\/50 { border-color: rgba(76, 175, 80, 0.5) !important; }
 .border-tactical-green\/60 { border-color: rgba(76, 175, 80, 0.6) !important; }
 .border-tactical-gold\/40 { border-color: rgba(226, 192, 68, 0.4) !important; }
+.border-tactical-gold\/60 { border-color: rgba(226, 192, 68, 0.6) !important; }
 
 .text-tactical-green { color: #4CAF50 !important; }
 .text-tactical-accent { color: #66BB6A !important; }
@@ -79,8 +118,19 @@ body {
   border-color: #4CAF50 !important;
 }
 
+/* Form Inputs for Mobile Ergonomics */
+input, select, textarea {
+  font-size: 16px !important; /* Prevents auto-zoom on iOS Safari */
+}
+
+@media (min-width: 640px) {
+  input, select, textarea {
+    font-size: 14px !important;
+  }
+}
+
 /* Custom scrollbars */
-::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar { width: 5px; height: 5px; }
 ::-webkit-scrollbar-track { background: #080C09; }
-::-webkit-scrollbar-thumb { background: #233326; border-radius: 3px; }
+::-webkit-scrollbar-thumb { background: #233326; border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: #4CAF50; }
