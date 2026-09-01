@@ -126,7 +126,7 @@
                 <div class="bg-tactical-gold/10 border border-tactical-gold/40 rounded-xl p-3.5 text-xs text-tactical-gold space-y-1.5">
                     <div class="font-bold flex items-center gap-1.5 text-tactical-gold">
                         <i data-lucide="info" class="w-4 h-4 shrink-0"></i>
-                        <span>Ручное подтверждение через Telegram-бота</span>
+                        <span>Подтверждение оплаты по договору</span>
                     </div>
                     <p class="text-gray-300 leading-relaxed text-[11px] sm:text-xs">
                         Оплата лицензии PRO (500 ₽ / 30 дней) принимается через администратора. После связи и подтверждения платежа лицензия мгновенно активируется в облачном реестре и связывается с вашим позывным.
@@ -141,17 +141,17 @@
                     </div>
 
                     <div class="text-[11px] text-gray-300 bg-tactical-bg/80 p-3 rounded-lg border border-tactical-border/60 space-y-2">
-                        <div>1. Свяжитесь с разработчиком в Telegram для получения платёжных реквизитов.</div>
+                        <div>1. Совершите перевод 500 ₽ по договору №5763271833 (Т-Банк, Васев Алексей Евгеньевич).</div>
                         <div>2. Укажите ваш позывной: <strong class="text-tactical-green" id="orderCallsignDisplay">Боец</strong> и номер заказа: <code class="text-tactical-accent font-bold" id="requisiteComment">KAPT_...</code>.</div>
-                        <div>3. После перевода администратор подтвердит заявку через бота, и PRO-статус активируется автоматически.</div>
+                        <div>3. После проверки платежа администратор подтвердит заявку, и PRO-статус активируется автоматически.</div>
                     </div>
                 </div>
 
                 <!-- Action buttons for buyer -->
                 <div class="space-y-2.5 pt-1">
-                    <a href="https://t.me/kapterka_oplata_bot" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-[#229ED9] to-[#1E88E5] text-white font-bold font-heading text-sm sm:text-base tracking-wide hover:brightness-110 active:scale-[0.99] transition duration-200 shadow-lg shadow-blue-900/30 flex items-center justify-center gap-2">
-                        <i data-lucide="send" class="w-5 h-5"></i>
-                        <span>НАПИСАТЬ В TELEGRAM (@kapterka_oplata_bot)</span>
+                    <a href="https://kapterka-pro.ru/pay.html" class="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-tactical-accent to-tactical-highlight text-white font-bold font-heading text-sm sm:text-base tracking-wide hover:brightness-110 active:scale-[0.99] transition duration-200 glow-green flex items-center justify-center gap-2">
+                        <i data-lucide="credit-card" class="w-5 h-5"></i>
+                        <span>ПЕРЕЙТИ НА СТРАНИЦУ ОПЛАТЫ</span>
                     </a>
 
                     <button onclick="checkOrderStatus(true)" class="w-full py-3.5 px-4 rounded-xl bg-tactical-accent/20 border border-tactical-accent/50 text-tactical-highlight font-bold font-heading text-xs sm:text-sm tracking-wide hover:bg-tactical-accent/30 active:scale-[0.99] transition duration-200 flex items-center justify-center gap-2">
