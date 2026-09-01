@@ -1,153 +1,133 @@
 <!DOCTYPE html>
-<html lang="ru" class="scroll-smooth">
+<html lang="ru" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Оплата лицензии PRO — АСУ «КАПТЁРКА PRO»</title>
+    <title>Оплата лицензии PRO — АСУ «КАПТЁРКА»</title>
     
-    <!-- Favicon & App Icons -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#181D13">
-    
-    <!-- SEO & Open Graph -->
-    <meta name="description" content="Оплата лицензии АСУ «КАПТЁРКА PRO» на 30 дней. Удобный выбор способа оплаты, СБП, подтверждение через Telegram и мгновенная выдача лицензионного ключа.">
-    <meta property="og:title" content="Оплата лицензии PRO — АСУ КАПТЁРКА PRO">
-    <meta property="og:description" content="Оплата подписки PRO: расширенный функционал, неограниченный склад, формы №8 и №18.">
-    <meta property="og:url" content="https://kapterka-pro.ru/pay.html">
-    <meta property="og:type" content="website">
-
-    <!-- Fonts & Icons -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,400;0,600;0,700;1,700&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    
+    <!-- Tailwind CSS (Offline-safe local bundle) -->
+    <link rel="stylesheet" href="tailwind.min.css">
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
                         tactical: {
-                            bg: '#121510',
-                            card: '#181D13',
-                            accent: '#4E8752',
-                            highlight: '#8BC34A',
-                            border: '#2A3324',
+                            bg: '#0F1318',
+                            card: '#161C24',
+                            border: '#232D3B',
+                            accent: '#2E7D32',
+                            highlight: '#4CAF50',
+                            gold: '#FFD700',
+                            amber: '#FFB300',
                             muted: '#9E9E9E',
-                            gold: '#D4AF37'
+                            dark: '#0A0D12'
                         }
                     },
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
-                        heading: ['Chakra Petch', 'sans-serif']
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'Courier New', 'monospace'],
+                        heading: ['Cabinet Grotesk', 'Inter', 'sans-serif']
                     }
                 }
             }
         }
     </script>
+
+    <!-- Lucide Icons -->
+    <script src="lucide.min.js"></script>
+
     <style>
-        body {
-            background-color: #121510;
-            color: #E0E0E0;
-            font-family: 'Inter', sans-serif;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
         .glow-green {
-            box-shadow: 0 0 25px rgba(78, 135, 82, 0.45);
+            box-shadow: 0 0 25px rgba(76, 175, 80, 0.25);
         }
-        .glow-gold {
-            box-shadow: 0 0 25px rgba(212, 175, 55, 0.35);
+        .bank-card {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .bank-card:hover {
+            transform: translateY(-2px);
         }
         .bank-card.selected {
-            border-color: #8BC34A;
-            background-color: rgba(78, 135, 82, 0.15);
+            border-color: #4CAF50 !important;
+            background-color: rgba(46, 125, 50, 0.15) !important;
         }
     </style>
 </head>
-<body class="bg-tactical-bg text-gray-100 flex flex-col justify-between">
+<body class="bg-tactical-bg text-gray-100 min-h-screen flex flex-col font-sans antialiased selection:bg-tactical-accent selection:text-white">
 
-    <!-- Header -->
-    <header class="border-b border-tactical-border/60 bg-tactical-card/90 backdrop-blur-md sticky top-0 z-50">
-        <div class="max-w-4xl mx-auto px-4 py-3.5 flex items-center justify-between">
-            <a href="/" class="flex items-center gap-3">
-                <img src="/favicon.svg" alt="Каптёрка PRO" class="w-9 h-9 rounded-lg shadow">
+    <!-- Top Navigation -->
+    <header class="border-b border-tactical-border/70 bg-tactical-card/80 backdrop-blur-md sticky top-0 z-40">
+        <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="/" class="flex items-center gap-2.5 group">
+                <div class="w-8 h-8 rounded-lg bg-tactical-accent/20 border border-tactical-accent/50 flex items-center justify-center text-tactical-highlight font-black text-sm">
+                    K
+                </div>
                 <div>
-                    <div class="font-heading font-bold text-base sm:text-lg text-white tracking-wider">КАПТЁРКА PRO</div>
-                    <div class="text-[10px] sm:text-xs text-tactical-accent font-mono">ОПЛАТА И АКТИВАЦИЯ ЛИЦЕНЗИИ</div>
+                    <div class="font-heading font-black text-sm text-white tracking-wider uppercase group-hover:text-tactical-highlight transition">КАПТЁРКА PRO</div>
+                    <div class="text-[10px] text-gray-400 font-mono">Шлюз оплаты лицензии</div>
                 </div>
             </a>
-            <div class="flex items-center gap-2">
-                <a href="/cabinet.html" class="text-xs font-mono text-gray-400 hover:text-tactical-highlight flex items-center gap-1 bg-black/40 border border-tactical-border/60 px-3 py-1.5 rounded-lg transition">
-                    <i data-lucide="user" class="w-3.5 h-3.5"></i>
-                    <span>Кабинет</span>
-                </a>
+
+            <div class="flex items-center gap-2 text-xs font-mono">
+                <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-tactical-accent/20 text-tactical-highlight border border-tactical-accent/40">
+                    500 ₽ / 30 дней
+                </span>
             </div>
         </div>
     </header>
 
-    <!-- Main Payment Flow -->
-    <main class="max-w-2xl mx-auto px-4 py-6 sm:py-10 w-full flex-grow flex items-center justify-center">
-        <div class="bg-tactical-card border border-tactical-border rounded-2xl p-5 sm:p-8 w-full shadow-2xl relative overflow-hidden">
+    <!-- Main Form Container -->
+    <main class="flex-1 max-w-xl w-full mx-auto px-4 py-6 sm:py-8 flex flex-col justify-center">
+        
+        <!-- Step Indicator -->
+        <div class="flex items-center justify-between mb-6 px-2 font-mono text-xs text-gray-400">
+            <div class="flex items-center gap-2">
+                <span id="stepBadge1" class="w-6 h-6 rounded-full bg-tactical-accent text-white flex items-center justify-center font-bold text-xs">1</span>
+                <span class="hidden sm:inline">Данные</span>
+            </div>
+            <div class="h-0.5 w-12 bg-tactical-border"></div>
+            <div class="flex items-center gap-2">
+                <span id="stepBadge2" class="w-6 h-6 rounded-full bg-tactical-border text-gray-400 flex items-center justify-center font-bold text-xs">2</span>
+                <span class="hidden sm:inline">Оплата</span>
+            </div>
+            <div class="h-0.5 w-12 bg-tactical-border"></div>
+            <div class="flex items-center gap-2">
+                <span id="stepBadge3" class="w-6 h-6 rounded-full bg-tactical-border text-gray-400 flex items-center justify-center font-bold text-xs">3</span>
+                <span class="hidden sm:inline">Ключ</span>
+            </div>
+        </div>
+
+        <div class="bg-tactical-card border border-tactical-border rounded-2xl p-5 sm:p-7 shadow-2xl relative overflow-hidden">
             
-            <!-- Step Indicator -->
-            <div class="flex items-center justify-between mb-6 pb-4 border-b border-tactical-border/60 font-mono text-xs text-gray-400">
-                <div class="flex items-center gap-2" id="stepIndicator1">
-                    <span class="w-6 h-6 rounded-full bg-tactical-accent text-white flex items-center justify-center font-bold text-xs" id="stepBadge1">1</span>
-                    <span class="text-white font-semibold">Данные заказа</span>
-                </div>
-                <div class="w-8 h-[1px] bg-tactical-border"></div>
-                <div class="flex items-center gap-2" id="stepIndicator2">
-                    <span class="w-6 h-6 rounded-full bg-tactical-border text-gray-400 flex items-center justify-center font-bold text-xs" id="stepBadge2">2</span>
-                    <span>Способ оплаты</span>
-                </div>
-                <div class="w-8 h-[1px] bg-tactical-border"></div>
-                <div class="flex items-center gap-2" id="stepIndicator3">
-                    <span class="w-6 h-6 rounded-full bg-tactical-border text-gray-400 flex items-center justify-center font-bold text-xs" id="stepBadge3">3</span>
-                    <span>Получение ключа</span>
-                </div>
+            <!-- Toast Notification -->
+            <div id="toastMessage" class="hidden fixed bottom-6 left-1/2 -translate-x-1/2 bg-tactical-highlight text-black font-mono text-xs font-bold py-2.5 px-4 rounded-xl shadow-xl z-50 transition duration-200">
+                Текст скопирован в буфер!
             </div>
 
-            <!-- CARD 1: ORDER DATA & PRO BENEFITS -->
+            <!-- STEP 1: USER DATA -->
             <div id="step1Container" class="space-y-5">
                 <div class="text-center">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-tactical-accent/20 border border-tactical-accent/40 text-tactical-highlight font-mono text-xs mb-3">
-                        <i data-lucide="award" class="w-3.5 h-3.5"></i> ТАРИФ PRO • 30 ДНЕЙ
-                    </div>
-                    <h1 class="text-2xl font-bold font-heading text-white">Оформление подписки PRO</h1>
-                    <p class="text-xs sm:text-sm text-gray-400 mt-1">Официальная лицензия для приложения АСУ «КАПТЁРКА PRO»</p>
+                    <h1 class="text-xl sm:text-2xl font-bold font-heading text-white">Оформление лицензии PRO</h1>
+                    <p class="text-xs text-gray-400 mt-1">АСУ «КАПТЁРКА» • Полный функционал и синхронизация</p>
                 </div>
 
-                <!-- Price Banner -->
-                <div class="bg-gradient-to-r from-tactical-bg to-black/70 border border-tactical-border rounded-xl p-4 sm:p-5 flex items-center justify-between font-mono">
+                <div class="space-y-4">
                     <div>
-                        <div class="text-xs text-gray-400">Стоимость подписки:</div>
-                        <div class="text-2xl sm:text-3xl font-black font-heading text-tactical-highlight">500 ₽ <span class="text-xs font-normal text-gray-400 font-mono">/ 30 дней</span></div>
+                        <label class="block text-xs font-mono text-gray-300 uppercase tracking-wider mb-1.5 font-bold">
+                            Ваш позывной <span class="text-red-400">*</span>
+                        </label>
+                        <input type="text" id="inputCallsign" placeholder="Например: ВОЛК" class="w-full bg-black/60 border border-tactical-border focus:border-tactical-highlight focus:ring-1 focus:ring-tactical-highlight rounded-xl px-4 py-3 text-sm text-white font-mono placeholder:text-gray-600 transition">
                     </div>
-                    <div class="text-right text-[11px] text-gray-400">
-                        <div class="text-tactical-gold font-bold">100% ОФЛАЙН + СЕТЬ</div>
-                        <div>Без ограничений</div>
-                    </div>
-                </div>
 
-                <!-- User Fields -->
-                <div class="bg-black/40 border border-tactical-border/70 rounded-xl p-4 space-y-3 font-mono text-xs">
                     <div>
-                        <label class="block text-gray-400 mb-1">Позывной бойца (или логин):</label>
-                        <input type="text" id="inputCallsign" placeholder="Например: Сармат" class="w-full bg-tactical-bg border border-tactical-border rounded-lg px-3.5 py-2.5 text-white font-mono focus:border-tactical-highlight focus:outline-none transition">
+                        <label class="block text-xs font-mono text-gray-300 uppercase tracking-wider mb-1.5">
+                            Подразделение (необязательно)
+                        </label>
+                        <input type="text" id="inputUnit" placeholder="Например: 2 рота, 1 взвод" class="w-full bg-black/60 border border-tactical-border focus:border-tactical-highlight focus:ring-1 focus:ring-tactical-highlight rounded-xl px-4 py-3 text-sm text-white font-mono placeholder:text-gray-600 transition">
                     </div>
-                    <div>
-                        <label class="block text-gray-400 mb-1">Подразделение (рота, батальон):</label>
-                        <input type="text" id="inputUnit" placeholder="Например: 1-я рота / Каптёрка" class="w-full bg-tactical-bg border border-tactical-border rounded-lg px-3.5 py-2.5 text-white font-mono focus:border-tactical-highlight focus:outline-none transition">
-                    </div>
-                    <div class="flex justify-between items-center pt-1 text-[11px] text-gray-400">
+
+                    <div class="flex justify-between items-center pt-1 text-[11px] text-gray-400 font-mono">
                         <span>Номер заказа:</span>
                         <code class="text-tactical-accent font-bold" id="labelOrderId">KAPT_...</code>
                     </div>
@@ -155,11 +135,11 @@
 
                 <!-- PRO Benefits List -->
                 <div class="bg-tactical-bg/50 border border-tactical-border/50 rounded-xl p-3.5 space-y-2 text-xs text-gray-300">
-                    <div class="font-bold text-white text-[11px] uppercase tracking-wider font-mono text-tactical-accent">Что входит в PRO:</div>
+                    <div class="font-bold text-white text-[11px] uppercase tracking-wider font-mono text-tactical-accent">Что входит в лицензию PRO:</div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px]">
                         <div class="flex items-center gap-1.5">
                             <i data-lucide="check" class="w-3.5 h-3.5 text-tactical-highlight"></i>
-                            <span>Синхронизация нескольких телефонов</span>
+                            <span>Синхронизация нескольких устройств</span>
                         </div>
                         <div class="flex items-center gap-1.5">
                             <i data-lucide="check" class="w-3.5 h-3.5 text-tactical-highlight"></i>
@@ -167,47 +147,46 @@
                         </div>
                         <div class="flex items-center gap-1.5">
                             <i data-lucide="check" class="w-3.5 h-3.5 text-tactical-highlight"></i>
-                            <span>Неограниченный каталог позиций</span>
+                            <span>Неограниченный склад и позиции</span>
                         </div>
                         <div class="flex items-center gap-1.5">
                             <i data-lucide="check" class="w-3.5 h-3.5 text-tactical-highlight"></i>
-                            <span>Экспорт в Excel / резервное копирование</span>
+                            <span>Экспорт в Excel / бэкапы</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Next Button -->
                 <button onclick="goToStep2()" class="w-full py-4 px-6 rounded-xl bg-gradient-to-r from-tactical-accent to-tactical-highlight text-white font-bold font-heading text-base tracking-wide hover:brightness-110 active:scale-[0.99] transition duration-200 glow-green flex items-center justify-center gap-2">
-                    <span>ПЕРЕЙТИ К ВЫБОРУ ОПЛАТЫ</span>
+                    <span>ПЕРЕЙТИ К ОПЛАТЕ (500 ₽)</span>
                     <i data-lucide="arrow-right" class="w-5 h-5"></i>
                 </button>
             </div>
 
-            <!-- CARD 2: PAYMENT METHOD SELECTION -->
+            <!-- STEP 2: PAYMENT METHOD & REQUISITES -->
             <div id="step2Container" class="hidden space-y-5">
                 <div class="text-center">
-                    <h2 class="text-xl font-bold font-heading text-white">Выберите удобный способ оплаты</h2>
+                    <h2 class="text-xl font-bold font-heading text-white">Реквизиты для оплаты</h2>
                     <p class="text-xs text-gray-400 mt-1">Оплата 500 ₽ за 30 дней PRO для <strong class="text-tactical-highlight" id="summaryCallsign">Боец</strong></p>
                 </div>
 
                 <!-- Methods Grid -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 font-mono text-xs">
-                    <!-- Method 1: SBP -->
-                    <div onclick="selectPaymentMethod('sbp')" id="methodCard_sbp" class="bank-card selected cursor-pointer bg-black/40 border border-tactical-border rounded-xl p-4 transition hover:border-tactical-highlight space-y-2">
+                    <!-- Method 1: SBP / Contract Transfer -->
+                    <div onclick="selectPaymentMethod('sbp')" id="methodCard_sbp" class="bank-card selected cursor-pointer bg-black/40 border border-tactical-border rounded-xl p-3.5 transition hover:border-tactical-highlight space-y-2">
                         <div class="flex items-center justify-between">
                             <div class="font-bold text-white flex items-center gap-2">
                                 <i data-lucide="zap" class="w-4 h-4 text-tactical-gold"></i>
-                                <span>СБП / Перевод</span>
+                                <span>Перевод в Т-Банк / СБП</span>
                             </div>
                             <span class="w-3.5 h-3.5 rounded-full border border-tactical-highlight bg-tactical-highlight" id="radio_sbp"></span>
                         </div>
                         <div class="text-[11px] text-gray-400 leading-relaxed">
-                            Т-Банк, Сбербанк, ВТБ, Альфа через СБП без комиссии по номеру разработчика.
+                            Прямой перевод по номеру договора в Т-Банк или через СБП любого банка без комиссии.
                         </div>
                     </div>
 
-                                        <!-- Method 2: Card (YooMoney) -->
-                    <div onclick="selectPaymentMethod('card')" id="methodCard_card" class="bank-card cursor-pointer bg-black/40 border border-tactical-border rounded-xl p-4 transition hover:border-tactical-highlight space-y-2">
+                    <!-- Method 2: Card (YooMoney) -->
+                    <div onclick="selectPaymentMethod('card')" id="methodCard_card" class="bank-card cursor-pointer bg-black/40 border border-tactical-border rounded-xl p-3.5 transition hover:border-tactical-highlight space-y-2">
                         <div class="flex items-center justify-between">
                             <div class="font-bold text-white flex items-center gap-2">
                                 <i data-lucide="credit-card" class="w-4 h-4 text-tactical-accent"></i>
@@ -216,43 +195,84 @@
                             <span class="w-3.5 h-3.5 rounded-full border border-gray-600" id="radio_card"></span>
                         </div>
                         <div class="text-[11px] text-gray-400 leading-relaxed">
-                            Официальная и безопасная оплата любой картой РФ через шлюз ЮMoney.
+                            Оплата любой картой РФ (МИР, Visa, Mastercard) через защищённый платёжный шлюз.
                         </div>
                     </div>
                 </div>
-                </div>
 
-                <!-- Requisites Info Box -->
-                <div id="sbpInfoBox" class="bg-black/60 border border-tactical-border rounded-xl p-4 space-y-3 font-mono text-xs">
+                <!-- Requisites Info Box (Т-Банк / Договор) -->
+                <div id="sbpInfoBox" class="bg-black/60 border border-tactical-border rounded-xl p-4 space-y-3.5 font-mono text-xs">
                     <div class="text-tactical-gold font-bold text-[11px] uppercase tracking-wider flex items-center justify-between">
                         <span>Реквизиты для перевода 500 ₽:</span>
-                        <span class="text-tactical-highlight">СБП</span>
+                        <span class="text-tactical-highlight">Т-БАНК / СБП</span>
                     </div>
 
-                    <div class="bg-tactical-bg p-3 rounded-lg border border-tactical-border/70 space-y-1.5">
-                        <div class="text-gray-400 text-[10px]">Прямой перевод по номеру договора / СБП (Т-Банк):</div>
-                        <div class="text-white font-bold text-sm">Номер договора: <span class="text-tactical-gold">5763271833</span></div>
-                        <div class="text-tactical-accent text-[11px]">Получатель: Васев Алексей Евгеньевич (Т-Банк)</div>
+                    <div class="bg-tactical-bg p-3.5 rounded-xl border border-tactical-border/70 space-y-3">
+                        <!-- Contract Number with 1-click copy -->
+                        <div class="flex items-center justify-between bg-black/50 p-2.5 rounded-lg border border-tactical-border/40">
+                            <div>
+                                <div class="text-gray-400 text-[10px]">Номер договора в Т-Банк:</div>
+                                <div class="text-tactical-gold font-black text-base tracking-wider" id="contractNumText">5763271833</div>
+                            </div>
+                            <button onclick="copyRequisite('5763271833', 'Номер договора')" class="px-3 py-1.5 rounded bg-tactical-accent/30 hover:bg-tactical-accent/50 text-tactical-highlight text-xs font-bold transition flex items-center gap-1.5">
+                                <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                                <span>Скопировать</span>
+                            </button>
+                        </div>
+
+                        <!-- Recipient & Bank -->
+                        <div class="space-y-1 text-xs">
+                            <div class="flex justify-between text-gray-300">
+                                <span class="text-gray-400">Банк:</span>
+                                <span class="text-white font-bold">Т-Банк (Тинькофф)</span>
+                            </div>
+                            <div class="flex justify-between text-gray-300">
+                                <span class="text-gray-400">Получатель:</span>
+                                <span class="text-white font-bold">Васев Алексей Евгеньевич</span>
+                            </div>
+                            <div class="flex justify-between text-gray-300">
+                                <span class="text-gray-400">Сумма к оплате:</span>
+                                <span class="text-tactical-highlight font-bold">500 ₽ (на 30 дней)</span>
+                            </div>
+                        </div>
+
+                        <!-- Comment to payment -->
+                        <div class="bg-black/50 p-2.5 rounded-lg border border-tactical-border/40 flex items-center justify-between">
+                            <div>
+                                <div class="text-gray-400 text-[10px]">В комментарии к переводу укажите:</div>
+                                <div class="text-tactical-highlight font-bold text-xs" id="requisiteComment2">Лицензия PRO (Боец)</div>
+                            </div>
+                            <button onclick="copyRequisite(document.getElementById('requisiteComment2').textContent, 'Комментарий')" class="px-3 py-1.5 rounded bg-tactical-accent/30 hover:bg-tactical-accent/50 text-tactical-highlight text-xs font-bold transition flex items-center gap-1.5">
+                                <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                                <span>Скопировать</span>
+                            </button>
+                        </div>
                     </div>
 
-                    <div class="text-[11px] text-gray-300 bg-tactical-bg/80 p-2.5 rounded-lg border border-tactical-border/50">
-                        💬 <strong class="text-white">В сообщении укажите:</strong> <code class="text-tactical-green font-bold" id="requisiteComment2">Позывной</code>
+                    <!-- Quick Bank Open Links -->
+                    <div class="grid grid-cols-2 gap-2 pt-1 font-mono text-[11px]">
+                        <a href="https://www.tbank.ru/" target="_blank" rel="noopener noreferrer" class="py-2.5 px-3 rounded-lg bg-yellow-400/15 border border-yellow-400/40 text-yellow-300 font-bold hover:bg-yellow-400/25 transition text-center flex items-center justify-center gap-1.5">
+                            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                            <span>Открыть Т-Банк</span>
+                        </a>
+                        <a href="https://online.sberbank.ru/" target="_blank" rel="noopener noreferrer" class="py-2.5 px-3 rounded-lg bg-green-500/15 border border-green-500/40 text-green-300 font-bold hover:bg-green-500/25 transition text-center flex items-center justify-center gap-1.5">
+                            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                            <span>СберБанк Онлайн</span>
+                        </a>
                     </div>
                 </div>
 
-                
                 <!-- Card Payment Form (YooMoney) -->
                 <div id="cardInfoBox" class="hidden bg-black/60 border border-tactical-border rounded-xl p-4 space-y-3 font-mono text-xs">
-                    <div class="text-tactical-accent font-bold text-[11px] uppercase tracking-wider flex items-center gap-2 mb-2">
+                    <div class="text-tactical-accent font-bold text-[11px] uppercase tracking-wider flex items-center gap-2 mb-1">
                         <i data-lucide="shield-check" class="w-4 h-4"></i>
-                        <span>Безопасная оплата картой</span>
+                        <span>Безопасная оплата банковской картой</span>
                     </div>
-                    <div class="text-[11px] text-gray-300 leading-relaxed mb-4">
-                        Платеж проходит через официальный шлюз ЮMoney. Данные вашей карты надежно защищены.
+                    <div class="text-[11px] text-gray-300 leading-relaxed mb-3">
+                        Оплата картой любого банка РФ через защищённый платёжный шлюз ЮMoney.
                     </div>
                     
-                    <form method="POST" action="https://yoomoney.ru/quickpay/confirm" class="space-y-3">
-                        <!-- ВНИМАНИЕ: ЗАМЕНИТЕ 41001... НА ВАШ НОМЕР КОШЕЛЬКА ЮMoney -->
+                    <form method="POST" action="https://yoomoney.ru/quickpay/confirm" class="space-y-3" target="_blank">
                         <input type="hidden" name="receiver" value="4100112345678901"> 
                         <input type="hidden" name="formcomment" value="КАПТЁРКА PRO">
                         <input type="hidden" name="short-dest" value="Лицензия КАПТЁРКА PRO">
@@ -260,25 +280,21 @@
                         <input type="hidden" name="quickpay-form" value="shop">
                         <input type="hidden" name="targets" id="yooTargets" value="Лицензия КАПТЁРКА PRO">
                         <input type="hidden" name="sum" value="500" data-type="number">
-                        <input type="hidden" name="paymentType" value="AC"> <!-- AC = card, PC = wallet -->
+                        <input type="hidden" name="paymentType" value="AC">
                         <input type="hidden" name="successURL" value="https://kapterka-pro.ru/pay.html?success=true">
                         
-                        <button type="submit" onclick="document.getElementById('yooTargets').value = 'Лицензия PRO для позывного: ' + document.getElementById('step1Callsign').value; document.getElementById('yooLabel').value = document.getElementById('step1Callsign').value;" class="w-full py-4 px-6 rounded-xl bg-gradient-to-r from-tactical-accent to-tactical-highlight text-white font-bold font-heading text-base tracking-wide hover:brightness-110 active:scale-[0.99] transition duration-200 glow-green flex items-center justify-center gap-2">
+                        <button type="submit" onclick="document.getElementById('yooTargets').value = 'Лицензия PRO для: ' + callsign; document.getElementById('yooLabel').value = callsign; setTimeout(goToStep3, 1000);" class="w-full py-4 px-6 rounded-xl bg-gradient-to-r from-tactical-accent to-tactical-highlight text-white font-bold font-heading text-base tracking-wide hover:brightness-110 active:scale-[0.99] transition duration-200 glow-green flex items-center justify-center gap-2">
                             <i data-lucide="credit-card" class="w-5 h-5"></i>
                             <span>ОПЛАТИТЬ 500 ₽ КАРТОЙ</span>
                         </button>
                     </form>
                 </div>
-                <!-- Submit Button -->
-                <div class="space-y-2.5">
-                    <a href="https://t.me/kapterka_admin" target="_blank" rel="noopener noreferrer" onclick="sendOrderNotification()" class="w-full py-4 px-6 rounded-xl bg-gradient-to-r from-[#229ED9] to-[#1E88E5] text-white font-bold font-heading text-base tracking-wide hover:brightness-110 active:scale-[0.99] transition duration-200 shadow-lg shadow-blue-900/30 flex items-center justify-center gap-2">
-                        <i data-lucide="send" class="w-5 h-5"></i>
-                        <span>НАПИСАТЬ В ТЕЛЕГРАМ ДЛЯ ОПЛАТЫ</span>
-                    </a>
 
-                    <button onclick="goToStep3()" class="w-full py-3.5 px-4 rounded-xl bg-tactical-accent/20 border border-tactical-accent/50 text-tactical-highlight font-bold font-heading text-xs sm:text-sm tracking-wide hover:bg-tactical-accent/30 active:scale-[0.99] transition duration-200 flex items-center justify-center gap-2">
-                        <i data-lucide="check-circle" class="w-4 h-4"></i>
-                        <span>Я УЖЕ ОПЛАТИЛ — ПРОВЕРИТЬ И ПОЛУЧИТЬ КЛЮЧ</span>
+                <!-- Submit Button for SBP -->
+                <div class="space-y-2.5">
+                    <button id="btnPrimaryAction" onclick="goToStep3()" class="w-full py-4 px-6 rounded-xl bg-gradient-to-r from-tactical-accent to-tactical-highlight text-white font-bold font-heading text-base tracking-wide hover:brightness-110 active:scale-[0.99] transition duration-200 glow-green flex items-center justify-center gap-2">
+                        <i data-lucide="check-circle" class="w-5 h-5"></i>
+                        <span>Я СОВЕРШИЛ ПЕРЕВОД — ПОЛУЧИТЬ КЛЮЧ PRO</span>
                     </button>
 
                     <button onclick="goToStep1()" class="w-full py-2 text-gray-400 hover:text-gray-200 text-xs font-mono transition text-center">
@@ -287,23 +303,23 @@
                 </div>
             </div>
 
-            <!-- CARD 3: KEY ISSUANCE & VERIFICATION -->
+            <!-- STEP 3: KEY ISSUANCE & VERIFICATION -->
             <div id="step3Container" class="hidden space-y-5">
                 <div class="text-center">
                     <div class="w-14 h-14 rounded-full bg-tactical-accent/20 border border-tactical-accent/40 flex items-center justify-center mx-auto mb-2 text-tactical-highlight">
                         <i data-lucide="key" class="w-7 h-7"></i>
                     </div>
-                    <h2 class="text-xl font-bold font-heading text-white">Проверка и выдача ключа PRO</h2>
+                    <h2 class="text-xl font-bold font-heading text-white">Выдача лицензии PRO</h2>
                     <p class="text-xs text-gray-400 mt-1">Позывной: <strong class="text-tactical-highlight" id="step3Callsign">Боец</strong> • Заказ: <code class="text-tactical-accent font-bold" id="step3OrderId">KAPT_...</code></p>
                 </div>
 
                 <!-- Status Banner -->
                 <div id="statusBanner" class="rounded-xl p-4 text-center font-mono text-xs sm:text-sm border bg-tactical-bg border-tactical-border">
                     <div id="statusText" class="font-bold text-gray-300">
-                        ⏳ Ожидание подтверждения администратора...
+                        ⏳ Ожидание подтверждения поступления оплаты...
                     </div>
                     <p class="text-[11px] text-gray-400 mt-1.5" id="statusDesc">
-                        Как только администратор подтвердит поступление платежа по договору, здесь отобразится ваш PRO-ключ.
+                        После совершения перевода по договору №5763271833 администратор подтверждает заявку, и ваш PRO-ключ активируется.
                     </p>
                 </div>
 
@@ -324,8 +340,8 @@
                     <div class="bg-tactical-bg/80 p-3 rounded-lg border border-tactical-border/60 text-[11px] text-gray-300 space-y-1.5 font-mono">
                         <div class="font-bold text-white">Как активировать в приложении:</div>
                         <div>1. Откройте приложение <b>«КАПТЁРКА PRO»</b> на телефоне.</div>
-                        <div>2. Перейдите в <b>«Настройки» → «Лизензия PRO»</b>.</div>
-                        <div>3. Вставьте скопированный ключ в поле и нажмите <b>«Активировать ключ»</b> (или просто нажмите <b>«Проверить статус онлайн»</b>).</div>
+                        <div>2. Перейдите в <b>«Настройки» → «Лицензия PRO»</b>.</div>
+                        <div>3. Вставьте ключ или нажмите <b>«Проверить статус онлайн»</b>.</div>
                     </div>
                 </div>
 
@@ -333,24 +349,17 @@
                 <div class="space-y-2.5">
                     <button id="btnCheckStatus" onclick="checkOrderStatusOnServer(true)" class="w-full py-4 px-6 rounded-xl bg-gradient-to-r from-tactical-accent to-tactical-highlight text-white font-bold font-heading text-base tracking-wide hover:brightness-110 active:scale-[0.99] transition duration-200 glow-green flex items-center justify-center gap-2">
                         <i data-lucide="refresh-cw" class="w-5 h-5"></i>
-                        <span>ПРОВЕРИТЬ СТАТУС ОПЛАТЫ СЕЙЧАС</span>
+                        <span>ПРОВЕРИТЬ СТАТУС ОПЛАТЫ</span>
                     </button>
-
-                    <a href="https://t.me/kapterka_admin" target="_blank" rel="noopener noreferrer" class="w-full py-3 px-4 rounded-xl bg-[#229ED9]/20 border border-[#229ED9]/40 text-[#45B2E8] font-semibold text-xs hover:bg-[#229ED9]/30 transition duration-200 flex items-center justify-center gap-2">
-                        <i data-lucide="send" class="w-4 h-4"></i>
-                        <span>Написать разработчику для подтверждения оплаты</span>
-                    </a>
 
                     <button onclick="goToStep2()" class="w-full py-2 text-gray-400 hover:text-gray-200 text-xs font-mono transition text-center">
-                        ← Изменить способ оплаты
+                        ← Вернуться к реквизитам оплаты
                     </button>
                 </div>
-            </div>
 
-            <!-- Loading Overlay -->
-            <div id="loadingBox" class="hidden text-center py-6">
-                <div class="inline-block w-8 h-8 border-4 border-tactical-accent border-t-transparent rounded-full animate-spin mb-2.5"></div>
-                <div class="text-xs font-mono text-gray-300" id="loadingText">Связь с сервером лицензий...</div>
+                <div class="p-3 bg-tactical-bg/60 border border-tactical-border/40 rounded-xl text-[11px] text-gray-400 font-mono text-center">
+                    Вопросы по оплате: <strong class="text-white">alex.666.881@gmail.com</strong>
+                </div>
             </div>
 
             <!-- Back to Home -->
@@ -370,8 +379,6 @@
     <script>
         const GITHUB_REPO = 'LeVa3bat/leva3bat.github.io';
         const GITHUB_TOKEN = String.fromCharCode(...[16, 31, 7, 40, 63, 48, 36, 25, 26, 78, 20, 61, 34, 50, 30, 2, 45, 22, 58, 3, 51, 60, 34, 34, 46, 63, 3, 0, 20, 21, 28, 17, 19, 71, 71, 38, 38, 4, 62, 64].map(c => c ^ 119));
-        const BOT_TOKEN = [('8913866950:' + 'AAFSMMAOHyULBE4'), 'uhsxdEoYG5fUT0-pSSr8'].join('');
-        const DEV_CHAT_ID = '7426550032';
         const MASTER_ADMIN_PASS = '5763271833';
 
         // URL Params
@@ -379,7 +386,6 @@
         let callsign = (urlParams.get('callsign') || localStorage.getItem('kapterka_last_callsign') || 'Боец').trim();
         let unitName = (urlParams.get('unit') || urlParams.get('unitName') || localStorage.getItem('kapterka_last_unit') || 'Каптёрка').trim();
         let orderId = (urlParams.get('order') || urlParams.get('orderId') || ('KAPT_' + Math.floor(Date.now() / 1000) + '_' + Math.floor(Math.random() * 900 + 100))).trim();
-        let amount = 500;
         let selectedMethod = 'sbp';
         let generatedKey = 'KAPT-PRO-5763271833-30D-' + Math.random().toString(36).substring(2, 10).toUpperCase();
 
@@ -396,6 +402,21 @@
             return decodeURIComponent(escape(atob(b64.replace(/\s/g, ''))));
         }
 
+        function showToast(msg) {
+            const toast = document.getElementById('toastMessage');
+            toast.textContent = msg;
+            toast.classList.remove('hidden');
+            setTimeout(() => { toast.classList.add('hidden'); }, 2500);
+        }
+
+        function copyRequisite(text, label) {
+            navigator.clipboard.writeText(text).then(() => {
+                showToast(`✓ ${label} скопирован в буфер!`);
+            }).catch(() => {
+                showToast(`✓ Скопировано: ${text}`);
+            });
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('inputCallsign').value = callsign !== 'Боец' ? callsign : '';
             document.getElementById('inputUnit').value = unitName !== 'Каптёрка' ? unitName : '';
@@ -403,8 +424,15 @@
             
             if (window.lucide) lucide.createIcons();
 
-            // If arrived from app with callsign, can check directly
-            if (urlParams.get('step') === '3' || urlParams.get('check') === '1') {
+            if (urlParams.get('success') === 'true') {
+                goToStep3();
+                const banner = document.getElementById('statusBanner');
+                const statusText = document.getElementById('statusText');
+                const statusDesc = document.getElementById('statusDesc');
+                banner.className = 'rounded-xl p-4 text-center font-mono text-xs sm:text-sm border bg-tactical-bg border-tactical-highlight text-tactical-highlight';
+                statusText.innerHTML = '✅ ОПЛАТА УСПЕШНО ЗАВЕРШЕНА';
+                statusDesc.innerHTML = 'Платёж обрабатывается. Администратор скоро активирует вашу лицензию.';
+            } else if (urlParams.get('step') === '3' || urlParams.get('check') === '1') {
                 goToStep3();
                 checkOrderStatusOnServer(false);
             }
@@ -427,16 +455,13 @@
             localStorage.setItem('kapterka_last_unit', unitName);
 
             document.getElementById('summaryCallsign').textContent = callsign;
-            document.getElementById('requisiteComment2').textContent = `${callsign} (${orderId})`;
+            document.getElementById('requisiteComment2').textContent = `Лицензия PRO (${callsign})`;
 
             document.getElementById('step1Container').classList.add('hidden');
             document.getElementById('step2Container').classList.remove('hidden');
             document.getElementById('step3Container').classList.add('hidden');
             updateBadges(2);
             if (window.lucide) lucide.createIcons();
-
-            // Send pending order to TG
-            sendOrderNotification();
         }
 
         function goToStep3() {
@@ -468,7 +493,6 @@
             }
         }
 
-
         function selectPaymentMethod(m) {
             selectedMethod = m;
             document.getElementById('methodCard_sbp').classList.toggle('selected', m === 'sbp');
@@ -481,7 +505,6 @@
                 ? 'w-3.5 h-3.5 rounded-full border border-tactical-highlight bg-tactical-highlight'
                 : 'w-3.5 h-3.5 rounded-full border border-gray-600';
                 
-            // Toggle form visibility based on selection
             if (m === 'card') {
                 document.getElementById('sbpInfoBox').classList.add('hidden');
                 document.getElementById('cardInfoBox').classList.remove('hidden');
@@ -493,42 +516,6 @@
             }
         }
 
-        // Send TG alert ONLY for pending order
-        async function sendOrderNotification() {
-            const notifiedKey = 'kapt_order_notified_' + orderId;
-            if (sessionStorage.getItem(notifiedKey)) return;
-            sessionStorage.setItem(notifiedKey, '1');
-
-            try {
-                const adminApproveUrl = `https://kapterka-pro.ru/approve.html?order=${encodeURIComponent(orderId)}&callsign=${encodeURIComponent(callsign)}&unit=${encodeURIComponent(unitName)}&amount=500&key=${encodeURIComponent(generatedKey)}&admin_token=${MASTER_ADMIN_PASS}`;
-
-                const tgText = `💳 <b>НОВАЯ ЗАЯВКА НА ОПЛАТУ PRO (500 ₽)</b>\n\n` +
-                    `🪖 <b>Позывной:</b> <b>${callsign}</b>\n` +
-                    `🏢 <b>Подразделение:</b> ${unitName}\n` +
-                    `💰 <b>Сумма:</b> 500 ₽ (30 дней PRO)\n` +
-                    `🧾 <b>Заказ:</b> <code>${orderId}</code>\n` +
-                    `⏰ <b>Время:</b> ${new Date().toLocaleString('ru-RU')}\n\n` +
-                    `👉 <a href="${adminApproveUrl}"><b>[ ПОДТВЕРДИТЬ ОПЛАТУ ]</b></a>`;
-
-                await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        chat_id: DEV_CHAT_ID,
-                        text: tgText,
-                        parse_mode: 'HTML',
-                        reply_markup: {
-                            inline_keyboard: [
-                                [{ text: "✅ Подтвердить оплату", url: adminApproveUrl }]
-                            ]
-                        }
-                    })
-                });
-            } catch (e) {
-                console.warn('TG alert err', e);
-            }
-        }
-
         // Check order status in approved_orders.json
         async function checkOrderStatusOnServer(isUserClick) {
             const banner = document.getElementById('statusBanner');
@@ -537,7 +524,7 @@
             const keyBox = document.getElementById('licenseKeyBox');
 
             if (isUserClick) {
-                statusText.innerHTML = '🔄 Проверка статуса на сервере...';
+                statusText.innerHTML = '🔄 Проверка статуса оплаты...';
             }
 
             try {
@@ -556,9 +543,9 @@
                         const orders = parsed.orders || {};
                         const cleanCallsign = callsign.toLowerCase();
                         
-                        const matchedOrder = orders[orderId] || orders['USER_' + cleanCallsign];
+                        const matchedOrder = orders[orderId] || orders['USER_' + cleanCallsign] || Object.values(orders).find(o => o.callsign && o.callsign.toLowerCase() === cleanCallsign);
                         
-                        if (matchedOrder && matchedOrder.status === 'APPROVED') {
+                        if (matchedOrder && (matchedOrder.status === 'APPROVED' || matchedOrder.status === 'PAID')) {
                             const activeKey = matchedOrder.key || generatedKey;
                             banner.className = 'rounded-xl p-4 text-center font-mono text-xs sm:text-sm border bg-tactical-accent/20 border-tactical-accent text-tactical-highlight glow-green';
                             statusText.innerHTML = '🎉 ОПЛАТА ПОДТВЕРЖДЕНА АДМИНИСТРАТОРОМ!';
@@ -574,8 +561,8 @@
 
                 if (isUserClick) {
                     banner.className = 'rounded-xl p-4 text-center font-mono text-xs sm:text-sm border bg-tactical-bg border-tactical-border text-gray-300';
-                    statusText.innerHTML = '⏳ Платёж пока ожидает подтверждения';
-                    statusDesc.innerHTML = 'Если вы совершили перевод, администратор подтвердит его в ближайшее время вручную. Вы можете прислать чек разработчику.';
+                    statusText.innerHTML = '⏳ Платёж ожидает проверки администратором';
+                    statusDesc.innerHTML = 'Если перевод 500 ₽ по договору №5763271833 выполнен, администратор подтвердит его в ближайшее время. Нажмите кнопку проверки ещё раз чуть позже.';
                 }
             } catch (e) {
                 console.warn('Status check err', e);
@@ -585,7 +572,7 @@
         function copyLicenseKey() {
             const key = document.getElementById('issuedKeyText').textContent.trim();
             navigator.clipboard.writeText(key).then(() => {
-                alert('Лицензионный ключ скопирован в буфер обмена!\n\nВставьте его в приложении «КАПТЁРКА PRO» в разделе «Настройки» → «Лицензия PRO».');
+                showToast('✓ PRO-ключ скопирован в буфер обмена!');
             });
         }
     </script>
