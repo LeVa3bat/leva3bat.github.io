@@ -211,12 +211,12 @@
                         <div class="flex items-center justify-between">
                             <div class="font-bold text-white flex items-center gap-2">
                                 <i data-lucide="send" class="w-4 h-4 text-blue-400"></i>
-                                <span>Через Telegram</span>
+                                <span>Напрямую по договору</span>
                             </div>
                             <span class="w-3.5 h-3.5 rounded-full border border-gray-600" id="radio_tg"></span>
                         </div>
                         <div class="text-[11px] text-gray-400 leading-relaxed">
-                            Прямая связь с разработчиком в Telegram (@kapterka_oplata_bot), отправка чека.
+                            Прямая связь с разработчиком для перевода по номеру договора и отправки чека.
                         </div>
                     </div>
                 </div>
@@ -230,8 +230,8 @@
 
                     <div class="bg-tactical-bg p-3 rounded-lg border border-tactical-border/70 space-y-1.5">
                         <div class="text-gray-400 text-[10px]">Для получения актуальных реквизитов и перевода:</div>
-                        <div class="text-white font-bold text-sm">Свяжитесь с разработчиком в Telegram</div>
-                        <div class="text-tactical-accent text-[11px]">@kapterka_oplata_bot (Александр Е. В.)</div>
+                        <div class="text-white font-bold text-sm">Перевод по номеру договора</div>
+                        <div class="text-tactical-accent text-[11px]">Уточните актуальный номер договора у разработчика</div>
                     </div>
 
                     <div class="text-[11px] text-gray-300 bg-tactical-bg/80 p-2.5 rounded-lg border border-tactical-border/50">
@@ -241,7 +241,7 @@
 
                 <!-- Submit Button -->
                 <div class="space-y-2.5">
-                    <a href="https://t.me/kapterka_oplata_bot" target="_blank" rel="noopener noreferrer" onclick="sendOrderNotification()" class="w-full py-4 px-6 rounded-xl bg-gradient-to-r from-[#229ED9] to-[#1E88E5] text-white font-bold font-heading text-base tracking-wide hover:brightness-110 active:scale-[0.99] transition duration-200 shadow-lg shadow-blue-900/30 flex items-center justify-center gap-2">
+                    <a href="https://t.me/kapterka_admin" target="_blank" rel="noopener noreferrer" onclick="sendOrderNotification()" class="w-full py-4 px-6 rounded-xl bg-gradient-to-r from-[#229ED9] to-[#1E88E5] text-white font-bold font-heading text-base tracking-wide hover:brightness-110 active:scale-[0.99] transition duration-200 shadow-lg shadow-blue-900/30 flex items-center justify-center gap-2">
                         <i data-lucide="send" class="w-5 h-5"></i>
                         <span>НАПИСАТЬ В ТЕЛЕГРАМ ДЛЯ ОПЛАТЫ</span>
                     </a>
@@ -273,7 +273,7 @@
                         ⏳ Ожидание подтверждения администратора...
                     </div>
                     <p class="text-[11px] text-gray-400 mt-1.5" id="statusDesc">
-                        Как только администратор подтвердит поступление платежа через Telegram-бота, здесь отобразится ваш PRO-ключ.
+                        Как только администратор подтвердит поступление платежа по договору, здесь отобразится ваш PRO-ключ.
                     </p>
                 </div>
 
@@ -306,9 +306,9 @@
                         <span>ПРОВЕРИТЬ СТАТУС ОПЛАТЫ СЕЙЧАС</span>
                     </button>
 
-                    <a href="https://t.me/kapterka_oplata_bot" target="_blank" rel="noopener noreferrer" class="w-full py-3 px-4 rounded-xl bg-[#229ED9]/20 border border-[#229ED9]/40 text-[#45B2E8] font-semibold text-xs hover:bg-[#229ED9]/30 transition duration-200 flex items-center justify-center gap-2">
+                    <a href="https://t.me/kapterka_admin" target="_blank" rel="noopener noreferrer" class="w-full py-3 px-4 rounded-xl bg-[#229ED9]/20 border border-[#229ED9]/40 text-[#45B2E8] font-semibold text-xs hover:bg-[#229ED9]/30 transition duration-200 flex items-center justify-center gap-2">
                         <i data-lucide="send" class="w-4 h-4"></i>
-                        <span>Написать разработчику в Telegram (@kapterka_oplata_bot)</span>
+                        <span>Написать разработчику для подтверждения оплаты</span>
                     </a>
 
                     <button onclick="goToStep2()" class="w-full py-2 text-gray-400 hover:text-gray-200 text-xs font-mono transition text-center">
@@ -533,7 +533,7 @@
                 if (isUserClick) {
                     banner.className = 'rounded-xl p-4 text-center font-mono text-xs sm:text-sm border bg-tactical-bg border-tactical-border text-gray-300';
                     statusText.innerHTML = '⏳ Платёж пока ожидает подтверждения';
-                    statusDesc.innerHTML = 'Если вы совершили перевод, администратор подтвердит его в ближайшее время через Telegram-бота. Также можно отправить чек в Telegram.';
+                    statusDesc.innerHTML = 'Если вы совершили перевод, администратор подтвердит его в ближайшее время вручную. Вы можете прислать чек разработчику.';
                 }
             } catch (e) {
                 console.warn('Status check err', e);
