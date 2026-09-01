@@ -27,7 +27,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://kapterka-pro.ru/">
     <meta property="og:title" content="АСУ «КАПТЁРКА PRO» v2.9 — Тактический складской учёт">
-    <meta property="og:description" content="Автономное Android-приложение для учёта вооружения, связи, БПЛА, экипировки и имущества подразделения. 100% офлайн, QR-коды, накладные.">
+    <meta property="og:description" content="Автономное Android-приложение для учёта вооружения, связи, БПЛА, экипировки и имущества подразделения. Облачная синхронизация, QR-коды, накладные.">
     <meta property="og:site_name" content="АСУ КАПТЁРКА PRO">
     
     <!-- Yandex.Metrika counter -->
@@ -199,6 +199,22 @@
         details[open] > summary::after {
             content: "-";
         }
+
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        details > summary::after {
+            content: "+";
+            float: right;
+            font-family: monospace;
+            font-size: 1.5rem;
+            color: #4CAF50;
+            line-height: 1;
+            margin-top: -0.25rem;
+        }
+        details[open] > summary::after {
+            content: "-";
+        }
 /* Custom scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
@@ -233,7 +249,7 @@
         "price": "0",
         "priceCurrency": "RUB"
       },
-      "description": "Автономная система тактического складского учёта вооружения, боеприпасов, средств связи, БПЛА и вещевого имущества роты/взвода без интернета. Синхронизация между устройствами подразделения.",
+      "description": "Автономная система тактического складского учёта вооружения, боеприпасов, средств связи, БПЛА и вещевого имущества роты/взвода с мгновенной облачной синхронизацией. Синхронизация между устройствами подразделения.",
       "downloadUrl": "kapterka-v2.9.apk",
       "softwareVersion": "2.6",
       "fileSize": "24.7MB",
@@ -258,7 +274,7 @@
             </div>
             <div class="flex items-center space-x-3 sm:space-x-4 text-[11px]">
                 <span class="text-tactical-gold font-bold flex items-center gap-1">
-                    <i data-lucide="shield-check" class="w-3.5 h-3.5"></i> 100% ОФЛАЙН
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5"></i> ОБЛАЧНАЯ БАЗА
                 </span>
                 <a href="pay.html" class="text-tactical-gold hover:text-white font-bold flex items-center gap-1 transition-colors">
                     <i data-lucide="award" class="w-3.5 h-3.5"></i> Оплата PRO (500 ₽)
@@ -341,7 +357,7 @@
                 <!-- Badge -->
                 <div class="inline-flex items-center space-x-2 bg-tactical-card border border-tactical-border px-3.5 py-1.5 rounded-full text-xs font-mono text-tactical-green mb-4 shadow-sm">
                     <span class="w-2 h-2 rounded-full bg-tactical-green animate-pulse"></span>
-                    <span>100% АВТОНОМНЫЙ РЕЖИМ • БЕЗ ИНТЕРНЕТА</span>
+                    <span>СЕТЕВОЙ РЕЖИМ • ОБЛАЧНАЯ СИНХРОНИЗАЦИЯ 24/7</span>
                 </div>
 
                 <!-- Big Headline -->
@@ -350,7 +366,7 @@
                 </h1>
                 
                 <p class="text-xs sm:text-base text-gray-300 max-w-2xl mx-auto mb-5 leading-relaxed">
-                    Профессиональный мобильный учёт вооружения, боеприпасов, БПЛА, средств связи и материальных ценностей роты/взвода без интернета.
+                    Профессиональный мобильный учёт вооружения, боеприпасов, БПЛА, средств связи и материальных ценностей роты/взвода с мгновенной облачной синхронизацией.
                 </p>
 
                 <!-- Primary Buttons -->
@@ -527,12 +543,12 @@
                         <div class="text-[11px] text-tactical-muted font-sans mt-0.5">Приход / Расход / ОП</div>
                     </div>
                     <div class="bg-tactical-card border border-tactical-border p-3 rounded-xl shadow-sm">
-                        <div class="text-lg sm:text-2xl font-black text-white">100%</div>
-                        <div class="text-[11px] text-tactical-muted font-sans mt-0.5">Офлайн автономность</div>
+                        <div class="text-lg sm:text-2xl font-black text-white">24/7</div>
+                        <div class="text-[11px] text-tactical-muted font-sans mt-0.5">Облачная синхр.</div>
                     </div>
                     <div class="bg-tactical-card border border-tactical-border p-3 rounded-xl shadow-sm">
-                        <div class="text-lg sm:text-2xl font-black text-tactical-green">NO-BT</div>
-                        <div class="text-[11px] text-tactical-muted font-sans mt-0.5">Радиомаскировка</div>
+                        <div class="text-lg sm:text-2xl font-black text-tactical-green">30 дн.</div>
+                        <div class="text-[11px] text-tactical-muted font-sans mt-0.5">PRO лицензия</div>
                     </div>
                 </div>
 
@@ -670,7 +686,7 @@
                                 </li>
                                 <li class="flex items-center gap-2">
                                     <i data-lucide="check" class="w-4 h-4 text-tactical-green shrink-0"></i>
-                                    <span>100% офлайн без интернета</span>
+                                    <span>Облачная синхронизация базы</span>
                                 </li>
                             </ul>
                         </div>
