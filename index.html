@@ -27,7 +27,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://kapterka-pro.ru/">
     <meta property="og:title" content="АСУ «КАПТЁРКА PRO» v2.9 — Тактический складской учёт">
-    <meta property="og:description" content="Автономное Android-приложение для учёта вооружения, связи, БПЛА, экипировки и имущества подразделения. Облачная синхронизация, QR-коды, накладные.">
+    <meta property="og:description" content="Автономное Android-приложение для учёта вооружения, связи, БПЛА, экипировки и имущества подразделения. 100% офлайн, QR-коды, накладные.">
     <meta property="og:site_name" content="АСУ КАПТЁРКА PRO">
     
     <!-- Yandex.Metrika counter -->
@@ -183,7 +183,23 @@
             border-color: #4CAF50 !important;
         }
 
-        /* Custom scrollbar */
+        
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        details > summary::after {
+            content: "+";
+            float: right;
+            font-family: monospace;
+            font-size: 1.5rem;
+            color: #4CAF50;
+            line-height: 1;
+            margin-top: -0.25rem;
+        }
+        details[open] > summary::after {
+            content: "-";
+        }
+/* Custom scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
             height: 8px;
@@ -217,7 +233,7 @@
         "price": "0",
         "priceCurrency": "RUB"
       },
-      "description": "Автономная система тактического складского учёта вооружения, боеприпасов, средств связи, БПЛА и вещевого имущества роты/взвода с мгновенной облачной синхронизацией. Синхронизация между устройствами подразделения.",
+      "description": "Автономная система тактического складского учёта вооружения, боеприпасов, средств связи, БПЛА и вещевого имущества роты/взвода без интернета. Синхронизация между устройствами подразделения.",
       "downloadUrl": "kapterka-v2.9.apk",
       "softwareVersion": "2.6",
       "fileSize": "24.7MB",
@@ -242,7 +258,7 @@
             </div>
             <div class="flex items-center space-x-3 sm:space-x-4 text-[11px]">
                 <span class="text-tactical-gold font-bold flex items-center gap-1">
-                    <i data-lucide="shield-check" class="w-3.5 h-3.5"></i> ОБЛАЧНАЯ БАЗА
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5"></i> 100% ОФЛАЙН
                 </span>
                 <a href="pay.html" class="text-tactical-gold hover:text-white font-bold flex items-center gap-1 transition-colors">
                     <i data-lucide="award" class="w-3.5 h-3.5"></i> Оплата PRO (500 ₽)
@@ -325,7 +341,7 @@
                 <!-- Badge -->
                 <div class="inline-flex items-center space-x-2 bg-tactical-card border border-tactical-border px-3.5 py-1.5 rounded-full text-xs font-mono text-tactical-green mb-4 shadow-sm">
                     <span class="w-2 h-2 rounded-full bg-tactical-green animate-pulse"></span>
-                    <span>СЕТЕВОЙ РЕЖИМ • ОБЛАЧНАЯ СИНХРОНИЗАЦИЯ 24/7</span>
+                    <span>100% АВТОНОМНЫЙ РЕЖИМ • БЕЗ ИНТЕРНЕТА</span>
                 </div>
 
                 <!-- Big Headline -->
@@ -334,7 +350,7 @@
                 </h1>
                 
                 <p class="text-xs sm:text-base text-gray-300 max-w-2xl mx-auto mb-5 leading-relaxed">
-                    Профессиональный мобильный учёт вооружения, боеприпасов, БПЛА, средств связи и материальных ценностей роты/взвода с мгновенной облачной синхронизацией.
+                    Профессиональный мобильный учёт вооружения, боеприпасов, БПЛА, средств связи и материальных ценностей роты/взвода без интернета.
                 </p>
 
                 <!-- Primary Buttons -->
@@ -511,24 +527,23 @@
                         <div class="text-[11px] text-tactical-muted font-sans mt-0.5">Приход / Расход / ОП</div>
                     </div>
                     <div class="bg-tactical-card border border-tactical-border p-3 rounded-xl shadow-sm">
-                        <div class="text-lg sm:text-2xl font-black text-white">24/7</div>
-                        <div class="text-[11px] text-tactical-muted font-sans mt-0.5">Облачная синхр.</div>
+                        <div class="text-lg sm:text-2xl font-black text-white">100%</div>
+                        <div class="text-[11px] text-tactical-muted font-sans mt-0.5">Офлайн автономность</div>
                     </div>
                     <div class="bg-tactical-card border border-tactical-border p-3 rounded-xl shadow-sm">
-                        <div class="text-lg sm:text-2xl font-black text-tactical-green">30 дн.</div>
-                        <div class="text-[11px] text-tactical-muted font-sans mt-0.5">PRO лицензия</div>
+                        <div class="text-lg sm:text-2xl font-black text-tactical-green">NO-BT</div>
+                        <div class="text-[11px] text-tactical-muted font-sans mt-0.5">Радиомаскировка</div>
                     </div>
                 </div>
 
                 <!-- Offline-First & Points Sync Feature Box -->
                 <div class="space-y-3">
                     <!-- WHAT'S NEW IN V2.9 PRO (CLEAN & COMPACT) -->
-                    <div class="bg-tactical-card border border-tactical-borderBright/70 p-4 sm:p-5 rounded-2xl text-left shadow-md">
-                        <div class="flex items-center justify-between gap-2 mb-3 pb-2.5 border-b border-tactical-border/70">
+                    <div class="bg-tactical-card border border-tactical-borderBright/70 p-4 sm:p-5 rounded-2xl text-left shadow-md"><details class="group"><summary class="flex items-center justify-between cursor-pointer list-none outline-none gap-2 mb-3 pb-2.5 border-b border-tactical-border/70">
                             <div class="flex items-center space-x-2.5">
                                 <div class="w-8 h-8 rounded-lg bg-tactical-green/15 border border-tactical-green/40 flex items-center justify-center text-tactical-green text-sm shrink-0">
                                     <i data-lucide="sparkles" class="w-4 h-4"></i>
-                                </div>
+                                </summary><div class="mt-4">
                                 <div>
                                     <h3 class="text-sm sm:text-base font-bold text-white flex items-center gap-2">
                                         Что нового в версии 2.9 PRO
@@ -569,11 +584,9 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="bg-tactical-card border border-tactical-green/40 p-4 sm:p-5 rounded-2xl text-left shadow-lg relative overflow-hidden">
-                        <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-tactical-green/5 rounded-full blur-2xl pointer-events-none"></div>
-                        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-3">
+                    </div></details></div>
+                    <div class="bg-tactical-card border border-tactical-green/40 p-4 sm:p-5 rounded-2xl text-left shadow-lg relative overflow-hidden"><div class="absolute -right-10 -bottom-10 w-40 h-40 bg-tactical-green/5 rounded-full blur-2xl pointer-events-none"></div>
+                        <details class="group relative z-10"><summary class="flex flex-col sm:flex-row cursor-pointer list-none outline-none items-start sm:items-center justify-between gap-3 mb-3">
                             <div class="flex items-center space-x-3">
                                 <div class="w-10 h-10 rounded-xl bg-tactical-green/15 border border-tactical-green/40 flex items-center justify-center text-tactical-green shrink-0">
                                     <i data-lucide="refresh-cw" class="w-5 h-5"></i>
@@ -590,7 +603,7 @@
                                 <span>Инструкция к ключу</span>
                                 <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
                             </a>
-                        </div>
+                        </summary><div class="mt-4">
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] sm:text-xs text-gray-300">
                             <div class="bg-tactical-dark/70 border border-tactical-border/70 p-2.5 rounded-xl">
                                 <strong class="text-tactical-green block mb-0.5">🔑 Общий ключ подразделения:</strong>
@@ -601,13 +614,11 @@
                                 В один клик через защищенную облачную сеть или прямым файлом базы / QR-кодом полностью без интернета на передовой.
                             </div>
                         </div>
-                    </div>
-
+                    </div></details></div>
                     <!-- Purpose grid: Для чего создана система -->
-                    <div class="bg-tactical-dark border border-tactical-border p-4 sm:p-5 rounded-2xl text-left">
-                        <h3 class="text-xs font-mono font-bold text-tactical-green uppercase tracking-wider mb-3 flex items-center gap-2">
-                            <i data-lucide="check-circle" class="w-4 h-4 text-tactical-green"></i> Для чего нужна АСУ «КАПТЁРКА PRO»:
-                        </h3>
+                    <div class="bg-tactical-dark border border-tactical-border p-4 sm:p-5 rounded-2xl text-left"><details class="group"><summary class="cursor-pointer list-none outline-none text-xs font-mono font-bold text-tactical-green uppercase tracking-wider mb-3 flex items-center gap-2">
+                            <i data-lucide="check-circle" class="cursor-pointer list-none outline-none w-4 h-4 text-tactical-green"></i> Для чего нужна АСУ «КАПТЁРКА PRO»:
+                        </summary><div class="mt-4">
                         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs text-gray-300">
                             <div class="space-y-1">
                                 <span class="font-bold text-white block">1. Отказ от тетрадей</span>
@@ -622,7 +633,7 @@
                                 <p class="text-[11px] text-tactical-muted leading-relaxed">Генерация ведомостей выдачи, актов списания и накладных в 1 клик с возможностью печати и экспорта.</p>
                             </div>
                         </div>
-                    </div>
+                    </div></details></div>
                 </div>
 
             </div>
@@ -659,7 +670,7 @@
                                 </li>
                                 <li class="flex items-center gap-2">
                                     <i data-lucide="check" class="w-4 h-4 text-tactical-green shrink-0"></i>
-                                    <span>Облачная синхронизация базы</span>
+                                    <span>100% офлайн без интернета</span>
                                 </li>
                             </ul>
                         </div>
